@@ -1,0 +1,133 @@
+/**
+ * SSRN Layout Grid
+ * Container and section layout styles
+ */
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+.container {
+  width: 100%;
+  max-width: var(--breakpoint-width);
+  margin: 0 auto;
+  padding: 0 var(--grid-margin);
+}
+
+.container--narrow {
+  max-width: 960px;
+}
+
+.container--wide {
+  max-width: 1600px;
+}
+
+.container--fluid {
+  max-width: none;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section {
+  padding: var(--space-2400) 0;
+}
+
+.section--sm {
+  padding: var(--space-1200) 0;
+}
+
+.section--lg {
+  padding: calc(var(--space-2400) * 1.5) 0;
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: var(--space-1600);
+}
+
+.section__header--left {
+  text-align: left;
+}
+
+.section__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h2-size);
+  line-height: var(--heading-h2-line-height);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-primary);
+  margin-bottom: var(--space-400);
+}
+
+.section__subtitle {
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line-height);
+  color: var(--text-neutral-secondary);
+  max-width: 600px;
+}
+
+.section__header--left .section__subtitle {
+  margin: 0;
+}
+
+.section__header:not(.section__header--left) .section__subtitle {
+  margin: 0 auto;
+}
+
+/* ============================================
+   GRID LAYOUTS
+   ============================================ */
+.grid {
+  display: grid;
+  gap: var(--space-800);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Responsive grid */
+@media (max-width: 992px) {
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .section__title {
+    font-size: var(--heading-h3-size);
+    line-height: var(--heading-h3-line-height);
+  }
+}
+
+/* ============================================
+   PAGE WRAPPER
+   ============================================ */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page__main {
+  flex: 1;
+}
+
+/* For pages with fixed header */
+.page--with-header {
+  padding-top: 72px;
+}

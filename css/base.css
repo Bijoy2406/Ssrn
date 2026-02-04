@@ -1,0 +1,233 @@
+/**
+ * SSRN Base Styles
+ * CSS Reset, typography, and utility classes
+ */
+
+/* ============================================
+   CSS RESET
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+  color: var(--text-neutral-primary);
+  background-color: var(--surface-neutral-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   ============================================ */
+
+/* Headings */
+.heading-display {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-display-size);
+  line-height: var(--heading-display-line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.heading-h1 {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h1-size);
+  line-height: var(--heading-h1-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.heading-h2 {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h2-size);
+  line-height: var(--heading-h2-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.heading-h3 {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h3-size);
+  line-height: var(--heading-h3-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.heading-h4 {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h4-size);
+  line-height: var(--heading-h4-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.heading-h5 {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h5-size);
+  line-height: var(--heading-h5-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.heading-h6 {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h6-size);
+  line-height: var(--heading-h6-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Body text */
+.body-lg {
+  font-family: var(--font-family-body);
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line-height);
+}
+
+.body-md {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+}
+
+.body-sm {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+}
+
+/* Font weights */
+.font-regular { font-weight: var(--font-weight-regular); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* Text colors */
+.text-primary { color: var(--text-neutral-primary); }
+.text-secondary { color: var(--text-neutral-secondary); }
+.text-tertiary { color: var(--text-neutral-tertiary); }
+.text-brand { color: var(--text-brand-primary); }
+
+/* Text alignment */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* ============================================
+   SPACING UTILITIES
+   ============================================ */
+
+/* Margin */
+.mt-100 { margin-top: var(--space-100); }
+.mt-200 { margin-top: var(--space-200); }
+.mt-300 { margin-top: var(--space-300); }
+.mt-400 { margin-top: var(--space-400); }
+.mt-600 { margin-top: var(--space-600); }
+.mt-800 { margin-top: var(--space-800); }
+
+.mb-100 { margin-bottom: var(--space-100); }
+.mb-200 { margin-bottom: var(--space-200); }
+.mb-300 { margin-bottom: var(--space-300); }
+.mb-400 { margin-bottom: var(--space-400); }
+.mb-600 { margin-bottom: var(--space-600); }
+.mb-800 { margin-bottom: var(--space-800); }
+
+/* Padding */
+.p-400 { padding: var(--space-400); }
+.p-600 { padding: var(--space-600); }
+.p-800 { padding: var(--space-800); }
+
+.py-400 { padding-top: var(--space-400); padding-bottom: var(--space-400); }
+.py-600 { padding-top: var(--space-600); padding-bottom: var(--space-600); }
+.py-800 { padding-top: var(--space-800); padding-bottom: var(--space-800); }
+
+.px-400 { padding-left: var(--space-400); padding-right: var(--space-400); }
+.px-600 { padding-left: var(--space-600); padding-right: var(--space-600); }
+.px-800 { padding-left: var(--space-800); padding-right: var(--space-800); }
+
+/* ============================================
+   DISPLAY UTILITIES
+   ============================================ */
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+
+/* Flexbox */
+.flex-row { flex-direction: row; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
+.gap-200 { gap: var(--space-200); }
+.gap-400 { gap: var(--space-400); }
+.gap-600 { gap: var(--space-600); }
+.gap-800 { gap: var(--space-800); }
+
+/* ============================================
+   VISUAL UTILITIES
+   ============================================ */
+
+/* Shadows */
+.shadow-xs { box-shadow: var(--shadow-xs); }
+.shadow-s { box-shadow: var(--shadow-s); }
+.shadow-m { box-shadow: var(--shadow-m); }
+.shadow-l { box-shadow: var(--shadow-l); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* Border radius */
+.rounded-s { border-radius: var(--radius-s); }
+.rounded-m { border-radius: var(--radius-m); }
+.rounded-l { border-radius: var(--radius-l); }
+.rounded-full { border-radius: var(--radius-full); }
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

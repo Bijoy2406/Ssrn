@@ -1,0 +1,160 @@
+/**
+ * SSRN Tab Components
+ * Tab navigation and tab content panels
+ */
+
+/* ============================================
+   TAB CONTAINER
+   ============================================ */
+.tabs {
+  width: 100%;
+}
+
+/* ============================================
+   TAB LIST
+   ============================================ */
+.tabs__list {
+  display: flex;
+  border-bottom: var(--border-s) solid var(--border-default);
+}
+
+.tabs__list--centered {
+  justify-content: center;
+}
+
+.tabs__list--stretch .tabs__tab {
+  flex: 1;
+}
+
+/* ============================================
+   TAB BUTTON
+   ============================================ */
+.tabs__tab {
+  padding: var(--space-400) var(--space-600);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-neutral-tertiary);
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: -1px;
+}
+
+.tabs__tab:hover {
+  color: var(--text-neutral-secondary);
+}
+
+.tabs__tab--active,
+.tabs__tab[aria-selected="true"] {
+  color: var(--text-brand-primary);
+  border-bottom-color: var(--border-brand-primary);
+}
+
+.tabs__tab:focus-visible {
+  outline: 2px solid var(--border-brand-primary);
+  outline-offset: -2px;
+}
+
+/* ============================================
+   TAB PANELS
+   ============================================ */
+.tabs__panels {
+  padding: var(--space-600) 0;
+}
+
+.tabs__panel {
+  display: none;
+}
+
+.tabs__panel--active,
+.tabs__panel[aria-hidden="false"] {
+  display: block;
+}
+
+/* ============================================
+   BOOKING FORM TABS (Special variant)
+   ============================================ */
+.booking-form__tabs {
+  display: flex;
+  border-bottom: var(--border-s) solid var(--border-default);
+}
+
+.booking-form__tab {
+  flex: 1;
+  padding: var(--space-400) var(--space-600);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-neutral-tertiary);
+  background-color: var(--surface-neutral-primary);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.booking-form__tab:hover {
+  color: var(--text-neutral-secondary);
+}
+
+.booking-form__tab--active {
+  background-color: var(--surface-neutral-page);
+  color: var(--text-brand-primary);
+  border-bottom: 2px solid var(--border-brand-primary);
+}
+
+/* ============================================
+   PILL TABS (Alternative style)
+   ============================================ */
+.tabs--pills .tabs__list {
+  border-bottom: none;
+  gap: var(--space-200);
+  background-color: var(--surface-neutral-secondary);
+  padding: var(--space-100);
+  border-radius: var(--radius-s);
+  width: fit-content;
+}
+
+.tabs--pills .tabs__tab {
+  padding: var(--space-200) var(--space-400);
+  border-bottom: none;
+  border-radius: var(--radius-xs);
+  margin-bottom: 0;
+}
+
+.tabs--pills .tabs__tab--active {
+  background-color: var(--surface-neutral-page);
+  box-shadow: var(--shadow-xs);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+  .tabs__list--responsive {
+    flex-direction: column;
+    border-bottom: none;
+  }
+
+  .tabs__list--responsive .tabs__tab {
+    border-bottom: var(--border-s) solid var(--border-default);
+    margin-bottom: 0;
+  }
+
+  .tabs__list--responsive .tabs__tab--active {
+    border-bottom-color: var(--border-brand-primary);
+  }
+
+  .booking-form__tabs {
+    flex-direction: column;
+  }
+
+  .booking-form__tab {
+    border-bottom: var(--border-s) solid var(--border-default);
+  }
+
+  .booking-form__tab--active {
+    border-bottom-color: var(--border-brand-primary);
+  }
+}
