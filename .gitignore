@@ -19,3 +19,10 @@ dist/
 
 # Misc
 *.cache
+
+# Audit & workspace files
+WORKLOAD-AUDIT.md
+workload-audit.json
+.nul
+nul
+.claude/
