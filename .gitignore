@@ -1,0 +1,21 @@
+# Ignore Figma-related files and config
+*figma*
+.figma*
+/analyze-figma.js
+/fetch-figma.js
+/figma_fetch.js
+/DESIGN_SYSTEM.md
+
+# Ignore OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+.env
+
+# Node and build
+node_modules/
+dist/
+
+# Misc
+*.cache
