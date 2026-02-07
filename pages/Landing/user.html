@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN - Welcome Back</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <!-- Header (Logged In) -->
+  <div id="header"></div>
+
+  <!-- Landing Page Content for Logged-in User -->
+  <main class="landing landing--user">
+    <section class="hero">
+      <div class="container">
+        <h1>Welcome Back</h1>
+        <p>Book your next ride</p>
+      </div>
+    </section>
+
+    <!-- Quick Booking Section -->
+    <section class="quick-booking">
+      <div class="container">
+        <h2>Quick Booking</h2>
+        <!-- Quick booking form will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Upcoming Rides Card -->
+    <section class="upcoming-rides">
+      <div class="container">
+        <h2>Your Upcoming Rides</h2>
+        <!-- Upcoming rides card will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Service Cards Section -->
+    <section class="services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <!-- Service cards will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Destination Cards Section -->
+    <section class="destinations">
+      <div class="container">
+        <h2>Popular Destinations</h2>
+        <!-- Destination cards carousel will be loaded here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/utils/includes.js"></script>
+  <script src="../../main.js"></script>
+  <script>
+    // Check if user is logged in
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    if (!user.name) {
+      // Redirect to anonymous landing if not logged in
+      window.location.href = './anonymous.html';
+    }
+
+    // Load header (logged in state)
+    Includes.loadComponent('header', '../../includes/header-logged-in.html');
+    // Load footer
+    Includes.loadComponent('footer', '../../includes/footer.html');
+  </script>
+</body>
+</html>

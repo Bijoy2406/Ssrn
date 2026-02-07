@@ -1,6 +1,6 @@
 /**
  * SSRN Button Components
- * All button styles and variants
+ * Based on Figma design system
  */
 
 /* ============================================
@@ -10,22 +10,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-200);
+  gap: var(--space-300);
   padding: var(--space-300) var(--space-600);
   font-family: var(--font-family-body);
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-semibold);
-  line-height: 1.5;
-  border-radius: var(--radius-s);
-  border: var(--border-s) solid transparent;
+  line-height: var(--body-md-line-height);
+  text-align: center;
+  border-radius: var(--radius-m);
+  border: none;
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
-  white-space: nowrap;
+  white-space: pre-wrap;
+  min-height: 48px;
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--border-brand-primary);
+  outline: 2px solid var(--sea-green-50);
   outline-offset: 2px;
 }
 
@@ -37,105 +39,222 @@
 }
 
 /* ============================================
-   BUTTON VARIANTS
+   BUTTON TYPES - PRIMARY STYLE
    ============================================ */
 
-/* Primary */
+/* Filled Primary */
+.btn--filled,
 .btn--primary {
-  background-color: var(--surface-brand-action);
-  color: var(--text-brand-on-action);
-  border-color: var(--border-brand-action);
+  background-color: var(--sea-green-50);
+  color: var(--sea-green-100);
+  border: none;
 }
 
+.btn--filled:hover,
 .btn--primary:hover {
-  background-color: var(--surface-brand-action-hover);
-  color: var(--text-brand-on-action-hover);
-  border-color: var(--border-brand-action-hover);
+  background-color: var(--golden-50);
+  color: var(--text-inverse);
 }
 
-/* Secondary */
-.btn--secondary {
+.btn--filled:active,
+.btn--primary:active {
+  background-color: var(--sea-green-40);
+}
+
+/* Transparent Primary */
+.btn--transparent {
   background-color: transparent;
-  color: var(--text-brand-primary);
-  border-color: var(--border-brand-primary);
+  color: var(--sea-green-50);
+  border: none;
 }
 
-.btn--secondary:hover {
-  background-color: var(--surface-brand-action);
-  color: var(--text-brand-on-action);
-  border-color: var(--border-brand-action);
+.btn--transparent:hover {
+  background-color: var(--golden-50);
+  color: var(--text-inverse);
 }
 
-/* Ghost */
-.btn--ghost {
+.btn--transparent:active {
+  background-color: var(--golden-40);
+  color: var(--text-inverse);
+}
+
+/* Outline Primary */
+.btn--outline {
   background-color: transparent;
-  color: var(--text-neutral-secondary);
-  border-color: transparent;
+  color: var(--sea-green-50);
+  border: var(--border-m) solid var(--sea-green-50);
 }
 
-.btn--ghost:hover {
-  background-color: var(--surface-neutral-secondary);
-  color: var(--text-neutral-primary);
+.btn--outline:hover {
+  background-color: var(--golden-50);
+  color: var(--text-inverse);
+  border-color: var(--golden-50);
 }
 
-/* Danger */
-.btn--danger {
-  background-color: #cc455c;
-  color: #ffffff;
-  border-color: #cc455c;
+.btn--outline:active {
+  background-color: var(--golden-40);
+  border-color: var(--golden-40);
+  color: var(--text-inverse);
 }
 
-.btn--danger:hover {
-  background-color: #a83749;
-  border-color: #a83749;
+/* ============================================
+   BUTTON TYPES - NEUTRAL STYLE
+   ============================================ */
+
+/* Filled Neutral */
+.btn--neutral-filled {
+  background-color: var(--black);
+  color: var(--text-inverse);
+  border: none;
+}
+
+.btn--neutral-filled:hover {
+  background-color: var(--grey-10);
+  color: var(--text-inverse);
+}
+
+.btn--neutral-filled:active {
+  background-color: var(--grey-20);
+}
+
+/* Transparent Neutral */
+.btn--neutral-transparent {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: none;
+}
+
+.btn--neutral-transparent:hover {
+  background-color: var(--grey-10);
+  color: var(--text-inverse);
+}
+
+.btn--neutral-transparent:active {
+  background-color: var(--grey-20);
+  color: var(--text-inverse);
+}
+
+/* Outline Neutral */
+.btn--neutral-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: var(--border-m) solid var(--border-primary);
+}
+
+.btn--neutral-outline:hover {
+  background-color: var(--grey-10);
+  color: var(--text-inverse);
+  border-color: var(--grey-10);
+}
+
+.btn--neutral-outline:active {
+  background-color: var(--grey-20);
+  border-color: var(--grey-20);
+  color: var(--text-inverse);
 }
 
 /* ============================================
    BUTTON SIZES
    ============================================ */
 
-/* Small */
-.btn--sm {
-  padding: var(--space-200) var(--space-400);
-  font-size: var(--body-sm-size);
+/* Default size - 48px height (already default) */
+.btn--default {
+  padding: var(--space-300) var(--space-600);
+  min-height: 48px;
 }
 
-/* Large */
+/* Small - 40px height */
+.btn--sm,
+.btn--small {
+  padding: var(--space-200) var(--space-400);
+  font-size: var(--body-md-size);
+  min-height: 40px;
+}
+
+/* Large - 56px height */
 .btn--lg,
 .btn--large {
   padding: var(--space-400) var(--space-800);
   font-size: var(--body-md-size);
-}
-
-/* Full width */
-.btn--block {
-  width: 100%;
+  min-height: 56px;
 }
 
 /* ============================================
-   BUTTON WITH ICON
+   BUTTON WITH ICONS
    ============================================ */
+.btn__icon,
 .btn svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
 }
 
+.btn--sm .btn__icon,
 .btn--sm svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
+.btn--lg .btn__icon,
+.btn--lg svg {
+  width: 24px;
+  height: 24px;
+}
+
+.btn__label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+/* Icon only button */
 .btn--icon-only {
   padding: var(--space-300);
+  min-width: 48px;
+  gap: 0;
 }
 
 .btn--icon-only.btn--sm {
   padding: var(--space-200);
+  min-width: 40px;
 }
 
 .btn--icon-only.btn--lg {
   padding: var(--space-400);
+  min-width: 56px;
+}
+
+/* ============================================
+   BUTTON WIDTHS
+   ============================================ */
+
+/* Full width */
+.btn--block,
+.btn--full-width {
+  width: 100%;
+}
+
+/* Auto width (content-based) - default */
+.btn--auto {
+  width: auto;
+}
+
+/* Fixed widths */
+.btn--fixed {
+  min-width: 172px;
+}
+
+.btn--fixed-sm {
+  min-width: 147px;
+}
+
+.btn--fixed-lg {
+  min-width: 208px;
 }
 
 /* ============================================
@@ -144,10 +263,74 @@
 .btn-group {
   display: inline-flex;
   gap: var(--space-200);
+  align-items: center;
 }
 
 .btn-group--vertical {
   flex-direction: column;
+}
+
+.btn-group--attached .btn {
+  border-radius: 0;
+}
+
+.btn-group--attached .btn:first-child {
+  border-top-left-radius: var(--radius-m);
+  border-bottom-left-radius: var(--radius-m);
+}
+
+.btn-group--attached .btn:last-child {
+  border-top-right-radius: var(--radius-m);
+  border-bottom-right-radius: var(--radius-m);
+}
+
+/* ============================================
+   SEMANTIC BUTTON VARIANTS
+   ============================================ */
+
+/* Danger/Error Button */
+.btn--danger {
+  background-color: var(--color-error);
+  color: var(--text-inverse);
+  border: none;
+}
+
+.btn--danger:hover {
+  background-color: var(--red-40);
+}
+
+.btn--danger:active {
+  background-color: var(--red-30);
+}
+
+/* Success Button */
+.btn--success {
+  background-color: var(--color-success);
+  color: var(--text-inverse);
+  border: none;
+}
+
+.btn--success:hover {
+  background-color: var(--green-40);
+}
+
+.btn--success:active {
+  background-color: var(--green-30);
+}
+
+/* Warning Button */
+.btn--warning {
+  background-color: var(--color-warning);
+  color: var(--black);
+  border: none;
+}
+
+.btn--warning:hover {
+  background-color: var(--orange-40);
+}
+
+.btn--warning:active {
+  background-color: var(--orange-30);
 }
 
 /* ============================================
@@ -158,20 +341,64 @@
   align-items: center;
   gap: var(--space-200);
   padding: 0;
+  font-family: var(--font-family-body);
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
   color: var(--text-brand-primary);
   background: none;
   border: none;
   cursor: pointer;
   transition: gap 0.2s ease;
+  text-decoration: none;
+  min-height: auto;
 }
 
 .btn-link:hover {
   gap: var(--space-300);
+  color: var(--golden-50);
 }
 
-.btn-link svg {
+.btn-link:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+.btn-link svg,
+.btn-link .btn__icon {
   width: 16px;
   height: 16px;
+}
+
+/* ============================================
+   LEGACY SUPPORT (keeping old class names)
+   ============================================ */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: var(--border-m) solid var(--border-primary);
+}
+
+.btn--secondary:hover {
+  background-color: var(--surface-primary);
+}
+
+.btn--secondary:active {
+  background-color: var(--surface-secondary);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: none;
+}
+
+.btn--ghost:hover {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.btn--with-icon {
+  gap: var(--space-300);
 }

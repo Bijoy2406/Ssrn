@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN - Premium Ride Service</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <!-- Header (Logged Out) -->
+  <div id="header"></div>
+
+  <!-- Landing Page Content -->
+  <main class="landing">
+    <section class="hero">
+      <div class="container">
+        <h1>Welcome to SSRN</h1>
+        <p>Your premium ride service</p>
+      </div>
+    </section>
+
+    <!-- Service Cards Section -->
+    <section class="services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <!-- Service cards will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Destination Cards Section -->
+    <section class="destinations">
+      <div class="container">
+        <h2>Popular Destinations</h2>
+        <!-- Destination cards carousel will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Core Value Cards Section -->
+    <section class="values">
+      <div class="container">
+        <h2>Why Choose SSRN</h2>
+        <!-- Core value cards will be loaded here -->
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <!-- CTA section card will be loaded here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/utils/includes.js"></script>
+  <script src="../../main.js"></script>
+  <script>
+    // Load header (logged out state)
+    Includes.loadComponent('header', '../../includes/header-logged-out.html');
+    // Load footer
+    Includes.loadComponent('footer', '../../includes/footer.html');
+  </script>
+</body>
+</html>

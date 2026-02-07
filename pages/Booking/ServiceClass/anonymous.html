@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Service Class - SSRN</title>
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+  <!-- Header (Logged Out) -->
+  <div id="header"></div>
+
+  <!-- Booking Progress Bar -->
+  <div class="booking-progress">
+    <div class="container">
+      <div class="booking-progress__steps">
+        <div class="booking-progress__step booking-progress__step--active">
+          <span class="booking-progress__number">1</span>
+          <span class="booking-progress__label">Service Class</span>
+        </div>
+        <div class="booking-progress__step">
+          <span class="booking-progress__number">2</span>
+          <span class="booking-progress__label">Pickup Info</span>
+        </div>
+        <div class="booking-progress__step">
+          <span class="booking-progress__number">3</span>
+          <span class="booking-progress__label">Confirm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service Class Selection -->
+  <main class="booking-page">
+    <div class="container">
+      <h1>Select Your Service Class</h1>
+      <p class="page-subtitle">Choose the perfect ride for your journey</p>
+
+      <div class="service-class-grid">
+        <!-- Standard Class Card -->
+        <div class="service-class-card" data-class="standard">
+          <div class="service-class-card__image">
+            <img src="../../../assets/placeholder-car-standard.jpg" alt="Standard Class">
+          </div>
+          <div class="service-class-card__content">
+            <h3>Standard</h3>
+            <p>Comfortable sedan for up to 3 passengers</p>
+            <ul class="service-class-card__features">
+              <li>Professional driver</li>
+              <li>Climate control</li>
+              <li>Bottled water</li>
+            </ul>
+            <button class="btn btn--primary btn--block" onclick="selectClass('standard')">
+              Select Standard
+            </button>
+          </div>
+        </div>
+
+        <!-- Business Class Card -->
+        <div class="service-class-card service-class-card--featured" data-class="business">
+          <div class="service-class-card__badge">Most Popular</div>
+          <div class="service-class-card__image">
+            <img src="../../../assets/placeholder-car-business.jpg" alt="Business Class">
+          </div>
+          <div class="service-class-card__content">
+            <h3>Business</h3>
+            <p>Premium sedan for up to 3 passengers</p>
+            <ul class="service-class-card__features">
+              <li>All Standard features</li>
+              <li>Wi-Fi included</li>
+              <li>Phone charger</li>
+              <li>Refreshments</li>
+            </ul>
+            <button class="btn btn--primary btn--block" onclick="selectClass('business')">
+              Select Business
+            </button>
+          </div>
+        </div>
+
+        <!-- First Class Card -->
+        <div class="service-class-card" data-class="first">
+          <div class="service-class-card__image">
+            <img src="../../../assets/placeholder-car-first.jpg" alt="First Class">
+          </div>
+          <div class="service-class-card__content">
+            <h3>First Class</h3>
+            <p>Luxury sedan for ultimate comfort</p>
+            <ul class="service-class-card__features">
+              <li>All Business features</li>
+              <li>Premium vehicle</li>
+              <li>Meet & greet service</li>
+              <li>Priority support</li>
+            </ul>
+            <button class="btn btn--primary btn--block" onclick="selectClass('first')">
+              Select First Class
+            </button>
+          </div>
+        </div>
+
+        <!-- SUV Class Card -->
+        <div class="service-class-card" data-class="suv">
+          <div class="service-class-card__image">
+            <img src="../../../assets/placeholder-car-suv.jpg" alt="SUV Class">
+          </div>
+          <div class="service-class-card__content">
+            <h3>SUV</h3>
+            <p>Spacious SUV for up to 6 passengers</p>
+            <ul class="service-class-card__features">
+              <li>All Business features</li>
+              <li>Extra luggage space</li>
+              <li>Group travel</li>
+            </ul>
+            <button class="btn btn--primary btn--block" onclick="selectClass('suv')">
+              Select SUV
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="../../../js/utils/includes.js"></script>
+  <script src="../../../main.js"></script>
+  <script>
+    // Load header and footer
+    Includes.loadComponent('header', '../../../includes/header-logged-out.html');
+    Includes.loadComponent('footer', '../../../includes/footer.html');
+
+    // Handle service class selection
+    function selectClass(serviceClass) {
+      // Store selection
+      sessionStorage.setItem('selectedServiceClass', serviceClass);
+
+      // Navigate to pickup info page
+      window.location.href = '../PickupInfo/anonymous.html';
+    }
+  </script>
+</body>
+</html>

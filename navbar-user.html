@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Navbar - User Logged In</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--grey-70);
+    }
+
+    /* Navbar Wrapper - uses design tokens */
+    .navbar-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-200) var(--grid-margin);
+      background-color: var(--surface-page);
+      box-shadow: var(--shadow-l);
+      width: 100%;
+    }
+
+    /* Navigation bar for user page - simplified layout */
+    .navbar-wrapper .nav-bar {
+      max-width: var(--grid-max-width);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: var(--space-1200);
+      padding: 0;
+    }
+
+    /* Logo styling */
+    .navbar-wrapper .nav-bar__logo {
+      width: 137px;
+      height: 48px;
+      flex-shrink: 0;
+    }
+
+    /* Fill frame - creates the big space */
+    .navbar-wrapper .nav-bar__fill {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Navigation items on the right */
+    .navbar-wrapper .nav-bar__right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-200);
+      flex-shrink: 0;
+    }
+
+    /* Simple nav items without dropdown */
+    .navbar-wrapper .nav-item__button {
+      padding: var(--space-200) var(--space-400);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar Wrapper -->
+  <div class="navbar-wrapper">
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+      <!-- Logo -->
+      <a href="/" class="nav-bar__logo">
+        <img src="https://www.figma.com/api/mcp/asset/6f159729-3024-4d09-9b83-de02bf684b1e" alt="SSRN" />
+      </a>
+
+      <!-- Fill Frame - creates big space in the middle -->
+      <div class="nav-bar__fill"></div>
+
+      <!-- Right side navigation -->
+      <div class="nav-bar__right">
+        <!-- About Us -->
+        <div class="nav-item">
+          <a href="#" class="nav-item__button">
+            <span class="nav-item__label">About Us</span>
+          </a>
+        </div>
+
+        <!-- Help -->
+        <div class="nav-item">
+          <a href="#" class="nav-item__button">
+            <span class="nav-item__label">Help</span>
+          </a>
+        </div>
+
+        <!-- Profile Button (Logged In User) -->
+        <div class="profile-btn" id="profileBtn">
+          <button class="profile-btn__button">
+            <svg class="profile-btn__icon" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 21C6 17 8.5 14 12 14C15.5 14 18 17 18 21" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <span class="profile-btn__label">Mehrab</span>
+            <svg class="profile-btn__chevron" viewBox="0 0 12 8" fill="none">
+              <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="profile-btn__dropdown">
+            <a href="#" class="profile-btn__dropdown-item">My Rides</a>
+            <a href="#" class="profile-btn__dropdown-item">Account</a>
+            <button class="profile-btn__dropdown-item profile-btn__dropdown-item--danger">Log Out</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    // Profile button dropdown
+    const profileBtn = document.getElementById('profileBtn');
+    if (profileBtn) {
+      const button = profileBtn.querySelector('.profile-btn__button');
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        profileBtn.classList.toggle('profile-btn--open');
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+      if (profileBtn) {
+        profileBtn.classList.remove('profile-btn--open');
+      }
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (profileBtn) {
+          profileBtn.classList.remove('profile-btn--open');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
