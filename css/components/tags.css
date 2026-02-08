@@ -1,0 +1,424 @@
+/**
+ * SSRN Tags Component
+ * Based on Figma design system
+ */
+
+/* ============================================
+   TAG BASE
+   ============================================ */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-100);
+  padding: var(--space-100) var(--space-300);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--caption-line-height);
+  border: var(--border-m) solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Tag icon */
+.tag__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+/* Tag text */
+.tag__text {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* Tag close button */
+.tag__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin-left: var(--space-100);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: currentColor;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.tag__close:hover {
+  opacity: 1;
+}
+
+.tag__close-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* ============================================
+   TAG SIZES
+   ============================================ */
+
+/* Default size (32px height) */
+.tag {
+  min-height: 32px;
+  padding: var(--space-100) var(--space-300);
+  font-size: var(--body-sm-size);
+}
+
+/* Small size (24px height) */
+.tag--small {
+  min-height: 24px;
+  padding: var(--space-50) var(--space-200);
+  font-size: 12px;
+  gap: var(--space-50);
+}
+
+.tag--small .tag__icon {
+  width: 14px;
+  height: 14px;
+}
+
+.tag--small .tag__close {
+  width: 14px;
+  height: 14px;
+  margin-left: var(--space-50);
+}
+
+.tag--small .tag__close-icon {
+  width: 10px;
+  height: 10px;
+}
+
+/* ============================================
+   TAG TYPES (Static/Display Tags)
+   ============================================ */
+
+/* Neutral tag */
+.tag--neutral {
+  background-color: var(--grey-70);
+  color: var(--text-primary);
+  border-color: var(--grey-60);
+}
+
+/* Information tag */
+.tag--information {
+  background-color: #E3F2FD;
+  color: #1565C0;
+  border-color: #BBDEFB;
+}
+
+.tag--information .tag__icon {
+  color: #1565C0;
+}
+
+/* Success tag */
+.tag--success {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+  border-color: #C8E6C9;
+}
+
+.tag--success .tag__icon {
+  color: #2E7D32;
+}
+
+/* Error tag */
+.tag--error {
+  background-color: #FFEBEE;
+  color: #C62828;
+  border-color: #FFCDD2;
+}
+
+.tag--error .tag__icon {
+  color: #C62828;
+}
+
+/* Warning tag */
+.tag--warning {
+  background-color: #FFF3E0;
+  color: #E65100;
+  border-color: #FFE0B2;
+}
+
+.tag--warning .tag__icon {
+  color: #E65100;
+}
+
+/* Disabled tag */
+.tag--disabled {
+  background-color: var(--grey-80);
+  color: var(--text-disabled);
+  border-color: var(--grey-70);
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   INTERACTIVE TAG (Selectable/Clickable)
+   ============================================ */
+
+/* Unselected state */
+.tag--interactive {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+  cursor: pointer;
+}
+
+.tag--interactive:hover {
+  background-color: var(--grey-90);
+  border-color: var(--text-secondary);
+}
+
+.tag--interactive:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+  border-color: var(--sea-green-50);
+}
+
+/* Selected state */
+.tag--interactive.tag--selected {
+  background-color: var(--sea-green-50);
+  color: var(--text-inverse);
+  border-color: var(--sea-green-50);
+}
+
+.tag--interactive.tag--selected .tag__icon {
+  color: var(--text-inverse);
+}
+
+.tag--interactive.tag--selected:hover {
+  background-color: var(--sea-green-40);
+  border-color: var(--sea-green-40);
+}
+
+/* Disabled interactive tag */
+.tag--interactive.tag--disabled {
+  background-color: var(--grey-80);
+  color: var(--text-disabled);
+  border-color: var(--grey-70);
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ============================================
+   TAG WITH CHECKMARK (Selected)
+   ============================================ */
+.tag--selected .tag__checkmark {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.tag--small.tag--selected .tag__checkmark {
+  width: 14px;
+  height: 14px;
+}
+
+/* ============================================
+   TAG WITH ADD ICON (Unselected)
+   ============================================ */
+.tag--interactive:not(.tag--selected) .tag__add-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.tag--small.tag--interactive:not(.tag--selected) .tag__add-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ============================================
+   TAG GROUP/LIST
+   ============================================ */
+.tag-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-200);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-list--compact {
+  gap: var(--space-100);
+}
+
+/* ============================================
+   TAG WITH LABEL
+   ============================================ */
+.tag-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-300);
+  flex-wrap: wrap;
+}
+
+.tag-group__label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.tag-group__tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-200);
+}
+
+/* ============================================
+   TAG VARIANTS
+   ============================================ */
+
+/* Rounded tag */
+.tag--rounded {
+  border-radius: var(--radius-full);
+}
+
+/* Outlined tag (no background) */
+.tag--outlined {
+  background-color: transparent;
+}
+
+.tag--outlined.tag--neutral {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.tag--outlined.tag--information {
+  background-color: transparent;
+  color: #1565C0;
+  border-color: #1565C0;
+}
+
+.tag--outlined.tag--success {
+  background-color: transparent;
+  color: #2E7D32;
+  border-color: #2E7D32;
+}
+
+.tag--outlined.tag--error {
+  background-color: transparent;
+  color: #C62828;
+  border-color: #C62828;
+}
+
+.tag--outlined.tag--warning {
+  background-color: transparent;
+  color: #E65100;
+  border-color: #E65100;
+}
+
+/* Solid tag (no border) */
+.tag--solid {
+  border: none;
+}
+
+/* Clickable tag (not interactive/selectable) */
+.tag--clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tag--clickable:hover {
+  box-shadow: var(--shadow-s);
+  transform: translateY(-1px);
+}
+
+.tag--clickable:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   TAG REMOVABLE
+   ============================================ */
+.tag--removable {
+  padding-right: var(--space-200);
+}
+
+.tag--removable.tag--small {
+  padding-right: var(--space-100);
+}
+
+/* ============================================
+   TAG WITH DOT INDICATOR
+   ============================================ */
+.tag__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  background-color: currentColor;
+}
+
+.tag--small .tag__dot {
+  width: 6px;
+  height: 6px;
+}
+
+/* ============================================
+   TAG ANIMATIONS
+   ============================================ */
+@keyframes tag-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tag--animate {
+  animation: tag-appear 0.2s ease;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .tag {
+    font-size: 12px;
+    padding: var(--space-50) var(--space-200);
+  }
+
+  .tag__icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .tag-group {
+    gap: var(--space-200);
+  }
+
+  .tag-group__label {
+    font-size: var(--body-sm-size);
+  }
+
+  .tag-group__tags {
+    gap: var(--space-100);
+  }
+}

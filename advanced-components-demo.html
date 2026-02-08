@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Advanced Components Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: var(--grey-70);
+      font-family: var(--font-family-body);
+    }
+    .demo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .demo-title {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-h2-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .demo-section {
+      background: var(--surface-page);
+      padding: 32px;
+      border-radius: var(--radius-m);
+      margin-bottom: 32px;
+    }
+    .demo-section-title {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-h5-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+    .demo-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .demo-examples {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <h1 class="demo-title">Advanced Components Demo</h1>
+
+    <!-- ===== AUTOCOMPLETE ===== -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Autocomplete Component</h2>
+
+      <div class="demo-examples">
+        <!-- Basic Autocomplete -->
+        <div class="autocomplete" id="autocomplete-1">
+          <label class="input-label">
+            <span class="input-label__text">Select User</span>
+          </label>
+          <div class="autocomplete__input-wrapper">
+            <svg class="autocomplete__icon-left" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 21C6 17 8.5 14 12 14C15.5 14 18 17 18 21" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <input type="text" class="autocomplete__input" placeholder="Type to search..." oninput="filterAutocomplete('autocomplete-1')">
+            <button class="autocomplete__clear" onclick="clearAutocomplete('autocomplete-1')" style="display: none;">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="autocomplete__dropdown">
+            <div class="autocomplete__items">
+              <button class="autocomplete__item" onclick="selectAutocomplete('autocomplete-1', 'John Doe')">
+                <svg class="autocomplete__item-icon" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 21C6 17 8.5 14 12 14C15.5 14 18 17 18 21" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                John Doe
+              </button>
+              <button class="autocomplete__item" onclick="selectAutocomplete('autocomplete-1', 'Jane Smith')">
+                <svg class="autocomplete__item-icon" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 21C6 17 8.5 14 12 14C15.5 14 18 17 18 21" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                Jane Smith
+              </button>
+              <button class="autocomplete__item" onclick="selectAutocomplete('autocomplete-1', 'Bob Johnson')">
+                <svg class="autocomplete__item-icon" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 21C6 17 8.5 14 12 14C15.5 14 18 17 18 21" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                Bob Johnson
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Autocomplete with Error -->
+        <div class="autocomplete autocomplete--error">
+          <label class="input-label">
+            <span class="input-label__text">Select Destination</span>
+            <span class="input-label__required">*</span>
+          </label>
+          <div class="autocomplete__input-wrapper">
+            <svg class="autocomplete__icon-left" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <input type="text" class="autocomplete__input" placeholder="Search destinations...">
+          </div>
+          <div class="autocomplete__helper autocomplete__helper--error">
+            <span class="autocomplete__helper-text">Please select a destination</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SEARCH BAR ===== -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Search Bar Component</h2>
+
+      <div class="demo-examples">
+        <!-- Basic Search Bar -->
+        <div class="searchbar" id="searchbar-1">
+          <label class="input-label">
+            <span class="input-label__text">Search</span>
+          </label>
+          <div class="searchbar__input-wrapper">
+            <svg class="searchbar__icon" viewBox="0 0 24 24" fill="none">
+              <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M15 15L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input type="search" class="searchbar__input" placeholder="Search destinations, cities..." oninput="handleSearch('searchbar-1')">
+            <button class="searchbar__clear" onclick="clearSearch('searchbar-1')">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="searchbar__results">
+            <div class="searchbar__results-list">
+              <div class="searchbar__suggestions-header">Recent Searches</div>
+              <button class="searchbar__result-item" onclick="selectSearch('searchbar-1', 'New York')">
+                <svg class="searchbar__result-icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                New York
+              </button>
+              <button class="searchbar__result-item" onclick="selectSearch('searchbar-1', 'Los Angeles')">
+                <svg class="searchbar__result-icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                Los Angeles
+              </button>
+              <div class="searchbar__suggestions-header">Popular Destinations</div>
+              <button class="searchbar__result-item" onclick="selectSearch('searchbar-1', 'Miami Beach')">
+                <svg class="searchbar__result-icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                Miami Beach
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search Bar (Compact) -->
+        <div class="searchbar">
+          <div class="searchbar__input-wrapper">
+            <svg class="searchbar__icon" viewBox="0 0 24 24" fill="none">
+              <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M15 15L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input type="search" class="searchbar__input" placeholder="Quick search...">
+            <button class="searchbar__clear">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TABS ===== -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Tabs Component</h2>
+
+      <!-- Basic Tabs -->
+      <div class="tabs" id="tabs-1">
+        <div class="tab-bar">
+          <button class="tab-item tab-item--selected" onclick="switchTab('tabs-1', 0)">
+            <svg class="tab-item__icon" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5" fill="currentColor"/>
+            </svg>
+            <span class="tab-item__label">Overview</span>
+          </button>
+          <button class="tab-item" onclick="switchTab('tabs-1', 1)">
+            <svg class="tab-item__icon" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5" fill="currentColor"/>
+            </svg>
+            <span class="tab-item__label">Services</span>
+          </button>
+          <button class="tab-item" onclick="switchTab('tabs-1', 2)">
+            <svg class="tab-item__icon" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5" fill="currentColor"/>
+            </svg>
+            <span class="tab-item__label">Booking</span>
+          </button>
+        </div>
+        <div class="tab-panel tab-panel--active">
+          <h3>Overview</h3>
+          <p>Welcome to our services overview page.</p>
+        </div>
+        <div class="tab-panel">
+          <h3>Services</h3>
+          <p>Explore our range of transportation services.</p>
+        </div>
+        <div class="tab-panel">
+          <h3>Booking</h3>
+          <p>Book your ride with us today.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 32px;">
+        <!-- Tabs with Badges -->
+        <div class="tab-bar">
+          <button class="tab-item tab-item--selected">
+            <span class="tab-item__label">Active Rides</span>
+            <span class="tab-item__badge">3</span>
+          </button>
+          <button class="tab-item">
+            <span class="tab-item__label">Completed</span>
+            <span class="tab-item__badge">12</span>
+          </button>
+          <button class="tab-item">
+            <span class="tab-item__label">Upcoming</span>
+            <span class="tab-item__badge">5</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BUTTON GROUP ===== -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Button Group Component</h2>
+
+      <div class="demo-examples">
+        <!-- Basic Button Group -->
+        <div>
+          <label class="input-label" style="margin-bottom: 8px;">
+            <span class="input-label__text">Select View</span>
+          </label>
+          <div class="btn-group" id="btn-group-1" role="radiogroup">
+            <button class="btn-group__item btn-group__item--selected" onclick="selectGroupItem('btn-group-1', 0)">
+              <svg class="btn-group__icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5" fill="currentColor"/>
+              </svg>
+              <span class="btn-group__label">Grid View</span>
+            </button>
+            <button class="btn-group__item" onclick="selectGroupItem('btn-group-1', 1)">
+              <svg class="btn-group__icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5" fill="currentColor"/>
+              </svg>
+              <span class="btn-group__label">List View</span>
+            </button>
+            <button class="btn-group__item" onclick="selectGroupItem('btn-group-1', 2)">
+              <svg class="btn-group__icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5" fill="currentColor"/>
+              </svg>
+              <span class="btn-group__label">Map View</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Neutral Button Group -->
+        <div>
+          <label class="input-label" style="margin-bottom: 8px;">
+            <span class="input-label__text">Sort By</span>
+          </label>
+          <div class="btn-group btn-group--neutral">
+            <button class="btn-group__item btn-group__item--selected">
+              Price
+            </button>
+            <button class="btn-group__item">
+              Rating
+            </button>
+            <button class="btn-group__item">
+              Distance
+            </button>
+          </div>
+        </div>
+
+        <!-- Icon-only Button Group -->
+        <div>
+          <label class="input-label" style="margin-bottom: 8px;">
+            <span class="input-label__text">Text Alignment</span>
+          </label>
+          <div class="btn-group btn-group--icon-only">
+            <button class="btn-group__item">
+              <svg class="btn-group__icon" viewBox="0 0 24 24" fill="none">
+                <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <button class="btn-group__item btn-group__item--selected">
+              <svg class="btn-group__icon" viewBox="0 0 24 24" fill="none">
+                <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <button class="btn-group__item">
+              <svg class="btn-group__icon" viewBox="0 0 24 24" fill="none">
+                <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Autocomplete functions
+    function filterAutocomplete(id) {
+      const container = document.getElementById(id);
+      const dropdown = container.querySelector('.autocomplete__dropdown');
+      const input = container.querySelector('.autocomplete__input');
+      const clearBtn = container.querySelector('.autocomplete__clear');
+
+      if (input.value.length > 0) {
+        dropdown.classList.add('autocomplete__dropdown--open');
+        clearBtn.style.display = 'block';
+      } else {
+        dropdown.classList.remove('autocomplete__dropdown--open');
+        clearBtn.style.display = 'none';
+      }
+    }
+
+    function selectAutocomplete(id, value) {
+      const container = document.getElementById(id);
+      const input = container.querySelector('.autocomplete__input');
+      const dropdown = container.querySelector('.autocomplete__dropdown');
+
+      input.value = value;
+      dropdown.classList.remove('autocomplete__dropdown--open');
+    }
+
+    function clearAutocomplete(id) {
+      const container = document.getElementById(id);
+      const input = container.querySelector('.autocomplete__input');
+      const dropdown = container.querySelector('.autocomplete__dropdown');
+      const clearBtn = container.querySelector('.autocomplete__clear');
+
+      input.value = '';
+      dropdown.classList.remove('autocomplete__dropdown--open');
+      clearBtn.style.display = 'none';
+      input.focus();
+    }
+
+    // Search bar functions
+    function handleSearch(id) {
+      const container = document.getElementById(id);
+      const results = container.querySelector('.searchbar__results');
+      const input = container.querySelector('.searchbar__input');
+
+      if (input.value.length > 0) {
+        results.classList.add('searchbar__results--open');
+      } else {
+        results.classList.remove('searchbar__results--open');
+      }
+    }
+
+    function selectSearch(id, value) {
+      const container = document.getElementById(id);
+      const input = container.querySelector('.searchbar__input');
+      const results = container.querySelector('.searchbar__results');
+
+      input.value = value;
+      results.classList.remove('searchbar__results--open');
+    }
+
+    function clearSearch(id) {
+      const container = document.getElementById(id);
+      const input = container.querySelector('.searchbar__input');
+      const results = container.querySelector('.searchbar__results');
+
+      input.value = '';
+      results.classList.remove('searchbar__results--open');
+      input.focus();
+    }
+
+    // Tabs functions
+    function switchTab(tabsId, index) {
+      const container = document.getElementById(tabsId);
+      const tabs = container.querySelectorAll('.tab-item');
+      const panels = container.querySelectorAll('.tab-panel');
+
+      tabs.forEach((tab, i) => {
+        if (i === index) {
+          tab.classList.add('tab-item--selected');
+        } else {
+          tab.classList.remove('tab-item--selected');
+        }
+      });
+
+      panels.forEach((panel, i) => {
+        if (i === index) {
+          panel.classList.add('tab-panel--active');
+        } else {
+          panel.classList.remove('tab-panel--active');
+        }
+      });
+    }
+
+    // Button group functions
+    function selectGroupItem(groupId, index) {
+      const group = document.getElementById(groupId);
+      const items = group.querySelectorAll('.btn-group__item');
+
+      items.forEach((item, i) => {
+        if (i === index) {
+          item.classList.add('btn-group__item--selected');
+        } else {
+          item.classList.remove('btn-group__item--selected');
+        }
+      });
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.autocomplete')) {
+        document.querySelectorAll('.autocomplete__dropdown').forEach(dropdown => {
+          dropdown.classList.remove('autocomplete__dropdown--open');
+        });
+      }
+
+      if (!event.target.closest('.searchbar')) {
+        document.querySelectorAll('.searchbar__results').forEach(results => {
+          results.classList.remove('searchbar__results--open');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Form Controls Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: var(--grey-70);
+      font-family: var(--font-family-body);
+    }
+    .demo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .demo-title {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-h2-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .demo-section {
+      background: var(--surface-page);
+      padding: 32px;
+      border-radius: var(--radius-m);
+      margin-bottom: 32px;
+    }
+    .demo-section-title {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-h5-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .demo-label {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-medium);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      background: var(--grey-70);
+      border-radius: var(--radius-s);
+      text-align: center;
+    }
+    .demo-header {
+      font-family: var(--font-family-body);
+      font-size: var(--body-sm-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 8px;
+    }
+    .demo-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .demo-examples {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <h1 class="demo-title">Form Control Components</h1>
+
+    <!-- ===== RADIO BUTTONS ===== -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Radio Buttons</h2>
+
+      <div class="demo-grid">
+        <!-- Headers -->
+        <div></div>
+        <div class="demo-header">Inactive</div>
+        <div class="demo-header">Active</div>
+
+        <!-- Default State -->
+        <div class="demo-label">Default</div>
+        <div class="demo-cell">
+          <input type="radio" class="radio" name="radio-default" id="radio-default-1">
+        </div>
+        <div class="demo-cell">
+          <input type="radio" class="radio" name="radio-default" id="radio-default-2" checked>
+        </div>
+
+        <!-- Hover State -->
+        <div class="demo-label">Hover</div>
+        <div class="demo-cell">
+          <input type="radio" class="radio" name="radio-hover" id="radio-hover-1">
+        </div>
+        <div class="demo-cell">
+          <input type="radio" class="radio" name="radio-hover" id="radio-hover-2" checked>
+        </div>
+
+        <!-- Focus State -->
+        <div class="demo-label">Focus</div>
+        <div class="demo-cell">
+          <input type="radio" class="radio" name="radio-focus" id="radio-focus-1" style="outline: 2px solid var(--sea-green-50); outline-offset: 2px;">
+        </div>
+        <div class="demo-cell">
+          <input type="radio" class="radio" name="radio-focus" id="radio-focus-2" checked style="outline: 2px solid var(--sea-green-50); outline-offset: 2px;">
+        </div>
+
+        <!-- Disabled State -->
+        <div class="demo-label">Disabled</div>
+        <div class="demo-cell">
+          <input type="radio" class="radio" name="radio-disabled" id="radio-disabled-1" disabled>
+        </div>
+        <div class="demo-cell">
+          <input type="radio" class="radio" name="radio-disabled" id="radio-disabled-2" checked disabled>
+        </div>
+
+        <!-- Error State -->
+        <div class="demo-label">Error</div>
+        <div class="demo-cell">
+          <input type="radio" class="radio radio--error" name="radio-error" id="radio-error-1">
+        </div>
+        <div class="demo-cell">
+          <input type="radio" class="radio radio--error" name="radio-error" id="radio-error-2" checked>
+        </div>
+      </div>
+    </div>
+
+    <!-- Radio Buttons with Labels -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Radio Buttons with Labels</h2>
+
+      <div class="radio-group">
+        <div class="radio-group__label">Select your payment method:</div>
+
+        <label class="radio-wrapper">
+          <input type="radio" class="radio" name="payment" id="payment-1" checked>
+          <span class="radio-label">Credit Card</span>
+        </label>
+
+        <label class="radio-wrapper">
+          <input type="radio" class="radio" name="payment" id="payment-2">
+          <span class="radio-label">PayPal</span>
+        </label>
+
+        <label class="radio-wrapper">
+          <input type="radio" class="radio" name="payment" id="payment-3">
+          <span class="radio-label">Bank Transfer</span>
+        </label>
+
+        <label class="radio-wrapper">
+          <input type="radio" class="radio" name="payment" id="payment-4" disabled>
+          <span class="radio-label">Cryptocurrency (Coming Soon)</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- ===== SWITCHES ===== -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Switch/Toggle Controls</h2>
+
+      <div class="demo-grid">
+        <!-- Headers -->
+        <div></div>
+        <div class="demo-header">Inactive</div>
+        <div class="demo-header">Active</div>
+
+        <!-- Default State - Primary -->
+        <div class="demo-label">Default (Primary)</div>
+        <div class="demo-cell">
+          <label class="switch">
+            <input type="checkbox" id="switch-default-off">
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+        <div class="demo-cell">
+          <label class="switch">
+            <input type="checkbox" id="switch-default-on" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <!-- Default State - Neutral -->
+        <div class="demo-label">Default (Neutral)</div>
+        <div class="demo-cell">
+          <label class="switch switch--neutral">
+            <input type="checkbox" id="switch-neutral-off">
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+        <div class="demo-cell">
+          <label class="switch switch--neutral">
+            <input type="checkbox" id="switch-neutral-on" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <!-- Hover State -->
+        <div class="demo-label">Hover</div>
+        <div class="demo-cell">
+          <label class="switch">
+            <input type="checkbox" id="switch-hover-off">
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+        <div class="demo-cell">
+          <label class="switch">
+            <input type="checkbox" id="switch-hover-on" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <!-- Focus State -->
+        <div class="demo-label">Focus</div>
+        <div class="demo-cell">
+          <label class="switch">
+            <input type="checkbox" id="switch-focus-off" style="outline: 2px solid var(--sea-green-50); outline-offset: 2px;">
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+        <div class="demo-cell">
+          <label class="switch">
+            <input type="checkbox" id="switch-focus-on" checked style="outline: 2px solid var(--sea-green-50); outline-offset: 2px;">
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <!-- Disabled State -->
+        <div class="demo-label">Disabled</div>
+        <div class="demo-cell">
+          <label class="switch">
+            <input type="checkbox" id="switch-disabled-off" disabled>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+        <div class="demo-cell">
+          <label class="switch">
+            <input type="checkbox" id="switch-disabled-on" checked disabled>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <!-- Error State -->
+        <div class="demo-label">Error</div>
+        <div class="demo-cell">
+          <label class="switch switch--error">
+            <input type="checkbox" id="switch-error-off">
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+        <div class="demo-cell">
+          <label class="switch switch--error">
+            <input type="checkbox" id="switch-error-on" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Switches with Labels -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Switches with Labels</h2>
+
+      <div class="demo-examples">
+        <label class="switch-wrapper">
+          <span class="switch-label">Enable notifications</span>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </label>
+
+        <label class="switch-wrapper">
+          <span class="switch-label">Dark mode</span>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="switch__slider"></span>
+          </label>
+        </label>
+
+        <label class="switch-wrapper">
+          <span class="switch-label">Auto-save</span>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </label>
+
+        <label class="switch-wrapper">
+          <span class="switch-label">Premium feature (disabled)</span>
+          <label class="switch">
+            <input type="checkbox" disabled>
+            <span class="switch__slider"></span>
+          </label>
+        </label>
+      </div>
+    </div>
+
+    <!-- ===== TEXTAREA ===== -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Text Area</h2>
+
+      <div class="demo-examples">
+        <!-- Basic Textarea -->
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Message</span>
+            <span class="input-label__required">*</span>
+          </label>
+          <p class="input-hint">Tell us about your travel requirements</p>
+          <div class="textarea-wrapper">
+            <textarea class="input" placeholder="Enter your message here..." rows="5"></textarea>
+            <svg class="textarea-resize-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15L15 21M21 9L9 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="input-counter">
+            <span class="input-counter__text">0 / 500 characters</span>
+          </div>
+        </div>
+
+        <!-- Textarea with Value -->
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Description</span>
+          </label>
+          <div class="textarea-wrapper">
+            <textarea class="input" rows="4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+            <svg class="textarea-resize-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15L15 21M21 9L9 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="input-helper">
+            <span class="input-helper__text">Helper text for additional information</span>
+          </div>
+        </div>
+
+        <!-- Error State Textarea -->
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Feedback</span>
+            <span class="input-label__required">*</span>
+          </label>
+          <div class="textarea-wrapper">
+            <textarea class="input input--error" placeholder="Please provide your feedback..." rows="3"></textarea>
+            <svg class="textarea-resize-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15L15 21M21 9L9 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="input-helper input-helper--error">
+            <span class="input-helper__text">This field is required</span>
+          </div>
+        </div>
+
+        <!-- Disabled Textarea -->
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">System Information</span>
+          </label>
+          <div class="textarea-wrapper">
+            <textarea class="input" disabled rows="3">This field is read-only and cannot be edited.</textarea>
+            <svg class="textarea-resize-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15L15 21M21 9L9 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="input-helper input-helper--disabled">
+            <span class="input-helper__text">This field is disabled</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Combined Form Example -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Complete Form Example</h2>
+
+      <form style="display: flex; flex-direction: column; gap: 24px;">
+        <!-- Radio Group -->
+        <div class="radio-group">
+          <div class="radio-group__label">Select service type:</div>
+          <label class="radio-wrapper">
+            <input type="radio" class="radio" name="service" checked>
+            <span class="radio-label">Airport Transfer</span>
+          </label>
+          <label class="radio-wrapper">
+            <input type="radio" class="radio" name="service">
+            <span class="radio-label">City Tour</span>
+          </label>
+          <label class="radio-wrapper">
+            <input type="radio" class="radio" name="service">
+            <span class="radio-label">Hourly Rental</span>
+          </label>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="checkbox-group">
+          <div class="checkbox-group__label">Additional services:</div>
+          <label class="checkbox-wrapper">
+            <input type="checkbox" class="checkbox" checked>
+            <span class="checkbox-label">Child seat</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <input type="checkbox" class="checkbox">
+            <span class="checkbox-label">Extra luggage space</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <input type="checkbox" class="checkbox">
+            <span class="checkbox-label">Wi-Fi</span>
+          </label>
+        </div>
+
+        <!-- Switches -->
+        <div class="switch-group">
+          <div class="switch-group__label">Preferences:</div>
+          <label class="switch-wrapper">
+            <span class="switch-label">Send booking confirmation via SMS</span>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="switch__slider"></span>
+            </label>
+          </label>
+          <label class="switch-wrapper">
+            <span class="switch-label">Include return trip</span>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="switch__slider"></span>
+            </label>
+          </label>
+        </div>
+
+        <!-- Textarea -->
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Special requests</span>
+            <span class="input-label__optional">(Optional)</span>
+          </label>
+          <p class="input-hint">Any special requirements or requests for your trip</p>
+          <div class="textarea-wrapper">
+            <textarea class="input" placeholder="Enter any special requests..." rows="4"></textarea>
+            <svg class="textarea-resize-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15L15 21M21 9L9 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="input-counter">
+            <span class="input-counter__text">0 / 300 characters</span>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="button" class="btn btn--filled btn--lg" style="max-width: 200px;">
+          Book Now
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Character counter for textareas
+    const textareas = document.querySelectorAll('textarea.input');
+    textareas.forEach(textarea => {
+      const wrapper = textarea.closest('.input-wrapper');
+      if (wrapper) {
+        const counter = wrapper.querySelector('.input-counter__text');
+        if (counter) {
+          const maxLength = 500;
+
+          textarea.addEventListener('input', function() {
+            const length = this.value.length;
+            counter.textContent = `${length} / ${maxLength} characters`;
+
+            if (length >= maxLength) {
+              counter.classList.add('input-counter__text--max');
+              this.value = this.value.substring(0, maxLength);
+            } else {
+              counter.classList.remove('input-counter__text--max');
+            }
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>

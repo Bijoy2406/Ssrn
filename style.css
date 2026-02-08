@@ -26,3 +26,54 @@
 
 /* Cards and Modals Components */
 @import url('./css/components/cards-and-modals.css');
+
+/* Input Components */
+@import url('./css/components/input.css');
+
+/* Checkbox Components */
+@import url('./css/components/checkbox.css');
+
+/* Radio Button Components */
+@import url('./css/components/radio.css');
+
+/* Switch/Toggle Components */
+@import url('./css/components/switch.css');
+
+/* Duration Picker Components */
+@import url('./css/components/duration-picker.css');
+
+/* Autocomplete Components */
+@import url('./css/components/autocomplete.css');
+
+/* Search Bar Components */
+@import url('./css/components/searchbar.css');
+
+/* Tabs Components */
+@import url('./css/components/tabs.css');
+
+/* Button Group Components */
+@import url('./css/components/button-group.css');
+
+/* Pagination Components */
+@import url('./css/components/pagination.css');
+
+/* Carousel Components */
+@import url('./css/components/carousel.css');
+
+/* Anchor/Inpage Navigation Components */
+@import url('./css/components/anchor-navigation.css');
+
+/* Link Components */
+@import url('./css/components/link.css');
+
+/* Breadcrumbs Components */
+@import url('./css/components/breadcrumbs.css');
+
+/* Table Components */
+@import url('./css/components/table.css');
+
+/* Avatar Components */
+@import url('./css/components/avatar.css');
+
+/* Tags Components */
+@import url('./css/components/tags.css');

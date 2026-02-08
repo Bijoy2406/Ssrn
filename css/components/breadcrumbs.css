@@ -1,0 +1,210 @@
+/**
+ * SSRN Breadcrumbs Component
+ * Based on Figma design system
+ */
+
+/* ============================================
+   BREADCRUMBS CONTAINER
+   ============================================ */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-200);
+  padding: var(--space-400) 0;
+}
+
+/* Breadcrumbs list */
+.breadcrumbs__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-200);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ============================================
+   BREADCRUMB ITEM
+   ============================================ */
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+/* Breadcrumb link */
+.breadcrumbs__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-100);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.breadcrumbs__link:hover {
+  color: var(--text-brand-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.breadcrumbs__link:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* Breadcrumb icon (optional) */
+.breadcrumbs__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+/* ============================================
+   BREADCRUMB SEPARATOR
+   ============================================ */
+.breadcrumbs__separator {
+  display: flex;
+  align-items: center;
+  color: var(--text-tertiary);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Separator icon (chevron) */
+.breadcrumbs__separator-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-tertiary);
+}
+
+/* ============================================
+   CURRENT PAGE
+   ============================================ */
+.breadcrumbs__current {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   BREADCRUMB WITH ICON
+   ============================================ */
+.breadcrumbs__link--with-icon {
+  gap: var(--space-200);
+}
+
+/* ============================================
+   BREADCRUMB VARIANTS
+   ============================================ */
+
+/* Compact breadcrumbs */
+.breadcrumbs--compact {
+  gap: var(--space-100);
+}
+
+.breadcrumbs--compact .breadcrumbs__list {
+  gap: var(--space-100);
+}
+
+.breadcrumbs--compact .breadcrumbs__link,
+.breadcrumbs--compact .breadcrumbs__current {
+  font-size: var(--body-sm-size);
+}
+
+.breadcrumbs--compact .breadcrumbs__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.breadcrumbs--compact .breadcrumbs__separator-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Breadcrumbs with background */
+.breadcrumbs--with-bg {
+  background-color: var(--grey-90);
+  padding: var(--space-400) var(--space-600);
+  border-radius: var(--radius-s);
+}
+
+/* Breadcrumbs with slash separator */
+.breadcrumbs--slash .breadcrumbs__separator::before {
+  content: '/';
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  color: var(--text-tertiary);
+}
+
+.breadcrumbs--slash .breadcrumbs__separator-icon {
+  display: none;
+}
+
+/* Breadcrumbs with dot separator */
+.breadcrumbs--dot .breadcrumbs__separator::before {
+  content: '•';
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  color: var(--text-tertiary);
+}
+
+.breadcrumbs--dot .breadcrumbs__separator-icon {
+  display: none;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .breadcrumbs {
+    gap: var(--space-100);
+  }
+
+  .breadcrumbs__list {
+    gap: var(--space-100);
+  }
+
+  .breadcrumbs__link,
+  .breadcrumbs__current {
+    font-size: var(--body-sm-size);
+  }
+
+  .breadcrumbs__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .breadcrumbs__separator-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Hide middle items on mobile, keep first and last */
+  .breadcrumbs__item--mobile-hide {
+    display: none;
+  }
+
+  /* Show ellipsis for hidden items */
+  .breadcrumbs__item--ellipsis {
+    display: flex;
+  }
+
+  .breadcrumbs__ellipsis {
+    color: var(--text-tertiary);
+    padding: 0 var(--space-100);
+  }
+}

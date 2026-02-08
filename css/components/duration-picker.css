@@ -1,0 +1,278 @@
+/**
+ * SSRN Duration Picker Component
+ * Based on Figma design system
+ * Extends dropdown/menu components for duration selection
+ */
+
+/* ============================================
+   DURATION PICKER WRAPPER
+   ============================================ */
+.duration-picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  width: 100%;
+  position: relative;
+}
+
+/* ============================================
+   DURATION PICKER TRIGGER/BUTTON
+   ============================================ */
+.duration-picker__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-400) var(--space-300);
+  background-color: var(--surface-primary);
+  border: var(--border-m) solid var(--border-tertiary);
+  border-radius: var(--radius-s);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-tertiary);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  width: 100%;
+  min-height: 56px;
+}
+
+.duration-picker__trigger:hover {
+  border-color: var(--text-secondary);
+}
+
+.duration-picker__trigger:focus {
+  outline: none;
+  border-color: var(--sea-green-50);
+  box-shadow: var(--shadow-s);
+}
+
+.duration-picker__trigger--open {
+  border-color: var(--sea-green-50);
+}
+
+/* Duration icon (clock) */
+.duration-picker__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+/* Selected value text */
+.duration-picker__value {
+  flex: 1;
+  min-width: 0;
+  color: var(--text-primary);
+}
+
+.duration-picker__value--placeholder {
+  color: var(--text-tertiary);
+}
+
+/* Chevron icon */
+.duration-picker__chevron {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+  transition: transform 0.2s ease;
+}
+
+.duration-picker__trigger--open .duration-picker__chevron {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   DURATION PICKER DROPDOWN MENU
+   ============================================ */
+.duration-picker__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 0;
+  overflow: hidden;
+  background-color: var(--surface-primary);
+  border: var(--border-m) solid var(--border-primary);
+  border-radius: var(--radius-s);
+  box-shadow: var(--shadow-m);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+.duration-picker__dropdown--open {
+  max-height: 265px;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dropdown inner container */
+.duration-picker__menu {
+  display: flex;
+  max-height: 265px;
+  overflow: hidden;
+}
+
+/* Menu items container */
+.duration-picker__items {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Hide default scrollbar */
+.duration-picker__items::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.duration-picker__items {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Menu item */
+.duration-picker__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-300);
+  background-color: var(--surface-primary);
+  border: none;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.duration-picker__item:hover {
+  background-color: var(--grey-70);
+}
+
+.duration-picker__item:active {
+  background-color: var(--grey-60);
+}
+
+.duration-picker__item--selected {
+  background-color: var(--sea-green-90);
+  color: var(--text-brand-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR (visible)
+   ============================================ */
+.duration-picker__scrollbar {
+  width: 16px;
+  background-color: var(--surface-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.duration-picker__scrollbar-track {
+  flex: 1;
+  width: 12px;
+  background-color: transparent;
+  border-radius: var(--radius-full);
+  position: relative;
+}
+
+.duration-picker__scrollbar-thumb {
+  width: 12px;
+  height: 60px;
+  background-color: var(--grey-50);
+  border-radius: var(--radius-full);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: background-color 0.2s ease;
+}
+
+.duration-picker__scrollbar-thumb:hover {
+  background-color: var(--grey-40);
+}
+
+/* Scroll buttons (optional) */
+.duration-picker__scroll-btn {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.duration-picker__scroll-btn:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   LABEL
+   ============================================ */
+.duration-picker__label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+/* ============================================
+   STATES
+   ============================================ */
+
+/* Disabled */
+.duration-picker--disabled .duration-picker__trigger {
+  background-color: var(--grey-70);
+  border-color: var(--grey-60);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.duration-picker--disabled .duration-picker__icon,
+.duration-picker--disabled .duration-picker__chevron {
+  color: var(--text-disabled);
+}
+
+/* Error */
+.duration-picker--error .duration-picker__trigger {
+  border-color: var(--color-error);
+}
+
+.duration-picker--error .duration-picker__trigger:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(204, 69, 92, 0.1);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .duration-picker__dropdown--open {
+    max-height: 200px;
+  }
+
+  .duration-picker__menu {
+    max-height: 200px;
+  }
+}

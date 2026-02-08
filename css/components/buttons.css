@@ -372,6 +372,146 @@
 }
 
 /* ============================================
+   ICON BUTTON (40x40 icon-only button)
+   ============================================ */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-200);
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.btn-icon svg,
+.btn-icon .btn__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.btn-icon:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+.btn-icon:disabled,
+.btn-icon--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Filled Primary Icon Button */
+.btn-icon--filled,
+.btn-icon--primary {
+  background-color: var(--sea-green-50);
+  color: var(--text-inverse);
+  border: none;
+}
+
+.btn-icon--filled:hover,
+.btn-icon--primary:hover {
+  background-color: var(--golden-50);
+}
+
+.btn-icon--filled:active,
+.btn-icon--primary:active {
+  background-color: var(--sea-green-40);
+}
+
+/* Transparent Primary Icon Button */
+.btn-icon--transparent {
+  background-color: transparent;
+  color: var(--sea-green-50);
+  border: none;
+}
+
+.btn-icon--transparent:hover {
+  background-color: var(--golden-50);
+  color: var(--text-inverse);
+}
+
+.btn-icon--transparent:active {
+  background-color: var(--golden-40);
+  color: var(--text-inverse);
+}
+
+/* Outline Primary Icon Button */
+.btn-icon--outline {
+  background-color: transparent;
+  color: var(--sea-green-50);
+  border: var(--border-m) solid var(--sea-green-50);
+}
+
+.btn-icon--outline:hover {
+  background-color: var(--golden-50);
+  color: var(--text-inverse);
+  border-color: var(--golden-50);
+}
+
+.btn-icon--outline:active {
+  background-color: var(--golden-40);
+  border-color: var(--golden-40);
+  color: var(--text-inverse);
+}
+
+/* Filled Neutral Icon Button */
+.btn-icon--neutral-filled {
+  background-color: var(--black);
+  color: var(--text-inverse);
+  border: none;
+}
+
+.btn-icon--neutral-filled:hover {
+  background-color: var(--grey-10);
+}
+
+.btn-icon--neutral-filled:active {
+  background-color: var(--grey-20);
+}
+
+/* Transparent Neutral Icon Button */
+.btn-icon--neutral-transparent {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: none;
+}
+
+.btn-icon--neutral-transparent:hover {
+  background-color: var(--grey-10);
+  color: var(--text-inverse);
+}
+
+.btn-icon--neutral-transparent:active {
+  background-color: var(--grey-20);
+  color: var(--text-inverse);
+}
+
+/* Outline Neutral Icon Button */
+.btn-icon--neutral-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: var(--border-m) solid var(--border-primary);
+}
+
+.btn-icon--neutral-outline:hover {
+  background-color: var(--grey-10);
+  color: var(--text-inverse);
+  border-color: var(--grey-10);
+}
+
+.btn-icon--neutral-outline:active {
+  background-color: var(--grey-20);
+  border-color: var(--grey-20);
+  color: var(--text-inverse);
+}
+
+/* ============================================
    LEGACY SUPPORT (keeping old class names)
    ============================================ */
 .btn--secondary {

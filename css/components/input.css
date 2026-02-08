@@ -1,0 +1,462 @@
+/**
+ * SSRN Input Field Components
+ * Based on Figma design system
+ */
+
+/* ============================================
+   INPUT WRAPPER
+   ============================================ */
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  width: 100%;
+}
+
+/* ============================================
+   LABEL
+   ============================================ */
+.input-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  width: 100%;
+}
+
+.input-label__text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.input-label__required {
+  color: var(--color-error);
+  margin-left: 2px;
+}
+
+.input-label__optional {
+  font-weight: var(--font-weight-regular);
+  color: var(--text-tertiary);
+  margin-left: var(--space-100);
+}
+
+.input-label__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+  cursor: help;
+}
+
+/* ============================================
+   HINT TEXT (above input)
+   ============================================ */
+.input-hint {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--caption-line-height);
+  color: var(--text-tertiary);
+  width: 100%;
+}
+
+/* ============================================
+   INPUT FIELD CONTAINER
+   ============================================ */
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  width: 100%;
+}
+
+/* ============================================
+   INPUT BASE
+   ============================================ */
+.input {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-400) var(--space-300);
+  background-color: var(--surface-primary);
+  border: var(--border-m) solid var(--border-tertiary);
+  border-radius: var(--radius-s);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  width: 100%;
+  min-height: 56px;
+}
+
+.input::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* Input with wrapper (for icons) */
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-container .input {
+  width: 100%;
+}
+
+/* ============================================
+   INPUT ICONS
+   ============================================ */
+.input-icon-left,
+.input-icon-right {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.input-icon-right {
+  cursor: pointer;
+}
+
+/* Input with left icon */
+.input--with-left-icon {
+  padding-left: var(--space-300);
+}
+
+/* Input with right icon */
+.input--with-right-icon {
+  padding-right: var(--space-300);
+}
+
+/* ============================================
+   INPUT STATES
+   ============================================ */
+
+/* Hover */
+.input:hover:not(:disabled):not(.input--error):not(.input--success) {
+  border-color: var(--text-secondary);
+}
+
+/* Focus */
+.input:focus,
+.input--focus {
+  outline: none;
+  border-color: var(--sea-green-50);
+  box-shadow: var(--shadow-s);
+}
+
+/* Filled */
+.input:not(:placeholder-shown),
+.input--filled {
+  color: var(--text-primary);
+}
+
+/* Disabled */
+.input:disabled,
+.input--disabled {
+  background-color: var(--grey-70);
+  border-color: var(--grey-60);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input:disabled::placeholder,
+.input--disabled::placeholder {
+  color: var(--text-disabled);
+}
+
+/* Error State */
+.input--error {
+  border-color: var(--color-error);
+}
+
+.input--error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(204, 69, 92, 0.1);
+}
+
+/* Success State */
+.input--success {
+  border-color: var(--color-success);
+}
+
+.input--success:focus {
+  border-color: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(118, 204, 82, 0.1);
+}
+
+/* ============================================
+   HELPER TEXT (below input)
+   ============================================ */
+.input-helper {
+  display: flex;
+  align-items: center;
+  padding-left: var(--space-300);
+  width: 100%;
+}
+
+.input-helper__text {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--caption-line-height);
+  color: var(--text-primary);
+  min-width: 0;
+}
+
+/* Helper text states */
+.input-helper--error .input-helper__text {
+  color: var(--color-error);
+}
+
+.input-helper--success .input-helper__text {
+  color: var(--color-success);
+}
+
+.input-helper--disabled .input-helper__text {
+  color: var(--text-disabled);
+}
+
+/* ============================================
+   TEXTAREA VARIANT
+   ============================================ */
+textarea.input {
+  min-height: 120px;
+  resize: vertical;
+  padding: var(--space-400) var(--space-300);
+}
+
+/* Textarea wrapper with resize icon */
+.textarea-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.textarea-wrapper textarea.input {
+  width: 100%;
+  padding-right: 40px; /* Space for resize icon */
+}
+
+/* Resize icon (bottom right corner) */
+.textarea-resize-icon {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  color: var(--text-tertiary);
+  opacity: 0.5;
+}
+
+/* ============================================
+   INPUT SIZES
+   ============================================ */
+
+/* Small */
+.input--sm {
+  padding: var(--space-200) var(--space-300);
+  font-size: var(--body-sm-size);
+  min-height: 40px;
+}
+
+/* Large */
+.input--lg {
+  padding: var(--space-500) var(--space-400);
+  font-size: var(--body-lg-size);
+  min-height: 64px;
+}
+
+/* ============================================
+   INPUT WITH BUTTON/ADDON
+   ============================================ */
+.input-group {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.input-group .input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Input with button on right */
+.input-group--append .input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group--append .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Input with button on left */
+.input-group--prepend .input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group--prepend .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* ============================================
+   SEARCH INPUT
+   ============================================ */
+.input-search {
+  position: relative;
+  width: 100%;
+}
+
+.input-search .input {
+  padding-left: 48px;
+}
+
+.input-search__icon {
+  position: absolute;
+  left: var(--space-300);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+/* ============================================
+   PASSWORD INPUT
+   ============================================ */
+.input-password {
+  position: relative;
+  width: 100%;
+}
+
+.input-password .input {
+  padding-right: 48px;
+}
+
+.input-password__toggle {
+  position: absolute;
+  right: var(--space-300);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.input-password__toggle:hover {
+  color: var(--text-brand-primary);
+}
+
+/* ============================================
+   INPUT WITH COUNTER
+   ============================================ */
+.input-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-100);
+  padding: 0 var(--space-300);
+}
+
+.input-counter__text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  color: var(--text-tertiary);
+}
+
+.input-counter__text--max {
+  color: var(--color-error);
+}
+
+/* ============================================
+   FILE INPUT
+   ============================================ */
+.input-file {
+  position: relative;
+  width: 100%;
+}
+
+.input-file__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.input-file__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-200);
+  padding: var(--space-400) var(--space-600);
+  background-color: var(--surface-primary);
+  border: var(--border-m) dashed var(--border-tertiary);
+  border-radius: var(--radius-s);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 120px;
+  flex-direction: column;
+}
+
+.input-file__label:hover {
+  border-color: var(--text-secondary);
+  background-color: var(--grey-70);
+}
+
+.input-file__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--text-tertiary);
+}
+
+/* ============================================
+   VALIDATION ICONS
+   ============================================ */
+.input-validation-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.input-validation-icon--error {
+  color: var(--color-error);
+}
+
+.input-validation-icon--success {
+  color: var(--color-success);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .input {
+    font-size: var(--body-md-size);
+  }
+
+  .input--lg {
+    font-size: var(--body-md-size);
+    min-height: 56px;
+  }
+}
