@@ -1,0 +1,311 @@
+/**
+ * SSRN Menu Components
+ * Dropdown menus and menu items based on Figma design
+ */
+
+/* ============================================
+   MENU CONTAINER
+   ============================================ */
+.menu {
+  display: flex;
+  width: 229px;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  position: relative;
+}
+
+.menu--bordered {
+  border: var(--border-m) solid var(--border-primary);
+}
+
+/* ============================================
+   MENU ITEMS CONTAINER
+   ============================================ */
+.menu__items {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+/* ============================================
+   MENU ITEM
+   ============================================ */
+.menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-300);
+  background-color: var(--surface-primary);
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Menu item with icons */
+.menu__item-icon-left,
+.menu__item-icon-right {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.menu__item-label {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  min-width: 0;
+  white-space: pre-wrap;
+}
+
+/* States */
+.menu__item:hover {
+  background-color: var(--surface-secondary);
+}
+
+.menu__item--selected {
+  background-color: var(--sea-green-100);
+  color: var(--text-brand-primary);
+}
+
+.menu__item--selected .menu__item-label {
+  color: var(--text-brand-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.menu__item:disabled,
+.menu__item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   MENU SCROLLBAR
+   ============================================ */
+.menu__scrollbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--space-100);
+  background-color: var(--surface-primary);
+  flex-shrink: 0;
+}
+
+.menu__scroll-button {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  color: var(--text-tertiary);
+  transition: color 0.2s ease;
+}
+
+.menu__scroll-button:hover {
+  color: var(--text-primary);
+}
+
+.menu__scroll-button svg {
+  width: 12px;
+  height: 12px;
+}
+
+.menu__scrollbar-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+}
+
+.menu__scrollbar-thumb {
+  width: 12px;
+  height: 60px;
+  background-color: var(--text-tertiary);
+  border-radius: var(--radius-l);
+  flex-shrink: 0;
+}
+
+.menu__scrollbar:hover .menu__scrollbar-thumb {
+  background-color: var(--text-secondary);
+}
+
+/* ============================================
+   DROPDOWN FIELD
+   ============================================ */
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  width: 229px;
+}
+
+/* Label */
+.dropdown__label-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  width: 100%;
+}
+
+.dropdown__label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+}
+
+.dropdown__tooltip-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-tertiary);
+}
+
+/* Hint text above field */
+.dropdown__hint {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--caption-line-height);
+  color: var(--text-tertiary);
+  width: 100%;
+  white-space: pre-wrap;
+}
+
+/* Field */
+.dropdown__field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
+.dropdown__input {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-400) var(--space-300);
+  background-color: var(--surface-primary);
+  border: var(--border-m) solid var(--text-tertiary);
+  border-radius: var(--radius-s);
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.dropdown__icon-left {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.dropdown__value {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-tertiary);
+  text-align: left;
+}
+
+.dropdown__value--selected {
+  color: var(--text-primary);
+}
+
+.dropdown__chevron {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+  transition: transform 0.2s ease;
+}
+
+/* States */
+.dropdown__field:hover .dropdown__input {
+  border-color: var(--text-secondary);
+}
+
+.dropdown__field:focus-visible .dropdown__input,
+.dropdown--focus .dropdown__input {
+  outline: none;
+  border-color: var(--sea-green-50);
+  box-shadow: var(--shadow-s);
+}
+
+.dropdown--open .dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Helper text below field */
+.dropdown__helper {
+  display: flex;
+  align-items: center;
+  padding-left: var(--space-300);
+  width: 100%;
+}
+
+.dropdown__helper-text {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--caption-line-height);
+  color: var(--text-primary);
+  white-space: pre-wrap;
+}
+
+/* ============================================
+   DROPDOWN MENU (Combined dropdown + menu)
+   ============================================ */
+.dropdown--with-menu {
+  position: relative;
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: calc(100% + var(--space-200));
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.dropdown--open .dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}

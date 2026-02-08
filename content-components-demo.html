@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Content Components Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: var(--surface-page);
+      padding: var(--space-800);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .demo-section {
+      background-color: var(--surface-primary);
+      border-radius: var(--radius-m);
+      padding: var(--space-800);
+      margin-bottom: var(--space-800);
+    }
+
+    .demo-section__title {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-lg-size);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--heading-lg-line-height);
+      color: var(--text-primary);
+      margin-bottom: var(--space-600);
+      padding-bottom: var(--space-400);
+      border-bottom: 1px solid var(--border-tertiary);
+    }
+
+    .demo-subsection {
+      margin-bottom: var(--space-600);
+    }
+
+    .demo-subsection__title {
+      font-family: var(--font-family-body);
+      font-size: var(--body-lg-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-400);
+    }
+
+    .demo-grid {
+      display: grid;
+      gap: var(--space-600);
+    }
+
+    .demo-box {
+      padding: var(--space-400);
+      background-color: var(--grey-95);
+      border-radius: var(--radius-s);
+    }
+
+    .avatar-showcase {
+      display: flex;
+      align-items: center;
+      gap: var(--space-600);
+      flex-wrap: wrap;
+    }
+
+    .tag-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-400);
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BREADCRUMBS SECTION -->
+  <div class="demo-section">
+    <h1 class="demo-section__title">Breadcrumbs Component</h1>
+
+    <!-- Default Breadcrumbs -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Default Breadcrumbs</h2>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol class="breadcrumbs__list">
+          <li class="breadcrumbs__item">
+            <a href="#" class="breadcrumbs__link">Link</a>
+          </li>
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__separator">
+              <svg class="breadcrumbs__separator-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </li>
+          <li class="breadcrumbs__item">
+            <a href="#" class="breadcrumbs__link">Link</a>
+          </li>
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__separator">
+              <svg class="breadcrumbs__separator-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </li>
+          <li class="breadcrumbs__item">
+            <a href="#" class="breadcrumbs__link">Link</a>
+          </li>
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__separator">
+              <svg class="breadcrumbs__separator-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </li>
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__current">Current Page</span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Breadcrumbs with Icon -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Breadcrumbs with Home Icon</h2>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol class="breadcrumbs__list">
+          <li class="breadcrumbs__item">
+            <a href="#" class="breadcrumbs__link breadcrumbs__link--with-icon">
+              <svg class="breadcrumbs__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              </svg>
+              Home
+            </a>
+          </li>
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__separator">
+              <svg class="breadcrumbs__separator-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </li>
+          <li class="breadcrumbs__item">
+            <a href="#" class="breadcrumbs__link">Products</a>
+          </li>
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__separator">
+              <svg class="breadcrumbs__separator-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+          </li>
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__current">Details</span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Breadcrumbs Variants -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Breadcrumbs Variants</h2>
+      <div class="demo-grid">
+        <!-- With Background -->
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">With Background</p>
+          <nav class="breadcrumbs breadcrumbs--with-bg" aria-label="Breadcrumb">
+            <ol class="breadcrumbs__list">
+              <li class="breadcrumbs__item"><a href="#" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item"><span class="breadcrumbs__separator">&gt;</span></li>
+              <li class="breadcrumbs__item"><a href="#" class="breadcrumbs__link">Category</a></li>
+              <li class="breadcrumbs__item"><span class="breadcrumbs__separator">&gt;</span></li>
+              <li class="breadcrumbs__item"><span class="breadcrumbs__current">Page</span></li>
+            </ol>
+          </nav>
+        </div>
+
+        <!-- Slash Separator -->
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Slash Separator</p>
+          <nav class="breadcrumbs breadcrumbs--slash" aria-label="Breadcrumb">
+            <ol class="breadcrumbs__list">
+              <li class="breadcrumbs__item"><a href="#" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item"><span class="breadcrumbs__separator"></span></li>
+              <li class="breadcrumbs__item"><a href="#" class="breadcrumbs__link">Category</a></li>
+              <li class="breadcrumbs__item"><span class="breadcrumbs__separator"></span></li>
+              <li class="breadcrumbs__item"><span class="breadcrumbs__current">Page</span></li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVATAR SECTION -->
+  <div class="demo-section">
+    <h1 class="demo-section__title">Avatar Component</h1>
+
+    <!-- Avatar Types and Sizes -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Avatar Types and Sizes</h2>
+      <div class="demo-grid">
+        <div class="avatar-showcase">
+          <div>
+            <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Icon - Large</p>
+            <div class="avatar avatar--large avatar--icon">
+              <svg class="avatar__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Icon - Medium</p>
+            <div class="avatar avatar--medium avatar--icon">
+              <svg class="avatar__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Icon - Small</p>
+            <div class="avatar avatar--small avatar--icon">
+              <svg class="avatar__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="avatar-showcase">
+          <div>
+            <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Initials - Large</p>
+            <div class="avatar avatar--large avatar--initials avatar--color-1">MI</div>
+          </div>
+          <div>
+            <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Initials - Medium</p>
+            <div class="avatar avatar--medium avatar--initials avatar--color-2">MI</div>
+          </div>
+          <div>
+            <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Initials - Small</p>
+            <div class="avatar avatar--small avatar--initials avatar--color-3">MI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar Group -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Avatar Group</h2>
+      <div class="demo-grid">
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Large Group</p>
+          <div class="avatar-group avatar-group--large">
+            <div class="avatar avatar--large avatar--initials avatar--color-1">MI</div>
+            <div class="avatar avatar--large avatar--initials avatar--color-2">JD</div>
+            <div class="avatar avatar--large avatar--initials avatar--color-3">SK</div>
+            <div class="avatar avatar--large avatar--initials avatar--color-4">AL</div>
+            <div class="avatar-group__count">+5</div>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Medium Group</p>
+          <div class="avatar-group">
+            <div class="avatar avatar--initials avatar--color-1">MI</div>
+            <div class="avatar avatar--initials avatar--color-2">JD</div>
+            <div class="avatar avatar--initials avatar--color-3">SK</div>
+            <div class="avatar avatar--initials avatar--color-4">AL</div>
+            <div class="avatar-group__count">+5</div>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Small Group</p>
+          <div class="avatar-group avatar-group--small">
+            <div class="avatar avatar--small avatar--initials avatar--color-1">MI</div>
+            <div class="avatar avatar--small avatar--initials avatar--color-2">JD</div>
+            <div class="avatar avatar--small avatar--initials avatar--color-3">SK</div>
+            <div class="avatar-group__count">+5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar with Caption -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Avatar with Caption</h2>
+      <div class="demo-grid">
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Large</p>
+          <div class="avatar-caption avatar-caption--large">
+            <div class="avatar avatar--large avatar--initials avatar--color-1">MI</div>
+            <div class="avatar-caption__content">
+              <div class="avatar-caption__name">Mehrab Islam</div>
+              <div class="avatar-caption__subtitle">UI/UX Designer</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Medium</p>
+          <div class="avatar-caption">
+            <div class="avatar avatar--initials avatar--color-2">MI</div>
+            <div class="avatar-caption__content">
+              <div class="avatar-caption__name">Mehrab Islam</div>
+              <div class="avatar-caption__subtitle">UI/UX Designer</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Small</p>
+          <div class="avatar-caption avatar-caption--small">
+            <div class="avatar avatar--small avatar--initials avatar--color-3">MI</div>
+            <div class="avatar-caption__content">
+              <div class="avatar-caption__name">Mehrab Islam</div>
+              <div class="avatar-caption__subtitle">UI/UX Designer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar with Status -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Avatar with Status Indicator</h2>
+      <div class="avatar-showcase">
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Online</p>
+          <div class="avatar avatar--initials avatar--color-1 avatar--with-status">
+            MI
+            <span class="avatar__status avatar__status--online"></span>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Busy</p>
+          <div class="avatar avatar--initials avatar--color-2 avatar--with-status">
+            JD
+            <span class="avatar__status avatar__status--busy"></span>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Away</p>
+          <div class="avatar avatar--initials avatar--color-3 avatar--with-status">
+            SK
+            <span class="avatar__status avatar__status--away"></span>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: var(--font-family-body); font-size: var(--body-sm-size); color: var(--text-secondary); margin-bottom: var(--space-300);">Offline</p>
+          <div class="avatar avatar--initials avatar--color-4 avatar--with-status">
+            AL
+            <span class="avatar__status avatar__status--offline"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAGS SECTION -->
+  <div class="demo-section">
+    <h1 class="demo-section__title">Tags Component</h1>
+
+    <!-- Static Tags -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Static Tags (Default Size)</h2>
+      <div class="tag-showcase">
+        <span class="tag tag--neutral">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+        <span class="tag tag--information">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+        <span class="tag tag--success">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+        <span class="tag tag--error">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+        <span class="tag tag--warning">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+        <span class="tag tag--disabled">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Small Tags -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Static Tags (Small Size)</h2>
+      <div class="tag-showcase">
+        <span class="tag tag--small tag--neutral">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+        <span class="tag tag--small tag--information">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+        <span class="tag tag--small tag--success">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+        <span class="tag tag--small tag--error">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+        <span class="tag tag--small tag--warning">
+          <svg class="tag__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Interactive Tags -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Interactive Tags (Selectable)</h2>
+      <div class="tag-showcase">
+        <button class="tag tag--interactive" data-tag="tag1">
+          <svg class="tag__add-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </button>
+        <button class="tag tag--interactive tag--selected" data-tag="tag2">
+          <svg class="tag__checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span class="tag__text">Tag</span>
+          <button class="tag__close" aria-label="Remove tag">
+            <svg class="tag__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </button>
+        <button class="tag tag--interactive" data-tag="tag3">
+          <svg class="tag__add-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </button>
+        <button class="tag tag--interactive tag--disabled" data-tag="tag4">
+          <svg class="tag__add-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span class="tag__text">Tag</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tags with Label -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Tags with Label</h2>
+      <div class="tag-group">
+        <div class="tag-group__label">Label</div>
+        <div class="tag-group__tags">
+          <button class="tag tag--interactive tag--selected">
+            <svg class="tag__checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span class="tag__text">Tag Copy</span>
+          </button>
+          <button class="tag tag--interactive tag--selected">
+            <svg class="tag__checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span class="tag__text">Tag Copy</span>
+          </button>
+          <button class="tag tag--interactive tag--selected">
+            <svg class="tag__checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span class="tag__text">Tag Copy</span>
+          </button>
+          <button class="tag tag--interactive tag--selected">
+            <svg class="tag__checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span class="tag__text">Tag Copy</span>
+          </button>
+          <button class="tag tag--interactive tag--selected">
+            <svg class="tag__checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span class="tag__text">Tag Copy</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE SECTION -->
+  <div class="demo-section">
+    <h1 class="demo-section__title">Table Component</h1>
+
+    <!-- Basic Table -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Basic Table</h2>
+      <div class="table-wrapper">
+        <table class="table">
+          <thead class="table__head">
+            <tr class="table__header-row">
+              <th class="table__header-cell table__cell--checkbox">
+                <input type="checkbox" class="table__cell-checkbox" aria-label="Select all">
+              </th>
+              <th class="table__header-cell">Name</th>
+              <th class="table__header-cell">Email</th>
+              <th class="table__header-cell">Status</th>
+              <th class="table__header-cell table__cell--right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr class="table__row">
+              <td class="table__cell table__cell--checkbox">
+                <input type="checkbox" class="table__cell-checkbox">
+              </td>
+              <td class="table__cell table__cell--bold">John Doe</td>
+              <td class="table__cell">john@example.com</td>
+              <td class="table__cell table__cell--status">
+                <span class="table__status table__status--success">
+                  <svg class="table__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Active
+                </span>
+              </td>
+              <td class="table__cell table__cell--action table__cell--right">
+                <div class="table__cell-actions">
+                  <button class="btn btn--ghost btn--sm">Edit</button>
+                  <button class="btn btn--ghost btn--sm">Delete</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="table__row table__row--selected">
+              <td class="table__cell table__cell--checkbox">
+                <input type="checkbox" class="table__cell-checkbox" checked>
+              </td>
+              <td class="table__cell table__cell--bold">Jane Smith</td>
+              <td class="table__cell">jane@example.com</td>
+              <td class="table__cell table__cell--status">
+                <span class="table__status table__status--pending">
+                  <svg class="table__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="10"></circle>
+                  </svg>
+                  Pending
+                </span>
+              </td>
+              <td class="table__cell table__cell--action table__cell--right">
+                <div class="table__cell-actions">
+                  <button class="btn btn--ghost btn--sm">Edit</button>
+                  <button class="btn btn--ghost btn--sm">Delete</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="table__row">
+              <td class="table__cell table__cell--checkbox">
+                <input type="checkbox" class="table__cell-checkbox">
+              </td>
+              <td class="table__cell table__cell--bold">Bob Johnson</td>
+              <td class="table__cell">bob@example.com</td>
+              <td class="table__cell table__cell--status">
+                <span class="table__status table__status--error">
+                  <svg class="table__status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  Inactive
+                </span>
+              </td>
+              <td class="table__cell table__cell--action table__cell--right">
+                <div class="table__cell-actions">
+                  <button class="btn btn--ghost btn--sm">Edit</button>
+                  <button class="btn btn--ghost btn--sm">Delete</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Bordered Table -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Bordered Table</h2>
+      <div class="table-wrapper">
+        <table class="table table--bordered">
+          <thead class="table__head">
+            <tr class="table__header-row">
+              <th class="table__header-cell">Product</th>
+              <th class="table__header-cell">Category</th>
+              <th class="table__header-cell table__cell--right">Price</th>
+              <th class="table__header-cell table__cell--center">Stock</th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr class="table__row">
+              <td class="table__cell">Product 1</td>
+              <td class="table__cell">Electronics</td>
+              <td class="table__cell table__cell--right">$99.99</td>
+              <td class="table__cell table__cell--center">50</td>
+            </tr>
+            <tr class="table__row">
+              <td class="table__cell">Product 2</td>
+              <td class="table__cell">Clothing</td>
+              <td class="table__cell table__cell--right">$49.99</td>
+              <td class="table__cell table__cell--center">120</td>
+            </tr>
+            <tr class="table__row">
+              <td class="table__cell">Product 3</td>
+              <td class="table__cell">Home</td>
+              <td class="table__cell table__cell--right">$29.99</td>
+              <td class="table__cell table__cell--center">75</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Striped Table -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Striped Table</h2>
+      <div class="table-wrapper">
+        <table class="table table--striped">
+          <thead class="table__head">
+            <tr class="table__header-row">
+              <th class="table__header-cell">ID</th>
+              <th class="table__header-cell">Name</th>
+              <th class="table__header-cell">Date</th>
+              <th class="table__header-cell">Status</th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr class="table__row">
+              <td class="table__cell">#001</td>
+              <td class="table__cell">Order Alpha</td>
+              <td class="table__cell">2024-01-15</td>
+              <td class="table__cell"><span class="table__status table__status--success">Completed</span></td>
+            </tr>
+            <tr class="table__row">
+              <td class="table__cell">#002</td>
+              <td class="table__cell">Order Beta</td>
+              <td class="table__cell">2024-01-16</td>
+              <td class="table__cell"><span class="table__status table__status--pending">Processing</span></td>
+            </tr>
+            <tr class="table__row">
+              <td class="table__cell">#003</td>
+              <td class="table__cell">Order Gamma</td>
+              <td class="table__cell">2024-01-17</td>
+              <td class="table__cell"><span class="table__status table__status--review">Review</span></td>
+            </tr>
+            <tr class="table__row">
+              <td class="table__cell">#004</td>
+              <td class="table__cell">Order Delta</td>
+              <td class="table__cell">2024-01-18</td>
+              <td class="table__cell"><span class="table__status table__status--error">Cancelled</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Interactive tags functionality
+    document.querySelectorAll('.tag--interactive:not(.tag--disabled)').forEach(tag => {
+      tag.addEventListener('click', function(e) {
+        // Don't toggle if clicking the close button
+        if (e.target.closest('.tag__close')) {
+          return;
+        }
+
+        this.classList.toggle('tag--selected');
+
+        // Update icon
+        const addIcon = this.querySelector('.tag__add-icon');
+        const checkmark = this.querySelector('.tag__checkmark');
+
+        if (this.classList.contains('tag--selected')) {
+          if (addIcon) addIcon.style.display = 'none';
+          if (!checkmark) {
+            const check = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            check.setAttribute('class', 'tag__checkmark');
+            check.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            check.setAttribute('viewBox', '0 0 24 24');
+            check.setAttribute('fill', 'none');
+            check.setAttribute('stroke', 'currentColor');
+            check.setAttribute('stroke-width', '3');
+            check.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
+            this.insertBefore(check, this.firstChild);
+          }
+        } else {
+          if (addIcon) addIcon.style.display = '';
+          if (checkmark) checkmark.remove();
+        }
+      });
+    });
+
+    // Tag close button functionality
+    document.querySelectorAll('.tag__close').forEach(closeBtn => {
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const tag = this.closest('.tag');
+        tag.style.animation = 'tag-appear 0.2s ease reverse';
+        setTimeout(() => {
+          tag.remove();
+        }, 200);
+      });
+    });
+
+    // Table row selection
+    document.querySelectorAll('.table__cell-checkbox').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const row = this.closest('.table__row');
+        if (row) {
+          row.classList.toggle('table__row--selected', this.checked);
+        }
+      });
+    });
+
+    // Select all checkboxes
+    document.querySelectorAll('.table__header-cell .table__cell-checkbox').forEach(selectAll => {
+      selectAll.addEventListener('change', function() {
+        const table = this.closest('table');
+        const checkboxes = table.querySelectorAll('.table__body .table__cell-checkbox');
+        checkboxes.forEach(cb => {
+          cb.checked = this.checked;
+          const row = cb.closest('.table__row');
+          if (row) {
+            row.classList.toggle('table__row--selected', this.checked);
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

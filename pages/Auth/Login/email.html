@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In - SSRN</title>
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+  <!-- Header (Logged Out) -->
+  <div id="header"></div>
+
+  <!-- Login - Email Step -->
+  <main class="auth-page">
+    <div class="container">
+      <div class="auth-form-container">
+        <div class="auth-form">
+          <h1 class="auth-form__title">Log In</h1>
+          <p class="auth-form__subtitle">Enter your email to continue</p>
+
+          <form id="loginEmailForm" class="form">
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="your@email.com"
+                required
+              >
+              <span class="form-error" id="emailError"></span>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--block">
+              Continue
+            </button>
+          </form>
+
+          <div class="auth-form__footer">
+            <p>Don't have an account? <a href="../Signup/email.html">Sign Up</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="../../../js/utils/includes.js"></script>
+  <script src="../../../js/utils/validation.js"></script>
+  <script src="../../../main.js"></script>
+  <script>
+    // Load header and footer
+    Includes.loadComponent('header', '../../../includes/header-logged-out.html');
+    Includes.loadComponent('footer', '../../../includes/footer.html');
+
+    // Handle form submission
+    document.getElementById('loginEmailForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+
+      // Store email in session storage
+      sessionStorage.setItem('loginEmail', email);
+
+      // Navigate to password page
+      window.location.href = './password.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,160 +1,248 @@
 /**
- * SSRN Tab Components
- * Tab navigation and tab content panels
+ * SSRN Tabs Component
+ * Based on Figma design system
  */
 
 /* ============================================
-   TAB CONTAINER
+   TABS CONTAINER
    ============================================ */
 .tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5px;
+  width: 100%;
+  position: relative;
+}
+
+/* ============================================
+   TAB BAR (horizontal list of tabs)
+   ============================================ */
+.tab-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--surface-page);
+  position: relative;
   width: 100%;
 }
 
+/* Bottom border/keyline */
+.tab-bar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background-color: var(--border-tertiary);
+  z-index: 0;
+}
+
 /* ============================================
-   TAB LIST
+   TAB ITEM
    ============================================ */
-.tabs__list {
+.tab-item {
   display: flex;
-  border-bottom: var(--border-s) solid var(--border-default);
-}
-
-.tabs__list--centered {
+  align-items: center;
   justify-content: center;
-}
-
-.tabs__list--stretch .tabs__tab {
-  flex: 1;
-}
-
-/* ============================================
-   TAB BUTTON
-   ============================================ */
-.tabs__tab {
-  padding: var(--space-400) var(--space-600);
+  gap: var(--space-200);
+  padding: var(--space-300) var(--space-600);
+  background-color: var(--surface-page);
+  border: none;
   font-family: var(--font-family-body);
   font-size: var(--body-md-size);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-neutral-tertiary);
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid transparent;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-bottom: -1px;
+  position: relative;
+  border-radius: var(--radius-s) var(--radius-s) 0 0;
+  min-height: 48px;
+  white-space: nowrap;
 }
 
-.tabs__tab:hover {
-  color: var(--text-neutral-secondary);
+/* Tab item icon (optional) */
+.tab-item__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
-.tabs__tab--active,
-.tabs__tab[aria-selected="true"] {
-  color: var(--text-brand-primary);
-  border-bottom-color: var(--border-brand-primary);
-}
-
-.tabs__tab:focus-visible {
-  outline: 2px solid var(--border-brand-primary);
-  outline-offset: -2px;
+/* Tab item label */
+.tab-item__label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: inherit;
+  line-height: var(--body-md-line-height);
+  color: inherit;
 }
 
 /* ============================================
-   TAB PANELS
+   TAB ITEM STATES
    ============================================ */
-.tabs__panels {
-  padding: var(--space-600) 0;
+
+/* Default state */
+.tab-item:hover:not(.tab-item--selected):not(:disabled) {
+  background-color: var(--grey-70);
 }
 
-.tabs__panel {
+/* Selected/Active state */
+.tab-item--selected {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-brand-primary);
+}
+
+.tab-item--selected::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--sea-green-50);
+  z-index: 1;
+}
+
+/* Focus state */
+.tab-item:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: -2px;
+  z-index: 2;
+}
+
+/* Disabled state */
+.tab-item:disabled,
+.tab-item--disabled {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ============================================
+   TAB PANEL (content area)
+   ============================================ */
+.tab-panel {
   display: none;
+  padding: var(--space-600);
+  background-color: var(--surface-page);
+  border-radius: 0 0 var(--radius-s) var(--radius-s);
 }
 
-.tabs__panel--active,
-.tabs__panel[aria-hidden="false"] {
+.tab-panel--active {
   display: block;
 }
 
 /* ============================================
-   BOOKING FORM TABS (Special variant)
+   TAB VARIATIONS
    ============================================ */
-.booking-form__tabs {
-  display: flex;
-  border-bottom: var(--border-s) solid var(--border-default);
+
+/* Centered tabs */
+.tab-bar--centered {
+  justify-content: center;
 }
 
-.booking-form__tab {
+/* Right-aligned tabs */
+.tab-bar--right {
+  justify-content: flex-end;
+}
+
+/* Full-width tabs (each tab takes equal width) */
+.tab-bar--full-width .tab-item {
   flex: 1;
-  padding: var(--space-400) var(--space-600);
-  font-size: var(--body-md-size);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-neutral-tertiary);
-  background-color: var(--surface-neutral-primary);
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.booking-form__tab:hover {
-  color: var(--text-neutral-secondary);
+/* Scrollable tabs (for many tabs) */
+.tab-bar--scrollable {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
 }
 
-.booking-form__tab--active {
-  background-color: var(--surface-neutral-page);
-  color: var(--text-brand-primary);
-  border-bottom: 2px solid var(--border-brand-primary);
+.tab-bar--scrollable::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tab-bar--scrollable::-webkit-scrollbar-track {
+  background-color: var(--grey-70);
+}
+
+.tab-bar--scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--grey-50);
+  border-radius: var(--radius-xs);
 }
 
 /* ============================================
-   PILL TABS (Alternative style)
+   TAB WITH BADGE/COUNT
    ============================================ */
-.tabs--pills .tabs__list {
-  border-bottom: none;
-  gap: var(--space-200);
-  background-color: var(--surface-neutral-secondary);
-  padding: var(--space-100);
-  border-radius: var(--radius-s);
-  width: fit-content;
+.tab-item__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--space-100);
+  background-color: var(--sea-green-50);
+  color: var(--text-inverse);
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  border-radius: var(--radius-full);
 }
 
-.tabs--pills .tabs__tab {
-  padding: var(--space-200) var(--space-400);
-  border-bottom: none;
-  border-radius: var(--radius-xs);
-  margin-bottom: 0;
+.tab-item:disabled .tab-item__badge {
+  background-color: var(--grey-50);
 }
 
-.tabs--pills .tabs__tab--active {
-  background-color: var(--surface-neutral-page);
-  box-shadow: var(--shadow-xs);
+/* ============================================
+   KEYLINE VARIANTS
+   ============================================ */
+
+/* Small keyline (0.5px) - default */
+.tab-bar--keyline-s::after {
+  height: 0.5px;
+}
+
+/* Medium keyline (1px) */
+.tab-bar--keyline-m::after {
+  height: 1px;
+}
+
+/* Large keyline (2px) */
+.tab-bar--keyline-l::after {
+  height: 2px;
+}
+
+/* No keyline */
+.tab-bar--no-keyline::after {
+  display: none;
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
-@media (max-width: 480px) {
-  .tabs__list--responsive {
-    flex-direction: column;
-    border-bottom: none;
+@media (max-width: 768px) {
+  .tab-item {
+    padding: var(--space-200) var(--space-400);
+    font-size: var(--body-sm-size);
   }
 
-  .tabs__list--responsive .tabs__tab {
-    border-bottom: var(--border-s) solid var(--border-default);
-    margin-bottom: 0;
+  .tab-bar {
+    overflow-x: auto;
+    scrollbar-width: thin;
   }
 
-  .tabs__list--responsive .tabs__tab--active {
-    border-bottom-color: var(--border-brand-primary);
+  .tab-bar::-webkit-scrollbar {
+    height: 4px;
   }
 
-  .booking-form__tabs {
-    flex-direction: column;
+  .tab-bar::-webkit-scrollbar-track {
+    background-color: var(--grey-70);
   }
 
-  .booking-form__tab {
-    border-bottom: var(--border-s) solid var(--border-default);
-  }
-
-  .booking-form__tab--active {
-    border-bottom-color: var(--border-brand-primary);
+  .tab-bar::-webkit-scrollbar-thumb {
+    background-color: var(--grey-50);
+    border-radius: var(--radius-xs);
   }
 }

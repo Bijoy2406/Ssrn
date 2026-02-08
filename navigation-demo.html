@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Navigation Components Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: var(--surface-page);
+      padding: var(--space-800);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .demo-section {
+      background-color: var(--surface-primary);
+      border-radius: var(--radius-m);
+      padding: var(--space-800);
+      margin-bottom: var(--space-800);
+    }
+
+    .demo-section__title {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-lg-size);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--heading-lg-line-height);
+      color: var(--text-primary);
+      margin-bottom: var(--space-600);
+      padding-bottom: var(--space-400);
+      border-bottom: 1px solid var(--border-tertiary);
+    }
+
+    .demo-subsection {
+      margin-bottom: var(--space-600);
+    }
+
+    .demo-subsection__title {
+      font-family: var(--font-family-body);
+      font-size: var(--body-lg-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-400);
+    }
+
+    .demo-grid {
+      display: grid;
+      gap: var(--space-600);
+    }
+
+    .carousel-demo {
+      background-color: var(--grey-90);
+      border-radius: var(--radius-s);
+      padding: var(--space-800);
+      margin-bottom: var(--space-600);
+    }
+
+    .carousel__slide {
+      background-color: var(--sea-green-90);
+      color: var(--text-brand-primary);
+      padding: var(--space-800);
+      border-radius: var(--radius-s);
+      min-height: 300px;
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-xl-size);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .demo-two-column {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: var(--space-600);
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-600);
+    }
+
+    .link-demo-item {
+      padding: var(--space-400);
+      background-color: var(--grey-90);
+      border-radius: var(--radius-s);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGINATION SECTION -->
+  <div class="demo-section">
+    <h1 class="demo-section__title">Pagination Components</h1>
+
+    <!-- Default Pagination -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Default Pagination</h2>
+      <nav class="pagination" aria-label="Pagination navigation">
+        <ul class="pagination__list">
+          <li>
+            <button class="pagination__item pagination__item--prev" aria-label="Previous page">
+              <svg class="pagination__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+          </li>
+          <li><button class="pagination__item">1</button></li>
+          <li><button class="pagination__item pagination__item--selected">2</button></li>
+          <li><button class="pagination__item">3</button></li>
+          <li><button class="pagination__item">4</button></li>
+          <li><button class="pagination__item">5</button></li>
+          <li><span class="pagination__item pagination__item--dots">...</span></li>
+          <li><button class="pagination__item">10</button></li>
+          <li>
+            <button class="pagination__item pagination__item--next" aria-label="Next page">
+              <svg class="pagination__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Pagination with Jumper -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Pagination with Jumper</h2>
+      <nav class="pagination" aria-label="Pagination navigation">
+        <ul class="pagination__list">
+          <li>
+            <button class="pagination__item pagination__item--prev" aria-label="Previous page">
+              <svg class="pagination__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+          </li>
+          <li><button class="pagination__item pagination__item--selected">1</button></li>
+          <li><button class="pagination__item">2</button></li>
+          <li><button class="pagination__item">3</button></li>
+          <li>
+            <button class="pagination__item pagination__item--next" aria-label="Next page">
+              <svg class="pagination__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </li>
+        </ul>
+        <div class="pagination__jumper">
+          <label class="pagination__jumper-label" for="page-jump">Go to page:</label>
+          <input type="number" id="page-jump" class="pagination__jumper-input" min="1" max="100" value="1">
+        </div>
+      </nav>
+    </div>
+
+    <!-- Pagination with Results Per Page -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Pagination with Results Per Page</h2>
+      <div class="pagination-with-results">
+        <div class="pagination__results">
+          <label class="pagination__results-label" for="results-per-page">Results per page:</label>
+          <select id="results-per-page" class="pagination__results-select">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+        <nav class="pagination" aria-label="Pagination navigation">
+          <ul class="pagination__list">
+            <li>
+              <button class="pagination__item pagination__item--prev" aria-label="Previous page">
+                <svg class="pagination__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+            </li>
+            <li><button class="pagination__item">1</button></li>
+            <li><button class="pagination__item pagination__item--selected">2</button></li>
+            <li><button class="pagination__item">3</button></li>
+            <li>
+              <button class="pagination__item pagination__item--next" aria-label="Next page">
+                <svg class="pagination__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </nav>
+        <span class="pagination__info">Showing 21-40 of 250 results</span>
+      </div>
+    </div>
+
+    <!-- Dotted Pagination -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Dotted Pagination (for Carousels)</h2>
+      <nav class="pagination pagination--dotted" aria-label="Carousel navigation">
+        <ul class="pagination__list">
+          <li><button class="pagination__item pagination__item--selected" aria-label="Slide 1"></button></li>
+          <li><button class="pagination__item" aria-label="Slide 2"></button></li>
+          <li><button class="pagination__item" aria-label="Slide 3"></button></li>
+          <li><button class="pagination__item" aria-label="Slide 4"></button></li>
+          <li><button class="pagination__item" aria-label="Slide 5"></button></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Compact Pagination -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Compact Pagination</h2>
+      <nav class="pagination pagination--compact" aria-label="Pagination navigation">
+        <ul class="pagination__list">
+          <li>
+            <button class="pagination__item pagination__item--prev" aria-label="Previous page">
+              <svg class="pagination__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+          </li>
+          <li><button class="pagination__item">1</button></li>
+          <li><button class="pagination__item pagination__item--selected">2</button></li>
+          <li><button class="pagination__item">3</button></li>
+          <li>
+            <button class="pagination__item pagination__item--next" aria-label="Next page">
+              <svg class="pagination__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- CAROUSEL SECTION -->
+  <div class="demo-section">
+    <h1 class="demo-section__title">Carousel Components</h1>
+
+    <!-- Standard Carousel with Progress Bar -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Carousel with Progress Bar</h2>
+      <div class="carousel-demo">
+        <div class="carousel" id="carousel1">
+          <div class="carousel__track">
+            <div class="carousel__slide">
+              <h3>Slide 1</h3>
+            </div>
+            <div class="carousel__slide">
+              <h3>Slide 2</h3>
+            </div>
+            <div class="carousel__slide">
+              <h3>Slide 3</h3>
+            </div>
+          </div>
+          <div class="carousel__nav">
+            <button class="carousel__button carousel__button--prev" aria-label="Previous slide">
+              <svg class="carousel__button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <div class="carousel__progress">
+              <div class="carousel__progress-bar">
+                <div class="carousel__progress-fill" style="width: 33%;"></div>
+              </div>
+            </div>
+            <button class="carousel__button carousel__button--next" aria-label="Next slide">
+              <svg class="carousel__button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel with Dots -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Carousel with Dots Indicator</h2>
+      <div class="carousel-demo">
+        <div class="carousel" id="carousel2">
+          <div class="carousel__track">
+            <div class="carousel__slide">
+              <h3>Slide 1</h3>
+            </div>
+            <div class="carousel__slide">
+              <h3>Slide 2</h3>
+            </div>
+            <div class="carousel__slide">
+              <h3>Slide 3</h3>
+            </div>
+            <div class="carousel__slide">
+              <h3>Slide 4</h3>
+            </div>
+          </div>
+          <div class="carousel__dots">
+            <button class="carousel__dot carousel__dot--active" aria-label="Go to slide 1"></button>
+            <button class="carousel__dot" aria-label="Go to slide 2"></button>
+            <button class="carousel__dot" aria-label="Go to slide 3"></button>
+            <button class="carousel__dot" aria-label="Go to slide 4"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANCHOR NAVIGATION SECTION -->
+  <div class="demo-section">
+    <h1 class="demo-section__title">Anchor/Inpage Navigation</h1>
+
+    <div class="demo-two-column">
+      <!-- Sidebar with Anchor Navigation -->
+      <aside>
+        <nav class="anchor-nav" aria-label="Page sections">
+          <div class="anchor-nav__header">On this page</div>
+          <ul class="anchor-nav__list">
+            <li>
+              <a href="#section1" class="anchor-nav__link anchor-nav__link--selected">
+                <svg class="anchor-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span class="anchor-nav__label">Introduction</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section1-1" class="anchor-nav__link anchor-nav__link--level-2">
+                <svg class="anchor-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                <span class="anchor-nav__label">Getting Started</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section1-2" class="anchor-nav__link anchor-nav__link--level-2">
+                <svg class="anchor-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                <span class="anchor-nav__label">Prerequisites</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section2" class="anchor-nav__link">
+                <svg class="anchor-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                <span class="anchor-nav__label">Features</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section3" class="anchor-nav__link">
+                <svg class="anchor-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                <span class="anchor-nav__label">Documentation</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section4" class="anchor-nav__link anchor-nav__link--disabled">
+                <svg class="anchor-nav__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                <span class="anchor-nav__label">Coming Soon</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <div>
+        <p style="font-family: var(--font-family-body); font-size: var(--body-md-size); color: var(--text-primary); line-height: 1.6;">
+          This demonstrates the anchor navigation component with level 1 and level 2 links. The sidebar shows different states including selected, hover, focus, and disabled. Click on the links to navigate to different sections of your page.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINK SECTION -->
+  <div class="demo-section">
+    <h1 class="demo-section__title">Link Components</h1>
+
+    <!-- Default Links -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Default Links</h2>
+      <div class="link-grid">
+        <div class="link-demo-item">
+          <a href="#" class="link">
+            <span class="link__text">Default Link</span>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="#" class="link">
+            <span class="link__text">Link with Icon</span>
+            <svg class="link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="#" class="link link--icon-right">
+            <span class="link__text">Icon Right</span>
+            <svg class="link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="#" class="link link--disabled">
+            <span class="link__text">Disabled Link</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link Sizes -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Link Sizes</h2>
+      <div class="link-grid">
+        <div class="link-demo-item">
+          <a href="#" class="link link--small">
+            <span class="link__text">Small Link</span>
+            <svg class="link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="#" class="link">
+            <span class="link__text">Default Link</span>
+            <svg class="link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="#" class="link link--large">
+            <span class="link__text">Large Link</span>
+            <svg class="link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inline Links -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Inline Links</h2>
+      <div style="padding: var(--space-400); background-color: var(--grey-90); border-radius: var(--radius-s);">
+        <p style="font-family: var(--font-family-body); font-size: var(--body-md-size); color: var(--text-primary); line-height: 1.6;">
+          This is a paragraph with <a href="#" class="link link--inline">an inline link</a> embedded within the text. You can also have <a href="#" class="link link--inline link--small">a smaller inline link</a> for different contexts.
+        </p>
+      </div>
+    </div>
+
+    <!-- Link Color Variants -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Link Color Variants</h2>
+      <div class="link-grid">
+        <div class="link-demo-item">
+          <a href="#" class="link">
+            <span class="link__text">Primary Link</span>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="#" class="link link--secondary">
+            <span class="link__text">Secondary Link</span>
+          </a>
+        </div>
+        <div class="link-demo-item" style="background-color: var(--black); padding: var(--space-400);">
+          <a href="#" class="link link--inverse">
+            <span class="link__text">Inverse Link</span>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="#" class="link link--danger">
+            <span class="link__text">Danger Link</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- External Links -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">External Links</h2>
+      <div class="link-grid">
+        <div class="link-demo-item">
+          <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="link link--external">
+            <span class="link__text">External Link</span>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="link link--external link--small">
+            <span class="link__text">Small External Link</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Underline Variants -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Underline Variants</h2>
+      <div class="link-grid">
+        <div class="link-demo-item">
+          <a href="#" class="link">
+            <span class="link__text">Default (no underline)</span>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="#" class="link link--underlined">
+            <span class="link__text">Always Underlined</span>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="#" class="link link--no-underline">
+            <span class="link__text">Never Underlined</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Icon Only Links -->
+    <div class="demo-subsection">
+      <h2 class="demo-subsection__title">Icon Only Links</h2>
+      <div class="link-grid">
+        <div class="link-demo-item">
+          <a href="#" class="link link--icon-only" aria-label="Share">
+            <svg class="link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+          </a>
+        </div>
+        <div class="link-demo-item">
+          <a href="#" class="link link--icon-only link--small" aria-label="Settings">
+            <svg class="link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 1v6m0 6v6m9-9h-6m-6 0H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Carousel functionality
+    document.querySelectorAll('.carousel').forEach(carousel => {
+      const track = carousel.querySelector('.carousel__track');
+      const slides = carousel.querySelectorAll('.carousel__slide');
+      const prevBtn = carousel.querySelector('.carousel__button--prev');
+      const nextBtn = carousel.querySelector('.carousel__button--next');
+      const progressFill = carousel.querySelector('.carousel__progress-fill');
+      const dots = carousel.querySelectorAll('.carousel__dot');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateCarousel() {
+        // Update track position
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Update progress bar
+        if (progressFill) {
+          const progress = ((currentSlide + 1) / totalSlides) * 100;
+          progressFill.style.width = `${progress}%`;
+        }
+
+        // Update dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('carousel__dot--active', index === currentSlide);
+        });
+
+        // Update button states
+        if (prevBtn) prevBtn.disabled = currentSlide === 0;
+        if (nextBtn) nextBtn.disabled = currentSlide === totalSlides - 1;
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          if (currentSlide > 0) {
+            currentSlide--;
+            updateCarousel();
+          }
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          if (currentSlide < totalSlides - 1) {
+            currentSlide++;
+            updateCarousel();
+          }
+        });
+      }
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentSlide = index;
+          updateCarousel();
+        });
+      });
+
+      updateCarousel();
+    });
+
+    // Pagination functionality
+    document.querySelectorAll('.pagination__item:not(.pagination__item--dots)').forEach(item => {
+      item.addEventListener('click', function() {
+        if (!this.classList.contains('pagination__item--prev') &&
+            !this.classList.contains('pagination__item--next') &&
+            !this.disabled) {
+          const pagination = this.closest('.pagination, .pagination-with-results');
+          pagination.querySelectorAll('.pagination__item').forEach(i => {
+            i.classList.remove('pagination__item--selected');
+          });
+          this.classList.add('pagination__item--selected');
+        }
+      });
+    });
+
+    // Anchor navigation functionality
+    document.querySelectorAll('.anchor-nav__link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (!this.classList.contains('anchor-nav__link--disabled')) {
+          e.preventDefault();
+          const nav = this.closest('.anchor-nav');
+          nav.querySelectorAll('.anchor-nav__link').forEach(l => {
+            l.classList.remove('anchor-nav__link--selected');
+          });
+          this.classList.add('anchor-nav__link--selected');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

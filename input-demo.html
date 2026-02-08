@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Input Fields Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: var(--grey-70);
+      font-family: var(--font-family-body);
+    }
+    .demo-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .demo-title {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-h2-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .demo-section {
+      background: var(--surface-page);
+      padding: 32px;
+      border-radius: var(--radius-m);
+      margin-bottom: 32px;
+    }
+    .demo-section-title {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-h5-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+    .demo-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .demo-item {
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <h1 class="demo-title">Input Field Components</h1>
+
+    <!-- Basic Input -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Basic Input Fields</h2>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Email Address</span>
+            <span class="input-label__required">*</span>
+          </label>
+          <input type="email" class="input" placeholder="Enter your email">
+        </div>
+      </div>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Full Name</span>
+            <span class="input-label__optional">(Optional)</span>
+          </label>
+          <input type="text" class="input" placeholder="Enter your full name">
+        </div>
+      </div>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Phone Number</span>
+            <svg class="input-label__icon" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 16V12M12 8H12.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </label>
+          <p class="input-hint">We'll use this to contact you about your booking</p>
+          <input type="tel" class="input" placeholder="+1 (555) 000-0000">
+          <div class="input-helper">
+            <span class="input-helper__text">Helper text goes here</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input States -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Input States</h2>
+
+      <div class="demo-row">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Default State</span>
+          </label>
+          <input type="text" class="input" placeholder="Placeholder text">
+        </div>
+
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Filled State</span>
+          </label>
+          <input type="text" class="input input--filled" value="Filled with value" placeholder="Placeholder text">
+        </div>
+      </div>
+
+      <div class="demo-row">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Error State</span>
+          </label>
+          <input type="email" class="input input--error" placeholder="email@example.com">
+          <div class="input-helper input-helper--error">
+            <span class="input-helper__text">Please enter a valid email address</span>
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Success State</span>
+          </label>
+          <input type="email" class="input input--success" value="john@example.com" placeholder="email@example.com">
+          <div class="input-helper input-helper--success">
+            <span class="input-helper__text">Email address is valid</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Disabled State</span>
+          </label>
+          <input type="text" class="input" placeholder="This field is disabled" disabled>
+          <div class="input-helper input-helper--disabled">
+            <span class="input-helper__text">This field cannot be edited</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input with Icons -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Input with Icons</h2>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Search</span>
+          </label>
+          <div class="input-search">
+            <svg class="input-search__icon" viewBox="0 0 24 24" fill="none">
+              <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M15 15L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input type="search" class="input" placeholder="Search destinations...">
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Password</span>
+          </label>
+          <div class="input-password">
+            <input type="password" class="input" id="password" placeholder="Enter your password">
+            <button type="button" class="input-password__toggle" onclick="togglePassword()">
+              <svg id="eyeIcon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5Z" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="12" cy="12.5" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Sizes -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Input Sizes</h2>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Small Input</span>
+          </label>
+          <input type="text" class="input input--sm" placeholder="Small size input">
+        </div>
+      </div>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Default Input</span>
+          </label>
+          <input type="text" class="input" placeholder="Default size input">
+        </div>
+      </div>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Large Input</span>
+          </label>
+          <input type="text" class="input input--lg" placeholder="Large size input">
+        </div>
+      </div>
+    </div>
+
+    <!-- Textarea -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Textarea</h2>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Message</span>
+          </label>
+          <p class="input-hint">Tell us about your travel plans</p>
+          <textarea class="input" placeholder="Enter your message here..." rows="5"></textarea>
+          <div class="input-counter">
+            <span class="input-counter__text">0 / 500 characters</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Group -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">Input Groups</h2>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Promo Code</span>
+          </label>
+          <div class="input-group input-group--append">
+            <input type="text" class="input" placeholder="Enter promo code">
+            <button class="btn btn--primary">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- File Input -->
+    <div class="demo-section">
+      <h2 class="demo-section-title">File Upload</h2>
+
+      <div class="demo-item">
+        <div class="input-wrapper">
+          <label class="input-label">
+            <span class="input-label__text">Upload Document</span>
+          </label>
+          <div class="input-file">
+            <input type="file" id="file-upload" class="input-file__input">
+            <label for="file-upload" class="input-file__label">
+              <svg class="input-file__icon" viewBox="0 0 24 24" fill="none">
+                <path d="M21 15V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V15M17 8L12 3M12 3L7 8M12 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Click to upload or drag and drop</span>
+              <span style="font-size: 12px; color: var(--text-tertiary);">PDF, DOC, DOCX (max 10MB)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const eyeIcon = document.getElementById('eyeIcon');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.innerHTML = `
+          <path d="M3 3L21 21M10.5 10.7C9.8 11.5 9.5 12.4 9.5 13.5C9.5 15.7 11.3 17.5 13.5 17.5C14.6 17.5 15.5 17.2 16.3 16.5M19.5 16.2C20.9 14.9 22.1 13.3 23 11.5C21.27 7.11 17 4 12 4C10.5 4 9.1 4.3 7.8 4.8M12 7C14.76 7 17 9.24 17 12C17 12.7 16.85 13.37 16.58 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        `;
+      } else {
+        passwordInput.type = 'password';
+        eyeIcon.innerHTML = `
+          <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5Z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="12" cy="12.5" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+        `;
+      }
+    }
+
+    // Character counter for textarea
+    const textarea = document.querySelector('textarea');
+    const counter = document.querySelector('.input-counter__text');
+
+    if (textarea && counter) {
+      textarea.addEventListener('input', function() {
+        const length = this.value.length;
+        const maxLength = 500;
+        counter.textContent = `${length} / ${maxLength} characters`;
+
+        if (length >= maxLength) {
+          counter.classList.add('input-counter__text--max');
+          this.value = this.value.substring(0, maxLength);
+        } else {
+          counter.classList.remove('input-counter__text--max');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
