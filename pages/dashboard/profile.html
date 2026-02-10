@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Management - SSRN</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout/grid.css">
+  <link rel="stylesheet" href="/css/layout/header.css">
+  <link rel="stylesheet" href="/css/layout/footer.css">
+
+  <!-- Component Styles -->
+  <link rel="stylesheet" href="/css/components/buttons.css">
+  <link rel="stylesheet" href="/css/components/forms.css">
+
+  <!-- Page Styles -->
+  <link rel="stylesheet" href="/css/pages/profile.css">
+</head>
+<body>
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="profile">
+      <div class="container">
+        <!-- Page Header -->
+        <div class="profile__header">
+          <h1 class="profile__title">Account Management</h1>
+          <p class="profile__subtitle">Manage your personal information, security, and notification preferences</p>
+        </div>
+
+        <div class="profile__cards">
+
+          <!-- =========================================
+               1. PERSONAL INFORMATION
+               ========================================= -->
+          <div class="account-card" id="personalInfoCard">
+            <div class="account-card__header">
+              <h2 class="account-card__title">Personal Information</h2>
+              <button class="account-card__edit-btn" data-action="edit" aria-label="Edit personal information">
+                <svg viewBox="0 0 16 16" fill="none">
+                  <path d="M11.333 2.00004C11.5081 1.82494 11.716 1.68605 11.9447 1.59129C12.1735 1.49653 12.4187 1.44775 12.6663 1.44775C12.914 1.44775 13.1592 1.49653 13.388 1.59129C13.6167 1.68605 13.8246 1.82494 13.9997 2.00004C14.1748 2.17513 14.3137 2.38304 14.4084 2.61178C14.5032 2.84052 14.552 3.08575 14.552 3.33337C14.552 3.58099 14.5032 3.82623 14.4084 4.05497C14.3137 4.28371 14.1748 4.49161 13.9997 4.66671L4.99967 13.6667L1.33301 14.6667L2.33301 11L11.333 2.00004Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Edit
+              </button>
+            </div>
+
+            <!-- Default State -->
+            <div class="account-card__display">
+              <div class="account-card__fields">
+                <div class="account-card__field">
+                  <span class="account-card__label">Title</span>
+                  <span class="account-card__value" data-field="title">Mr</span>
+                </div>
+                <div class="account-card__field-row">
+                  <div class="account-card__field">
+                    <span class="account-card__label">First Name</span>
+                    <span class="account-card__value" data-field="firstName">John</span>
+                  </div>
+                  <div class="account-card__field">
+                    <span class="account-card__label">Last Name</span>
+                    <span class="account-card__value" data-field="lastName">Doe</span>
+                  </div>
+                </div>
+                <div class="account-card__field">
+                  <span class="account-card__label">Email Address</span>
+                  <span class="account-card__value" data-field="email">john.doe@email.com</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Editing State -->
+            <form class="account-card__form" data-form="personalInfo">
+              <div class="account-card__form-grid">
+                <div class="form-group form-group--full">
+                  <label class="form-label" for="pi-title">Title</label>
+                  <select class="form-input form-select" id="pi-title" name="title">
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Dr">Dr</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label form-label--required" for="pi-firstName">First Name</label>
+                  <input type="text" class="form-input" id="pi-firstName" name="firstName" value="John" placeholder="Enter first name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label form-label--required" for="pi-lastName">Last Name</label>
+                  <input type="text" class="form-input" id="pi-lastName" name="lastName" value="Doe" placeholder="Enter last name">
+                </div>
+                <div class="form-group form-group--full">
+                  <label class="form-label form-label--required" for="pi-email">Email Address</label>
+                  <input type="email" class="form-input" id="pi-email" name="email" value="john.doe@email.com" placeholder="Enter email address">
+                </div>
+              </div>
+              <div class="account-card__actions">
+                <button type="submit" class="btn btn--primary">Save Changes</button>
+                <button type="button" class="btn btn--ghost" data-action="cancel">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- =========================================
+               2. MOBILE NUMBER
+               ========================================= -->
+          <div class="account-card" id="mobileNumberCard">
+            <div class="account-card__header">
+              <h2 class="account-card__title">Mobile Number</h2>
+              <button class="account-card__edit-btn" data-action="edit" aria-label="Edit mobile number">
+                <svg viewBox="0 0 16 16" fill="none">
+                  <path d="M11.333 2.00004C11.5081 1.82494 11.716 1.68605 11.9447 1.59129C12.1735 1.49653 12.4187 1.44775 12.6663 1.44775C12.914 1.44775 13.1592 1.49653 13.388 1.59129C13.6167 1.68605 13.8246 1.82494 13.9997 2.00004C14.1748 2.17513 14.3137 2.38304 14.4084 2.61178C14.5032 2.84052 14.552 3.08575 14.552 3.33337C14.552 3.58099 14.5032 3.82623 14.4084 4.05497C14.3137 4.28371 14.1748 4.49161 13.9997 4.66671L4.99967 13.6667L1.33301 14.6667L2.33301 11L11.333 2.00004Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Edit
+              </button>
+            </div>
+
+            <!-- Default State -->
+            <div class="account-card__display">
+              <div class="account-card__fields">
+                <div class="account-card__field">
+                  <span class="account-card__label">Phone Number</span>
+                  <span class="account-card__value" data-field="phone">+44 7911 123456</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Editing State -->
+            <form class="account-card__form" data-form="mobileNumber">
+              <div class="account-card__form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="mn-country">Country Code</label>
+                  <select class="form-input form-select" id="mn-country" name="countryCode">
+                    <option value="+44">+44 (UK)</option>
+                    <option value="+1">+1 (US)</option>
+                    <option value="+880">+880 (BD)</option>
+                    <option value="+91">+91 (IN)</option>
+                    <option value="+971">+971 (UAE)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label form-label--required" for="mn-phone">Phone Number</label>
+                  <input type="tel" class="form-input" id="mn-phone" name="phone" value="7911 123456" placeholder="Enter phone number">
+                </div>
+              </div>
+              <div class="account-card__actions">
+                <button type="submit" class="btn btn--primary">Save Changes</button>
+                <button type="button" class="btn btn--ghost" data-action="cancel">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- =========================================
+               3. NOTIFICATION PREFERENCES
+               ========================================= -->
+          <div class="account-card" id="notificationCard">
+            <div class="account-card__header">
+              <h2 class="account-card__title">Notification Preferences</h2>
+              <button class="account-card__edit-btn" data-action="edit" aria-label="Edit notification preferences">
+                <svg viewBox="0 0 16 16" fill="none">
+                  <path d="M11.333 2.00004C11.5081 1.82494 11.716 1.68605 11.9447 1.59129C12.1735 1.49653 12.4187 1.44775 12.6663 1.44775C12.914 1.44775 13.1592 1.49653 13.388 1.59129C13.6167 1.68605 13.8246 1.82494 13.9997 2.00004C14.1748 2.17513 14.3137 2.38304 14.4084 2.61178C14.5032 2.84052 14.552 3.08575 14.552 3.33337C14.552 3.58099 14.5032 3.82623 14.4084 4.05497C14.3137 4.28371 14.1748 4.49161 13.9997 4.66671L4.99967 13.6667L1.33301 14.6667L2.33301 11L11.333 2.00004Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Edit
+              </button>
+            </div>
+
+            <!-- Default State -->
+            <div class="account-card__display">
+              <div class="notification-list">
+                <div class="notification-item">
+                  <div class="notification-item__info">
+                    <span class="notification-item__label">Email Notifications</span>
+                    <span class="notification-item__desc">Receive booking confirmations and updates via email</span>
+                  </div>
+                  <span class="notification-status notification-status--on">On</span>
+                </div>
+                <div class="notification-item">
+                  <div class="notification-item__info">
+                    <span class="notification-item__label">SMS Notifications</span>
+                    <span class="notification-item__desc">Get ride alerts and driver updates via text message</span>
+                  </div>
+                  <span class="notification-status notification-status--on">On</span>
+                </div>
+                <div class="notification-item">
+                  <div class="notification-item__info">
+                    <span class="notification-item__label">Promotional Offers</span>
+                    <span class="notification-item__desc">Receive special deals and discount offers</span>
+                  </div>
+                  <span class="notification-status notification-status--off">Off</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Editing State -->
+            <form class="account-card__form" data-form="notifications">
+              <div class="notification-list">
+                <div class="notification-item">
+                  <div class="notification-item__info">
+                    <span class="notification-item__label">Email Notifications</span>
+                    <span class="notification-item__desc">Receive booking confirmations and updates via email</span>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" class="switch__input" name="emailNotif" checked>
+                    <span class="switch__slider"></span>
+                  </label>
+                </div>
+                <div class="notification-item">
+                  <div class="notification-item__info">
+                    <span class="notification-item__label">SMS Notifications</span>
+                    <span class="notification-item__desc">Get ride alerts and driver updates via text message</span>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" class="switch__input" name="smsNotif" checked>
+                    <span class="switch__slider"></span>
+                  </label>
+                </div>
+                <div class="notification-item">
+                  <div class="notification-item__info">
+                    <span class="notification-item__label">Promotional Offers</span>
+                    <span class="notification-item__desc">Receive special deals and discount offers</span>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" class="switch__input" name="promoNotif">
+                    <span class="switch__slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="account-card__actions">
+                <button type="submit" class="btn btn--primary">Save Changes</button>
+                <button type="button" class="btn btn--ghost" data-action="cancel">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- =========================================
+               4. PASSWORD
+               ========================================= -->
+          <div class="account-card" id="passwordCard">
+            <div class="account-card__header">
+              <h2 class="account-card__title">Password</h2>
+              <button class="account-card__edit-btn" data-action="edit" aria-label="Change password">
+                <svg viewBox="0 0 16 16" fill="none">
+                  <path d="M11.333 2.00004C11.5081 1.82494 11.716 1.68605 11.9447 1.59129C12.1735 1.49653 12.4187 1.44775 12.6663 1.44775C12.914 1.44775 13.1592 1.49653 13.388 1.59129C13.6167 1.68605 13.8246 1.82494 13.9997 2.00004C14.1748 2.17513 14.3137 2.38304 14.4084 2.61178C14.5032 2.84052 14.552 3.08575 14.552 3.33337C14.552 3.58099 14.5032 3.82623 14.4084 4.05497C14.3137 4.28371 14.1748 4.49161 13.9997 4.66671L4.99967 13.6667L1.33301 14.6667L2.33301 11L11.333 2.00004Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Change Password
+              </button>
+            </div>
+
+            <!-- Default State -->
+            <div class="account-card__display">
+              <div class="account-card__fields">
+                <div class="account-card__field">
+                  <span class="account-card__label">Current Password</span>
+                  <span class="account-card__value password-dots">••••••••••</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Editing State -->
+            <form class="account-card__form" data-form="password">
+              <div class="account-card__form-grid">
+                <div class="form-group form-group--full">
+                  <label class="form-label form-label--required" for="pw-current">Current Password</label>
+                  <div class="form-input-wrapper">
+                    <input type="password" class="form-input" id="pw-current" name="currentPassword" placeholder="Enter current password">
+                    <button type="button" class="password-toggle" data-toggle-password="pw-current" aria-label="Toggle password visibility">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M1.66699 10C1.66699 10 4.16699 4.16667 10.0003 4.16667C15.8337 4.16667 18.3337 10 18.3337 10C18.3337 10 15.8337 15.8333 10.0003 15.8333C4.16699 15.8333 1.66699 10 1.66699 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="form-group form-group--full">
+                  <label class="form-label form-label--required" for="pw-new">New Password</label>
+                  <div class="form-input-wrapper">
+                    <input type="password" class="form-input" id="pw-new" name="newPassword" placeholder="Enter new password">
+                    <button type="button" class="password-toggle" data-toggle-password="pw-new" aria-label="Toggle password visibility">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M1.66699 10C1.66699 10 4.16699 4.16667 10.0003 4.16667C15.8337 4.16667 18.3337 10 18.3337 10C18.3337 10 15.8337 15.8333 10.0003 15.8333C4.16699 15.8333 1.66699 10 1.66699 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <span class="form-helper">Must be at least 8 characters with a number and special character</span>
+                </div>
+                <div class="form-group form-group--full">
+                  <label class="form-label form-label--required" for="pw-confirm">Confirm New Password</label>
+                  <div class="form-input-wrapper">
+                    <input type="password" class="form-input" id="pw-confirm" name="confirmPassword" placeholder="Re-enter new password">
+                    <button type="button" class="password-toggle" data-toggle-password="pw-confirm" aria-label="Toggle password visibility">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M1.66699 10C1.66699 10 4.16699 4.16667 10.0003 4.16667C15.8337 4.16667 18.3337 10 18.3337 10C18.3337 10 15.8337 15.8333 10.0003 15.8333C4.16699 15.8333 1.66699 10 1.66699 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="account-card__actions">
+                <button type="submit" class="btn btn--primary">Update Password</button>
+                <button type="button" class="btn btn--ghost" data-action="cancel">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+        </div><!-- /.profile__cards -->
+      </div><!-- /.container -->
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Core Scripts -->
+  <script src="/js/utils/includes.js"></script>
+  <script src="/js/layout/header.js"></script>
+
+  <!-- Page Script -->
+  <script src="/js/pages/profile.js"></script>
+</body>
+</html>

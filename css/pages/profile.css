@@ -1,0 +1,336 @@
+/**
+ * SSRN Account Management Page
+ * Styles for profile/account management cards
+ * Based on Figma: Account management components (node 2112-143412)
+ */
+
+/* ============================================
+   PAGE LAYOUT
+   ============================================ */
+.profile {
+  padding: var(--space-1200) 0;
+  min-height: 100vh;
+}
+
+.profile__header {
+  margin-bottom: var(--space-800);
+}
+
+.profile__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h4-size);
+  line-height: var(--heading-h4-line-height);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-primary);
+}
+
+.profile__subtitle {
+  font-size: var(--body-md-size);
+  color: var(--text-neutral-tertiary);
+  margin-top: var(--space-200);
+}
+
+.profile__cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  max-width: 720px;
+}
+
+/* ============================================
+   ACCOUNT CARD (Base)
+   ============================================ */
+.account-card {
+  background-color: var(--surface-neutral-primary);
+  border-radius: var(--radius-m);
+  padding: var(--space-800) var(--space-600);
+}
+
+.account-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-400);
+}
+
+.account-card__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h6-size);
+  line-height: var(--heading-h6-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-neutral-primary);
+}
+
+.account-card__edit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-200);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-brand-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-100) var(--space-200);
+  border-radius: var(--radius-xs);
+  transition: background-color 0.2s ease;
+}
+
+.account-card__edit-btn:hover {
+  background-color: var(--surface-neutral-secondary);
+}
+
+.account-card__edit-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================
+   DEFAULT STATE - Display Fields
+   ============================================ */
+.account-card__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-300);
+}
+
+.account-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+}
+
+.account-card__field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-400);
+}
+
+.account-card__label {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-neutral-tertiary);
+}
+
+.account-card__value {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-primary);
+}
+
+/* ============================================
+   EDITING STATE - Form Fields
+   ============================================ */
+.account-card__form {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-600);
+}
+
+.account-card--editing .account-card__display {
+  display: none;
+}
+
+.account-card--editing .account-card__form {
+  display: flex;
+}
+
+.account-card--editing {
+  padding: var(--space-800) var(--space-600);
+}
+
+.account-card__form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-400);
+}
+
+.account-card__form-grid .form-group--full {
+  grid-column: span 2;
+}
+
+.account-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-300);
+  padding-top: var(--space-200);
+}
+
+/* ============================================
+   NOTIFICATION PREFERENCES
+   ============================================ */
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-400);
+}
+
+.notification-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+}
+
+.notification-item__label {
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-neutral-primary);
+}
+
+.notification-item__desc {
+  font-size: var(--body-sm-size);
+  color: var(--text-neutral-tertiary);
+}
+
+/* Switch Toggle (from Figma Switch component) */
+.switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch__input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.switch__slider {
+  position: absolute;
+  inset: 0;
+  background-color: var(--surface-neutral-tertiary);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.switch__slider::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.switch__input:checked + .switch__slider {
+  background-color: var(--surface-brand-action);
+}
+
+.switch__input:checked + .switch__slider::before {
+  transform: translateX(20px);
+}
+
+.switch__input:focus-visible + .switch__slider {
+  outline: 2px solid var(--border-brand-primary);
+  outline-offset: 2px;
+}
+
+.switch__input:disabled + .switch__slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Status badge for notification default view */
+.notification-status {
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-100) var(--space-200);
+  border-radius: var(--radius-xs);
+}
+
+.notification-status--on {
+  color: #488136;
+  background-color: #f0f7ee;
+}
+
+.notification-status--off {
+  color: var(--text-neutral-tertiary);
+  background-color: var(--surface-neutral-secondary);
+}
+
+/* ============================================
+   PASSWORD SECTION
+   ============================================ */
+.password-info {
+  font-size: var(--body-md-size);
+  color: var(--text-neutral-tertiary);
+}
+
+.password-dots {
+  letter-spacing: 4px;
+  font-size: var(--body-lg-size);
+  color: var(--text-neutral-primary);
+}
+
+/* Password toggle button */
+.password-toggle {
+  position: absolute;
+  right: var(--space-400);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--icon-neutral-tertiary);
+  padding: var(--space-100);
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle:hover {
+  color: var(--icon-neutral-secondary);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .profile {
+    padding: var(--space-800) 0;
+  }
+
+  .account-card {
+    padding: var(--space-600) var(--space-400);
+  }
+
+  .account-card--editing {
+    padding: var(--space-600) var(--space-400);
+  }
+
+  .account-card__form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-card__form-grid .form-group--full {
+    grid-column: span 1;
+  }
+
+  .account-card__field-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-300);
+  }
+
+  .account-card__actions {
+    flex-direction: column;
+  }
+
+  .account-card__actions .btn {
+    width: 100%;
+  }
+}
