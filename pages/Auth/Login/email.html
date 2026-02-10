@@ -13,33 +13,57 @@
   <!-- Login - Email Step -->
   <main class="auth-page">
     <div class="container">
-      <div class="auth-form-container">
-        <div class="auth-form">
-          <h1 class="auth-form__title">Log In</h1>
-          <p class="auth-form__subtitle">Enter your email to continue</p>
+      <div class="auth-form">
+        <div class="auth-form__content">
 
-          <form id="loginEmailForm" class="form">
-            <div class="form-group">
-              <label for="email" class="form-label">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="form-input"
-                placeholder="your@email.com"
-                required
-              >
-              <span class="form-error" id="emailError"></span>
-            </div>
-
-            <button type="submit" class="btn btn--primary btn--block">
-              Continue
-            </button>
-          </form>
-
-          <div class="auth-form__footer">
-            <p>Don't have an account? <a href="../Signup/email.html">Sign Up</a></p>
+          <!-- Heading -->
+          <div class="auth-form__header">
+            <h1 class="auth-form__heading">Log In</h1>
+            <p class="auth-form__subtext">Enter your email to continue</p>
           </div>
+
+          <!-- Form Body -->
+          <div class="auth-form__body">
+            <form id="loginEmailForm" class="auth-form__fields-group">
+
+              <!-- Email Input -->
+              <div class="auth-form__inputs">
+                <div class="input-wrapper">
+                  <div class="input-label">
+                    <span class="input-label__text">Email</span>
+                  </div>
+                  <div class="input-field">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="input"
+                      placeholder="your@email.com"
+                      required
+                    >
+                  </div>
+                  <div class="input-helper input-helper--error" id="emailHelper" style="display: none;">
+                    <span class="input-helper__text" id="emailError"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="auth-form__actions">
+                <button type="submit" class="btn btn--primary btn--block">
+                  Continue
+                </button>
+              </div>
+
+            </form>
+
+            <!-- Redirect to Sign Up -->
+            <div class="auth-form__redirect">
+              <span class="auth-form__redirect-text">Don't have an account?</span>
+              <a href="../Signup/email.html" class="auth-form__redirect-link">Sign Up</a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -50,7 +74,6 @@
 
   <!-- Scripts -->
   <script src="../../../js/utils/includes.js"></script>
-  <script src="../../../js/utils/validation.js"></script>
   <script src="../../../main.js"></script>
   <script>
     // Load header and footer
@@ -60,10 +83,24 @@
     // Handle form submission
     document.getElementById('loginEmailForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const email = document.getElementById('email').value;
+      var emailInput = document.getElementById('email');
+      var emailHelper = document.getElementById('emailHelper');
+      var emailError = document.getElementById('emailError');
+
+      // Basic validation
+      if (!emailInput.value || !emailInput.validity.valid) {
+        emailInput.classList.add('input--error');
+        emailHelper.style.display = '';
+        emailError.textContent = 'Please enter a valid email address';
+        return;
+      }
+
+      // Clear error state
+      emailInput.classList.remove('input--error');
+      emailHelper.style.display = 'none';
 
       // Store email in session storage
-      sessionStorage.setItem('loginEmail', email);
+      sessionStorage.setItem('loginEmail', emailInput.value);
 
       // Navigate to password page
       window.location.href = './password.html';
