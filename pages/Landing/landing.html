@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Trusted Chauffeur Service - SSRN</title>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/tokens.css">
+    <link rel="stylesheet" href="/css/layout/grid.css">
+    <link rel="stylesheet" href="/css/layout/header.css">
+    <link rel="stylesheet" href="/css/layout/footer.css">
+
+    <!-- Components -->
+    <link rel="stylesheet" href="/css/components/buttons.css">
+    <link rel="stylesheet" href="/css/components/cards.css">
+    <link rel="stylesheet" href="/css/components/forms.css">
+    <link rel="stylesheet" href="/css/components/tabs.css">
+
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="/css/pages/landing.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="page page--with-header">
+
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <main class="page__main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__background">
+                <img src="/assets/images/photos/Landing page/Landing Page/Hero Section Image.png" alt="" class="hero__image">
+                <div class="hero__overlay"></div>
+            </div>
+            <div class="hero__content container">
+                <div class="hero__title-wrapper">
+                    <h1 class="hero__title">Your Trusted Chauffeur Service</h1>
+                </div>
+                <div class="hero__booking-wrapper">
+                    <div class="booking-form">
+                        <!-- Booking Form Tabs -->
+                        <div class="booking-form__tabs">
+                            <button class="booking-form__tab booking-form__tab--active" data-tab="one-way">One Way Ride</button>
+                            <button class="booking-form__tab" data-tab="hourly">Hourly Ride</button>
+                        </div>
+
+                        <!-- Booking Form Content -->
+                        <div class="booking-form__content">
+                            <!-- From Field -->
+                            <div class="form-group">
+                                <label class="form-label">From</label>
+                                <div class="form-input-wrapper">
+                                    <svg class="form-input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 10.625C11.3807 10.625 12.5 9.50571 12.5 8.125C12.5 6.74429 11.3807 5.625 10 5.625C8.61929 5.625 7.5 6.74429 7.5 8.125C7.5 9.50571 8.61929 10.625 10 10.625Z" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M10 17.5C13.75 14.375 16.25 11.0417 16.25 8.125C16.25 4.67322 13.4518 1.875 10 1.875C6.54822 1.875 3.75 4.67322 3.75 8.125C3.75 11.0417 6.25 14.375 10 17.5Z" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                    <input type="text" class="form-input form-input--with-icon" placeholder="Airport, address, hotel...">
+                                </div>
+                            </div>
+
+                            <!-- To Field -->
+                            <div class="form-group">
+                                <label class="form-label">To</label>
+                                <div class="form-input-wrapper">
+                                    <svg class="form-input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 10.625C11.3807 10.625 12.5 9.50571 12.5 8.125C12.5 6.74429 11.3807 5.625 10 5.625C8.61929 5.625 7.5 6.74429 7.5 8.125C7.5 9.50571 8.61929 10.625 10 10.625Z" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M10 17.5C13.75 14.375 16.25 11.0417 16.25 8.125C16.25 4.67322 13.4518 1.875 10 1.875C6.54822 1.875 3.75 4.67322 3.75 8.125C3.75 11.0417 6.25 14.375 10 17.5Z" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                    <input type="text" class="form-input form-input--with-icon" placeholder="Airport, address, hotel...">
+                                </div>
+                            </div>
+
+                            <!-- Date Field -->
+                            <div class="form-group">
+                                <label class="form-label">Date</label>
+                                <div class="form-input-wrapper">
+                                    <svg class="form-input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="2.5" y="3.75" width="15" height="13.75" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M2.5 7.5H17.5" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M6.25 1.875V3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                        <path d="M13.75 1.875V3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                    <input type="text" class="form-input form-input--with-icon form-select" placeholder="Select date" id="booking-date">
+                                </div>
+                            </div>
+
+                            <!-- Pickup Time Field -->
+                            <div class="form-group">
+                                <label class="form-label">Pickup Time</label>
+                                <div class="form-input-wrapper">
+                                    <svg class="form-input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M10 5.625V10L12.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                    <select class="form-input form-input--with-icon form-select">
+                                        <option value="">Select time</option>
+                                        <option value="06:00">06:00 AM</option>
+                                        <option value="06:30">06:30 AM</option>
+                                        <option value="07:00">07:00 AM</option>
+                                        <option value="07:30">07:30 AM</option>
+                                        <option value="08:00">08:00 AM</option>
+                                        <option value="08:30">08:30 AM</option>
+                                        <option value="09:00">09:00 AM</option>
+                                        <option value="09:30">09:30 AM</option>
+                                        <option value="10:00">10:00 AM</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn--primary btn--block btn--lg booking-form__submit">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9.16667" cy="9.16667" r="5.83333" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M16.6667 16.6667L13.75 13.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                See Prices
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Services Section -->
+        <section class="services section">
+            <div class="container">
+                <h2 class="section__title">Our Services</h2>
+                <div class="services__grid">
+                    <!-- Airport Transfers Card -->
+                    <article class="service-card service-card--with-image">
+                        <div class="service-card__image">
+                            <img src="/assets/images/photos/source/Airport Transfer.png" alt="Airport Transfers">
+                        </div>
+                        <div class="service-card__content">
+                            <h3 class="service-card__title">Airport Transfers</h3>
+                            <p class="service-card__description">Reliable rides to and from the airport. Your chauffeur tracks your flight and arrives on time, every time.</p>
+                        </div>
+                    </article>
+
+                    <!-- City-to-city Rides Card -->
+                    <article class="service-card service-card--with-image">
+                        <div class="service-card__image">
+                            <img src="/assets/images/photos/source/City to city rides.png" alt="City-to-city Rides">
+                        </div>
+                        <div class="service-card__content">
+                            <h3 class="service-card__title">City-to-city Rides</h3>
+                            <p class="service-card__description">Travel between cities with comfort and ease. Enjoy a quiet, uninterrupted ride from door to door.</p>
+                        </div>
+                    </article>
+
+                    <!-- Hourly Rides Card -->
+                    <article class="service-card service-card--with-image">
+                        <div class="service-card__image">
+                            <img src="/assets/images/photos/source/Hourly Rides.png" alt="Hourly Rides">
+                        </div>
+                        <div class="service-card__content">
+                            <h3 class="service-card__title">Hourly Rides</h3>
+                            <p class="service-card__description">Stay in control of your time. From business stops to leisure plans, your chauffeur is ready whenever you are.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Destinations Section -->
+        <section class="destinations section">
+            <div class="container">
+                <div class="destinations__header">
+                    <div class="destinations__copy">
+                        <h2 class="section__title">Destinations</h2>
+                        <p class="section__description">Travel effortlessly between U.S. airports and cities with chauffeurs who value your time, comfort, and peace of mind.</p>
+                    </div>
+                    <div class="destinations__filters">
+                        <button class="btn btn--secondary btn--sm destinations__filter destinations__filter--active" data-filter="cities">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 4H14M2 8H14M2 12H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            Cities
+                        </button>
+                        <button class="btn btn--secondary btn--sm destinations__filter" data-filter="attractions">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 1L10 5.5L15 6L11.5 9.5L12.5 14.5L8 12L3.5 14.5L4.5 9.5L1 6L6 5.5L8 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            </svg>
+                            Attractions
+                        </button>
+                    </div>
+                </div>
+
+                <div class="destinations__carousel">
+                    <div class="destinations__track" id="destinations-track">
+                        <!-- Destination Card 1 -->
+                        <article class="destination-card">
+                            <div class="destination-card__image">
+                                <img src="/assets/images/photos/source/New York.png" alt="New York">
+                            </div>
+                            <div class="destination-card__overlay"></div>
+                            <div class="destination-card__content">
+                                <h3 class="destination-card__title">New York</h3>
+                                <p class="destination-card__routes">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 14L6 2L10 8L14 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    John F. Kennedy International Airport
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Destination Card 2 -->
+                        <article class="destination-card">
+                            <div class="destination-card__image">
+                                <img src="/assets/images/photos/source/New York.png" alt="New York">
+                            </div>
+                            <div class="destination-card__overlay"></div>
+                            <div class="destination-card__content">
+                                <h3 class="destination-card__title">New York</h3>
+                                <p class="destination-card__routes">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 14L6 2L10 8L14 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    John F. Kennedy International Airport
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Destination Card 3 -->
+                        <article class="destination-card">
+                            <div class="destination-card__image">
+                                <img src="/assets/images/photos/source/New York.png" alt="New York">
+                            </div>
+                            <div class="destination-card__overlay"></div>
+                            <div class="destination-card__content">
+                                <h3 class="destination-card__title">New York</h3>
+                                <p class="destination-card__routes">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 14L6 2L10 8L14 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    John F. Kennedy International Airport
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Destination Card 4 -->
+                        <article class="destination-card">
+                            <div class="destination-card__image">
+                                <img src="/assets/images/photos/source/New York.png" alt="New York">
+                            </div>
+                            <div class="destination-card__overlay"></div>
+                            <div class="destination-card__content">
+                                <h3 class="destination-card__title">New York</h3>
+                                <p class="destination-card__routes">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 14L6 2L10 8L14 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    John F. Kennedy International Airport
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <div class="destinations__controls">
+                        <button class="carousel-btn carousel-btn--prev" id="destinations-prev" aria-label="Previous">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn carousel-btn--next" id="destinations-next" aria-label="Next">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta section">
+            <div class="container">
+                <div class="cta__card">
+                    <div class="cta__content">
+                        <h2 class="cta__title">Got a destination in mind?</h2>
+                        <p class="cta__description">Enter your pickup and drop-off locations to check prices and plan your ride with ease.</p>
+                    </div>
+                    <a href="#" class="btn btn--primary cta__btn">Book a Ride Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="values section">
+            <div class="container">
+                <h2 class="section__title">Why Choose Us?</h2>
+                <div class="values__grid">
+                    <!-- Safety First -->
+                    <article class="value-card">
+                        <div class="value-card__icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 3.33334L6.66669 10V18.3333C6.66669 27.1667 12.1667 35.3333 20 36.6667C27.8334 35.3333 33.3334 27.1667 33.3334 18.3333V10L20 3.33334Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14.1667 20L18.3334 24.1667L26.6667 15.8333" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-card__title">Safety First</h3>
+                        <p class="value-card__description">Your safety is our priority on every trip. From careful driving to secure pickups, we make sure you travel with peace of mind.</p>
+                    </article>
+
+                    <!-- Comfortable Rides -->
+                    <article class="value-card">
+                        <div class="value-card__icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M33.3334 18.3333H6.66669" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M8.33335 26.6667H6.66669C5.74621 26.6667 5.00002 25.9205 5.00002 25V15C5.00002 12.2386 7.23859 10 10 10H30C32.7614 10 35 12.2386 35 15V25C35 25.9205 34.2538 26.6667 33.3334 26.6667H31.6667" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <circle cx="12.5" cy="26.6667" r="3.33333" stroke="currentColor" stroke-width="2.5"/>
+                                <circle cx="27.5" cy="26.6667" r="3.33333" stroke="currentColor" stroke-width="2.5"/>
+                                <path d="M15.8334 26.6667H24.1667" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-card__title">Comfortable Rides</h3>
+                        <p class="value-card__description">Enjoy a quiet, smooth ride every time. Our cars are spacious, clean, and designed to help you relax from the moment you step in.</p>
+                    </article>
+
+                    <!-- Professional Chauffeurs -->
+                    <article class="value-card">
+                        <div class="value-card__icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="20" cy="13.3333" r="6.66667" stroke="currentColor" stroke-width="2.5"/>
+                                <path d="M8.33335 33.3333C8.33335 27.8105 12.8105 23.3333 18.3334 23.3333H21.6667C27.1896 23.3333 31.6667 27.8105 31.6667 33.3333" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-card__title">Professional Chauffeurs</h3>
+                        <p class="value-card__description">Our chauffeurs are trained and reliable. They handle the details, follow your preferences, and make sure your journey is stress-free.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Core Scripts -->
+    <script src="/js/utils/includes.js"></script>
+    <script src="/js/layout/header.js"></script>
+
+    <!-- Page Scripts -->
+    <script src="/js/pages/landing.js"></script>
+
+</body>
+</html>

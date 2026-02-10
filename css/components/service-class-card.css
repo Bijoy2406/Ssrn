@@ -1,0 +1,297 @@
+/**
+ * Service Class Card Component
+ * Displays vehicle class information with car image, details, and pricing
+ * Based on Figma: node-id=1154:17247 & 1159:18134
+ * Supports: Desktop, Tablet, Mobile layouts with various states
+ */
+
+/* ============================================
+   SERVICE CLASS CARD
+   ============================================ */
+.service-class-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--surface-page);
+  border: 1px solid var(--border-neutral-tertiary);
+  border-radius: var(--radius-m);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* States */
+.service-class-card:hover {
+  background-color: var(--surface-neutral-tertiary);
+  border-color: var(--border-neutral-tertiary);
+}
+
+.service-class-card:focus-within {
+  outline: 4px solid var(--border-neutral-primary);
+  outline-offset: -4px;
+}
+
+.service-class-card--selected {
+  border: 4px solid var(--border-neutral-primary);
+  padding: 29px 21px var(--space-800) 21px; /* Adjust for thicker border */
+}
+
+.service-class-card--selected:hover {
+  background-color: var(--surface-page);
+}
+
+.service-class-card--disabled {
+  background-color: var(--surface-neutral-tertiary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ============================================
+   CARD CONTENT
+   ============================================ */
+.service-class-card__content {
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  gap: var(--space-800);
+}
+
+/* ============================================
+   CAR IMAGE
+   ============================================ */
+.service-class-card__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 91px;
+  flex-shrink: 0;
+}
+
+.service-class-card__image img,
+.service-class-card__image svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================
+   DETAILS SECTION
+   ============================================ */
+.service-class-card__details {
+  display: flex;
+  flex: 1;
+  gap: var(--space-800);
+}
+
+.service-class-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-200);
+}
+
+/* Class Name & Example */
+.service-class-card__class {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: var(--space-100);
+}
+
+.service-class-card__class-name {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h5-size);
+  font-weight: var(--font-weight-extra-bold);
+  line-height: var(--heading-h5-line-height);
+  color: var(--text-neutral-primary);
+  text-align: right;
+  margin: 0;
+}
+
+.service-class-card__car-example {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-neutral-primary);
+  margin: 0;
+}
+
+/* Passenger & Luggage */
+.service-class-card__specs {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--space-200);
+}
+
+.service-class-card__spec-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-100);
+}
+
+.service-class-card__spec-item--luggage {
+  flex: 1;
+}
+
+.service-class-card__spec-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.service-class-card__spec-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.service-class-card__spec-value {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-neutral-primary);
+}
+
+/* ============================================
+   PRICE & EDIT BUTTON
+   ============================================ */
+.service-class-card__price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.service-class-card__price {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h5-size);
+  font-weight: var(--font-weight-extra-bold);
+  line-height: var(--heading-h5-line-height);
+  color: var(--text-neutral-primary);
+  margin: 0;
+}
+
+/* ============================================
+   SELECTED STATE - SEE DETAILS BUTTON
+   ============================================ */
+.service-class-card__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+}
+
+.service-class-card__details-btn {
+  display: none;
+}
+
+.service-class-card--selected .service-class-card__details-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-300);
+  padding: var(--space-300) var(--space-600);
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: var(--body-sm-line-height);
+  color: var(--text-neutral-primary);
+  background-color: transparent;
+  border: 2px solid var(--border-neutral-primary);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.service-class-card--selected .service-class-card__details-btn:hover {
+  background-color: var(--surface-neutral-secondary);
+}
+
+/* ============================================
+   TABLET LAYOUT
+   ============================================ */
+@media (max-width: 992px) {
+  .service-class-card {
+    padding: var(--space-800) var(--space-600);
+  }
+
+  .service-class-card__content {
+    gap: var(--space-600);
+  }
+
+  .service-class-card__image {
+    width: 140px;
+    height: 71px;
+  }
+
+  .service-class-card__class-name {
+    font-size: var(--heading-h6-size);
+    font-weight: var(--font-weight-extra-bold);
+    line-height: var(--heading-h6-line-height);
+  }
+
+  .service-class-card__price {
+    font-size: var(--heading-h6-size);
+    font-weight: var(--font-weight-extra-bold);
+    line-height: var(--heading-h6-line-height);
+  }
+}
+
+/* ============================================
+   MOBILE LAYOUT
+   ============================================ */
+@media (max-width: 640px) {
+  .service-class-card {
+    gap: var(--space-400);
+    padding: var(--space-600) var(--space-400);
+  }
+
+  .service-class-card--selected {
+    padding: 21px 13px var(--space-600) 13px;
+  }
+
+  .service-class-card__content {
+    gap: var(--space-400);
+  }
+
+  .service-class-card__image {
+    width: 100px;
+    height: 51px;
+  }
+
+  .service-class-card__details {
+    gap: var(--space-200);
+  }
+
+  .service-class-card__class {
+    gap: var(--space-200);
+  }
+
+  .service-class-card__class-name {
+    font-size: var(--body-md-size);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--body-md-line-height);
+    text-align: left;
+  }
+
+  .service-class-card__car-example {
+    display: none; /* Hide car example on mobile */
+  }
+
+  .service-class-card__spec-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .service-class-card__spec-value {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+
+  .service-class-card__price {
+    font-size: var(--body-md-size);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--body-md-line-height);
+  }
+}

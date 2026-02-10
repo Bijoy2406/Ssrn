@@ -1,0 +1,289 @@
+/**
+ * SSRN Footer Component
+ * Full footer with logo, link sections, legal links, social icons
+ * Desktop and mobile variants
+ * Based on Figma design system
+ */
+
+/* ============================================
+   FOOTER BASE
+   ============================================ */
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-1600) 120px;
+  background-color: var(--grey-10);
+  width: 100%;
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: var(--space-600);
+}
+
+/* ============================================
+   LOGO AND HELP ROW
+   ============================================ */
+.footer__top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  align-self: stretch;
+  gap: var(--space-1600);
+  padding-bottom: var(--space-600);
+  border-bottom: var(--border-s) solid var(--grey-40);
+}
+
+.footer__logo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.footer__logo img,
+.footer__logo svg {
+  max-height: 40px;
+  width: auto;
+}
+
+.footer__help-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-300);
+  padding: var(--space-100) var(--space-200);
+  background: none;
+  border: none;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.footer__help-btn:hover {
+  opacity: 0.8;
+}
+
+.footer__help-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================
+   LINK SECTIONS
+   ============================================ */
+.footer__links-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  padding-right: 320px;
+  padding-bottom: var(--space-600);
+  border-bottom: var(--border-s) solid var(--grey-40);
+}
+
+.footer__link-sections {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  align-items: stretch;
+  align-self: stretch;
+  gap: 72px;
+}
+
+/* Individual link section (Company, Explore, Top Cities) */
+.footer__link-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  flex: 1;
+}
+
+.footer__link-heading {
+  font-family: var(--font-family-heading);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.25em;
+  color: var(--white);
+}
+
+.footer__link-list {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: var(--space-200);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   FOOTER LINK - SUB-COMPONENT
+   ============================================ */
+.footer-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--space-200);
+  padding: 2px;
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.footer-link__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--white);
+}
+
+.footer-link__text {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--white);
+}
+
+/* Hover */
+.footer-link:hover .footer-link__text {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Focus */
+.footer-link:focus-visible {
+  outline: var(--border-s) solid var(--white);
+  outline-offset: -1px;
+  border-radius: var(--radius-xs);
+}
+
+/* Disabled */
+.footer-link--disabled {
+  pointer-events: none;
+}
+
+.footer-link--disabled .footer-link__text {
+  color: var(--grey-40);
+}
+
+.footer-link--disabled .footer-link__icon {
+  color: var(--grey-40);
+}
+
+/* ============================================
+   BOTTOM ROW - LEGAL LINKS + SOCIALS
+   ============================================ */
+.footer__bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-self: stretch;
+  gap: 72px;
+}
+
+.footer__legal-links {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-800);
+  flex: 1;
+}
+
+.footer__legal-links .footer-link {
+  flex: 0 0 auto;
+  align-self: auto;
+}
+
+.footer__socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-800);
+}
+
+.footer__social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  color: var(--white);
+  transition: opacity 0.15s ease;
+}
+
+.footer__social-link:hover {
+  opacity: 0.8;
+}
+
+.footer__social-link svg,
+.footer__social-link img {
+  width: 28px;
+  height: 28px;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+@media (max-width: 1024px) {
+  .footer {
+    padding: var(--space-1600) 60px;
+  }
+
+  .footer__links-wrapper {
+    padding-right: 0;
+  }
+
+  .footer__link-sections {
+    gap: 48px;
+  }
+
+  .footer__bottom {
+    gap: 48px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--space-600) var(--space-400);
+  }
+
+  .footer__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-400);
+  }
+
+  .footer__links-wrapper {
+    padding-right: 0;
+  }
+
+  .footer__link-sections {
+    flex-direction: column;
+    gap: var(--space-800);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: var(--space-800);
+  }
+
+  .footer__legal-links {
+    flex-direction: column;
+    gap: var(--space-200);
+  }
+
+  .footer__socials {
+    gap: var(--space-800);
+  }
+}

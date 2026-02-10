@@ -1,0 +1,382 @@
+/**
+ * Tree Component
+ * Hierarchical tree navigation with expandable items
+ * Based on Figma design system
+ */
+
+/* ============================================
+   TREE CONTAINER
+   ============================================ */
+.tree {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100); /* 4px */
+}
+
+/* ============================================
+   TREE ITEM
+   ============================================ */
+.tree-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200); /* 8px */
+  padding: var(--space-100); /* 4px */
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease;
+}
+
+/* Tree item levels - left padding for hierarchy */
+.tree-item--level-1 {
+  padding-left: var(--space-100); /* 4px */
+}
+
+.tree-item--level-2 {
+  padding-left: var(--space-400); /* 16px */
+}
+
+.tree-item--level-3 {
+  padding-left: 60px;
+}
+
+/* Level 3 with icon has less padding */
+.tree-item--level-3.tree-item--has-icon {
+  padding-left: 28px;
+}
+
+/* ============================================
+   TREE ITEM STATES
+   ============================================ */
+
+/* Hover state */
+.tree-item:hover .tree-item__indicator,
+.tree-item--hover .tree-item__indicator {
+  background-color: var(--golden-80); /* #DED1C0 */
+}
+
+/* Selected state */
+.tree-item.is-selected .tree-item__label,
+.tree-item--selected .tree-item__label {
+  color: var(--sea-green-50); /* #306968 */
+}
+
+/* Focus state */
+.tree-item:focus-visible,
+.tree-item--focus {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--sea-green-50);
+}
+
+/* Disabled state */
+.tree-item.is-disabled,
+.tree-item--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   TREE ITEM INDICATOR (Chevron)
+   ============================================ */
+.tree-item__indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: var(--radius-full);
+  transition: background-color 0.15s ease, transform 0.2s ease;
+}
+
+.tree-item__indicator svg {
+  width: 24px;
+  height: 24px;
+  color: var(--text-primary);
+  transition: transform 0.2s ease;
+}
+
+/* Rotate chevron when expanded */
+.tree-item.is-expanded .tree-item__indicator svg,
+.tree-item--open .tree-item__indicator svg {
+  transform: rotate(90deg);
+}
+
+/* Hide indicator for leaf nodes */
+.tree-item--leaf .tree-item__indicator {
+  visibility: hidden;
+}
+
+/* ============================================
+   TREE ITEM CONTENT
+   ============================================ */
+.tree-item__content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-100); /* 4px */
+  flex: 1;
+  min-width: 0;
+}
+
+/* Tree item icon */
+.tree-item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  color: var(--text-primary);
+}
+
+.tree-item__icon svg,
+.tree-item__icon img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Tree item label */
+.tree-item__label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size); /* 16px */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s ease;
+}
+
+/* Selected label color */
+.tree-item.is-selected .tree-item__label {
+  color: var(--sea-green-50);
+}
+
+/* Hover label color when selected */
+.tree-item.is-selected:hover .tree-item__label {
+  color: var(--golden-40); /* #9B8262 */
+}
+
+/* ============================================
+   TREE ITEM ACTIONS
+   ============================================ */
+.tree-item__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-100);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.tree-item:hover .tree-item__actions {
+  opacity: 1;
+}
+
+.tree-item__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-xs);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.tree-item__action:hover {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   TREE CHILDREN CONTAINER
+   ============================================ */
+.tree-item__children {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-100);
+  margin-left: 0;
+}
+
+.tree-item.is-expanded > .tree-item__children {
+  display: flex;
+}
+
+/* Animated expansion */
+.tree-item__children--animated {
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+/* ============================================
+   TREE CONNECTING LINES
+   ============================================ */
+.tree--lines .tree-item__children {
+  position: relative;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid var(--border-default);
+}
+
+.tree--lines .tree-item__children .tree-item::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  width: 12px;
+  height: 1px;
+  background-color: var(--border-default);
+}
+
+/* ============================================
+   TREE VARIANTS
+   ============================================ */
+
+/* Compact tree */
+.tree--compact {
+  gap: 0;
+}
+
+.tree--compact .tree-item {
+  padding: 2px var(--space-100);
+}
+
+.tree--compact .tree-item__children {
+  gap: 0;
+}
+
+/* Dense tree */
+.tree--dense .tree-item__indicator {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+}
+
+.tree--dense .tree-item__icon {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+}
+
+.tree--dense .tree-item__icon svg,
+.tree--dense .tree-item__icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.tree--dense .tree-item__label {
+  font-size: var(--body-sm-size);
+}
+
+/* ============================================
+   TREE SELECTION MODES
+   ============================================ */
+
+/* Checkbox selection */
+.tree--checkbox .tree-item__checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid var(--border-default);
+  border-radius: var(--radius-xxs);
+  margin-right: var(--space-100);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.tree--checkbox .tree-item.is-selected .tree-item__checkbox {
+  background-color: var(--surface-brand-primary);
+  border-color: var(--surface-brand-primary);
+}
+
+.tree--checkbox .tree-item.is-selected .tree-item__checkbox::after {
+  content: '';
+  width: 10px;
+  height: 5px;
+  border-left: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
+  transform: rotate(-45deg) translateY(-1px);
+}
+
+/* Indeterminate state */
+.tree--checkbox .tree-item.is-indeterminate .tree-item__checkbox {
+  background-color: var(--surface-brand-primary);
+  border-color: var(--surface-brand-primary);
+}
+
+.tree--checkbox .tree-item.is-indeterminate .tree-item__checkbox::after {
+  content: '';
+  width: 8px;
+  height: 2px;
+  background-color: var(--white);
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+.tree-item--loading .tree-item__indicator svg {
+  animation: tree-spin 1s linear infinite;
+}
+
+@keyframes tree-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   DRAG AND DROP
+   ============================================ */
+.tree-item.is-dragging {
+  opacity: 0.5;
+}
+
+.tree-item.is-drop-target {
+  background-color: var(--surface-secondary);
+  outline: 2px dashed var(--surface-brand-primary);
+}
+
+.tree-item.is-drop-target-before::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--surface-brand-primary);
+}
+
+.tree-item.is-drop-target-after::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--surface-brand-primary);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  .tree-item__actions {
+    opacity: 1;
+  }
+
+  .tree-item--level-3 {
+    padding-left: 40px;
+  }
+
+  .tree-item--level-3.tree-item--has-icon {
+    padding-left: 20px;
+  }
+}

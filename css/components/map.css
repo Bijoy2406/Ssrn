@@ -1,0 +1,64 @@
+/**
+ * Map Component
+ * Displays route/location map
+ * Based on Figma: node-id=1148:16385
+ */
+
+/* ============================================
+   MAP CONTAINER
+   ============================================ */
+.map {
+  width: 100%;
+  height: 200px;
+  background-color: var(--surface-page);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  position: relative;
+}
+
+.map__iframe,
+.map__image,
+.map__placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder styling */
+.map__placeholder {
+  background-color: var(--surface-neutral-secondary);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23616262" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 64px 64px;
+}
+
+/* Loading state */
+.map--loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .map {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .map {
+    height: 150px;
+  }
+}

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards and Modals Demo - SSRN</title>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/tokens.css">
+    <link rel="stylesheet" href="/css/layout/grid.css">
+
+    <!-- Components -->
+    <link rel="stylesheet" href="/css/components/buttons.css">
+    <link rel="stylesheet" href="/css/components/cards-and-modals.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: var(--surface-neutral-secondary);
+            padding: var(--space-1000) var(--space-600);
+        }
+
+        .demo-section {
+            margin-bottom: var(--space-1000);
+        }
+
+        .demo-section__title {
+            font-family: var(--font-family-heading);
+            font-size: var(--heading-h3-size);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-neutral-primary);
+            margin-bottom: var(--space-600);
+        }
+
+        .demo-cards-row {
+            display: flex;
+            gap: var(--space-600);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-600);
+        }
+
+        .demo-buttons {
+            display: flex;
+            gap: var(--space-400);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-600);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 style="font-family: var(--font-family-heading); font-size: 48px; font-weight: 800; color: var(--text-neutral-primary); margin-bottom: var(--space-800);">
+            Cards and Modals Components Demo
+        </h1>
+
+        <!-- Service Cards -->
+        <section class="demo-section">
+            <h2 class="demo-section__title">Service Cards</h2>
+            <div class="demo-cards-row">
+                <article class="card-service">
+                    <div class="card-service__image">
+                        <img src="https://via.placeholder.com/320x180/306968/ffffff?text=Airport+Transfer" alt="Airport Transfers">
+                    </div>
+                    <div class="card-service__content">
+                        <h3 class="card-service__heading">Airport Transfers</h3>
+                        <p class="card-service__body">
+                            Reliable and comfortable airport transportation. We ensure you arrive on time, every time with professional drivers and well-maintained vehicles.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="card-service">
+                    <div class="card-service__image">
+                        <img src="https://via.placeholder.com/320x180/306968/ffffff?text=City+Tours" alt="City Tours">
+                    </div>
+                    <div class="card-service__content">
+                        <h3 class="card-service__heading">City Tours</h3>
+                        <p class="card-service__body">
+                            Explore the city with our guided tours. Discover hidden gems and popular attractions with knowledgeable local guides.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Destination Cards -->
+        <section class="demo-section">
+            <h2 class="demo-section__title">Destination Cards</h2>
+            <div class="demo-cards-row">
+                <article class="card-destination">
+                    <div class="card-destination__image">
+                        <img src="https://via.placeholder.com/360x202/306968/ffffff?text=New+York" alt="New York">
+                    </div>
+                    <div class="card-destination__content">
+                        <h3 class="card-destination__heading">New York</h3>
+                        <div class="card-destination__location">
+                            <div class="card-destination__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <span class="card-destination__text">John F. Kennedy International Airport</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card-destination">
+                    <div class="card-destination__image">
+                        <img src="https://via.placeholder.com/360x202/306968/ffffff?text=Los+Angeles" alt="Los Angeles">
+                    </div>
+                    <div class="card-destination__content">
+                        <h3 class="card-destination__heading">Los Angeles</h3>
+                        <div class="card-destination__location">
+                            <div class="card-destination__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <span class="card-destination__text">Los Angeles International Airport</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Core Value Cards -->
+        <section class="demo-section">
+            <h2 class="demo-section__title">Core Value Cards</h2>
+            <div class="demo-cards-row">
+                <article class="card-core-value">
+                    <div class="card-core-value__header">
+                        <div class="card-core-value__icon">
+                            <svg viewBox="0 0 48 48" fill="currentColor">
+                                <path d="M24 4L8 12v14c0 10 7 19 16 22 9-3 16-12 16-22V12L24 4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-core-value__heading">Safety First</h3>
+                    </div>
+                    <p class="card-core-value__body">
+                        Your safety is our priority on every trip. From careful driving to secure pickups, we make sure you travel with peace of mind.
+                    </p>
+                </article>
+
+                <article class="card-core-value">
+                    <div class="card-core-value__header">
+                        <div class="card-core-value__icon">
+                            <svg viewBox="0 0 48 48" fill="currentColor">
+                                <circle cx="24" cy="24" r="20"/>
+                                <path d="M24 12v12l8 4" stroke="white" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-core-value__heading">Always On Time</h3>
+                    </div>
+                    <p class="card-core-value__body">
+                        Punctuality is our promise. We track your flight and traffic to ensure you're never late for important moments.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- CTA Card -->
+        <section class="demo-section">
+            <h2 class="demo-section__title">CTA Card</h2>
+            <article class="card-cta">
+                <div class="card-cta__content">
+                    <h2 class="card-cta__heading">Got a destination in mind?</h2>
+                    <p class="card-cta__body">
+                        Enter your pickup and drop-off locations to check prices and plan your ride with ease.
+                    </p>
+                </div>
+                <div class="card-cta__action">
+                    <button class="btn btn--primary btn--lg">Book a Ride Now</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- Modal Triggers -->
+        <section class="demo-section">
+            <h2 class="demo-section__title">Modals</h2>
+            <div class="demo-buttons">
+                <button class="btn btn--primary" onclick="openModal('confirmationModal')">
+                    Open Confirmation Modal
+                </button>
+                <button class="btn btn--primary" onclick="openModal('shareModal')">
+                    Open Share Modal
+                </button>
+                <button class="btn btn--primary" onclick="openModal('messageModal')">
+                    Open Success Message
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal-overlay">
+        <div class="modal-confirmation">
+            <button class="modal-confirmation__close" onclick="closeModal('confirmationModal')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="modal-confirmation__content">
+                <h3 class="modal-confirmation__heading">Cancel Your Ride?</h3>
+                <p class="modal-confirmation__body">
+                    Are you sure you want to cancel this ride? This action cannot be undone and cancellation fees may apply.
+                </p>
+            </div>
+            <div class="modal-confirmation__actions">
+                <button class="btn btn--primary">Yes, Cancel Ride</button>
+                <button class="btn btn--outline-neutral" onclick="closeModal('confirmationModal')">Keep My Ride</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal-overlay">
+        <div class="modal-share">
+            <button class="modal-share__close" onclick="closeModal('shareModal')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="modal-share__header">
+                <h3 class="modal-share__heading">Share Booking</h3>
+                <p class="modal-share__body">
+                    Anyone with this link can view your booking details. Personal information and pricing are not shown.
+                </p>
+            </div>
+            <div class="modal-share__options">
+                <div class="modal-share__link-group">
+                    <label class="modal-share__link-label">Copy booking Link</label>
+                    <div class="modal-share__link-input">
+                        <span class="modal-share__link-text">https://ssrn.com/booking/abc123xyz789</span>
+                        <button class="modal-share__copy-btn" onclick="copyLink()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-share__separator">
+                    <div class="modal-share__separator-line"></div>
+                    <span class="modal-share__separator-text">or send another way</span>
+                    <div class="modal-share__separator-line"></div>
+                </div>
+                <button class="btn btn--outline-neutral modal-share__email-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M22 4L12 13 2 4"/>
+                    </svg>
+                    Email
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Card Modal -->
+    <div id="messageModal" class="modal-overlay">
+        <div class="message-card">
+            <div class="message-card__header">
+                <div class="message-card__icon message-card__icon--success">
+                    <svg viewBox="0 0 56 56" fill="currentColor">
+                        <circle cx="28" cy="28" r="28"/>
+                        <path d="M16 28l8 8 16-16" stroke="white" stroke-width="4" fill="none"/>
+                    </svg>
+                </div>
+                <h2 class="message-card__heading">Your ride is confirmed</h2>
+            </div>
+            <div class="message-card__body-section">
+                <div class="message-card__info">
+                    <h3 class="message-card__id-heading">Booking ID: 123456</h3>
+                    <p class="message-card__body">
+                        Your booking is all set. A confirmation email with your ride details has been sent to you.
+                    </p>
+                </div>
+            </div>
+            <div class="message-card__actions">
+                <button class="btn btn--primary">Manage Rides</button>
+                <div class="message-card__secondary-action">
+                    <a href="#" class="message-card__link">Back to Homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('modal-overlay--open');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('modal-overlay--open');
+            document.body.classList.remove('modal-open');
+        }
+
+        function copyLink() {
+            const linkText = 'https://ssrn.com/booking/abc123xyz789';
+            navigator.clipboard.writeText(linkText).then(() => {
+                alert('Link copied to clipboard!');
+            });
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('modal-overlay--open');
+                    document.body.classList.remove('modal-open');
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay--open').forEach(modal => {
+                    modal.classList.remove('modal-overlay--open');
+                });
+                document.body.classList.remove('modal-open');
+            }
+        });
+    </script>
+
+</body>
+</html>

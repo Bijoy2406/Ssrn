@@ -1,0 +1,268 @@
+/**
+ * Badge Component
+ * Notification badges and status indicators
+ * Based on Figma design system
+ */
+
+/* ============================================
+   BASE BADGE
+   ============================================ */
+.badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size); /* 12px */
+  font-weight: var(--font-weight-medium);
+  line-height: 1.333;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ============================================
+   BADGE TYPES
+   ============================================ */
+
+/* Copy badge - shows text/number */
+.badge--copy {
+  background-color: var(--golden-50); /* #C09F77 */
+  color: var(--golden-10); /* #282E22 */
+}
+
+/* Dot badge - just a circle indicator */
+.badge--dot {
+  width: 12px;
+  height: 12px;
+  min-width: 12px;
+  padding: 0;
+  background-color: var(--golden-50);
+}
+
+/* ============================================
+   BADGE STATES
+   ============================================ */
+
+/* Default state */
+.badge--default {
+  background-color: var(--golden-50); /* #C09F77 */
+  color: var(--golden-10); /* #282E22 */
+}
+
+/* Information state */
+.badge--info {
+  background-color: var(--blue-50); /* #0082E5 */
+  color: var(--text-primary); /* #03110D */
+}
+
+/* Success state */
+.badge--success {
+  background-color: var(--green-50); /* #76CC52 */
+  color: var(--green-10); /* #1A371A */
+}
+
+/* Error state */
+.badge--error {
+  background-color: var(--red-50); /* #CC455C */
+  color: var(--red-10); /* #2B1C1C */
+}
+
+/* Warning state */
+.badge--warning {
+  background-color: var(--orange-50); /* #E59553 */
+  color: var(--orange-10); /* #302C1A */
+}
+
+/* ============================================
+   BADGE SIZES
+   ============================================ */
+
+/* Small badge */
+.badge--sm {
+  min-width: 18px;
+  height: 18px;
+  padding: 2px 4px;
+  font-size: 10px;
+}
+
+.badge--sm.badge--dot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+}
+
+/* Large badge */
+.badge--lg {
+  min-width: 32px;
+  height: 32px;
+  padding: 4px 8px;
+  font-size: var(--footnote-size); /* 14px */
+}
+
+.badge--lg.badge--dot {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+}
+
+/* ============================================
+   BADGE POSITIONS
+   ============================================ */
+
+/* Container for positioned badges */
+.badge-container {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Top-right positioned badge */
+.badge--positioned {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  z-index: 1;
+}
+
+/* Top-left positioned badge */
+.badge--top-left {
+  top: -4px;
+  right: auto;
+  left: -4px;
+}
+
+/* Bottom-right positioned badge */
+.badge--bottom-right {
+  top: auto;
+  bottom: -4px;
+  right: -4px;
+}
+
+/* Bottom-left positioned badge */
+.badge--bottom-left {
+  top: auto;
+  bottom: -4px;
+  right: auto;
+  left: -4px;
+}
+
+/* ============================================
+   BADGE WITH ICON
+   ============================================ */
+.badge--icon {
+  padding: 4px;
+}
+
+.badge--icon svg,
+.badge--icon img {
+  width: 16px;
+  height: 16px;
+}
+
+.badge--sm.badge--icon svg,
+.badge--sm.badge--icon img {
+  width: 12px;
+  height: 12px;
+}
+
+.badge--lg.badge--icon svg,
+.badge--lg.badge--icon img {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   BADGE ANIMATIONS
+   ============================================ */
+
+/* Pulse animation for notifications */
+.badge--pulse {
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Ping animation for urgent notifications */
+.badge--ping::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: badge-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes badge-ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   BADGE TEXT OVERFLOW
+   ============================================ */
+
+/* For badges with long numbers like 99+ */
+.badge--overflow {
+  max-width: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================
+   BADGE GROUP
+   ============================================ */
+.badge-group {
+  display: inline-flex;
+  gap: var(--space-100);
+}
+
+/* Stacked badges */
+.badge-group--stacked {
+  gap: 0;
+}
+
+.badge-group--stacked .badge:not(:first-child) {
+  margin-left: -8px;
+  border: 2px solid var(--surface-page);
+}
+
+/* ============================================
+   OUTLINE VARIANTS
+   ============================================ */
+.badge--outline {
+  background-color: transparent;
+  border: 1px solid currentColor;
+}
+
+.badge--outline.badge--default {
+  color: var(--golden-50);
+}
+
+.badge--outline.badge--info {
+  color: var(--blue-50);
+}
+
+.badge--outline.badge--success {
+  color: var(--green-50);
+}
+
+.badge--outline.badge--error {
+  color: var(--red-50);
+}
+
+.badge--outline.badge--warning {
+  color: var(--orange-50);
+}

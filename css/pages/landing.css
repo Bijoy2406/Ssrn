@@ -1,0 +1,456 @@
+/**
+ * SSRN Landing Page Styles
+ * Anonymous user landing page with hero, services, destinations, and values
+ */
+
+/* ============================================
+   SECTION BASE
+   ============================================ */
+.section {
+  padding: var(--space-2000) 0;
+}
+
+.section__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h2-size);
+  line-height: var(--heading-h2-line-height);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-primary);
+  margin-bottom: var(--space-800);
+}
+
+.section__description {
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line-height);
+  color: var(--text-neutral-secondary);
+  max-width: 600px;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--space-800);
+  padding-bottom: var(--space-2000);
+  overflow: hidden;
+}
+
+.hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--surface-gradient-full) 0%,
+    var(--surface-gradient-transparent) 60%
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-800);
+  width: 100%;
+}
+
+.hero__title-wrapper {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h3-size);
+  line-height: var(--heading-h3-line-height);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-inverse-primary);
+}
+
+.hero__booking-wrapper {
+  flex-shrink: 0;
+  width: 481px;
+}
+
+/* ============================================
+   BOOKING FORM
+   ============================================ */
+.booking-form {
+  background-color: var(--surface-neutral-page);
+  border-radius: var(--radius-l);
+  padding: var(--space-600);
+  box-shadow: var(--shadow-xl);
+}
+
+.booking-form__tabs {
+  display: flex;
+  gap: var(--space-200);
+  margin-bottom: var(--space-600);
+}
+
+.booking-form__tab {
+  flex: 1;
+  padding: var(--space-300) var(--space-400);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-neutral-secondary);
+  background-color: var(--surface-neutral-secondary);
+  border: none;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.booking-form__tab:hover {
+  background-color: var(--surface-neutral-tertiary);
+}
+
+.booking-form__tab--active {
+  background-color: var(--surface-neutral-inverse-primary);
+  color: var(--text-neutral-inverse-primary);
+}
+
+.booking-form__tab--active:hover {
+  background-color: var(--surface-neutral-inverse-primary);
+}
+
+.booking-form__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+.booking-form__submit {
+  margin-top: var(--space-200);
+}
+
+/* ============================================
+   SERVICES SECTION
+   ============================================ */
+.services {
+  background-color: var(--surface-neutral-page);
+}
+
+.service-card--with-image {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-neutral-page);
+  border: var(--border-s) solid var(--border-default);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-align: left;
+  padding: 0;
+}
+
+.service-card--with-image:hover {
+  box-shadow: var(--shadow-l);
+  transform: translateY(-4px);
+}
+
+.service-card__image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.service-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.service-card--with-image:hover .service-card__image img {
+  transform: scale(1.05);
+}
+
+.service-card__content {
+  padding: var(--space-600);
+}
+
+.service-card--with-image .service-card__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h5-size);
+  line-height: var(--heading-h5-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-neutral-primary);
+  margin-bottom: var(--space-300);
+}
+
+.service-card--with-image .service-card__description {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+  color: var(--text-neutral-secondary);
+  margin-bottom: 0;
+}
+
+/* ============================================
+   DESTINATIONS SECTION
+   ============================================ */
+.destinations {
+  background-color: var(--surface-neutral-page);
+}
+
+.destinations__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-800);
+  gap: var(--space-800);
+}
+
+.destinations__copy {
+  flex: 1;
+}
+
+.destinations__copy .section__title {
+  margin-bottom: var(--space-400);
+}
+
+.destinations__filters {
+  display: flex;
+  gap: var(--space-400);
+  flex-shrink: 0;
+}
+
+.destinations__filter--active {
+  background-color: var(--surface-brand-action);
+  color: var(--text-brand-on-action);
+  border-color: var(--border-brand-action);
+}
+
+.destinations__carousel {
+  position: relative;
+}
+
+.destinations__track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-600);
+  overflow: hidden;
+}
+
+.destinations__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-400);
+  margin-top: var(--space-800);
+}
+
+.carousel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--surface-neutral-page);
+  border: var(--border-s) solid var(--border-default);
+  border-radius: var(--radius-full);
+  color: var(--icon-neutral-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background-color: var(--surface-neutral-secondary);
+  border-color: var(--border-neutral-secondary);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.carousel-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Destination Card Enhancements */
+.destination-card {
+  aspect-ratio: 6/8;
+}
+
+.destination-card__routes {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+.destination-card__routes svg {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+.cta {
+  padding: var(--space-800) 0;
+}
+
+.cta__card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-800);
+  padding: var(--space-1000) var(--space-1200);
+  background-color: var(--surface-neutral-secondary);
+  border-radius: var(--radius-l);
+}
+
+.cta__content {
+  flex: 1;
+}
+
+.cta__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h4-size);
+  line-height: var(--heading-h4-line-height);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-primary);
+  margin-bottom: var(--space-200);
+}
+
+.cta__description {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+  color: var(--text-neutral-secondary);
+  max-width: 500px;
+}
+
+.cta__btn {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   VALUES SECTION
+   ============================================ */
+.values {
+  background-color: var(--surface-neutral-page);
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+@media (max-width: 1200px) {
+  .hero__booking-wrapper {
+    width: 420px;
+  }
+
+  .destinations__track {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .hero__content {
+    flex-direction: column;
+  }
+
+  .hero__title-wrapper {
+    max-width: 100%;
+  }
+
+  .hero__booking-wrapper {
+    width: 100%;
+    max-width: 481px;
+  }
+
+  .services__grid,
+  .values__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .destinations__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .destinations__track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta__card {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-800);
+  }
+
+  .cta__description {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-1600) 0;
+  }
+
+  .section__title {
+    font-size: var(--heading-h3-size);
+    line-height: var(--heading-h3-line-height);
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: var(--space-600);
+    padding-bottom: var(--space-1600);
+  }
+
+  .hero__title {
+    font-size: var(--heading-h4-size);
+    line-height: var(--heading-h4-line-height);
+  }
+
+  .services__grid,
+  .values__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .destinations__track {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cta__title {
+    font-size: var(--heading-h5-size);
+    line-height: var(--heading-h5-line-height);
+  }
+}
+
+@media (max-width: 480px) {
+  .destinations__track {
+    grid-template-columns: 1fr;
+  }
+
+  .destinations__filters {
+    width: 100%;
+  }
+
+  .destinations__filter {
+    flex: 1;
+  }
+
+  .booking-form__tabs {
+    flex-direction: column;
+  }
+}
