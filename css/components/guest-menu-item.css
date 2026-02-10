@@ -1,0 +1,136 @@
+/**
+ * SSRN Guest Menu Item Component
+ * Dropdown list item for guest selection
+ * Based on Figma node: 1191-19609
+ *
+ * States: Default, Selected, Disabled, Focus, Hover
+ */
+
+/* ============================================
+   GUEST MENU ITEM BASE
+   ============================================ */
+.guest-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-300);
+  width: 100%;
+  background-color: var(--grey-100);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border: none;
+  font-family: var(--font-family-body);
+  text-align: left;
+}
+
+/* ============================================
+   INNER ELEMENTS
+   ============================================ */
+.guest-menu-item__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.guest-menu-item__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.guest-menu-item__name {
+  flex: 1;
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.guest-menu-item__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-400);
+  flex-shrink: 0;
+}
+
+.guest-menu-item__action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--black);
+  transition: color 0.15s ease;
+}
+
+.guest-menu-item__action-btn:hover {
+  color: var(--text-brand-primary);
+}
+
+.guest-menu-item__action-btn svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   STATES
+   ============================================ */
+
+/* Hover */
+.guest-menu-item:hover:not(.guest-menu-item--selected):not(.guest-menu-item--disabled) {
+  background-color: var(--grey-60);
+}
+
+/* Selected */
+.guest-menu-item--selected {
+  background-color: var(--grey-10);
+}
+
+.guest-menu-item--selected .guest-menu-item__icon,
+.guest-menu-item--selected .guest-menu-item__name,
+.guest-menu-item--selected .guest-menu-item__action-btn {
+  color: var(--white);
+}
+
+/* Focus */
+.guest-menu-item:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: -2px;
+}
+
+/* Disabled */
+.guest-menu-item--disabled {
+  background-color: var(--grey-50);
+  cursor: not-allowed;
+}
+
+.guest-menu-item--disabled .guest-menu-item__icon,
+.guest-menu-item--disabled .guest-menu-item__name,
+.guest-menu-item--disabled .guest-menu-item__action-btn {
+  color: var(--grey-10);
+}
+
+.guest-menu-item--disabled .guest-menu-item__action-btn {
+  pointer-events: none;
+}
+
+/* ============================================
+   GUEST MENU LIST CONTAINER
+   ============================================ */
+.guest-menu-list {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  box-shadow: var(--shadow-m);
+  background-color: var(--surface-page);
+}

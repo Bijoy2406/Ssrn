@@ -1,0 +1,46 @@
+/**
+ * SSRN Auth Page Layout
+ * Centers the auth form card on the page
+ * Uses tokens.css variables throughout
+ */
+
+/* ============================================
+   AUTH PAGE WRAPPER
+   ============================================ */
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--surface-secondary);
+}
+
+/* ============================================
+   CONTAINER OVERRIDE FOR AUTH
+   ============================================ */
+.auth-page .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--grid-max-width);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .auth-page {
+    padding: var(--space-600) var(--space-400);
+    align-items: flex-start;
+    padding-top: var(--space-1200);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: var(--space-400) var(--space-300);
+    padding-top: var(--space-800);
+  }
+}

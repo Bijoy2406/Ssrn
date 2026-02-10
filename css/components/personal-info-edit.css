@@ -1,0 +1,228 @@
+/**
+ * SSRN Personal Information Edit Component
+ * Account card with Default (display) and Editing (form) states
+ * Based on Figma node: 2116-143415
+ *
+ * States:
+ *   - Default: read-only fields (Name, Email) + Edit button + Snackbar
+ *   - Editing: form fields (Title, First/Last name, Email) + note + Save/Cancel
+ *
+ * Reuses: .input-wrapper, .input-label, .input (input.css)
+ *         .btn, .btn--neutral-filled, .btn--neutral-transparent (buttons.css)
+ *         .btn-link (buttons.css)
+ *         .snackbar (snackbar.css)
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--grey-100);
+  border-radius: var(--radius-m);
+  width: 100%;
+  max-width: 464px;
+}
+
+/* Editing state — larger gap between sections */
+.personal-info--editing {
+  gap: var(--space-600);
+}
+
+/* ============================================
+   DEFAULT STATE — DISPLAY ROW
+   ============================================ */
+.personal-info__display {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-400);
+}
+
+.personal-info__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  flex: 1;
+  min-width: 0;
+}
+
+/* Individual field (label + value) */
+.personal-info__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+}
+
+.personal-info__field-label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+}
+
+.personal-info__field-value {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+}
+
+/* Edit button — aligns to top-right of display row */
+.personal-info__edit-btn {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   SNACKBAR AREA (verification message)
+   ============================================ */
+.personal-info__snackbar {
+  align-self: stretch;
+}
+
+/* ============================================
+   EDITING STATE — FORM
+   ============================================ */
+.personal-info__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+/* Heading section */
+.personal-info__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.personal-info__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h8-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h8-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+.personal-info__subtitle {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   FORM FIELDS
+   ============================================ */
+.personal-info__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+/* Title dropdown — narrower width */
+.personal-info__field--title {
+  max-width: 80px;
+}
+
+/* Name row — side-by-side first + last name */
+.personal-info__name-row {
+  display: flex;
+  gap: var(--space-200);
+}
+
+.personal-info__name-row > * {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================
+   ADDITIONAL NOTE (e.g. "Changing email will sign you out")
+   ============================================ */
+.personal-info__note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-200);
+}
+
+.personal-info__note-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.personal-info__note-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.personal-info__note-text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-sm-line-height);
+  color: var(--black);
+}
+
+/* ============================================
+   FORM ACTIONS
+   ============================================ */
+.personal-info__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.personal-info__save-btn {
+  width: 100%;
+}
+
+.personal-info__cancel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-100);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  text-decoration: none;
+  background: none;
+  border: none;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.personal-info__cancel-link:hover {
+  color: var(--text-brand-primary);
+}
+
+.personal-info__cancel-link:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .personal-info {
+    padding: var(--space-600) var(--space-400);
+    max-width: 100%;
+  }
+
+  .personal-info__name-row {
+    flex-direction: column;
+    gap: var(--space-400);
+  }
+}

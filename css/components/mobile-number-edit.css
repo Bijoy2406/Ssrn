@@ -1,0 +1,239 @@
+/**
+ * SSRN Mobile Number Edit Component
+ * Account card with Default (display) and Editing (defined field form) states
+ * Based on Figma node: 2116-143855
+ *
+ * States:
+ *   - Default: read-only mobile number + Edit button
+ *   - Editing: heading + country-code/phone defined field + note + Verify/Cancel
+ *
+ * Reuses: .input-wrapper, .input-label, .input (input.css)
+ *         .btn, .btn--filled (buttons.css)
+ *         .btn-link (buttons.css)
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.mobile-number {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--grey-100);
+  border-radius: var(--radius-m);
+  width: 100%;
+  max-width: 464px;
+}
+
+/* Editing state — larger gap between sections */
+.mobile-number--editing {
+  gap: var(--space-600);
+}
+
+/* ============================================
+   DEFAULT STATE — DISPLAY ROW
+   ============================================ */
+.mobile-number__display {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-400);
+}
+
+.mobile-number__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+  flex: 1;
+  min-width: 0;
+}
+
+.mobile-number__label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+}
+
+.mobile-number__value {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+}
+
+/* Edit button — aligns to top-right */
+.mobile-number__edit-btn {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   EDITING STATE — HEADING
+   ============================================ */
+.mobile-number__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.mobile-number__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h8-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h8-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+.mobile-number__subtitle {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   DEFINED FIELD (country code + phone input)
+   ============================================ */
+.mobile-number__field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.mobile-number__defined-field {
+  display: flex;
+  border-radius: var(--radius-s);
+  border: var(--border-m) solid var(--black);
+  overflow: hidden;
+}
+
+.mobile-number__defined-field:focus-within {
+  border-color: var(--sea-green-50);
+  box-shadow: var(--shadow-s);
+}
+
+/* Country code selector */
+.mobile-number__country-code {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-400) var(--space-300);
+  background-color: var(--grey-100);
+  border-right: var(--border-s) solid var(--grey-30);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mobile-number__country-code svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Phone number input */
+.mobile-number__phone-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  padding: var(--space-400) var(--space-300);
+  background-color: var(--grey-100);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  outline: none;
+}
+
+.mobile-number__phone-input::placeholder {
+  color: var(--grey-30);
+}
+
+/* ============================================
+   ADDITIONAL NOTE
+   ============================================ */
+.mobile-number__note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-200);
+}
+
+.mobile-number__note-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.mobile-number__note-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mobile-number__note-text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-sm-line-height);
+  color: var(--black);
+}
+
+/* ============================================
+   FORM ACTIONS
+   ============================================ */
+.mobile-number__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.mobile-number__verify-btn {
+  width: 100%;
+}
+
+.mobile-number__cancel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-100);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  text-decoration: none;
+  background: none;
+  border: none;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.mobile-number__cancel-link:hover {
+  color: var(--text-brand-primary);
+}
+
+.mobile-number__cancel-link:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .mobile-number {
+    padding: var(--space-600) var(--space-400);
+    max-width: 100%;
+  }
+}
