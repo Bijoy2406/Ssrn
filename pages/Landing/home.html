@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSRN - Premium Chauffeur Service</title>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/tokens.css">
+    <link rel="stylesheet" href="/css/layout/grid.css">
+    <link rel="stylesheet" href="/css/layout/header.css">
+    <link rel="stylesheet" href="/css/layout/footer.css">
+
+    <!-- Components -->
+    <link rel="stylesheet" href="/css/components/buttons.css">
+    <link rel="stylesheet" href="/css/components/cards.css">
+    <link rel="stylesheet" href="/css/components/forms.css">
+
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="/css/pages/home.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="page page--with-header">
+
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <main class="page__main">
+
+        <!-- ─── Hero ─── -->
+        <section class="hero-section">
+            <div class="hero-background">
+                <img class="hero-image" src="/assets/images/photos/Landing page/Landing Page/Hero Section Image.png"
+                    alt="Premium chauffeur service">
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="hero-content">
+                <div class="container hero-layout">
+                    <!-- Left Column: Title -->
+                    <div class="hero-title-wrapper">
+                        <h1 class="hero-title">Your Trusted<br>Chauffeur Service</h1>
+                    </div>
+
+                    <!-- Right Column: Booking Form -->
+                    <div class="booking-form-wrapper">
+                        <div class="card booking-card">
+                            <!-- Tabs -->
+                            <div class="booking-tabs">
+                                <button class="booking-tab booking-tab--active" data-tab="one-way" type="button">One Way
+                                    Ride</button>
+                                <button class="booking-tab" data-tab="hourly" type="button">Hourly Ride</button>
+                            </div>
+
+                            <!-- Form -->
+                            <form id="booking-form">
+                                <div class="booking-form-grid">
+                                    <!-- From -->
+                                    <div class="form-group">
+                                        <label class="form-label">From</label>
+                                        <div class="form-input-wrapper">
+                                            <div class="form-input-icon-wrapper">
+                                                <img src="/assets/images/icons/Landing page/Landing Page/Landing page/Landing Page/Location.svg"
+                                                    alt="" class="form-input-icon">
+                                            </div>
+                                            <input type="text" class="form-input" name="pickup"
+                                                placeholder="Airport, address, hotel...">
+                                            <button type="button" class="form-input-action">
+                                                <svg class="form-input-action-icon" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <circle cx="11" cy="11" r="8"></circle>
+                                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- To -->
+                                    <div class="form-group">
+                                        <label class="form-label">To</label>
+                                        <div class="form-input-wrapper">
+                                            <div class="form-input-icon-wrapper">
+                                                <img src="/assets/images/icons/Landing page/Landing Page/Landing page/Landing Page/Location.svg"
+                                                    alt="" class="form-input-icon">
+                                            </div>
+                                            <input type="text" class="form-input" name="dropoff"
+                                                placeholder="Airport, address, hotel...">
+                                            <button type="button" class="form-input-action">
+                                                <svg class="form-input-action-icon" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <circle cx="11" cy="11" r="8"></circle>
+                                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Date -->
+                                    <div class="form-group">
+                                        <label class="form-label">Date</label>
+                                        <div class="form-input-wrapper">
+                                            <div class="form-input-icon-wrapper">
+                                                <img src="/assets/images/icons/Landing page/Landing Page/Landing page/Landing Page/Calendar.svg"
+                                                    alt="" class="form-input-icon">
+                                            </div>
+                                            <input type="text" class="form-input" name="date"
+                                                placeholder="Wed , November 30, 2025">
+                                            <button type="button" class="form-input-action">
+                                                <img src="/assets/images/icons/Landing page/Landing Page/Chevron down.svg"
+                                                    alt="Select" class="form-input-action-icon">
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Pickup Time -->
+                                    <div class="form-group">
+                                        <label class="form-label">Pickup Time</label>
+                                        <div class="form-input-wrapper">
+                                            <div class="form-input-icon-wrapper">
+                                                <img src="/assets/images/icons/Landing page/Landing Page/Landing page/Landing Page/Clock.svg"
+                                                    alt="" class="form-input-icon">
+                                            </div>
+                                            <input type="text" class="form-input" name="time" placeholder="05:00 PM">
+                                            <button type="button" class="form-input-action">
+                                                <img src="/assets/images/icons/Landing page/Landing Page/Chevron down.svg"
+                                                    alt="Select" class="form-input-action-icon">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn--primary btn--block btn--lg search-btn">
+                                    <img src="/assets/images/icons/Landing page/Landing Page/Landing page/Landing Page/Search.svg"
+                                        alt="" class="btn-icon">
+                                    See Prices
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Services ─── -->
+        <section class="section">
+            <div class="container">
+                <div class="section__header">
+                    <h2 class="section__title">Our Services</h2>
+                    <p class="section__subtitle">Premium transportation tailored to every need</p>
+                </div>
+
+                <div class="services__grid">
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <img src="/assets/images/photos/source/Airport Transfer.png" alt="Airport Transfer">
+                        </div>
+                        <div class="service-card__body">
+                            <h3 class="service-card__title">Airport Transfer</h3>
+                            <p class="service-card__description">Seamless pickups and drop-offs at any airport. Arrive
+                                refreshed and on time, every time.</p>
+                            <a href="#" class="btn-link">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <img src="/assets/images/photos/source/City to city rides.png" alt="City to City">
+                        </div>
+                        <div class="service-card__body">
+                            <h3 class="service-card__title">City to City</h3>
+                            <p class="service-card__description">Comfortable intercity travel with professional
+                                chauffeurs. Enjoy the journey ahead.</p>
+                            <a href="#" class="btn-link">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <img src="/assets/images/photos/source/Hourly Rides.png" alt="Hourly Rides">
+                        </div>
+                        <div class="service-card__body">
+                            <h3 class="service-card__title">Hourly Rides</h3>
+                            <p class="service-card__description">Flexible hourly hire tailored to your schedule. Perfect
+                                for meetings and events.</p>
+                            <a href="#" class="btn-link">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <img src="/assets/images/photos/source/Generated-Image-November-12,-2025---9_20PM.jpg"
+                                alt="Corporate Travel">
+                        </div>
+                        <div class="service-card__body">
+                            <h3 class="service-card__title">Corporate Travel</h3>
+                            <p class="service-card__description">Premium corporate transport for executives. Make a
+                                lasting impression on your clients.</p>
+                            <a href="#" class="btn-link">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Destinations ─── -->
+        <section class="section">
+            <div class="container">
+                <div class="section__header section__header--left destinations__header">
+                    <div>
+                        <h2 class="section__title">Popular Destinations</h2>
+                        <p class="section__subtitle">Explore our most travelled routes</p>
+                    </div>
+                    <a href="#" class="btn-link">View All</a>
+                </div>
+
+                <div class="destinations__carousel">
+                    <button class="destinations__nav-btn destinations__nav-btn--prev" aria-label="Previous" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div class="destinations__track">
+                        <div class="destination-card">
+                            <div class="destination-card__image">
+                                <img src="/assets/images/photos/source/New York.png" alt="New York">
+                            </div>
+                            <div class="destination-card__content">
+                                <h3 class="destination-card__title">New York</h3>
+                                <div class="destination-card__routes">
+                                    <span>JFK Airport</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14" />
+                                        <path d="M12 5l7 7-7 7" />
+                                    </svg>
+                                    <span>Manhattan</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="destination-card">
+                            <div class="destination-card__image">
+                                <img src="/assets/images/photos/source/Generated-Image-November-12,-2025---9_20PM.jpg"
+                                    alt="London">
+                            </div>
+                            <div class="destination-card__content">
+                                <h3 class="destination-card__title">London</h3>
+                                <div class="destination-card__routes">
+                                    <span>Heathrow</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14" />
+                                        <path d="M12 5l7 7-7 7" />
+                                    </svg>
+                                    <span>City Centre</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="destination-card">
+                            <div class="destination-card__image">
+                                <img src="/assets/images/photos/source/Hourly Rides.png" alt="Paris">
+                            </div>
+                            <div class="destination-card__content">
+                                <h3 class="destination-card__title">Paris</h3>
+                                <div class="destination-card__routes">
+                                    <span>Charles de Gaulle</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14" />
+                                        <path d="M12 5l7 7-7 7" />
+                                    </svg>
+                                    <span>Le Marais</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="destination-card">
+                            <div class="destination-card__image">
+                                <img src="/assets/images/photos/source/City to city rides.png" alt="Dubai">
+                            </div>
+                            <div class="destination-card__content">
+                                <h3 class="destination-card__title">Dubai</h3>
+                                <div class="destination-card__routes">
+                                    <span>DXB Airport</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14" />
+                                        <path d="M12 5l7 7-7 7" />
+                                    </svg>
+                                    <span>Downtown</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="destination-card">
+                            <div class="destination-card__image">
+                                <img src="/assets/images/photos/source/Airport Transfer.png" alt="Chicago">
+                            </div>
+                            <div class="destination-card__content">
+                                <h3 class="destination-card__title">Chicago</h3>
+                                <div class="destination-card__routes">
+                                    <span>O'Hare</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14" />
+                                        <path d="M12 5l7 7-7 7" />
+                                    </svg>
+                                    <span>The Loop</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="destinations__nav-btn destinations__nav-btn--next" aria-label="Next">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Core Values ─── -->
+        <section class="section section--values">
+            <div class="container">
+                <div class="section__header">
+                    <h2 class="section__title">Why Choose SSRN</h2>
+                    <p class="section__subtitle">Excellence in every ride, trusted by thousands</p>
+                </div>
+
+                <div class="values__grid">
+                    <div class="value-card">
+                        <div class="value-card__icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                                stroke="var(--icon-brand-primary)" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <h3 class="value-card__title">Safety First</h3>
+                        <p class="value-card__description">Fully insured drivers with thorough background checks. Your
+                            security is our highest priority.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-card__icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                                stroke="var(--icon-brand-primary)" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <h3 class="value-card__title">Always On Time</h3>
+                        <p class="value-card__description">Punctuality is our promise. Real-time tracking ensures your
+                            driver is always where they should be.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-card__icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                                stroke="var(--icon-brand-primary)" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                        </div>
+                        <h3 class="value-card__title">Luxury Experience</h3>
+                        <p class="value-card__description">Premium vehicles, immaculate interiors, and attentive service
+                            that sets the standard.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-card__icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                                stroke="var(--icon-brand-primary)" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="2" y1="12" x2="22" y2="12" />
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg>
+                        </div>
+                        <h3 class="value-card__title">24/7 Available</h3>
+                        <p class="value-card__description">Round-the-clock service, wherever you are in the world. We're
+                            always just a tap away.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Core Scripts -->
+    <script src="/js/utils/includes.js"></script>
+    <script src="/js/layout/header.js"></script>
+
+    <!-- Utilities -->
+    <script src="/js/utils/validation.js"></script>
+
+    <!-- Page Scripts -->
+    <script src="/js/pages/home.js"></script>
+
+</body>
+
+</html>

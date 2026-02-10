@@ -1,0 +1,135 @@
+/**
+ * SSRN Progressbar Components
+ * Linear and circular progress indicators
+ * Based on Figma design system
+ */
+
+/* ============================================
+   LINEAR PROGRESSBAR - BASE
+   ============================================ */
+.progressbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  width: 100%;
+}
+
+.progressbar__label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-sm-line-height);
+  color: var(--sea-green-50);
+  text-align: center;
+}
+
+.progressbar__track {
+  width: 100%;
+  background-color: var(--grey-60);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressbar__fill {
+  height: 100%;
+  background-color: var(--sea-green-50);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+/* ============================================
+   LINEAR PROGRESSBAR - SIZES
+   ============================================ */
+
+/* Large: 8px height */
+.progressbar--lg .progressbar__track {
+  height: 8px;
+}
+
+/* Small: 4px height (default) */
+.progressbar--sm .progressbar__track {
+  height: 4px;
+}
+
+/* ============================================
+   CIRCULAR PROGRESSBAR - BASE
+   ============================================ */
+.progressbar-circle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressbar-circle__svg {
+  transform: rotate(-90deg);
+}
+
+.progressbar-circle__track {
+  fill: none;
+  stroke: var(--grey-60);
+}
+
+.progressbar-circle__fill {
+  fill: none;
+  stroke: var(--sea-green-50);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.progressbar-circle__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--sea-green-50);
+}
+
+/* ============================================
+   CIRCULAR PROGRESSBAR - SIZES
+   ============================================ */
+
+/* Large: 80x80px */
+.progressbar-circle--lg {
+  width: 80px;
+  height: 80px;
+}
+
+.progressbar-circle--lg .progressbar-circle__svg {
+  width: 80px;
+  height: 80px;
+}
+
+.progressbar-circle--lg .progressbar-circle__track,
+.progressbar-circle--lg .progressbar-circle__fill {
+  stroke-width: 6;
+}
+
+.progressbar-circle--lg .progressbar-circle__label {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+}
+
+/* Small: 50x50px */
+.progressbar-circle--sm {
+  width: 50px;
+  height: 50px;
+}
+
+.progressbar-circle--sm .progressbar-circle__svg {
+  width: 50px;
+  height: 50px;
+}
+
+.progressbar-circle--sm .progressbar-circle__track,
+.progressbar-circle--sm .progressbar-circle__fill {
+  stroke-width: 4;
+}
+
+.progressbar-circle--sm .progressbar-circle__label {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+}

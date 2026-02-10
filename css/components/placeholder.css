@@ -1,0 +1,324 @@
+/**
+ * SSRN Placeholder Components
+ * Copy, Copy Block, Image Placeholder, Copy with Icon, and related text components
+ * Based on Figma design system
+ */
+
+/* ============================================
+   COPY - TYPOGRAPHY ELEMENTS
+   ============================================ */
+
+/* Headings (Manrope, Bold) */
+.copy--h1 {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h1-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--heading-h1-line-height);
+  color: var(--text-primary);
+}
+
+.copy--h2 {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h2-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--heading-h2-line-height);
+  color: var(--text-primary);
+}
+
+.copy--h3 {
+  font-family: var(--font-family-heading);
+  font-size: 40px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2em;
+  color: var(--text-primary);
+}
+
+.copy--h4 {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h6-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--heading-h6-line-height);
+  color: var(--text-primary);
+}
+
+.copy--h5 {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h8-size);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.17em;
+  color: var(--text-primary);
+}
+
+.copy--h6 {
+  font-family: var(--font-family-heading);
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2em;
+  color: var(--text-primary);
+}
+
+/* Body text (Inter) */
+.copy--body-lg {
+  font-family: var(--font-family-body);
+  font-size: var(--body-lg-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-lg-line-height);
+  color: var(--text-primary);
+}
+
+.copy--body-md {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+}
+
+.copy--body-sm {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-sm-line-height);
+  color: var(--text-primary);
+}
+
+/* Captions (Inter, Semibold, Uppercase, Letter-spaced) */
+.copy--caption {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   COPY BLOCK - HEADING + BODY TEXT
+   ============================================ */
+.copy-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.copy-block--center {
+  text-align: center;
+}
+
+.copy-block--left {
+  text-align: left;
+}
+
+/* ============================================
+   IMAGE PLACEHOLDER
+   Fixed aspect ratio container for images
+   ============================================ */
+.image-placeholder {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-placeholder__spacer {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Aspect ratio variants */
+.image-placeholder__spacer--1x1 {
+  aspect-ratio: 1 / 1;
+}
+
+.image-placeholder__spacer--16x9 {
+  aspect-ratio: 16 / 9;
+}
+
+.image-placeholder__spacer--4x3 {
+  aspect-ratio: 4 / 3;
+}
+
+.image-placeholder__spacer--3x2 {
+  aspect-ratio: 3 / 2;
+}
+
+/* ============================================
+   COPY WITH ICON
+   Icon + text inline component
+   ============================================ */
+.copy-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+.copy-icon__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.copy-icon__text {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+/* Default size (body medium) */
+.copy-icon--default .copy-icon__text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+}
+
+/* Small size */
+.copy-icon--sm .copy-icon__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.copy-icon--sm .copy-icon__text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+}
+
+/* Font weight variants */
+.copy-icon--regular .copy-icon__text {
+  font-weight: var(--font-weight-regular);
+}
+
+.copy-icon--medium .copy-icon__text {
+  font-weight: var(--font-weight-medium);
+}
+
+.copy-icon--semibold .copy-icon__text {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ============================================
+   COPY WITH NUMBER
+   Label + price/number inline
+   ============================================ */
+.copy-number {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-200);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+}
+
+.copy-number__label {
+  flex: 1;
+}
+
+.copy-number__value {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   SMALL COPY BLOCK
+   Bold title + small subtitle
+   ============================================ */
+.copy-block-sm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+}
+
+.copy-block-sm__title {
+  font-family: var(--font-family-body);
+  font-size: var(--body-lg-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.6em;
+  color: var(--text-primary);
+}
+
+.copy-block-sm__subtitle {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-sm-line-height);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   DETAILS OF INPUT COPY
+   Label + value stacked pair
+   ============================================ */
+.input-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+}
+
+.input-details__label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+}
+
+.input-details__value {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   DESTINATION LOCATION DETAILS
+   Location info with heading + icon rows
+   ============================================ */
+.location-details {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 var(--radius-s) var(--radius-s);
+}
+
+.location-details__inner {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: var(--space-200);
+  padding: 0 var(--space-400);
+}
+
+.location-details__title {
+  font-family: var(--font-family-heading);
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2em;
+  color: var(--text-primary);
+}
+
+.location-details__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--space-200);
+}
+
+.location-details__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.location-details__name {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+}

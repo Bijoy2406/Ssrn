@@ -1,0 +1,149 @@
+/**
+ * SSRN Booking Form Component
+ * Card-based booking form with ride type toggle
+ * Based on Figma design system
+ */
+
+/* ============================================
+   BOOKING FORM CARD
+   ============================================ */
+.booking-form {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  padding: var(--space-800);
+  background-color: var(--white);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-2xl);
+  width: 441px;
+  max-width: 100%;
+}
+
+.booking-form__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  flex: 1;
+}
+
+/* ============================================
+   BOOKING DETAILS (fields container)
+   ============================================ */
+.booking-form__details {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: var(--space-300);
+}
+
+/* ============================================
+   RIDE TYPE TOGGLE
+   ============================================ */
+.booking-form__ride-types {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--space-400);
+}
+
+.booking-form__ride-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-300);
+  padding: var(--space-300) var(--space-600);
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-sm-line-height);
+  text-align: center;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  border: var(--border-m) solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* Active ride type (filled neutral) */
+.booking-form__ride-type--active {
+  background-color: var(--grey-10);
+  color: var(--white);
+  border-color: var(--grey-10);
+}
+
+/* Inactive ride type (outline neutral) */
+.booking-form__ride-type--inactive {
+  background-color: transparent;
+  color: var(--black);
+  border-color: var(--black);
+}
+
+.booking-form__ride-type--inactive:hover {
+  background-color: var(--grey-70);
+}
+
+/* ============================================
+   FORM FIELD GROUP
+   ============================================ */
+.booking-form__field {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: var(--space-200);
+}
+
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
+.booking-form__submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--space-300);
+  padding: var(--space-400) var(--space-600);
+  background-color: var(--sea-green-50);
+  color: var(--sea-green-100);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  border: none;
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.booking-form__submit:hover {
+  background-color: var(--golden-50);
+  color: var(--text-inverse);
+}
+
+.booking-form__submit:active {
+  background-color: var(--sea-green-40);
+}
+
+.booking-form__submit-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+  .booking-form {
+    padding: var(--space-600);
+    width: 100%;
+  }
+
+  .booking-form__ride-types {
+    gap: var(--space-200);
+  }
+
+  .booking-form__ride-type {
+    padding: var(--space-200) var(--space-400);
+  }
+}

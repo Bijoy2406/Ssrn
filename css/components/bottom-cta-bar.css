@@ -1,0 +1,62 @@
+/**
+ * Bottom CTA Bar Component
+ * Fixed bottom bar with primary action button
+ * Based on Figma: node-id=1181:16962
+ */
+
+/* ============================================
+   BOTTOM CTA BAR
+   ============================================ */
+.bottom-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  padding: var(--space-600) var(--space-3000);
+  background-color: var(--surface-page);
+  box-shadow: var(--shadow-2xl);
+  z-index: 100;
+}
+
+.bottom-cta-bar__button {
+  flex: 1;
+  max-width: 100%;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1440px) {
+  .bottom-cta-bar {
+    padding: var(--space-600) var(--space-1500);
+  }
+}
+
+@media (max-width: 992px) {
+  .bottom-cta-bar {
+    padding: var(--space-600) var(--space-800);
+  }
+}
+
+@media (max-width: 640px) {
+  .bottom-cta-bar {
+    padding: var(--space-400);
+  }
+}
+
+/* ============================================
+   MAIN CONTENT PADDING
+   When using bottom CTA bar, add padding to main content
+   ============================================ */
+.page--with-bottom-cta {
+  padding-bottom: 120px; /* Adjust based on bar height */
+}
+
+@media (max-width: 640px) {
+  .page--with-bottom-cta {
+    padding-bottom: 100px;
+  }
+}

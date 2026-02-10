@@ -1,0 +1,228 @@
+/**
+ * List Component
+ * Ordered/unordered lists with numeric or icon indicators
+ * Based on Figma design system
+ */
+
+/* ============================================
+   LIST CONTAINER
+   ============================================ */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-500); /* 20px */
+}
+
+.list__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h4-size);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.125;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ============================================
+   LIST ITEMS CONTAINER
+   ============================================ */
+.list__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-500); /* 20px */
+}
+
+/* ============================================
+   LIST ITEM
+   ============================================ */
+.list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-300); /* 12px */
+}
+
+/* Center align for single-line content */
+.list-item--center {
+  align-items: center;
+}
+
+/* ============================================
+   LIST ITEM INDICATOR
+   ============================================ */
+.list-item__indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  padding: 2px;
+  background-color: var(--golden-80); /* #DED1C0 */
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  color: var(--golden-20); /* #4F4A37 */
+  text-align: center;
+}
+
+/* Smaller indicator variant */
+.list-item__indicator--sm {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  font-size: var(--body-sm-size);
+}
+
+/* Larger indicator variant */
+.list-item__indicator--lg {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  font-size: var(--body-lg-size);
+}
+
+/* Icon indicator */
+.list-item__indicator--icon {
+  background-color: var(--golden-80);
+}
+
+.list-item__indicator--icon svg,
+.list-item__indicator--icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Brand colored indicator */
+.list-item__indicator--brand {
+  background-color: var(--surface-brand-primary);
+  color: var(--text-inverse);
+}
+
+/* Secondary colored indicator */
+.list-item__indicator--secondary {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   LIST ITEM CONTENT
+   ============================================ */
+.list-item__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200); /* 8px */
+  flex: 1;
+  min-width: 0;
+}
+
+.list-item__heading {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h5-size);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.167;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.list-item__description {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Secondary description text */
+.list-item__description--secondary {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   LIST VARIANTS
+   ============================================ */
+
+/* Compact list with smaller gaps */
+.list--compact {
+  gap: var(--space-300);
+}
+
+.list--compact .list__items {
+  gap: var(--space-300);
+}
+
+/* Large list with bigger gaps */
+.list--large {
+  gap: var(--space-800);
+}
+
+.list--large .list__items {
+  gap: var(--space-600);
+}
+
+/* Horizontal list */
+.list--horizontal .list__items {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   ORDERED LIST (with connecting line)
+   ============================================ */
+.list--connected .list__items {
+  position: relative;
+}
+
+.list--connected .list-item {
+  position: relative;
+}
+
+.list--connected .list-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 14px; /* Center of 28px indicator */
+  top: 28px;
+  bottom: calc(-1 * var(--space-500));
+  width: 1px;
+  background-color: var(--border-default);
+}
+
+/* ============================================
+   CHECKLIST VARIANT
+   ============================================ */
+.list-item__indicator--check {
+  background-color: transparent;
+  border: 2px solid var(--border-default);
+}
+
+.list-item__indicator--check.is-checked {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--text-inverse);
+}
+
+.list-item__indicator--check.is-checked::before {
+  content: '';
+  width: 12px;
+  height: 6px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg) translateY(-2px);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  .list-item__heading {
+    font-size: var(--heading-h6-size);
+  }
+
+  .list-item__indicator--lg {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+}
