@@ -1,0 +1,55 @@
+/**
+ * Cards & Modals Demo Page
+ * Layout styles for the component showcase
+ */
+
+.cards-demo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-800) var(--space-600);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1200);
+}
+
+.demo-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+}
+
+.demo-section__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h7-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h7-line-height);
+  color: var(--text-primary);
+  margin: 0;
+  padding-bottom: var(--space-300);
+  border-bottom: var(--border-s) solid var(--border-default);
+}
+
+.demo-modals-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-800);
+  align-items: flex-start;
+}
+
+/* Make inline modal previews non-positioned */
+.demo-modals-row .modal-confirmation,
+.demo-modals-row .modal-share {
+  position: relative;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .cards-demo {
+    padding: var(--space-600) var(--space-400);
+    gap: var(--space-800);
+  }
+
+  .demo-modals-row {
+    flex-direction: column;
+  }
+}

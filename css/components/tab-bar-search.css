@@ -1,0 +1,300 @@
+/**
+ * SSRN Tab Bar with Booking Search Component
+ * Navigation tabs with search bar, filter button, and export button
+ * Based on Figma node: 1695-53558
+ *
+ * Variants:
+ *   - Desktop (1136px): Tabs full-width, search + filter + export inline
+ *   - Tablet (600px): Same layout, icon-only filter/export
+ *   - Mobile (320px): Tabs full-width, search + filter/export row below
+ *
+ * Structure:
+ *   - Tab bar: Upcoming (selected), Completed, Canceled tabs with keyline
+ *   - Toolbar row:
+ *     - Bookings count with icon (e.g., "0 bookings")
+ *     - Search bar (with search icon)
+ *     - Filter button (icon + label)
+ *     - Export button (icon + label)
+ *
+ * Reuses: .btn, .btn--neutral-transparent (buttons.css)
+ *         tabs.css (for tab items)
+ *         filter-button.css (for filter component)
+ */
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+.tab-bar-search {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-800);
+  width: 100%;
+}
+
+/* ============================================
+   TAB BAR
+   ============================================ */
+.tab-bar-search__tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5px;
+}
+
+.tab-bar-search__tab-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tab-bar-search__tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-300) var(--space-600);
+  flex: 1;
+  background-color: var(--white);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.tab-bar-search__tab:hover {
+  background-color: var(--grey-70);
+}
+
+.tab-bar-search__tab--selected {
+  font-weight: var(--font-weight-semibold);
+}
+
+.tab-bar-search__tab--selected::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--black);
+}
+
+.tab-bar-search__tab:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: -2px;
+}
+
+/* Keyline under tabs */
+.tab-bar-search__keyline {
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: var(--border-s) solid var(--grey-30);
+}
+
+/* ============================================
+   TOOLBAR ROW
+   ============================================ */
+.tab-bar-search__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-800);
+}
+
+/* ============================================
+   BOOKINGS COUNT
+   ============================================ */
+.tab-bar-search__count {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  flex-shrink: 0;
+}
+
+.tab-bar-search__count-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.tab-bar-search__count-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tab-bar-search__count-text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* ============================================
+   SEARCH + ACTIONS ROW
+   ============================================ */
+.tab-bar-search__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-600);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+.tab-bar-search__search {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  flex: 1;
+  min-width: 0;
+}
+
+.tab-bar-search__search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-400) var(--space-300);
+  background-color: var(--grey-100);
+  border: var(--border-m) solid var(--grey-30);
+  border-radius: var(--radius-s);
+  transition: border-color 0.15s ease;
+}
+
+.tab-bar-search__search-input-wrapper:focus-within {
+  border-color: var(--sea-green-50);
+}
+
+.tab-bar-search__search-input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.tab-bar-search__search-input::placeholder {
+  color: var(--grey-30);
+}
+
+.tab-bar-search__search-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.tab-bar-search__search-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   FILTER + EXPORT BUTTONS
+   ============================================ */
+.tab-bar-search__buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  flex-shrink: 0;
+}
+
+.tab-bar-search__filter-btn,
+.tab-bar-search__export-btn {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (1024px and below)
+   ============================================ */
+@media (max-width: 1024px) {
+  .tab-bar-search__toolbar {
+    gap: var(--space-400);
+  }
+
+  .tab-bar-search__actions {
+    gap: var(--space-400);
+  }
+
+  /* Hide button labels, show icons only */
+  .tab-bar-search__filter-label,
+  .tab-bar-search__export-label {
+    display: none;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+  .tab-bar-search__toolbar {
+    flex-direction: column;
+    gap: var(--space-400);
+    align-items: stretch;
+  }
+
+  .tab-bar-search__count {
+    display: none;
+  }
+
+  .tab-bar-search__actions {
+    flex-direction: row;
+    gap: var(--space-400);
+  }
+
+  .tab-bar-search__tab {
+    padding: var(--space-200) var(--space-400);
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .tab-bar-search__search-input-wrapper {
+    padding: var(--space-300);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .tab-bar-search {
+    gap: var(--space-600);
+  }
+
+  .tab-bar-search__tab {
+    padding: var(--space-200) var(--space-300);
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+
+  .tab-bar-search__tab--selected::after {
+    height: 3px;
+  }
+
+  .tab-bar-search__search-input {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .tab-bar-search__search-icon {
+    width: 20px;
+    height: 20px;
+  }
+}

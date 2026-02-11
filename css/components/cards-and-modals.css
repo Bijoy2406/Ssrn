@@ -49,10 +49,10 @@
 
 .card-service__heading {
   font-family: var(--font-family-heading);
-  font-size: var(--heading-h5-size);
+  font-size: var(--heading-h8-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--heading-h5-line-height);
-  color: var(--text-neutral-primary);
+  line-height: var(--heading-h8-line-height);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -61,7 +61,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -75,7 +75,7 @@
   gap: var(--space-400);
   width: 375px;
   padding: var(--space-800) var(--space-400);
-  background-color: var(--surface-neutral-secondary);
+  background-color: var(--surface-primary);
   border-radius: var(--radius-m);
   box-shadow: var(--shadow-s);
   transition: all 0.3s ease;
@@ -109,10 +109,10 @@
 
 .card-core-value__heading {
   font-family: var(--font-family-heading);
-  font-size: var(--heading-h5-size);
+  font-size: var(--heading-h8-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--heading-h5-line-height);
-  color: var(--text-neutral-primary);
+  line-height: var(--heading-h8-line-height);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -121,7 +121,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -191,10 +191,10 @@
 
 .card-destination__heading {
   font-family: var(--font-family-heading);
-  font-size: var(--heading-h6-size);
+  font-size: var(--heading-h8-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--heading-h6-line-height);
-  color: var(--text-neutral-primary);
+  line-height: var(--heading-h8-line-height);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -209,7 +209,7 @@
   width: 24px;
   height: 24px;
   flex-shrink: 0;
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
 }
 
 .card-destination__icon svg {
@@ -222,7 +222,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
 }
 
 /* ============================================
@@ -248,10 +248,10 @@
 
 .card-cta__heading {
   font-family: var(--font-family-heading);
-  font-size: var(--heading-h4-size);
+  font-size: var(--heading-h6-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--heading-h4-line-height);
-  color: var(--text-neutral-primary);
+  line-height: var(--heading-h6-line-height);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -260,7 +260,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -306,12 +306,12 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-neutral-secondary);
+  color: var(--text-secondary);
   transition: color 0.2s ease;
 }
 
 .modal-share__close:hover {
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
 }
 
 .modal-share__close svg {
@@ -321,10 +321,10 @@
 
 .modal-share__heading {
   font-family: var(--font-family-heading);
-  font-size: var(--heading-h5-size);
+  font-size: var(--heading-h8-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--heading-h5-line-height);
-  color: var(--text-neutral-primary);
+  line-height: 28px;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -333,7 +333,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -357,7 +357,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-medium);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
 }
 
 .modal-share__link-input {
@@ -366,8 +366,8 @@
   align-self: stretch;
   gap: var(--space-200);
   padding: var(--space-400) var(--space-300);
-  background-color: var(--surface-neutral-tertiary);
-  border: 2px solid var(--border-neutral-secondary);
+  background-color: var(--surface-tertiary);
+  border: 2px solid var(--border-secondary);
   border-radius: var(--radius-s);
 }
 
@@ -377,7 +377,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -393,7 +393,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   flex-shrink: 0;
 }
 
@@ -414,7 +414,7 @@
 .modal-share__separator-line {
   flex: 1;
   height: 0.5px;
-  background-color: var(--border-neutral-secondary);
+  background-color: var(--border-secondary);
 }
 
 .modal-share__separator-text {
@@ -422,7 +422,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-secondary);
+  color: var(--text-secondary);
   white-space: nowrap;
 }
 
@@ -486,12 +486,12 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-neutral-secondary);
+  color: var(--text-secondary);
   transition: color 0.2s ease;
 }
 
 .modal-confirmation__close:hover {
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
 }
 
 .modal-confirmation__close svg {
@@ -509,10 +509,10 @@
 
 .modal-confirmation__heading {
   font-family: var(--font-family-heading);
-  font-size: var(--heading-h5-size);
+  font-size: var(--heading-h8-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--heading-h5-line-height);
-  color: var(--text-neutral-primary);
+  line-height: 28px;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -521,7 +521,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -581,23 +581,23 @@
 }
 
 .message-card__icon--success {
-  color: var(--status-success);
+  color: var(--color-success);
 }
 
 .message-card__icon--error {
-  color: var(--status-error);
+  color: var(--color-error);
 }
 
 .message-card__icon--warning {
-  color: var(--status-warning);
+  color: var(--color-warning);
 }
 
 .message-card__heading {
   font-family: var(--font-family-heading);
-  font-size: var(--heading-h4-size);
+  font-size: var(--heading-h6-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--heading-h4-line-height);
-  color: var(--text-neutral-primary);
+  line-height: var(--heading-h6-line-height);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -622,7 +622,7 @@
   font-size: var(--heading-h6-size);
   font-weight: var(--font-weight-bold);
   line-height: var(--heading-h6-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -631,7 +631,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -659,7 +659,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-medium);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   text-decoration: none;
   transition: color 0.2s ease;
   padding: var(--space-100);

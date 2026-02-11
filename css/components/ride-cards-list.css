@@ -1,0 +1,344 @@
+/**
+ * SSRN Ride Cards List Component
+ * Vertical list of ride summary cards with "View More" link
+ * Based on Figma node: 1762-112485
+ *
+ * Structure:
+ *   - Stacked ride cards (each card: booking ID, guest name, date/time, from/to/distance, service class, share button)
+ *   - "View More" link with downward arrow icon at bottom
+ *
+ * Each ride card sub-structure:
+ *   - Top section (with bottom border):
+ *     - Booking ID (caption, golden, uppercase)
+ *     - Guest name (body/large regular)
+ *     - Date/time (body/large semibold)
+ *     - Share button
+ *   - Bottom section:
+ *     - From location (icon + text)
+ *     - To location (icon + text)
+ *     - Distance/ETA (icon + text)
+ *     - Service class (name + car image, 144px column)
+ *
+ * Reuses: .btn, .btn--neutral-transparent, .btn--sm (buttons.css)
+ *         upcoming-rides-card.css (for individual card styling)
+ *
+ * Width: 1440px max
+ */
+
+/* ============================================
+   LIST CONTAINER
+   ============================================ */
+.ride-cards-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-600);
+  width: 100%;
+  max-width: 1440px;
+}
+
+/* ============================================
+   RIDE CARD ITEM
+   ============================================ */
+.ride-cards-list__card {
+  display: flex;
+  gap: var(--space-600);
+  padding: var(--space-600);
+  background-color: var(--white);
+  border-radius: var(--radius-m);
+  width: 100%;
+  box-shadow: var(--shadow-xs);
+}
+
+/* ============================================
+   CARD DETAILS (no map variant)
+   ============================================ */
+.ride-cards-list__card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================
+   DETAILS TOP — Name, date, booking ID, share
+   ============================================ */
+.ride-cards-list__card-header {
+  display: flex;
+  padding: var(--space-400) 0;
+  border-bottom: var(--border-xs) solid var(--grey-40);
+}
+
+.ride-cards-list__card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  flex: 1;
+  min-width: 0;
+}
+
+/* Booking ID */
+.ride-cards-list__booking-id {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--golden-40);
+  margin: 0;
+}
+
+/* Guest name and date/time group */
+.ride-cards-list__card-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+}
+
+.ride-cards-list__guest-name {
+  font-family: var(--font-family-body);
+  font-size: var(--body-lg-size);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6em;
+  color: var(--black);
+  margin: 0;
+}
+
+.ride-cards-list__datetime {
+  font-family: var(--font-family-body);
+  font-size: var(--body-lg-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.6em;
+  color: var(--black);
+  margin: 0;
+}
+
+/* Share button */
+.ride-cards-list__share-btn {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   DETAILS BOTTOM — Route info + Service class
+   ============================================ */
+.ride-cards-list__card-route {
+  display: flex;
+  gap: var(--space-600);
+  padding: var(--space-400) 0;
+}
+
+/* From / To / Distance column */
+.ride-cards-list__route-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  flex: 1;
+  min-width: 0;
+}
+
+.ride-cards-list__route-item {
+  display: flex;
+  gap: var(--space-200);
+}
+
+.ride-cards-list__route-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.ride-cards-list__route-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ride-cards-list__route-text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* Service class column */
+.ride-cards-list__service-class {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-400);
+  width: 144px;
+  flex-shrink: 0;
+}
+
+.ride-cards-list__service-class-name {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  text-align: center;
+  margin: 0;
+}
+
+.ride-cards-list__service-class-image {
+  width: 100%;
+  height: 73px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ride-cards-list__service-class-image img,
+.ride-cards-list__service-class-image svg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================
+   VIEW MORE LINK
+   ============================================ */
+.ride-cards-list__view-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-100);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  text-decoration: none;
+  background: none;
+  border: none;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: color 0.15s ease;
+  align-self: stretch;
+}
+
+.ride-cards-list__view-more:hover {
+  color: var(--text-brand-primary);
+}
+
+.ride-cards-list__view-more:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+.ride-cards-list__view-more-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.ride-cards-list__view-more-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (1024px and below)
+   ============================================ */
+@media (max-width: 1024px) {
+  .ride-cards-list {
+    max-width: 100%;
+  }
+
+  .ride-cards-list__service-class {
+    width: 120px;
+  }
+
+  .ride-cards-list__service-class-image {
+    height: 60px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+  .ride-cards-list__card {
+    padding: var(--space-400);
+  }
+
+  .ride-cards-list__card-route {
+    flex-direction: column;
+    gap: var(--space-400);
+  }
+
+  .ride-cards-list__service-class {
+    width: 100%;
+    flex-direction: row;
+    gap: var(--space-300);
+  }
+
+  .ride-cards-list__service-class-image {
+    width: 80px;
+    height: 40px;
+  }
+
+  .ride-cards-list__guest-name,
+  .ride-cards-list__datetime {
+    font-size: var(--body-md-size);
+    line-height: var(--body-md-line-height);
+  }
+
+  .ride-cards-list__route-text {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .ride-cards-list {
+    gap: var(--space-400);
+  }
+
+  .ride-cards-list__card {
+    padding: var(--space-300);
+  }
+
+  .ride-cards-list__guest-name,
+  .ride-cards-list__datetime {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .ride-cards-list__booking-id {
+    font-size: var(--caption-size);
+    line-height: var(--caption-line-height);
+  }
+
+  .ride-cards-list__route-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ride-cards-list__route-text {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+
+  .ride-cards-list__service-class-name {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .ride-cards-list__view-more {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .ride-cards-list__view-more-icon {
+    width: 20px;
+    height: 20px;
+  }
+}

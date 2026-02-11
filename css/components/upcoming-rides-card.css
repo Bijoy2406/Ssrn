@@ -1,0 +1,380 @@
+/**
+ * SSRN Upcoming Rides Card Component
+ * Card displaying upcoming ride details with map, booking info, and actions
+ * Based on Figma node: 1654-111036
+ *
+ * Variants:
+ *   - Desktop (956px): Horizontal layout — map left, details right
+ *   - Tablet (560px): Vertical layout — map top, details bottom
+ *   - Mobile (344px): Vertical compact — share icon-only, stacked buttons
+ *
+ * Structure:
+ *   - Map section (image/embed)
+ *   - Booking ID (caption, golden color)
+ *   - Guest name
+ *   - Date/time row
+ *   - Route info: From, To, Distance (with icons)
+ *   - Service class with car image
+ *   - Share button
+ *   - CTA buttons: View Details (outline) + Book Return (primary)
+ *
+ * Reuses: .btn, .btn--neutral-outline, .btn--brand-filled, .btn--sm, .btn--lg (buttons.css)
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.upcoming-rides-card {
+  display: flex;
+  gap: var(--space-600);
+  padding: var(--space-600);
+  background-color: var(--white);
+  border-radius: var(--radius-m);
+  width: 100%;
+  max-width: 956px;
+  box-shadow: var(--shadow-xs);
+}
+
+/* ============================================
+   MAP SECTION
+   ============================================ */
+.upcoming-rides-card__map {
+  width: 356px;
+  min-height: 280px;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  background-color: var(--grey-70);
+  flex-shrink: 0;
+}
+
+.upcoming-rides-card__map img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================
+   DETAILS SECTION
+   ============================================ */
+.upcoming-rides-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================
+   BOOKING ID
+   ============================================ */
+.upcoming-rides-card__booking-id {
+  font-family: var(--font-family-body);
+  font-size: var(--caption-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--caption-line-height);
+  color: var(--golden-40);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* ============================================
+   GUEST NAME
+   ============================================ */
+.upcoming-rides-card__guest-name {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h7-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h7-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   DATE/TIME ROW
+   ============================================ */
+.upcoming-rides-card__datetime {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+.upcoming-rides-card__datetime-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--grey-30);
+}
+
+.upcoming-rides-card__datetime-text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   ROUTE INFO (From / To / Distance)
+   ============================================ */
+.upcoming-rides-card__route {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-300);
+}
+
+.upcoming-rides-card__route-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-200);
+}
+
+.upcoming-rides-card__route-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--sea-green-50);
+}
+
+.upcoming-rides-card__route-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.upcoming-rides-card__route-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+  flex: 1;
+  min-width: 0;
+}
+
+.upcoming-rides-card__route-label {
+  font-family: var(--font-family-body);
+  font-size: var(--footnote-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--footnote-line-height);
+  color: var(--grey-30);
+  margin: 0;
+}
+
+.upcoming-rides-card__route-value {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   SERVICE CLASS
+   ============================================ */
+.upcoming-rides-card__service-class {
+  display: flex;
+  align-items: center;
+  gap: var(--space-300);
+  padding: var(--space-300) 0;
+}
+
+.upcoming-rides-card__service-class-image {
+  width: 80px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.upcoming-rides-card__service-class-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.upcoming-rides-card__service-class-name {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   SHARE BUTTON
+   ============================================ */
+.upcoming-rides-card__share-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  background: none;
+  border: none;
+  padding: var(--space-200);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--sea-green-50);
+  cursor: pointer;
+  border-radius: var(--radius-xs);
+  transition: color 0.15s ease;
+  align-self: flex-start;
+}
+
+.upcoming-rides-card__share-btn:hover {
+  color: var(--sea-green-40);
+}
+
+.upcoming-rides-card__share-btn:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+.upcoming-rides-card__share-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.upcoming-rides-card__share-label {
+  white-space: nowrap;
+}
+
+/* ============================================
+   ACTION BUTTONS
+   ============================================ */
+.upcoming-rides-card__actions {
+  display: flex;
+  gap: var(--space-400);
+  flex-wrap: wrap;
+}
+
+.upcoming-rides-card__view-btn,
+.upcoming-rides-card__book-btn {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (1024px and below)
+   ============================================ */
+@media (max-width: 1024px) {
+  .upcoming-rides-card {
+    flex-direction: column;
+    max-width: 560px;
+  }
+
+  .upcoming-rides-card__map {
+    width: 100%;
+    min-height: 200px;
+    max-height: 220px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+  .upcoming-rides-card {
+    max-width: 100%;
+    padding: var(--space-500) var(--space-400);
+    gap: var(--space-400);
+  }
+
+  .upcoming-rides-card__map {
+    min-height: 160px;
+    max-height: 180px;
+  }
+
+  .upcoming-rides-card__guest-name {
+    font-size: var(--heading-h8-size);
+    line-height: var(--heading-h8-line-height);
+  }
+
+  .upcoming-rides-card__datetime-text {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .upcoming-rides-card__route {
+    gap: var(--space-200);
+  }
+
+  .upcoming-rides-card__route-value {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .upcoming-rides-card__service-class-image {
+    width: 64px;
+    height: 32px;
+  }
+
+  .upcoming-rides-card__service-class-name {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .upcoming-rides-card__actions {
+    flex-direction: column;
+    gap: var(--space-300);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .upcoming-rides-card {
+    max-width: 344px;
+    padding: var(--space-400) var(--space-300);
+    gap: var(--space-300);
+  }
+
+  .upcoming-rides-card__map {
+    min-height: 130px;
+    max-height: 150px;
+  }
+
+  .upcoming-rides-card__booking-id {
+    font-size: var(--caption-size);
+  }
+
+  .upcoming-rides-card__guest-name {
+    font-size: var(--body-lg-size);
+    line-height: var(--body-lg-line-height);
+  }
+
+  .upcoming-rides-card__datetime-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .upcoming-rides-card__datetime-text {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+
+  .upcoming-rides-card__route-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .upcoming-rides-card__route-label {
+    font-size: var(--caption-size);
+    line-height: var(--caption-line-height);
+  }
+
+  .upcoming-rides-card__route-value {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+
+  /* Hide share label on small mobile, show icon only */
+  .upcoming-rides-card__share-label {
+    display: none;
+  }
+
+  .upcoming-rides-card__actions {
+    gap: var(--space-200);
+  }
+}

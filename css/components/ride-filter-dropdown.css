@@ -1,0 +1,244 @@
+/**
+ * SSRN Ride Filter Dropdown Component
+ * Dropdown panel for filtering rides by date range and status
+ * Based on Figma node: 1743-116331
+ *
+ * Structure:
+ *   - Header row: "Filter Rides" heading + Reset button (transparent)
+ *   - Filter options:
+ *     - Date Range dropdown (with calendar icon)
+ *     - Status dropdown
+ *   - Separator line
+ *   - Action buttons: Apply (filled) + Cancel (link)
+ *
+ * Variants:
+ *   - Desktop: 320px fixed width, 24px padding, larger input padding (16px 12px)
+ *   - Tablet/Mobile: 320px fixed width, 24px padding, compact input padding (12px)
+ *
+ * Reuses: .btn, .btn--neutral-filled, .btn--neutral-transparent, .btn--sm (buttons.css)
+ *         .input-wrapper, .input-label, .input (input.css)
+ */
+
+/* ============================================
+   DROPDOWN CONTAINER
+   ============================================ */
+.ride-filter-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  padding: var(--space-600);
+  background-color: var(--white);
+  border-radius: var(--radius-m);
+  width: 320px;
+  box-shadow: var(--shadow-l);
+}
+
+/* ============================================
+   HEADER — HEADING + RESET BUTTON
+   ============================================ */
+.ride-filter-dropdown__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-400);
+}
+
+.ride-filter-dropdown__heading {
+  flex: 1;
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h6-size);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2em;
+  color: var(--black);
+  margin: 0;
+}
+
+.ride-filter-dropdown__reset-btn {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   FILTER OPTIONS
+   ============================================ */
+.ride-filter-dropdown__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+/* Individual filter field */
+.ride-filter-dropdown__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.ride-filter-dropdown__label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+}
+
+/* Input field wrapper */
+.ride-filter-dropdown__input {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-400) var(--space-300);
+  background-color: var(--grey-100);
+  border: var(--border-m) solid var(--grey-30);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.ride-filter-dropdown__input:hover {
+  border-color: var(--grey-20);
+}
+
+.ride-filter-dropdown__input:focus-within {
+  border-color: var(--sea-green-50);
+  outline: none;
+}
+
+.ride-filter-dropdown__input-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.ride-filter-dropdown__input-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ride-filter-dropdown__input-text {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--grey-30);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.ride-filter-dropdown__input-text--selected {
+  color: var(--black);
+}
+
+.ride-filter-dropdown__chevron {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.ride-filter-dropdown__chevron svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   SEPARATOR
+   ============================================ */
+.ride-filter-dropdown__separator {
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: var(--border-xs) solid var(--grey-40);
+  margin: 0;
+}
+
+/* ============================================
+   ACTION BUTTONS
+   ============================================ */
+.ride-filter-dropdown__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.ride-filter-dropdown__apply-btn {
+  width: 100%;
+}
+
+.ride-filter-dropdown__cancel-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-100);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  text-decoration: none;
+  background: none;
+  border: none;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.ride-filter-dropdown__cancel-link:hover {
+  color: var(--text-brand-primary);
+}
+
+.ride-filter-dropdown__cancel-link:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET/MOBILE (1024px and below)
+   ============================================ */
+@media (max-width: 1024px) {
+  .ride-filter-dropdown__input {
+    padding: var(--space-300);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+  .ride-filter-dropdown {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .ride-filter-dropdown {
+    padding: var(--space-500) var(--space-400);
+    gap: var(--space-500);
+  }
+
+  .ride-filter-dropdown__heading {
+    font-size: var(--body-lg-size);
+    line-height: var(--body-lg-line-height);
+  }
+
+  .ride-filter-dropdown__input {
+    padding: var(--space-300) var(--space-200);
+  }
+
+  .ride-filter-dropdown__input-text {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .ride-filter-dropdown__input-icon,
+  .ride-filter-dropdown__chevron {
+    width: 20px;
+    height: 20px;
+  }
+}

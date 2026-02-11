@@ -1,0 +1,262 @@
+/**
+ * SSRN Extra Amenities and Info Component
+ * Card containing flight details, pickup time adjustment, pickup sign,
+ * amenity switches (child seat, accessible, pets), and notes textarea
+ * Based on Figma node: 1209-16923
+ *
+ * Structure:
+ *   - Flight No. input with icon and helper text
+ *   - Pickup Time dropdown with helper text
+ *   - Pickup Sign input with helper text
+ *   - Amenity switches (child seat, accessible vehicle, pet)
+ *   - Notes for chauffeur textarea with character count
+ *
+ * Reuses: .input-wrapper, .input-label, .input (input.css)
+ *         dropdown styles (dropdown.css if exists)
+ *         switch styles (switch.css if exists)
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.extra-amenities {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-800);
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--white);
+  border-radius: var(--radius-m);
+  width: 100%;
+  max-width: 456px;
+  box-shadow: var(--shadow-xs);
+}
+
+/* ============================================
+   SECTION: FLIGHT NO. AND PICKUP SIGN
+   ============================================ */
+.extra-amenities__flight-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  align-self: stretch;
+}
+
+/* ============================================
+   SECTION: AMENITIES SWITCHES
+   ============================================ */
+.extra-amenities__switches {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  align-self: stretch;
+}
+
+/* Individual switch row */
+.extra-amenities__switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-200);
+}
+
+.extra-amenities__switch-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  flex: 1;
+  min-width: 0;
+}
+
+.extra-amenities__switch-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.extra-amenities__switch-label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+}
+
+/* Switch toggle component */
+.extra-amenities__switch {
+  display: flex;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  padding: var(--space-100);
+  background-color: var(--grey-60);
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.extra-amenities__switch:hover {
+  background-color: var(--grey-50);
+}
+
+.extra-amenities__switch-toggle {
+  width: 16px;
+  height: 16px;
+  background-color: var(--white);
+  border-radius: var(--radius-full);
+  transition: transform 0.2s ease;
+}
+
+/* Active state */
+.extra-amenities__switch--active {
+  background-color: var(--sea-green-50);
+}
+
+.extra-amenities__switch--active:hover {
+  background-color: var(--sea-green-40);
+}
+
+.extra-amenities__switch--active .extra-amenities__switch-toggle {
+  transform: translateX(20px);
+}
+
+/* ============================================
+   SECTION: NOTES TEXTAREA
+   ============================================ */
+.extra-amenities__notes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  align-self: stretch;
+}
+
+.extra-amenities__notes-wrapper {
+  display: flex;
+  gap: var(--space-200);
+  position: relative;
+}
+
+.extra-amenities__textarea {
+  flex: 1;
+  min-height: 96px;
+  padding: var(--space-400);
+  background-color: var(--grey-100);
+  border: var(--border-m) solid var(--grey-30);
+  border-radius: var(--radius-s);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.extra-amenities__textarea::placeholder {
+  color: var(--grey-30);
+}
+
+.extra-amenities__textarea:focus {
+  outline: none;
+  border-color: var(--black);
+}
+
+/* Resize icon in bottom right */
+.extra-amenities__textarea-icon {
+  position: absolute;
+  bottom: 16px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  color: var(--grey-30);
+  pointer-events: none;
+}
+
+/* Character count */
+.extra-amenities__char-count {
+  display: flex;
+  padding-left: var(--space-300);
+}
+
+.extra-amenities__char-count-text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-sm-line-height);
+  color: var(--black);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .extra-amenities {
+    max-width: 100%;
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  .extra-amenities {
+    padding: var(--space-600) var(--space-400);
+    gap: var(--space-600);
+  }
+
+  .extra-amenities__flight-section {
+    gap: var(--space-300);
+  }
+
+  .extra-amenities__switches {
+    gap: var(--space-500);
+  }
+
+  .extra-amenities__switch-label {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .extra-amenities__textarea {
+    min-height: 80px;
+    padding: var(--space-300);
+    font-size: var(--footnote-size);
+  }
+}
+
+/* Small mobile (480px and below) */
+@media (max-width: 480px) {
+  .extra-amenities {
+    padding: var(--space-500) var(--space-300);
+    gap: var(--space-500);
+  }
+
+  .extra-amenities__switch-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-300);
+  }
+
+  .extra-amenities__switch {
+    align-self: flex-end;
+  }
+
+  .extra-amenities__switch-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .extra-amenities__textarea {
+    min-height: 72px;
+  }
+
+  .extra-amenities__char-count {
+    padding-left: var(--space-200);
+  }
+
+  .extra-amenities__char-count-text {
+    font-size: 10px;
+  }
+}

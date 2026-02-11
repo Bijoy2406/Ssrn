@@ -1,50 +1,96 @@
 /**
- * Bottom CTA Bar Component
- * Fixed bottom bar with primary action button
- * Based on Figma: node-id=1181:16962
+ * SSRN Bottom CTA Bar Component
+ * Sticky bottom action bar with Cancel Ride and Book Return buttons
+ * Based on Figma node: 1679-124480
+ *
+ * Variants:
+ *   - Desktop & Tablet: Horizontal row — Cancel Ride (outline) + Book Return (primary filled)
+ *     Padding: 24px 120px, 16px gap, centered, shadow-2xl
+ *   - Mobile: Vertical stack — Book Return (primary filled) + Cancel Ride (text link)
+ *     Padding: 16px, 8px gap between button and link
+ *
+ * Reuses: .btn, .btn--neutral-outline, .btn--brand-filled, .btn--lg (buttons.css)
  */
 
 /* ============================================
-   BOTTOM CTA BAR
+   BAR CONTAINER
    ============================================ */
 .bottom-cta-bar {
-  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-400);
+  padding: var(--space-600) 120px;
+  background-color: var(--white);
+  box-shadow: var(--shadow-2xl);
+  width: 100%;
+  position: sticky;
   bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: stretch;
-  align-items: stretch;
-  padding: var(--space-600) var(--space-3000);
-  background-color: var(--surface-page);
-  box-shadow: var(--shadow-2xl);
   z-index: 100;
 }
 
+/* ============================================
+   BUTTONS WRAPPER
+   ============================================ */
+.bottom-cta-bar__actions {
+  display: flex;
+  gap: var(--space-400);
+  flex: 1;
+  max-width: 856px;
+}
+
+/* ============================================
+   CANCEL RIDE BUTTON (outline)
+   ============================================ */
+.bottom-cta-bar__cancel-btn {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================
+   BOOK RETURN BUTTON (primary filled)
+   ============================================ */
+.bottom-cta-bar__book-btn {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Legacy support */
 .bottom-cta-bar__button {
   flex: 1;
   max-width: 100%;
 }
 
 /* ============================================
-   RESPONSIVE
+   CANCEL LINK (mobile only — replaces outline button)
    ============================================ */
-@media (max-width: 1440px) {
-  .bottom-cta-bar {
-    padding: var(--space-600) var(--space-1500);
-  }
+.bottom-cta-bar__cancel-link {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-100);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  text-decoration: none;
+  background: none;
+  border: none;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: color 0.15s ease;
 }
 
-@media (max-width: 992px) {
-  .bottom-cta-bar {
-    padding: var(--space-600) var(--space-800);
-  }
+.bottom-cta-bar__cancel-link:hover {
+  color: var(--text-brand-primary);
 }
 
-@media (max-width: 640px) {
-  .bottom-cta-bar {
-    padding: var(--space-400);
-  }
+.bottom-cta-bar__cancel-link:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
 }
 
 /* ============================================
@@ -52,11 +98,62 @@
    When using bottom CTA bar, add padding to main content
    ============================================ */
 .page--with-bottom-cta {
-  padding-bottom: 120px; /* Adjust based on bar height */
+  padding-bottom: 120px;
 }
 
-@media (max-width: 640px) {
+/* ============================================
+   RESPONSIVE — TABLET (1024px and below)
+   ============================================ */
+@media (max-width: 1024px) {
+  .bottom-cta-bar {
+    padding: var(--space-600) var(--space-800);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+  .bottom-cta-bar {
+    flex-direction: column;
+    padding: var(--space-400);
+  }
+
+  .bottom-cta-bar__actions {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-200);
+  }
+
+  /* Hide outline cancel button, show cancel link */
+  .bottom-cta-bar__cancel-btn {
+    display: none;
+  }
+
+  .bottom-cta-bar__cancel-link {
+    display: flex;
+    width: 100%;
+  }
+
+  .bottom-cta-bar__book-btn {
+    width: 100%;
+  }
+
   .page--with-bottom-cta {
     padding-bottom: 100px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .bottom-cta-bar {
+    padding: var(--space-300);
+  }
+
+  .bottom-cta-bar__cancel-link {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
   }
 }

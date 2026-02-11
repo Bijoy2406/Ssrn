@@ -1,0 +1,144 @@
+/**
+ * SSRN Billing Information Update Component
+ * Card showing billing information in display mode with edit capability
+ * Based on Figma node: 1679-124010
+ *
+ * Structure:
+ *   - Card container (white, shadow-s, 856px max-width)
+ *   - Billing info section:
+ *     - Label: "Billing Information"
+ *     - Value: "Company, address xxxx"
+ *     - Edit button (transparent, with edit icon)
+ *
+ * Reuses: .btn, .btn--neutral-transparent, .btn--sm (buttons.css)
+ *         billing-information.css (for editing state)
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.billing-info-update {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: var(--radius-m);
+  width: 100%;
+  max-width: 856px;
+  box-shadow: var(--shadow-s);
+}
+
+/* ============================================
+   BILLING INFO SECTION
+   ============================================ */
+.billing-info-update__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  padding: var(--space-800) var(--space-600);
+}
+
+/* ============================================
+   CONTENT — INFO + EDIT BUTTON ROW
+   ============================================ */
+.billing-info-update__content {
+  display: flex;
+  gap: var(--space-400);
+}
+
+/* ============================================
+   FIELDS
+   ============================================ */
+.billing-info-update__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  flex: 1;
+  min-width: 0;
+}
+
+.billing-info-update__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+}
+
+.billing-info-update__field-label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+.billing-info-update__field-value {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   EDIT BUTTON
+   ============================================ */
+.billing-info-update__edit-btn {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (1024px and below)
+   ============================================ */
+@media (max-width: 1024px) {
+  .billing-info-update {
+    max-width: 100%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+  .billing-info-update__section {
+    padding: var(--space-600) var(--space-400);
+  }
+
+  .billing-info-update__content {
+    flex-direction: column;
+  }
+
+  .billing-info-update__edit-btn {
+    align-self: flex-end;
+  }
+
+  .billing-info-update__field-label {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .billing-info-update__field-value {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .billing-info-update__section {
+    padding: var(--space-500) var(--space-300);
+    gap: var(--space-300);
+  }
+
+  .billing-info-update__field-label {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+
+  .billing-info-update__field-value {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+}

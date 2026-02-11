@@ -1,0 +1,280 @@
+/**
+ * SSRN Upgrade Option Card Component
+ * Card for upselling vehicle class upgrades with image, details, and CTA
+ * Based on Figma node: 1213-25059
+ *
+ * Structure:
+ *   - Class name with tooltip icon
+ *   - Car picture with upselling message
+ *   - Additional charge indicator (+ $000.00)
+ *   - Heading: "A Small Upgrade. A Big Difference"
+ *   - Description text
+ *   - Upgrade button
+ *
+ * Responsive variants:
+ *   - Desktop: Horizontal layout (car image left, content right)
+ *   - Tablet: Vertical layout (car + price top, content bottom)
+ *   - Mobile: Vertical compact layout
+ *
+ * Reuses: .btn, .btn--neutral-filled, .btn--sm (buttons.css)
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.upgrade-option-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--white);
+  border-radius: var(--radius-m);
+  width: 100%;
+  max-width: 856px;
+  box-shadow: var(--shadow-s);
+}
+
+/* ============================================
+   CLASS NAME WITH TOOLTIP
+   ============================================ */
+.upgrade-option-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding-left: var(--space-200);
+}
+
+.upgrade-option-card__class-name {
+  flex: 1;
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h6-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h6-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+.upgrade-option-card__tooltip-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--blue-50);
+  cursor: help;
+}
+
+/* ============================================
+   CONTENT AREA
+   ============================================ */
+.upgrade-option-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+/* ============================================
+   CAR PICTURE WITH MESSAGE AND PRICE (Desktop)
+   ============================================ */
+.upgrade-option-card__main {
+  display: flex;
+  gap: var(--space-800);
+  align-self: stretch;
+}
+
+.upgrade-option-card__car-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 91px;
+  flex-shrink: 0;
+}
+
+.upgrade-option-card__car-picture img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.upgrade-option-card__message-area {
+  display: flex;
+  gap: var(--space-800);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================
+   UPSELLING MESSAGE
+   ============================================ */
+.upgrade-option-card__message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+  flex: 1;
+  min-width: 0;
+}
+
+.upgrade-option-card__heading {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h5-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h5-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+.upgrade-option-card__description {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   ADDITIONAL CHARGE
+   ============================================ */
+.upgrade-option-card__charge {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-100);
+  flex-shrink: 0;
+}
+
+.upgrade-option-card__charge-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--sea-green-50);
+}
+
+.upgrade-option-card__charge-amount {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h5-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h5-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   BUTTON WRAPPER
+   ============================================ */
+.upgrade-option-card__button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.upgrade-option-card__upgrade-btn {
+  width: 100%;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET (1024px and below)
+   ============================================ */
+@media (max-width: 1024px) {
+  .upgrade-option-card {
+    max-width: 612px;
+    gap: var(--space-400);
+    padding: var(--space-800) var(--space-600);
+  }
+
+  .upgrade-option-card__header {
+    justify-content: center;
+  }
+
+  .upgrade-option-card__main {
+    flex-direction: column;
+    gap: var(--space-400);
+  }
+
+  /* Car picture and charge in same row */
+  .upgrade-option-card__car-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-400);
+  }
+
+  .upgrade-option-card__car-picture {
+    flex: 1;
+    width: auto;
+    height: 71px;
+  }
+
+  .upgrade-option-card__message-area {
+    flex-direction: column;
+    gap: var(--space-100);
+  }
+
+  .upgrade-option-card__charge {
+    justify-content: flex-end;
+  }
+
+  .upgrade-option-card__charge-amount {
+    font-size: var(--heading-h6-size);
+    line-height: var(--heading-h6-line-height);
+  }
+
+  .upgrade-option-card__heading {
+    font-size: var(--heading-h6-size);
+    line-height: var(--heading-h6-line-height);
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+  .upgrade-option-card {
+    max-width: 100%;
+    padding: var(--space-600) var(--space-400);
+  }
+
+  .upgrade-option-card__main {
+    gap: var(--space-300);
+  }
+
+  .upgrade-option-card__message {
+    gap: var(--space-200);
+  }
+
+  .upgrade-option-card__description {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+}
+
+/* ============================================
+   RESPONSIVE - SMALL MOBILE (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .upgrade-option-card {
+    max-width: 292px;
+    gap: var(--space-600);
+    padding: var(--space-600) var(--space-400);
+  }
+
+  .upgrade-option-card__tooltip-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .upgrade-option-card__car-picture {
+    height: 51px;
+  }
+
+  .upgrade-option-card__charge-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .upgrade-option-card__charge-amount {
+    font-size: var(--body-lg-size);
+    line-height: var(--body-lg-line-height);
+  }
+
+  .upgrade-option-card__description {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+}

@@ -1,0 +1,246 @@
+/**
+ * SSRN Price Breakdown Component
+ * Card displaying itemized price breakdown with total
+ * Based on Figma node: 1213-25260
+ *
+ * Structure:
+ *   - List of price items (label + amount)
+ *   - Bottom border separator
+ *   - Total row (bold/larger text)
+ *
+ * Reuses: Typography tokens from tokens.css
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.price-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  padding: var(--space-600);
+  background-color: var(--grey-100);
+  border-radius: var(--radius-m);
+  width: 100%;
+  max-width: 856px;
+}
+
+/* ============================================
+   PRICE ELEMENTS WRAPPER
+   ============================================ */
+.price-breakdown__items-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+/* ============================================
+   PRICE ITEMS LIST
+   ============================================ */
+.price-breakdown__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  padding-bottom: var(--space-400);
+  border-bottom: var(--border-s) solid var(--black);
+}
+
+/* Individual price item row */
+.price-breakdown__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+.price-breakdown__item-label {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  text-align: left;
+}
+
+.price-breakdown__item-amount {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  white-space: nowrap;
+}
+
+/* ============================================
+   TOTAL ROW
+   ============================================ */
+.price-breakdown__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+.price-breakdown__total-label {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-lg-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-lg-line-height);
+  color: var(--black);
+  text-align: left;
+}
+
+.price-breakdown__total-amount {
+  font-family: var(--font-family-body);
+  font-size: var(--body-lg-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-lg-line-height);
+  color: var(--black);
+  white-space: nowrap;
+}
+
+/* ============================================
+   OPTIONAL CHECKBOX SECTION
+   ============================================ */
+.price-breakdown__checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-300);
+  margin-top: var(--space-400);
+}
+
+.price-breakdown__checkbox {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: var(--border-m) solid var(--grey-30);
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  transition: all 0.15s ease;
+}
+
+.price-breakdown__checkbox:checked {
+  background-color: var(--grey-10);
+  border-color: var(--black);
+}
+
+.price-breakdown__checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  width: 6px;
+  height: 12px;
+  border: solid var(--white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.price-breakdown__checkbox:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+.price-breakdown__checkbox-label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  cursor: pointer;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .price-breakdown {
+    max-width: 100%;
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  .price-breakdown {
+    padding: var(--space-500) var(--space-400);
+  }
+
+  .price-breakdown__item-label,
+  .price-breakdown__item-amount {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .price-breakdown__total-label,
+  .price-breakdown__total-amount {
+    font-size: var(--body-md-size);
+    line-height: var(--body-md-line-height);
+  }
+
+  .price-breakdown__items {
+    gap: var(--space-200);
+    padding-bottom: var(--space-300);
+  }
+
+  .price-breakdown__checkbox-label {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+}
+
+/* Small mobile (480px and below) */
+@media (max-width: 480px) {
+  .price-breakdown {
+    padding: var(--space-400) var(--space-300);
+    gap: var(--space-200);
+  }
+
+  .price-breakdown__items-wrapper {
+    gap: var(--space-300);
+  }
+
+  .price-breakdown__items {
+    gap: var(--space-100);
+    padding-bottom: var(--space-300);
+  }
+
+  .price-breakdown__item-label,
+  .price-breakdown__item-amount {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+
+  .price-breakdown__total-label,
+  .price-breakdown__total-amount {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .price-breakdown__checkbox {
+    width: 20px;
+    height: 20px;
+  }
+
+  .price-breakdown__checkbox:checked::after {
+    top: 3px;
+    left: 6px;
+    width: 5px;
+    height: 10px;
+  }
+
+  .price-breakdown__checkbox-label {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+
+  .price-breakdown__checkbox-wrapper {
+    margin-top: var(--space-300);
+  }
+}

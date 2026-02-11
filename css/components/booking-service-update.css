@@ -1,0 +1,116 @@
+/**
+ * SSRN Booking Info & Service Class Update Component
+ * Composite card combining booking confirmation details + service class confirmation
+ * Based on Figma node: 1678-116227
+ *
+ * Structure:
+ *   - Booking confirmation details section (reuses .booking-confirm-details)
+ *   - Horizontal separator line
+ *   - Service class confirmation section (reuses .service-class-confirm)
+ *
+ * Reuses: booking-confirm-details.css, service-class-confirm.css
+ *         .btn, .btn--neutral-transparent, .btn--sm (buttons.css)
+ */
+
+/* ============================================
+   COMPOSITE CARD CONTAINER
+   ============================================ */
+.booking-service-update {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-800);
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--white);
+  border-radius: var(--radius-m);
+  width: 100%;
+  max-width: 856px;
+  box-shadow: var(--shadow-s);
+}
+
+/* ============================================
+   SEPARATOR LINE
+   ============================================ */
+.booking-service-update__separator {
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: var(--border-xs) solid var(--grey-40);
+  margin: 0;
+}
+
+/* ============================================
+   SECTIONS — Override nested component max-widths
+   ============================================ */
+.booking-service-update .booking-confirm-details,
+.booking-service-update .service-class-confirm {
+  max-width: 100%;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ============================================
+   SECTION HEADINGS (optional labels above each section)
+   ============================================ */
+.booking-service-update__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+}
+
+.booking-service-update__section-title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h6-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h6-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (1024px and below)
+   ============================================ */
+@media (max-width: 1024px) {
+  .booking-service-update {
+    max-width: 100%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+  .booking-service-update {
+    padding: var(--space-600) var(--space-400);
+    gap: var(--space-600);
+  }
+
+  .booking-service-update__section {
+    gap: var(--space-400);
+  }
+
+  .booking-service-update__section-title {
+    font-size: var(--heading-h7-size);
+    line-height: var(--heading-h7-line-height);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .booking-service-update {
+    padding: var(--space-500) var(--space-300);
+    gap: var(--space-500);
+  }
+
+  .booking-service-update__section {
+    gap: var(--space-300);
+  }
+
+  .booking-service-update__section-title {
+    font-size: var(--heading-h8-size);
+    line-height: var(--heading-h8-line-height);
+  }
+}
