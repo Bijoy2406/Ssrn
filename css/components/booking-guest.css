@@ -1,7 +1,7 @@
 /**
  * SSRN Booking Preference & Guest Details Component
  * Radio selection (Myself / For others) with guest form or guest selector
- * Based on Figma node: 1193-24591
+ * Based on Figma node: 1193-94280
  *
  * Variants:
  *   - Myself: radio selection only
@@ -186,7 +186,7 @@
 .booking-guest__defined-field {
   display: flex;
   border-radius: var(--radius-s);
-  border: var(--border-m) solid var(--grey-30);
+  border: var(--border-m) solid var(--black);
   overflow: hidden;
   transition: border-color 0.2s ease;
 }
@@ -201,7 +201,7 @@
   gap: var(--space-200);
   padding: var(--space-400) var(--space-300);
   background-color: var(--grey-100);
-  border-right: var(--border-s) solid var(--grey-30);
+  border-right: var(--border-s) solid var(--black);
   font-family: var(--font-family-body);
   font-size: var(--body-md-size);
   color: var(--black);
@@ -350,18 +350,18 @@
   gap: var(--space-300);
   padding: var(--space-400) var(--space-300);
   background-color: var(--grey-100);
-  border: var(--border-m) solid var(--grey-30);
+  border: var(--border-m) solid var(--black);
   border-radius: var(--radius-s);
   cursor: pointer;
   transition: border-color 0.2s ease;
   font-family: var(--font-family-body);
   font-size: var(--body-md-size);
-  color: var(--text-tertiary);
+  color: var(--text-primary);
   width: 100%;
 }
 
 .booking-guest__guest-select:hover {
-  border-color: var(--grey-40);
+  border-color: var(--grey-10);
 }
 
 .booking-guest__guest-select:focus {
@@ -385,7 +385,7 @@
   width: 24px;
   height: 24px;
   flex-shrink: 0;
-  color: var(--grey-30);
+  color: var(--black);
 }
 
 /* ============================================

@@ -1,7 +1,7 @@
 /**
  * SSRN Guest Menu Item Component
  * Dropdown list item for guest selection
- * Based on Figma node: 1191-19609
+ * Based on Figma node: 1193-94280
  *
  * States: Default, Selected, Disabled, Focus, Hover
  */
@@ -128,20 +128,21 @@
 .guest-menu-list {
   display: flex;
   flex-direction: column;
-  width: 240px;
-  border-radius: var(--radius-xs);
+  width: 100%;
+  border-radius: var(--radius-s);
   overflow: hidden;
   box-shadow: var(--shadow-m);
-  background-color: var(--surface-page);
+  background-color: var(--white);
 }
 
 /* ============================================
    GUEST MENU LIST FOOTER
    ============================================ */
 .guest-menu-list__footer {
+  display: flex;
+  justify-content: center;
   padding: var(--space-400);
-  background-color: var(--surface-page);
-  border-top: var(--border-s) solid var(--grey-60);
+  background-color: var(--white);
 }
 
 /* ============================================

@@ -1,0 +1,429 @@
+/**
+ * SSRN Rides Card Component
+ * Based on Figma node: 1707-34908 ("Rides card" component set)
+ *
+ * Variants:
+ *   Type:   Upcoming | Completed | Cancelled
+ *   State:  Default  | Selected
+ *   Device: Desktop  | Tablet    | Mobile
+ *
+ * Desktop (876px):  Horizontal — map left, details right
+ * Tablet  (560px):  Vertical   — map top, details bottom
+ * Mobile  (320px):  Vertical compact — icon share, stacked buttons, link-style "View Details"
+ *
+ * Structure:
+ *   .rides-card                          — outer card (horizontal on desktop, vertical on tablet/mobile)
+ *     .rides-card__map                   — map placeholder with expand button
+ *     .rides-card__body                  — right side content
+ *       .rides-card__header              — booking ID + name + datetime + share (bottom-border)
+ *       .rides-card__route-section       — from/to/distance + service class
+ *       .rides-card__actions             — CTA buttons
+ *
+ * Reuses: .btn, .btn--neutral-outline, .btn--filled, .btn--lg (buttons.css)
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.rides-card {
+  display: flex;
+  gap: var(--space-600);
+  padding: var(--space-600);
+  background-color: var(--white);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-xs);
+  width: 100%;
+  max-width: 876px;
+  overflow: hidden;
+}
+
+/* Cancelled variant — greyed-out background */
+.rides-card--cancelled {
+  background-color: var(--grey-100);
+}
+
+/* ============================================
+   MAP SECTION
+   ============================================ */
+.rides-card__map {
+  position: relative;
+  width: 356px;
+  min-height: 278px;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  background-color: var(--grey-100);
+  flex-shrink: 0;
+}
+
+.rides-card__map img,
+.rides-card__map iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Map expand button (top-right corner) */
+.rides-card__map-expand {
+  position: absolute;
+  top: var(--space-200);
+  right: var(--space-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: var(--space-200);
+  background-color: var(--grey-10);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.rides-card__map-expand:hover {
+  background-color: var(--black);
+}
+
+.rides-card__map-expand svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================
+   BODY (right-side details)
+   ============================================ */
+.rides-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================
+   HEADER — Booking ID, Name, DateTime, Share
+   ============================================ */
+.rides-card__header {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--space-400) 0;
+  border-bottom: var(--border-s) solid var(--grey-40);
+}
+
+.rides-card__header-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  flex: 1;
+  min-width: 0;
+}
+
+/* Booking ID */
+.rides-card__booking-id {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--caption-line-height);
+  color: var(--golden-40);
+  margin: 0;
+}
+
+/* Name + DateTime group */
+.rides-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+}
+
+.rides-card__guest-name {
+  font-family: var(--font-family-body);
+  font-size: var(--body-lg-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-lg-line-height);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.rides-card__datetime {
+  font-family: var(--font-family-body);
+  font-size: var(--body-lg-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-lg-line-height);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Share button (desktop/tablet: text + icon; mobile: icon-only) */
+.rides-card__share-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-200) var(--space-300);
+  background: none;
+  border: none;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.rides-card__share-btn:hover {
+  background-color: var(--grey-70);
+}
+
+.rides-card__share-btn:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+.rides-card__share-btn svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-primary);
+}
+
+.rides-card__share-label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--footnote-line-height);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* ============================================
+   ROUTE SECTION — From, To, Distance + Service Class
+   ============================================ */
+.rides-card__route-section {
+  display: flex;
+  gap: var(--space-600);
+  padding: var(--space-400) 0;
+}
+
+/* Selected state: add bottom border to route section */
+.rides-card--selected .rides-card__route-section {
+  border-bottom: var(--border-s) solid var(--grey-40);
+}
+
+.rides-card__route {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  flex: 1;
+  min-width: 0;
+}
+
+.rides-card__route-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+.rides-card__route-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.rides-card__route-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.rides-card__route-text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Service class (right side of route section) */
+.rides-card__service-class {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-400);
+  flex-shrink: 0;
+  width: 144px;
+}
+
+.rides-card__service-class-label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  margin: 0;
+  align-self: stretch;
+}
+
+.rides-card__service-class-image {
+  width: 144px;
+  height: 73px;
+  flex-shrink: 0;
+}
+
+.rides-card__service-class-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================
+   ACTION BUTTONS
+   ============================================ */
+.rides-card__actions {
+  display: flex;
+  gap: var(--space-400);
+  padding: var(--space-400) 0;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rides-card__actions .btn {
+  flex: 1;
+  max-width: 256px;
+}
+
+/* View details link (mobile only — hidden on desktop/tablet) */
+.rides-card__view-link {
+  display: none;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (≤1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+  .rides-card {
+    flex-direction: column;
+    gap: var(--space-200);
+    max-width: 560px;
+  }
+
+  .rides-card__map {
+    width: 100%;
+    min-height: 200px;
+    max-height: 240px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤768px)
+   ============================================ */
+@media (max-width: 768px) {
+  .rides-card {
+    max-width: 320px;
+    padding: var(--space-600) var(--space-400);
+    gap: var(--space-200);
+  }
+
+  .rides-card__map {
+    width: 100%;
+    min-height: 160px;
+    max-height: 200px;
+  }
+
+  /* Name + datetime use 16px on mobile */
+  .rides-card__guest-name {
+    font-size: var(--body-md-size);
+    line-height: var(--body-md-line-height);
+  }
+
+  .rides-card__datetime {
+    font-size: var(--body-md-size);
+    line-height: var(--body-md-line-height);
+  }
+
+  /* Service class shown inline in header on mobile */
+  .rides-card__service-class-mobile {
+    font-family: var(--font-family-body);
+    font-size: var(--body-md-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--body-md-line-height);
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  /* Hide desktop service class column on mobile */
+  .rides-card__service-class {
+    display: none;
+  }
+
+  /* Route section stacks vertically on mobile */
+  .rides-card__route-section {
+    flex-direction: column;
+    gap: var(--space-400);
+    border-bottom: none;
+  }
+
+  /* Share button becomes icon-only on mobile */
+  .rides-card__share-label {
+    display: none;
+  }
+
+  .rides-card__share-btn {
+    padding: var(--space-200);
+    border-radius: var(--radius-m);
+  }
+
+  .rides-card__share-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Buttons stack vertically on mobile */
+  .rides-card__actions {
+    flex-direction: column;
+    gap: var(--space-200);
+    padding-top: var(--space-400);
+    padding-bottom: 0;
+  }
+
+  .rides-card__actions .btn {
+    max-width: none;
+    width: 100%;
+  }
+
+  /* Hide outline "View Details" button on mobile, show link instead */
+  .rides-card__actions .btn--neutral-outline {
+    display: none;
+  }
+
+  .rides-card__view-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-200);
+    padding: var(--space-100);
+    font-family: var(--font-family-body);
+    font-size: var(--body-md-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--body-md-line-height);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: var(--radius-xs);
+    transition: color 0.2s ease;
+  }
+
+  .rides-card__view-link:hover {
+    color: var(--text-brand-primary);
+  }
+
+  .rides-card__view-link:focus-visible {
+    outline: 2px solid var(--sea-green-50);
+    outline-offset: 2px;
+  }
+
+  .rides-card__view-link svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--text-primary);
+  }
+}

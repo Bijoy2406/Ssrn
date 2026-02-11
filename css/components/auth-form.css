@@ -1,7 +1,7 @@
 /**
  * SSRN Auth Form Card Component
  * Log In / Sign Up / OTP Verification form card
- * Based on Figma design system (node-id: 1404-118275)
+ * Based on Figma design system (node-id: 923-53390)
  */
 
 /* ============================================
@@ -42,10 +42,10 @@
 
 .auth-form__heading {
   font-family: var(--font-family-heading);
-  font-size: var(--heading-h4-size);
-  font-weight: var(--font-weight-extra-bold);
-  line-height: var(--heading-h4-line-height);
-  color: var(--text-neutral-primary);
+  font-size: var(--heading-h6-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h6-line-height);
+  color: var(--text-primary);
   text-align: center;
   margin: 0;
   align-self: stretch;
@@ -56,7 +56,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   text-align: center;
   align-self: stretch;
   margin: 0;
@@ -125,7 +125,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
 }
 
 .auth-form__redirect-link {
@@ -137,7 +137,7 @@
   font-size: var(--body-md-size);
   font-weight: var(--font-weight-medium);
   line-height: var(--body-md-line-height);
-  color: var(--text-neutral-primary);
+  color: var(--text-primary);
   text-decoration: none;
   border-radius: var(--radius-xs);
   transition: color 0.2s ease;
@@ -148,7 +148,7 @@
 }
 
 .auth-form__redirect-link:focus-visible {
-  outline: 2px solid var(--surface-brand-action);
+  outline: 2px solid var(--sea-green-50);
   outline-offset: 2px;
 }
 
@@ -184,7 +184,7 @@
   }
 
   .auth-form__heading {
-    font-size: var(--heading-h5-size);
+    font-size: var(--heading-h7-size);
   }
 }
 
