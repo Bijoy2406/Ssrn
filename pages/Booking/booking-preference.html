@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Preference & Guest Details - SSRN</title>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/tokens.css">
+    <link rel="stylesheet" href="/css/layout/grid.css">
+    <link rel="stylesheet" href="/css/layout/header.css">
+    <link rel="stylesheet" href="/css/layout/footer.css">
+
+    <!-- Components -->
+    <link rel="stylesheet" href="/css/components/buttons.css">
+    <link rel="stylesheet" href="/css/components/input.css">
+    <link rel="stylesheet" href="/css/components/radio.css">
+    <link rel="stylesheet" href="/css/components/checkbox.css">
+    <link rel="stylesheet" href="/css/components/guest-menu-item.css">
+    <link rel="stylesheet" href="/css/components/booking-guest.css">
+    <link rel="stylesheet" href="/css/components/cards-and-modals.css">
+    <link rel="stylesheet" href="/css/components/snackbar.css">
+
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="/css/pages/booking-preference.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="page page--with-header">
+
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <main class="page__main">
+        <div class="booking-pref-demo">
+
+            <!-- ============================================
+                 SECTION 1: Guest Menu Item States
+                 ============================================ -->
+            <section class="demo-section">
+                <h2 class="demo-section__title">Guest Menu Item — States</h2>
+                <div class="demo-states-grid">
+                    <!-- Default -->
+                    <div class="demo-state">
+                        <span class="demo-state__label">Default</span>
+                        <div class="guest-menu-item">
+                            <svg class="guest-menu-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+                            <span class="guest-menu-item__name">Guest x</span>
+                            <div class="guest-menu-item__actions">
+                                <button class="guest-menu-item__btn" aria-label="Edit">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg>
+                                </button>
+                                <button class="guest-menu-item__btn" aria-label="Delete">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="currentColor"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hover -->
+                    <div class="demo-state">
+                        <span class="demo-state__label">Hover</span>
+                        <div class="guest-menu-item guest-menu-item--hover">
+                            <svg class="guest-menu-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+                            <span class="guest-menu-item__name">Guest x</span>
+                            <div class="guest-menu-item__actions">
+                                <button class="guest-menu-item__btn" aria-label="Edit">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg>
+                                </button>
+                                <button class="guest-menu-item__btn" aria-label="Delete">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="currentColor"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Focus -->
+                    <div class="demo-state">
+                        <span class="demo-state__label">Focus</span>
+                        <div class="guest-menu-item guest-menu-item--focus">
+                            <svg class="guest-menu-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+                            <span class="guest-menu-item__name">Guest x</span>
+                            <div class="guest-menu-item__actions">
+                                <button class="guest-menu-item__btn" aria-label="Edit">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg>
+                                </button>
+                                <button class="guest-menu-item__btn" aria-label="Delete">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="currentColor"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Selected -->
+                    <div class="demo-state">
+                        <span class="demo-state__label">Selected</span>
+                        <div class="guest-menu-item guest-menu-item--selected">
+                            <svg class="guest-menu-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+                            <span class="guest-menu-item__name">Guest x</span>
+                            <div class="guest-menu-item__actions">
+                                <button class="guest-menu-item__btn" aria-label="Edit">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg>
+                                </button>
+                                <button class="guest-menu-item__btn" aria-label="Delete">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="currentColor"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Disabled -->
+                    <div class="demo-state">
+                        <span class="demo-state__label">Disabled</span>
+                        <div class="guest-menu-item guest-menu-item--disabled">
+                            <svg class="guest-menu-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+                            <span class="guest-menu-item__name">Guest x</span>
+                            <div class="guest-menu-item__actions">
+                                <button class="guest-menu-item__btn" aria-label="Edit" disabled>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg>
+                                </button>
+                                <button class="guest-menu-item__btn" aria-label="Delete" disabled>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="currentColor"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 SECTION 2: Guest Menu Dropdown
+                 ============================================ -->
+            <section class="demo-section">
+                <h2 class="demo-section__title">Guest Menu Dropdown</h2>
+                <div class="demo-row">
+                    <!-- Guest selection with dropdown -->
+                    <div class="demo-dropdown-wrapper">
+                        <div class="input-wrapper">
+                            <label class="input-label">
+                                <span class="input-label__text">Select guest</span>
+                            </label>
+                            <div class="booking-guest__guest-select">
+                                <svg class="booking-guest__guest-select-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+                                <span>Select an existing guest</span>
+                                <svg class="booking-guest__guest-select-close" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="currentColor"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- Dropdown -->
+                        <div class="guest-menu-list">
+                            <div class="guest-menu-item">
+                                <svg class="guest-menu-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+                                <span class="guest-menu-item__name">Guest x</span>
+                                <div class="guest-menu-item__actions">
+                                    <button class="guest-menu-item__btn" aria-label="Edit"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg></button>
+                                    <button class="guest-menu-item__btn" aria-label="Delete"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="currentColor"/></svg></button>
+                                </div>
+                            </div>
+                            <div class="guest-menu-item">
+                                <svg class="guest-menu-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+                                <span class="guest-menu-item__name">Guest x</span>
+                                <div class="guest-menu-item__actions">
+                                    <button class="guest-menu-item__btn" aria-label="Edit"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg></button>
+                                    <button class="guest-menu-item__btn" aria-label="Delete"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="currentColor"/></svg></button>
+                                </div>
+                            </div>
+                            <div class="guest-menu-list__footer">
+                                <button class="btn btn--neutral-filled btn--sm">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/></svg>
+                                    Add new guest
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 SECTION 3: Booking Preference — All 4 Variants
+                 ============================================ -->
+            <section class="demo-section">
+                <h2 class="demo-section__title">Booking Preference & Guest Details</h2>
+
+                <div class="demo-variants-grid">
+                    <!-- Variant 1: Myself -->
+                    <div class="demo-variant">
+                        <h3 class="demo-variant__label">Myself</h3>
+                        <div class="booking-guest">
+                            <div class="booking-guest__radios">
+                                <label class="booking-guest__radio">
+                                    <input type="radio" name="booking-1" value="myself" checked>
+                                    <span class="booking-guest__radio-control"></span>
+                                    <span class="booking-guest__radio-label">Book for myself</span>
+                                </label>
+                                <label class="booking-guest__radio">
+                                    <input type="radio" name="booking-1" value="others">
+                                    <span class="booking-guest__radio-control"></span>
+                                    <span class="booking-guest__radio-label">Book for someone else</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Variant 2: For others — New Guest -->
+                    <div class="demo-variant">
+                        <h3 class="demo-variant__label">For Others — New Guest</h3>
+                        <div class="booking-guest">
+                            <div class="booking-guest__radios">
+                                <label class="booking-guest__radio">
+                                    <input type="radio" name="booking-2" value="myself">
+                                    <span class="booking-guest__radio-control"></span>
+                                    <span class="booking-guest__radio-label">Book for myself</span>
+                                </label>
+                                <label class="booking-guest__radio">
+                                    <input type="radio" name="booking-2" value="others" checked>
+                                    <span class="booking-guest__radio-control"></span>
+                                    <span class="booking-guest__radio-label">Book for someone else</span>
+                                </label>
+                            </div>
+
+                            <div class="booking-guest__details">
+                                <div class="booking-guest__heading-group">
+                                    <h3 class="booking-guest__title">Add New Guest</h3>
+                                </div>
+
+                                <div class="booking-guest__form">
+                                    <div class="booking-guest__fields">
+                                        <div class="input-wrapper" style="max-width: 80px;">
+                                            <label class="input-label"><span class="input-label__text">Title</span></label>
+                                            <select class="input">
+                                                <option>Mr.</option>
+                                                <option>Mrs.</option>
+                                                <option>Ms.</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-wrapper">
+                                            <label class="input-label"><span class="input-label__text">Full Name</span></label>
+                                            <input type="text" class="input" placeholder="Alex Taylor" value="Alex Taylor">
+                                        </div>
+                                        <div class="input-wrapper">
+                                            <label class="input-label"><span class="input-label__text">Guest Email Address</span></label>
+                                            <input type="email" class="input" placeholder="alextaylor@gmail.com" value="alextaylor@gmail.com">
+                                        </div>
+                                        <div class="input-wrapper">
+                                            <label class="input-label"><span class="input-label__text">Guest Mobile Number</span></label>
+                                            <div class="booking-guest__defined-field">
+                                                <div class="booking-guest__country-code">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" fill="#006a4e"/><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="#006a4e"/><circle cx="11" cy="12" r="4" fill="#f42a41"/></svg>
+                                                    +880
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5H7z" fill="currentColor"/></svg>
+                                                </div>
+                                                <input type="tel" class="booking-guest__phone-input" placeholder="Enter your mobile no.">
+                                            </div>
+                                            <span class="input-helper"><span class="input-helper__text">Please enter the phone number on which the guest would like to receive notifications</span></span>
+                                        </div>
+                                        <label class="booking-guest__checkbox">
+                                            <input type="checkbox">
+                                            <span>Save guest for future bookings</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="booking-guest__actions">
+                                        <button class="btn btn--neutral-filled btn--lg btn--block">Add Guest</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Variant 3: For others — Existing Guest -->
+                    <div class="demo-variant">
+                        <h3 class="demo-variant__label">For Others — Existing Guest</h3>
+                        <div class="booking-guest">
+                            <div class="booking-guest__radios">
+                                <label class="booking-guest__radio">
+                                    <input type="radio" name="booking-3" value="myself">
+                                    <span class="booking-guest__radio-control"></span>
+                                    <span class="booking-guest__radio-label">Book for myself</span>
+                                </label>
+                                <label class="booking-guest__radio">
+                                    <input type="radio" name="booking-3" value="others" checked>
+                                    <span class="booking-guest__radio-control"></span>
+                                    <span class="booking-guest__radio-label">Book for someone else</span>
+                                </label>
+                            </div>
+
+                            <div class="booking-guest__select-section">
+                                <div class="input-wrapper">
+                                    <label class="input-label"><span class="input-label__text">Select guest</span></label>
+                                    <div class="booking-guest__guest-select">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+                                        <span>Select an existing guest</span>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5H7z" fill="currentColor"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Success snackbar -->
+                            <div class="snackbar snackbar--success" style="width: 100%;">
+                                <div class="snackbar__content">
+                                    <svg class="snackbar__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/></svg>
+                                    <div class="snackbar__text-content">
+                                        <p class="snackbar__title">Guest added successfully.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Variant 4: For others — Edit Existing Guest -->
+                    <div class="demo-variant">
+                        <h3 class="demo-variant__label">For Others — Edit Existing Guest</h3>
+                        <div class="booking-guest">
+                            <div class="booking-guest__radios">
+                                <label class="booking-guest__radio">
+                                    <input type="radio" name="booking-4" value="myself">
+                                    <span class="booking-guest__radio-control"></span>
+                                    <span class="booking-guest__radio-label">Book for myself</span>
+                                </label>
+                                <label class="booking-guest__radio">
+                                    <input type="radio" name="booking-4" value="others" checked>
+                                    <span class="booking-guest__radio-control"></span>
+                                    <span class="booking-guest__radio-label">Book for someone else</span>
+                                </label>
+                            </div>
+
+                            <div class="booking-guest__select-section">
+                                <div class="input-wrapper">
+                                    <label class="input-label"><span class="input-label__text">Select guest</span></label>
+                                    <div class="booking-guest__guest-select">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+                                        <span>Select an existing guest</span>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5H7z" fill="currentColor"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="booking-guest__details">
+                                <div class="booking-guest__heading-group">
+                                    <h3 class="booking-guest__title">Edit Guest x Details</h3>
+                                </div>
+
+                                <div class="booking-guest__form">
+                                    <div class="booking-guest__fields">
+                                        <div class="input-wrapper" style="max-width: 80px;">
+                                            <label class="input-label"><span class="input-label__text">Title</span></label>
+                                            <select class="input">
+                                                <option>Mr.</option>
+                                                <option>Mrs.</option>
+                                                <option>Ms.</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-wrapper">
+                                            <label class="input-label"><span class="input-label__text">Full Name</span></label>
+                                            <input type="text" class="input" value="Alex Taylor">
+                                        </div>
+                                        <div class="input-wrapper">
+                                            <label class="input-label"><span class="input-label__text">Guest Email Address</span></label>
+                                            <input type="email" class="input" value="alextaylor@gmail.com">
+                                        </div>
+                                        <div class="input-wrapper">
+                                            <label class="input-label"><span class="input-label__text">Guest Mobile Number</span></label>
+                                            <div class="booking-guest__defined-field">
+                                                <div class="booking-guest__country-code">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" fill="#006a4e"/><circle cx="11" cy="12" r="4" fill="#f42a41"/></svg>
+                                                    +880
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5H7z" fill="currentColor"/></svg>
+                                                </div>
+                                                <input type="tel" class="booking-guest__phone-input" value="17xxxxxxxxx">
+                                            </div>
+                                            <span class="input-helper"><span class="input-helper__text">Please enter the phone number on which the guest would like to receive notifications</span></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="booking-guest__actions">
+                                        <button class="btn btn--neutral-filled btn--lg btn--block">Update guest details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ============================================
+                 SECTION 4: Delete Confirmation
+                 ============================================ -->
+            <section class="demo-section">
+                <h2 class="demo-section__title">Delete Guest Confirmation</h2>
+                <div class="modal-confirmation">
+                    <button class="modal-confirmation__close" aria-label="Close">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="currentColor"/></svg>
+                    </button>
+                    <div class="modal-confirmation__content">
+                        <h3 class="modal-confirmation__heading">Are you sure you want to delete guest x?</h3>
+                        <p class="modal-confirmation__body">This action cannot be undone.</p>
+                    </div>
+                    <div class="modal-confirmation__actions">
+                        <button class="btn btn--neutral-filled">Confirm</button>
+                        <button class="btn btn--neutral-outline">Close</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Core Scripts -->
+    <script src="/js/utils/includes.js"></script>
+    <script src="/js/layout/header.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+/**
+ * SSRN Guest Details + Additional Info Combined Component
+ * Wrapper containing both Guest Details Confirmation and
+ * Additional Information Confirmation cards stacked vertically
+ * Based on Figma node: 1485-27523
+ *
+ * Reuses: guest-details-confirm classes (guest-details-confirm.css)
+ *         additional-info-confirm classes (additional-info-confirm.css)
+ */
+
+/* ============================================
+   COMBINED WRAPPER
+   ============================================ */
+.guest-info-combined {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  width: 100%;
+}
+
+/* Cards inside combined view — full width + subtle border */
+.guest-info-combined .guest-details-confirm,
+.guest-info-combined .additional-info-confirm {
+  max-width: 100%;
+  border: var(--border-s) solid var(--grey-40);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .guest-info-combined {
+    gap: var(--space-300);
+  }
+}

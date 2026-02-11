@@ -1,0 +1,195 @@
+/**
+ * SSRN Booking Confirmation Details Component
+ * Card showing booking route details with map, date/time, and location info
+ * Based on Figma node: 1573-12862
+ *
+ * Structure:
+ *   - Map section (image/embed placeholder)
+ *   - Date/time heading with Edit button
+ *   - Booking details list:
+ *     - Start location (with icon)
+ *     - End location (with icon)
+ *     - ETA (with icon)
+ *     - Distance (with icon)
+ *
+ * Reuses: .btn, .btn--neutral-transparent, .btn--sm (buttons.css)
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.booking-confirm-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--grey-100);
+  border-radius: var(--radius-m);
+  width: 100%;
+  max-width: 579px;
+}
+
+/* ============================================
+   MAP SECTION
+   ============================================ */
+.booking-confirm-details__map {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  background-color: var(--grey-70);
+}
+
+.booking-confirm-details__map img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================
+   HEADER — DATE/TIME + EDIT BUTTON
+   ============================================ */
+.booking-confirm-details__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-400);
+}
+
+.booking-confirm-details__datetime {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h5-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h5-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+.booking-confirm-details__edit-btn {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   BOOKING DETAILS LIST
+   ============================================ */
+.booking-confirm-details__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+/* Individual detail row */
+.booking-confirm-details__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-300);
+}
+
+.booking-confirm-details__item-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--sea-green-50);
+}
+
+.booking-confirm-details__item-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.booking-confirm-details__item-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+  flex: 1;
+  min-width: 0;
+}
+
+.booking-confirm-details__item-label {
+  font-family: var(--font-family-body);
+  font-size: var(--footnote-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--footnote-line-height);
+  color: var(--grey-30);
+  margin: 0;
+}
+
+.booking-confirm-details__item-value {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (1024px and below)
+   ============================================ */
+@media (max-width: 1024px) {
+  .booking-confirm-details {
+    max-width: 100%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+  .booking-confirm-details {
+    padding: var(--space-600) var(--space-400);
+    gap: var(--space-500);
+  }
+
+  .booking-confirm-details__map {
+    height: 160px;
+  }
+
+  .booking-confirm-details__datetime {
+    font-size: var(--heading-h7-size);
+    line-height: var(--heading-h7-line-height);
+  }
+
+  .booking-confirm-details__list {
+    gap: var(--space-300);
+  }
+
+  .booking-confirm-details__item-value {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .booking-confirm-details {
+    padding: var(--space-500) var(--space-300);
+    gap: var(--space-400);
+  }
+
+  .booking-confirm-details__map {
+    height: 130px;
+  }
+
+  .booking-confirm-details__datetime {
+    font-size: var(--heading-h8-size);
+    line-height: var(--heading-h8-line-height);
+  }
+
+  .booking-confirm-details__item-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .booking-confirm-details__item-label {
+    font-size: var(--caption-size);
+    line-height: var(--caption-line-height);
+  }
+
+  .booking-confirm-details__item-value {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+}

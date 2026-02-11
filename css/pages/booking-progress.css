@@ -1,0 +1,150 @@
+/**
+ * Booking Progress Demo Page
+ * Layout styles for the component showcase
+ */
+
+.booking-progress-demo {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-800) var(--space-600);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1200);
+}
+
+/* Demo section */
+.demo-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+}
+
+.demo-section__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h7-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h7-line-height);
+  color: var(--text-primary);
+  margin: 0;
+  padding-bottom: var(--space-300);
+  border-bottom: var(--border-s) solid var(--border-default);
+}
+
+.demo-note {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+/* Step states grid */
+.demo-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+}
+
+.demo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-600);
+}
+
+.demo-label {
+  width: 80px;
+  flex-shrink: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  text-transform: capitalize;
+}
+
+.demo-step-preview {
+  display: flex;
+  gap: var(--space-800);
+  flex: 1;
+}
+
+.demo-step-preview .booking-step {
+  min-width: 140px;
+}
+
+/* Force hover state for demo */
+.demo-hover .booking-step__dot {
+  background-color: var(--grey-30) !important;
+}
+
+/* Force focus ring for demo */
+.demo-focus .booking-step__dot {
+  position: relative;
+}
+
+.demo-focus .booking-step__dot::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--black);
+  box-sizing: border-box;
+}
+
+/* Force mobile layout for demo preview */
+.demo-force-mobile .booking-progress__buttons {
+  display: none !important;
+}
+
+.demo-force-mobile .booking-progress__header {
+  display: flex !important;
+  align-items: flex-end;
+  gap: var(--space-800);
+}
+
+.demo-force-mobile .booking-progress__step-title {
+  flex: 1;
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h8-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 28px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.demo-force-mobile .booking-progress__step-counter {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.demo-force-mobile .booking-progress__track {
+  padding: 0 !important;
+}
+
+.demo-force-mobile .booking-progress__inner {
+  gap: var(--space-400);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .booking-progress-demo {
+    padding: var(--space-600) var(--space-400);
+    gap: var(--space-800);
+  }
+
+  .demo-step-preview {
+    flex-direction: column;
+    gap: var(--space-400);
+  }
+
+  .demo-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-200);
+  }
+}

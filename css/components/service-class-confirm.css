@@ -1,0 +1,333 @@
+/**
+ * SSRN Service Class Confirmation Component
+ * Card showing selected vehicle class with Default (display) and Editing (selection list) states
+ * Based on Figma node: 1503-104541
+ *
+ * States:
+ *   - Default: Selected service class card with car image, details, and Edit button
+ *   - Editing: Stacked list of service class options with Save Changes / Cancel buttons
+ *
+ * Structure (Default state):
+ *   - Car picture (180x91)
+ *   - Class details: vehicle class name, car example, passenger + luggage count
+ *   - Edit button (transparent, with icon)
+ *
+ * Structure (Editing state):
+ *   - Stacked service class cards (Standard, Business, First Class, Standard SUV, Business SUV)
+ *   - Each card: car image + class name + car example + passenger/luggage + price
+ *   - Save Changes button (filled) + Cancel button (outline)
+ *
+ * Reuses: .btn, .btn--neutral-transparent, .btn--sm (buttons.css)
+ *         .btn--neutral-filled, .btn--neutral-outline, .btn--lg (buttons.css)
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.service-class-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  width: 100%;
+  max-width: 660px;
+}
+
+/* ============================================
+   SERVICE CLASS CARD ITEM (shared between states)
+   ============================================ */
+.service-class-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-600);
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--grey-100);
+  border-radius: var(--radius-m);
+  width: 100%;
+}
+
+/* ============================================
+   CAR PICTURE WITH CLASS DETAILS (horizontal row)
+   ============================================ */
+.service-class-card__layout {
+  display: flex;
+  gap: var(--space-800);
+  align-self: stretch;
+}
+
+/* Car image */
+.service-class-card__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 91px;
+  flex-shrink: 0;
+}
+
+.service-class-card__image img,
+.service-class-card__image svg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================
+   CLASS DETAILS WITH PRICE
+   ============================================ */
+.service-class-card__details {
+  display: flex;
+  gap: var(--space-800);
+  flex: 1;
+  min-width: 0;
+}
+
+.service-class-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  flex: 1;
+  min-width: 0;
+}
+
+/* Vehicle class name and car example */
+.service-class-card__name-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+}
+
+.service-class-card__class-name {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h5-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h5-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+.service-class-card__car-example {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* Passenger and luggage counts */
+.service-class-card__capacity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+.service-class-card__capacity-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-100);
+}
+
+.service-class-card__capacity-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.service-class-card__capacity-count {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+}
+
+/* ============================================
+   PRICE AND EDIT BUTTON AREA
+   ============================================ */
+.service-class-card__price-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.service-class-card__price {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h5-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h5-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+.service-class-card__edit-btn {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   EDITING STATE — SERVICE CLASS LIST
+   ============================================ */
+.service-class-confirm--editing {
+  gap: var(--space-600);
+}
+
+.service-class-confirm__list {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  box-shadow: var(--shadow-l);
+}
+
+/* List items have different styling */
+.service-class-confirm__list .service-class-card {
+  border-radius: 0;
+  background-color: var(--white);
+  border-bottom: var(--border-s) solid var(--grey-70);
+}
+
+.service-class-confirm__list .service-class-card:first-child {
+  border-radius: var(--radius-m) var(--radius-m) 0 0;
+}
+
+.service-class-confirm__list .service-class-card:last-child {
+  border-radius: 0 0 var(--radius-m) var(--radius-m);
+  border-bottom: none;
+}
+
+/* Selected state for list items */
+.service-class-card--selected {
+  background-color: var(--sea-green-100) !important;
+  border-left: var(--border-l) solid var(--sea-green-50);
+}
+
+/* Hover state for list items */
+.service-class-confirm__list .service-class-card:hover:not(.service-class-card--selected) {
+  background-color: var(--grey-70);
+  cursor: pointer;
+}
+
+/* ============================================
+   ACTION BUTTONS (Editing state)
+   ============================================ */
+.service-class-confirm__actions {
+  display: flex;
+  gap: var(--space-400);
+  flex-wrap: wrap;
+}
+
+.service-class-confirm__save-btn,
+.service-class-confirm__cancel-btn {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (1024px and below)
+   ============================================ */
+@media (max-width: 1024px) {
+  .service-class-confirm {
+    max-width: 100%;
+  }
+
+  .service-class-card__layout {
+    gap: var(--space-600);
+  }
+
+  .service-class-card__details {
+    gap: var(--space-600);
+  }
+
+  .service-class-card__image {
+    width: 140px;
+    height: 71px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+  .service-class-card {
+    padding: var(--space-600) var(--space-400);
+    gap: var(--space-500);
+  }
+
+  .service-class-card__layout {
+    flex-direction: column;
+    gap: var(--space-400);
+  }
+
+  .service-class-card__image {
+    width: 100%;
+    height: auto;
+    max-height: 100px;
+  }
+
+  .service-class-card__details {
+    flex-direction: column;
+    gap: var(--space-300);
+  }
+
+  .service-class-card__class-name {
+    font-size: var(--heading-h7-size);
+    line-height: var(--heading-h7-line-height);
+  }
+
+  .service-class-card__price {
+    font-size: var(--heading-h7-size);
+    line-height: var(--heading-h7-line-height);
+  }
+
+  .service-class-card__price-area {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .service-class-confirm__actions {
+    flex-direction: column;
+    gap: var(--space-300);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+  .service-class-card {
+    padding: var(--space-500) var(--space-300);
+    gap: var(--space-400);
+  }
+
+  .service-class-card__class-name {
+    font-size: var(--heading-h8-size);
+    line-height: var(--heading-h8-line-height);
+  }
+
+  .service-class-card__car-example {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .service-class-card__capacity-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .service-class-card__capacity-count {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .service-class-card__price {
+    font-size: var(--heading-h8-size);
+    line-height: var(--heading-h8-line-height);
+  }
+
+  .service-class-confirm__actions {
+    gap: var(--space-200);
+  }
+}

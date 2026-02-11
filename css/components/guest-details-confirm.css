@@ -1,0 +1,234 @@
+/**
+ * SSRN Guest Details Confirmation Component
+ * Booking card with Default (display) and Editing (form) states
+ * Based on Figma node: 1485-11610 > Guest details confirmation
+ *
+ * States:
+ *   - Default: Guest Name, Email, Mobile Number fields + Edit button + Snackbar
+ *   - Editing: Title dropdown, Full Name, Email, Mobile Number inputs + Save/Cancel
+ *
+ * Reuses: .btn--neutral-transparent, .btn--sm (buttons.css)
+ *         .btn--neutral-filled, .btn--lg (buttons.css)
+ *         .snackbar (snackbar.css)
+ *         input classes (input.css)
+ */
+
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.guest-details-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--grey-100);
+  border-radius: var(--radius-m);
+  width: 100%;
+  max-width: 464px;
+}
+
+/* Editing state — larger gap */
+.guest-details-confirm--editing {
+  gap: var(--space-600);
+}
+
+/* ============================================
+   DEFAULT STATE — DISPLAY ROW
+   ============================================ */
+.guest-details-confirm__display {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-400);
+}
+
+.guest-details-confirm__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  flex: 1;
+  min-width: 0;
+}
+
+/* Individual field (label + value) */
+.guest-details-confirm__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100);
+}
+
+.guest-details-confirm__field-label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+}
+
+.guest-details-confirm__field-value {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+}
+
+.guest-details-confirm__edit-btn {
+  flex-shrink: 0;
+}
+
+/* Snackbar area */
+.guest-details-confirm__snackbar {
+  align-self: stretch;
+}
+
+/* ============================================
+   EDITING STATE — FORM
+   ============================================ */
+.guest-details-confirm__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+/* Heading + subtext */
+.guest-details-confirm__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.guest-details-confirm__heading {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h8-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h8-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+.guest-details-confirm__subtext {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* Input fields */
+.guest-details-confirm__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+/* ============================================
+   FORM ACTIONS
+   ============================================ */
+.guest-details-confirm__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.guest-details-confirm__save-btn {
+  width: 100%;
+}
+
+.guest-details-confirm__cancel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-100);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--black);
+  text-decoration: none;
+  background: none;
+  border: none;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.guest-details-confirm__cancel-link:hover {
+  color: var(--text-brand-primary);
+}
+
+.guest-details-confirm__cancel-link:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .guest-details-confirm {
+    max-width: 100%;
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  .guest-details-confirm {
+    padding: var(--space-600) var(--space-400);
+    gap: var(--space-300);
+  }
+
+  .guest-details-confirm--editing {
+    gap: var(--space-500);
+  }
+
+  .guest-details-confirm__display {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .guest-details-confirm__edit-btn {
+    align-self: flex-end;
+  }
+
+  .guest-details-confirm__info {
+    gap: var(--space-500);
+  }
+
+  .guest-details-confirm__heading {
+    font-size: var(--heading-h7-size);
+    line-height: var(--heading-h7-line-height);
+  }
+
+  .guest-details-confirm__fields {
+    gap: var(--space-300);
+  }
+}
+
+/* Small mobile (480px and below) */
+@media (max-width: 480px) {
+  .guest-details-confirm {
+    padding: var(--space-500) var(--space-300);
+    gap: var(--space-300);
+  }
+
+  .guest-details-confirm__info {
+    gap: var(--space-400);
+  }
+
+  .guest-details-confirm__header {
+    gap: var(--space-100);
+  }
+
+  .guest-details-confirm__heading {
+    font-size: var(--body-lg-size);
+    line-height: var(--body-lg-line-height);
+  }
+
+  .guest-details-confirm__subtext {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+}

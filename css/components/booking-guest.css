@@ -335,11 +335,178 @@
 }
 
 /* ============================================
+   SELECT SECTION (for existing guest dropdown)
+   ============================================ */
+.booking-guest__select-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+}
+
+/* Guest select button */
+.booking-guest__guest-select {
+  display: flex;
+  align-items: center;
+  gap: var(--space-300);
+  padding: var(--space-400) var(--space-300);
+  background-color: var(--grey-100);
+  border: var(--border-m) solid var(--grey-30);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  color: var(--text-tertiary);
+  width: 100%;
+}
+
+.booking-guest__guest-select:hover {
+  border-color: var(--grey-40);
+}
+
+.booking-guest__guest-select:focus {
+  border-color: var(--black);
+  outline: none;
+}
+
+.booking-guest__guest-select-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+.booking-guest__guest-select > span {
+  flex: 1;
+  min-width: 0;
+}
+
+.booking-guest__guest-select-close {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--grey-30);
+}
+
+/* ============================================
+   HEADING GROUP (for form sections)
+   ============================================ */
+.booking-guest__heading-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.booking-guest__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h8-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--heading-h8-line-height);
+  color: var(--black);
+  margin: 0;
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .booking-guest {
+    max-width: 100%;
+  }
+
+  .booking-guest__dropdown-menu {
+    width: 100%;
+  }
+}
+
+/* Mobile (768px and below) */
 @media (max-width: 768px) {
   .booking-guest {
     padding: var(--space-600) var(--space-400);
-    max-width: 100%;
+    gap: var(--space-600);
+  }
+
+  .booking-guest__radios {
+    gap: var(--space-300);
+  }
+
+  .booking-guest__title {
+    font-size: var(--heading-h7-size);
+    line-height: var(--heading-h7-line-height);
+  }
+
+  .booking-guest__fields {
+    gap: var(--space-300);
+  }
+
+  .booking-guest__form {
+    gap: var(--space-500);
+  }
+
+  .booking-guest__country-code {
+    padding: var(--space-300) var(--space-200);
+    gap: var(--space-100);
+  }
+
+  .booking-guest__phone-input {
+    padding: var(--space-300) var(--space-200);
+  }
+
+  .booking-guest__dropdown-guests {
+    max-height: 200px;
+  }
+}
+
+/* Small mobile (480px and below) */
+@media (max-width: 480px) {
+  .booking-guest {
+    padding: var(--space-500) var(--space-300);
+    gap: var(--space-500);
+  }
+
+  .booking-guest__radio {
+    gap: var(--space-200);
+    align-items: flex-start;
+  }
+
+  .booking-guest__radio-input {
+    margin-top: 2px;
+  }
+
+  .booking-guest__radio-label {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+  }
+
+  .booking-guest__title {
+    font-size: var(--body-lg-size);
+    line-height: var(--body-lg-line-height);
+  }
+
+  .booking-guest__guest-select {
+    padding: var(--space-300) var(--space-200);
+    gap: var(--space-200);
+    font-size: var(--footnote-size);
+  }
+
+  .booking-guest__guest-select-icon,
+  .booking-guest__guest-select-close {
+    width: 20px;
+    height: 20px;
+  }
+
+  .booking-guest__country-code svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .booking-guest__dropdown-guests {
+    max-height: 160px;
+  }
+
+  .booking-guest__dropdown-footer {
+    padding: var(--space-300);
   }
 }

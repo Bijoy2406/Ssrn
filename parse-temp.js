@@ -1,5 +1,4 @@
 const fs = require('fs');
-const data = JSON.parse(fs.readFileSync('figma-2116-143855.json', 'utf8'));
 
 function rgbaToHex(r, g, b) {
   const toHex = v => Math.round(v * 255).toString(16).padStart(2, '0');
@@ -30,7 +29,7 @@ function extractNode(node, depth, maxDepth) {
       if (s.type === 'SOLID' && s.color) info += ' border:' + rgbaToHex(s.color.r, s.color.g, s.color.b);
     });
   }
-  if (node.strokeWeight && node.strokeWeight > 0) info += ' bw:' + node.strokeWeight;
+  if (node.strokeWeight && node.strokeWeight > 0 && node.strokeWeight < 10) info += ' bw:' + node.strokeWeight;
   if (node.type === 'TEXT') {
     info += ' "' + (node.characters || '').substring(0, 80) + '"';
     if (node.style) {
@@ -49,19 +48,21 @@ function extractNode(node, depth, maxDepth) {
   if (node.children) node.children.forEach(c => extractNode(c, depth + 1, maxDepth));
 }
 
-const nodeData = data.nodes['2116:143855'];
+const file = process.argv[2];
+const nodeId = process.argv[3];
+const maxD = parseInt(process.argv[4] || '8');
+const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+const nodeData = data.nodes[nodeId];
 if (nodeData && nodeData.document) {
   const doc = nodeData.document;
-  console.log('Name:', doc.name);
-  console.log('Type:', doc.type);
-  console.log('');
+  console.log('=== NAME:', doc.name, '===');
+  console.log('TYPE:', doc.type);
   if (doc.children) {
     doc.children.forEach(child => {
-      console.log('\n=== ' + child.name + ' ===');
-      extractNode(child, 0, 10);
+      console.log('\n--- ' + child.name + ' ---');
+      extractNode(child, 0, maxD);
     });
   }
 } else {
-  console.log('Node not found. Keys:', Object.keys(data.nodes || {}));
-  console.log(JSON.stringify(data).substring(0, 500));
+  console.log('Not found. Keys:', Object.keys(data.nodes || {}));
 }

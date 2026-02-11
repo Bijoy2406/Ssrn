@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Progress - SSRN</title>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/tokens.css">
+    <link rel="stylesheet" href="/css/layout/grid.css">
+    <link rel="stylesheet" href="/css/layout/header.css">
+    <link rel="stylesheet" href="/css/layout/footer.css">
+
+    <!-- Components -->
+    <link rel="stylesheet" href="/css/components/buttons.css">
+    <link rel="stylesheet" href="/css/components/booking-progress.css">
+    <link rel="stylesheet" href="/css/components/snackbar.css">
+    <link rel="stylesheet" href="/css/components/progressbar.css">
+
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="/css/pages/booking-progress.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="page page--with-header">
+
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <main class="page__main">
+        <div class="booking-progress-demo">
+
+            <!-- ============================================
+                 SECTION 1: Individual Progress Bar Steps
+                 ============================================ -->
+            <section class="demo-section">
+                <h2 class="demo-section__title">Booking Progress Bar — Step States</h2>
+
+                <div class="demo-grid">
+                    <!-- Current / Default -->
+                    <div class="demo-item">
+                        <span class="demo-label">Current</span>
+                        <div class="demo-step-preview">
+                            <div class="booking-step booking-step--current">
+                                <div class="booking-step__dot" tabindex="0"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--current booking-step--completed">
+                                <div class="booking-step__dot" tabindex="0"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hover -->
+                    <div class="demo-item">
+                        <span class="demo-label">Hover</span>
+                        <div class="demo-step-preview">
+                            <div class="booking-step booking-step--current demo-hover">
+                                <div class="booking-step__dot" tabindex="0"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--current booking-step--completed demo-hover">
+                                <div class="booking-step__dot" tabindex="0"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Focus -->
+                    <div class="demo-item">
+                        <span class="demo-label">Focus</span>
+                        <div class="demo-step-preview">
+                            <div class="booking-step booking-step--current demo-focus">
+                                <div class="booking-step__dot" tabindex="0"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--current booking-step--completed demo-focus">
+                                <div class="booking-step__dot" tabindex="0"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disabled -->
+                    <div class="demo-item">
+                        <span class="demo-label">Disabled</span>
+                        <div class="demo-step-preview">
+                            <div class="booking-step booking-step--disabled">
+                                <div class="booking-step__dot"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--disabled">
+                                <div class="booking-step__dot"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 SECTION 2: Desktop — 4 Steps (with Login)
+                 ============================================ -->
+            <section class="demo-section">
+                <h2 class="demo-section__title">Booking Progress — Desktop (4 Steps, with Login)</h2>
+
+                <div class="booking-progress">
+                    <div class="booking-progress__inner">
+                        <!-- Desktop step buttons -->
+                        <div class="booking-progress__buttons">
+                            <button class="btn btn--neutral-outline" data-step="1">Service class</button>
+                            <button class="btn btn--neutral-transparent" data-step="2">Pickup Info.</button>
+                            <button class="btn btn--neutral-transparent" data-step="3">Log in</button>
+                            <button class="btn btn--neutral-transparent" data-step="4">Confirmation</button>
+                        </div>
+
+                        <!-- Mobile header (hidden on desktop) -->
+                        <div class="booking-progress__header">
+                            <h3 class="booking-progress__step-title">Service Class</h3>
+                            <span class="booking-progress__step-counter">Step 1 of 4</span>
+                        </div>
+
+                        <!-- Progress bar track -->
+                        <div class="booking-progress__track">
+                            <div class="booking-step booking-step--current">
+                                <div class="booking-step__dot" tabindex="0" aria-label="Step 1: Service class"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--disabled">
+                                <div class="booking-step__dot" aria-label="Step 2: Pickup Info"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--disabled">
+                                <div class="booking-step__dot" aria-label="Step 3: Log in"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--last booking-step--disabled">
+                                <div class="booking-step__dot" aria-label="Step 4: Confirmation"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error snackbar (optional) -->
+                    <div class="booking-progress__snackbar">
+                        <div class="snackbar snackbar--error">
+                            <div class="snackbar__content">
+                                <svg class="snackbar__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
+                                </svg>
+                                <div class="snackbar__text-content">
+                                    <p class="snackbar__title">Your booking session expired. Please try again.</p>
+                                </div>
+                            </div>
+                            <div class="snackbar__progressbar">
+                                <div class="snackbar__progressbar-fill" style="width: 48%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 SECTION 3: Desktop — 3 Steps (no Login)
+                 ============================================ -->
+            <section class="demo-section">
+                <h2 class="demo-section__title">Booking Progress — Desktop (3 Steps, no Login)</h2>
+
+                <div class="booking-progress booking-progress--3-steps">
+                    <div class="booking-progress__inner">
+                        <div class="booking-progress__buttons">
+                            <button class="btn btn--neutral-outline" data-step="1">Service class</button>
+                            <button class="btn btn--neutral-transparent" data-step="2">Pickup Info.</button>
+                            <button class="btn btn--neutral-transparent" data-step="3">Confirmation</button>
+                        </div>
+
+                        <div class="booking-progress__header">
+                            <h3 class="booking-progress__step-title">Service Class</h3>
+                            <span class="booking-progress__step-counter">Step 1 of 3</span>
+                        </div>
+
+                        <div class="booking-progress__track">
+                            <div class="booking-step booking-step--current">
+                                <div class="booking-step__dot" tabindex="0" aria-label="Step 1: Service class"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--disabled">
+                                <div class="booking-step__dot" aria-label="Step 2: Pickup Info"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--last booking-step--disabled">
+                                <div class="booking-step__dot" aria-label="Step 3: Confirmation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 SECTION 4: Tablet/Mobile — 4 Steps (with Login)
+                 ============================================ -->
+            <section class="demo-section">
+                <h2 class="demo-section__title">Booking Progress — Tablet / Mobile (4 Steps)</h2>
+                <p class="demo-note">Resize the browser below 1024px to see the mobile layout, or view it in the forced mobile preview below.</p>
+
+                <div class="booking-progress demo-force-mobile">
+                    <div class="booking-progress__inner">
+                        <div class="booking-progress__buttons">
+                            <button class="btn btn--neutral-outline" data-step="1">Service class</button>
+                            <button class="btn btn--neutral-transparent" data-step="2">Pickup Info.</button>
+                            <button class="btn btn--neutral-transparent" data-step="3">Log in</button>
+                            <button class="btn btn--neutral-transparent" data-step="4">Confirmation</button>
+                        </div>
+
+                        <div class="booking-progress__header">
+                            <h3 class="booking-progress__step-title">Service Class</h3>
+                            <span class="booking-progress__step-counter">Step 1 of 4</span>
+                        </div>
+
+                        <div class="booking-progress__track">
+                            <div class="booking-step booking-step--current">
+                                <div class="booking-step__dot" tabindex="0"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--disabled">
+                                <div class="booking-step__dot"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--disabled">
+                                <div class="booking-step__dot"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--last booking-step--disabled">
+                                <div class="booking-step__dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 SECTION 5: Progress Scenario — Step 2 Active
+                 ============================================ -->
+            <section class="demo-section">
+                <h2 class="demo-section__title">Booking Progress — Step 2 Active (Pickup Info)</h2>
+
+                <div class="booking-progress">
+                    <div class="booking-progress__inner">
+                        <div class="booking-progress__buttons">
+                            <button class="btn btn--neutral-transparent" data-step="1">Service class</button>
+                            <button class="btn btn--neutral-outline" data-step="2">Pickup Info.</button>
+                            <button class="btn btn--neutral-transparent" data-step="3">Log in</button>
+                            <button class="btn btn--neutral-transparent" data-step="4">Confirmation</button>
+                        </div>
+
+                        <div class="booking-progress__header">
+                            <h3 class="booking-progress__step-title">Pickup Info.</h3>
+                            <span class="booking-progress__step-counter">Step 2 of 4</span>
+                        </div>
+
+                        <div class="booking-progress__track">
+                            <div class="booking-step booking-step--current booking-step--completed">
+                                <div class="booking-step__dot" tabindex="0" aria-label="Step 1: Service class - completed"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--current">
+                                <div class="booking-step__dot" tabindex="0" aria-label="Step 2: Pickup Info - current"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--disabled">
+                                <div class="booking-step__dot" aria-label="Step 3: Log in"></div>
+                                <div class="booking-step__bar"></div>
+                            </div>
+                            <div class="booking-step booking-step--last booking-step--disabled">
+                                <div class="booking-step__dot" aria-label="Step 4: Confirmation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Core Scripts -->
+    <script src="/js/utils/includes.js"></script>
+    <script src="/js/layout/header.js"></script>
+
+    <!-- Page Scripts -->
+    <script src="/js/pages/booking-progress.js"></script>
+
+</body>
+</html>

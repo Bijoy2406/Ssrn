@@ -153,11 +153,29 @@
 /* Booking Guest Details */
 @import url('./css/components/booking-guest.css');
 
+/* Guest Details Confirmation */
+@import url('./css/components/guest-details-confirm.css');
+
+/* Additional Information Confirmation */
+@import url('./css/components/additional-info-confirm.css');
+
+/* Guest Details + Additional Info Combined */
+@import url('./css/components/guest-info-combined.css');
+
 /* ============================================
    ACCOUNT MANAGEMENT
    ============================================ */
 /* Personal Information Edit */
 @import url('./css/components/personal-info-edit.css');
+
+/* Mobile Number Edit */
+@import url('./css/components/mobile-number-edit.css');
+
+/* Password Edit */
+@import url('./css/components/password-edit.css');
+
+/* Notification Preference Edit */
+@import url('./css/components/notification-pref-edit.css');
 
 /* ============================================
    MISC

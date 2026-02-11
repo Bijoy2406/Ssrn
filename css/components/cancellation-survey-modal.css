@@ -1,0 +1,202 @@
+/**
+ * SSRN Cancellation Survey Modal
+ * Modal with radio options for cancellation reason + FAQ link
+ * Based on Figma design system
+ */
+
+/* ============================================
+   MODAL CONTAINER
+   ============================================ */
+.survey-modal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  padding: var(--space-800) var(--space-600);
+  background-color: var(--surface-page);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-l);
+  position: relative;
+}
+
+/* ============================================
+   CLOSE BUTTON
+   ============================================ */
+.survey-modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--space-600) var(--space-600) 0 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.survey-modal__close:hover {
+  color: var(--text-primary);
+}
+
+.survey-modal__close svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+.survey-modal__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  align-self: stretch;
+}
+
+.survey-modal__heading {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-h8-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--heading-h8-line-height);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.survey-modal__body {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   FAQ LINK
+   ============================================ */
+.survey-modal__faq-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-200);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.survey-modal__faq-link:hover {
+  color: var(--text-brand-primary);
+}
+
+.survey-modal__faq-link svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--color-info);
+}
+
+/* ============================================
+   RADIO OPTIONS LIST
+   ============================================ */
+.survey-modal__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400);
+  align-self: stretch;
+}
+
+.survey-modal__option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-300);
+  cursor: pointer;
+}
+
+.survey-modal__option input[type="radio"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: var(--border-m) solid var(--border-primary);
+  border-radius: var(--radius-full);
+  background-color: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  transition: all 0.2s ease;
+  margin: 0;
+}
+
+.survey-modal__option input[type="radio"]::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--text-inverse);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.2s ease;
+}
+
+.survey-modal__option input[type="radio"]:checked {
+  background-color: var(--black);
+  border-color: var(--border-primary);
+}
+
+.survey-modal__option input[type="radio"]:checked::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.survey-modal__option input[type="radio"]:hover {
+  border-color: var(--text-secondary);
+}
+
+.survey-modal__option input[type="radio"]:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+.survey-modal__option-label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
+.survey-modal__actions {
+  display: flex;
+  align-self: stretch;
+}
+
+.survey-modal__actions .btn {
+  flex: 1;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .survey-modal {
+    width: calc(100vw - 32px);
+    padding: var(--space-600) var(--space-400);
+  }
+}
