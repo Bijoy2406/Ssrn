@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Anonymous Navigation Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--grey-95);
+      min-height: 100vh;
+    }
+
+    .demo-content {
+      padding: var(--space-800);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .demo-content h1 {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-xl-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-400);
+    }
+
+    .demo-content p {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Anonymous User Navigation Bar -->
+  <nav class="nav-bar-wrapper">
+    <div class="nav-bar">
+
+      <!-- Logo -->
+      <a href="/" class="nav-bar__logo">
+        <svg width="137" height="48" viewBox="0 0 137 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="35" font-family="Manrope" font-size="32" font-weight="800" fill="#03110D">SSRN</text>
+        </svg>
+      </a>
+
+      <!-- Navigation Fill Frame -->
+      <div class="nav-bar__fill">
+        <div class="nav-buttons">
+
+          <!-- Our Services Dropdown -->
+          <div class="nav-item" id="our-services-nav">
+            <button class="nav-item__button" aria-expanded="false" aria-haspopup="true">
+              <span class="nav-item__text">Our Services</span>
+              <span class="nav-item__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div class="nav-item__menu" role="menu">
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Airport Transfer</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Point to Point</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Hourly Charter</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Event Transport</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Corporate</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Special Occasions</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- For Partners Dropdown -->
+          <div class="nav-item" id="for-partners-nav">
+            <button class="nav-item__button" aria-expanded="false" aria-haspopup="true">
+              <span class="nav-item__text">For Partners</span>
+              <span class="nav-item__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div class="nav-item__menu" role="menu">
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Driver Partnership</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Hotel Concierge</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Travel Agents</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Corporate Accounts</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Event Planners</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+              <a href="#" class="nav-menu__item" role="menuitem">
+                <svg class="nav-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-menu__text">Airport Partners</span>
+                <svg class="nav-menu__lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- About Us Link -->
+          <div class="nav-item nav-item--simple">
+            <a href="#" class="nav-item__button">
+              <span class="nav-item__text">About Us</span>
+            </a>
+          </div>
+
+          <!-- Help Link -->
+          <div class="nav-item nav-item--simple">
+            <a href="#" class="nav-item__button">
+              <span class="nav-item__text">Help</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sign In Button -->
+      <div class="nav-bar__profile">
+        <a href="#" class="nav-bar__sign-in">
+          <svg class="nav-bar__sign-in-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          Sign In
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="nav-bar__mobile-toggle" aria-label="Toggle navigation menu" id="mobile-menu-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Overlay for mobile menu -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- Demo Content -->
+  <div class="demo-content">
+    <h1>Anonymous User Navigation</h1>
+    <p>
+      This navigation bar is designed for anonymous (non-authenticated) users landing on the SSRN website.
+      It features dropdown menus for "Our Services" and "For Partners", simple links for "About Us" and "Help",
+      and a prominent "Sign In" button on the right.
+    </p>
+    <p style="margin-top: var(--space-400);">
+      The navigation is fully responsive and includes a mobile menu toggle for smaller screens.
+      Hover over the dropdown menu items to see the hover states, and click on the navigation items
+      to toggle the dropdown menus.
+    </p>
+    <p style="margin-top: var(--space-400);">
+      <strong>Features:</strong><br>
+      • Sticky navigation bar with drop shadow<br>
+      • Dropdown menus with icons and lock indicators<br>
+      • Responsive design with mobile menu<br>
+      • Smooth animations and transitions<br>
+      • Accessibility support with ARIA attributes<br>
+      • Uses design tokens from tokens.css
+    </p>
+  </div>
+
+  <script>
+    // Dropdown menu functionality
+    document.querySelectorAll('.nav-item').forEach(navItem => {
+      const button = navItem.querySelector('.nav-item__button');
+      const menu = navItem.querySelector('.nav-item__menu');
+
+      if (button && menu) {
+        let closeTimeout;
+
+        // Toggle dropdown on click
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const isOpen = navItem.classList.contains('nav-item--open');
+
+          // Close all other dropdowns
+          document.querySelectorAll('.nav-item--open').forEach(item => {
+            item.classList.remove('nav-item--open');
+            const btn = item.querySelector('.nav-item__button');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          });
+
+          // Toggle current dropdown
+          if (!isOpen) {
+            navItem.classList.add('nav-item--open');
+            button.setAttribute('aria-expanded', 'true');
+          } else {
+            navItem.classList.remove('nav-item--open');
+            button.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!navItem.contains(e.target)) {
+            navItem.classList.remove('nav-item--open');
+            button.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Close dropdown on Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            navItem.classList.remove('nav-item--open');
+            button.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Hover behavior for desktop
+        if (window.innerWidth > 768) {
+          navItem.addEventListener('mouseenter', () => {
+            clearTimeout(closeTimeout);
+            navItem.classList.add('nav-item--open');
+            button.setAttribute('aria-expanded', 'true');
+          });
+
+          navItem.addEventListener('mouseleave', () => {
+            closeTimeout = setTimeout(() => {
+              navItem.classList.remove('nav-item--open');
+              button.setAttribute('aria-expanded', 'false');
+            }, 300);
+          });
+        }
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const navFill = document.querySelector('.nav-bar__fill');
+    const navOverlay = document.getElementById('nav-overlay');
+
+    if (mobileToggle && navFill && navOverlay) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = navFill.classList.contains('nav-bar__fill--open');
+
+        if (isOpen) {
+          navFill.classList.remove('nav-bar__fill--open');
+          navOverlay.classList.remove('nav-overlay--visible');
+          document.body.style.overflow = '';
+        } else {
+          navFill.classList.add('nav-bar__fill--open');
+          navOverlay.classList.add('nav-overlay--visible');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+
+      // Close menu when clicking overlay
+      navOverlay.addEventListener('click', () => {
+        navFill.classList.remove('nav-bar__fill--open');
+        navOverlay.classList.remove('nav-overlay--visible');
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        navFill.classList.remove('nav-bar__fill--open');
+        navOverlay.classList.remove('nav-overlay--visible');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+</body>
+</html>
