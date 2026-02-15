@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Signup Email Loader Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--surface-page);
+    }
+
+    /* Actual page content (hidden initially) */
+    .page-content {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .page-content--visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Simple page content styling */
+    .page-content__section {
+      padding: var(--space-800);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page-content h1 {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-xl-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-400);
+    }
+
+    .page-content p {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-400);
+    }
+
+    .page-content ul {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-400);
+      padding-left: var(--space-600);
+    }
+
+    .reload-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-200);
+      padding: var(--space-300) var(--space-600);
+      background-color: #047857;
+      color: var(--text-inverse);
+      border: none;
+      border-radius: var(--radius-m);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-semibold);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: var(--space-400);
+    }
+
+    .reload-button:hover {
+      background-color: #036146;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-m);
+    }
+
+    .reload-button:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Signup Email Loader Overlay -->
+  <div class="signup-loader-overlay signup-loader--active" id="signupLoader" role="status" aria-live="polite">
+    <span class="signup-loader__sr-only">Loading signup form...</span>
+
+    <div class="signup-loader">
+
+      <!-- Logo Loader -->
+      <div class="signup-loader__header">
+        <div class="signup-loader__logo skeleton"></div>
+      </div>
+
+      <!-- Content Loader -->
+      <div class="signup-loader__content">
+        <div class="signup-loader__form">
+
+          <!-- Title/Heading Loader -->
+          <div class="signup-loader__title skeleton"></div>
+
+          <!-- Form Fields Loaders -->
+          <div class="signup-loader__fields">
+            <div class="signup-loader__field-large skeleton"></div>
+            <div class="signup-loader__field-large skeleton"></div>
+            <div class="signup-loader__field-small skeleton"></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Actual Page Content (hidden initially) -->
+  <div class="page-content" id="pageContent">
+    <div class="page-content__section">
+      <h1>Signup Form Loaded Successfully!</h1>
+      <p>
+        This demo shows the signup email loader (skeleton screen) that displays while the
+        signup or email verification page is loading. The skeleton loader provides visual
+        feedback to users that content is being fetched, improving perceived performance.
+      </p>
+
+      <p><strong>Component Structure:</strong></p>
+      <ul>
+        <li><strong>Logo Loader:</strong> 156px × 44px skeleton at top left for the SSRN logo</li>
+        <li><strong>Title Loader:</strong> 96px height skeleton for the page heading</li>
+        <li><strong>Form Field Loaders:</strong> Two 64px height skeletons for input fields</li>
+        <li><strong>Button Loader:</strong> 32px height skeleton for the submit button</li>
+      </ul>
+
+      <p><strong>Features:</strong></p>
+      <ul>
+        <li>Skeleton placeholders matching signup form layout</li>
+        <li>Smooth shimmer animation effect</li>
+        <li>Responsive design that adapts to all screen sizes</li>
+        <li>Accessible with screen reader support</li>
+        <li>Respects user's motion preferences (prefers-reduced-motion)</li>
+        <li>Smooth fade-out transition when content loads</li>
+        <li>Centered content layout at 520px width</li>
+      </ul>
+
+      <p><strong>Technical Details:</strong></p>
+      <ul>
+        <li>Uses CSS animations for shimmer effect</li>
+        <li>Gray placeholders (#DBDDDD) matching Figma design</li>
+        <li>6px border-radius for all skeleton elements</li>
+        <li>Maintains exact dimensions from Figma specifications</li>
+        <li>Fixed overlay at z-index 9999 during loading</li>
+        <li>Content positioned 196px from top</li>
+      </ul>
+
+      <p><strong>Use Cases:</strong></p>
+      <ul>
+        <li>Signup page loading</li>
+        <li>Email verification page loading</li>
+        <li>Password reset page loading</li>
+        <li>Any authentication form loading state</li>
+      </ul>
+
+      <button class="reload-button" onclick="reloadDemo()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="23 4 23 10 17 10"></polyline>
+          <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+        </svg>
+        See Loader Again
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Get elements
+    const signupLoader = document.getElementById('signupLoader');
+    const pageContent = document.getElementById('pageContent');
+
+    // Function to hide loader and show content
+    function hideLoader() {
+      // Add fade-out class
+      signupLoader.classList.add('signup-loader--fade-out');
+
+      // After fade-out animation completes, hide loader and show content
+      setTimeout(() => {
+        signupLoader.classList.remove('signup-loader--active');
+        signupLoader.classList.add('signup-loader-overlay--hidden');
+        pageContent.classList.add('page-content--visible');
+      }, 500);
+    }
+
+    // Function to show loader again
+    function showLoader() {
+      signupLoader.classList.remove('signup-loader-overlay--hidden', 'signup-loader--fade-out');
+      signupLoader.classList.add('signup-loader--active');
+      pageContent.classList.remove('page-content--visible');
+    }
+
+    // Function to reload demo
+    function reloadDemo() {
+      showLoader();
+      // Simulate loading time
+      setTimeout(hideLoader, 3000);
+    }
+
+    // Simulate initial page load (3 seconds)
+    window.addEventListener('load', () => {
+      setTimeout(hideLoader, 3000);
+    });
+
+    // Handle actual page loading states
+    document.addEventListener('DOMContentLoaded', () => {
+      // If all resources are already loaded
+      if (document.readyState === 'complete') {
+        setTimeout(hideLoader, 3000);
+      }
+    });
+
+    // Optional: Listen for custom events to show/hide loader
+    window.addEventListener('showSignupLoader', () => {
+      showLoader();
+    });
+
+    window.addEventListener('hideSignupLoader', () => {
+      hideLoader();
+    });
+
+    // Example usage:
+    // To show loader: window.dispatchEvent(new Event('showSignupLoader'));
+    // To hide loader: window.dispatchEvent(new Event('hideSignupLoader'));
+  </script>
+
+</body>
+</html>

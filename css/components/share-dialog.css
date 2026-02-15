@@ -1,0 +1,397 @@
+/**
+ * SSRN Share Dialog Component
+ * Modal overlay for sharing booking links via copy or email
+ * Based on Figma design system
+ */
+
+/* ============================================
+   OVERLAY BACKDROP
+   ============================================ */
+.share-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(3, 17, 13, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: var(--space-400);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.share-dialog-overlay--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ============================================
+   DIALOG CONTAINER
+   ============================================ */
+.share-dialog {
+  background-color: var(--surface-primary);
+  border-radius: var(--radius-m);
+  box-shadow: 0 1px 15px 0 rgba(3, 17, 13, 0.1);
+  padding: 32px 24px;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.share-dialog-overlay--active .share-dialog {
+  transform: scale(1);
+}
+
+/* ============================================
+   DIALOG HEADER
+   ============================================ */
+.share-dialog__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Close button */
+.share-dialog__close {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.share-dialog__close-btn {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-dialog__close-btn:hover {
+  color: var(--text-secondary);
+}
+
+.share-dialog__close-btn svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Heading and description */
+.share-dialog__text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.share-dialog__heading {
+  font-family: var(--font-family-heading);
+  font-size: var(--heading-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--heading-lg-line-height);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.share-dialog__description {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ============================================
+   DIALOG CONTENT
+   ============================================ */
+.share-dialog__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* ============================================
+   COPY LINK SECTION
+   ============================================ */
+.share-dialog__link-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Label with icon */
+.share-dialog__label-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.share-dialog__label {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+}
+
+.share-dialog__help-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-secondary);
+  cursor: help;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-dialog__help-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Input field wrapper */
+.share-dialog__input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Input field */
+.share-dialog__input-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-400) var(--space-300);
+  background-color: var(--surface-primary);
+  border: var(--border-m) solid var(--border-primary);
+  border-radius: var(--radius-s);
+  width: 100%;
+}
+
+.share-dialog__input-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.share-dialog__input-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.share-dialog__input {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  border: none;
+  background: none;
+  outline: none;
+  min-width: 0;
+}
+
+.share-dialog__input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.share-dialog__copy-btn {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-dialog__copy-btn:hover {
+  color: var(--sea-green-50);
+}
+
+.share-dialog__copy-btn svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Helper text */
+.share-dialog__helper-text {
+  padding-left: var(--space-300);
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  line-height: 16px;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   SEPARATOR
+   ============================================ */
+.share-dialog__separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.share-dialog__separator-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-primary);
+}
+
+.share-dialog__separator-text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* ============================================
+   EMAIL BUTTON
+   ============================================ */
+.share-dialog__email-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-300);
+  width: 100%;
+  padding: var(--space-300) var(--space-600);
+  background-color: transparent;
+  border: var(--border-m) solid var(--border-primary);
+  border-radius: var(--radius-m);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.share-dialog__email-btn:hover {
+  background-color: var(--grey-90);
+  border-color: var(--text-secondary);
+}
+
+.share-dialog__email-btn:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+.share-dialog__email-icon {
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+}
+
+.share-dialog__email-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .share-dialog {
+    padding: var(--space-600) var(--space-400);
+    max-width: 100%;
+  }
+
+  .share-dialog__heading {
+    font-size: var(--heading-md-size);
+    line-height: var(--heading-md-line-height);
+  }
+
+  .share-dialog__description {
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
+  }
+}
+
+@media (max-width: 480px) {
+  .share-dialog-overlay {
+    padding: var(--space-300);
+  }
+
+  .share-dialog {
+    padding: var(--space-500) var(--space-300);
+    gap: var(--space-400);
+  }
+
+  .share-dialog__heading {
+    font-size: var(--heading-sm-size);
+    line-height: var(--heading-sm-line-height);
+  }
+
+  .share-dialog__content {
+    gap: var(--space-300);
+  }
+
+  .share-dialog__separator-text {
+    font-size: var(--body-sm-size);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.share-dialog__close-btn:focus-visible,
+.share-dialog__copy-btn:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.share-dialog .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================
+   SUCCESS STATE
+   ============================================ */
+.share-dialog__input-field--copied {
+  border-color: var(--sea-green-50);
+  background-color: rgba(0, 105, 92, 0.05);
+}
+
+.share-dialog__copy-btn--copied {
+  color: var(--sea-green-50);
+}

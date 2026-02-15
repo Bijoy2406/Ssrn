@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Page Loader Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--surface-page);
+    }
+
+    /* Actual page content (hidden initially) */
+    .page-content {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .page-content--visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Simple page content styling */
+    .page-content__section {
+      padding: var(--space-800);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page-content h1 {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-xl-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-400);
+    }
+
+    .page-content p {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-400);
+    }
+
+    .reload-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-200);
+      padding: var(--space-300) var(--space-600);
+      background-color: #047857;
+      color: var(--text-inverse);
+      border: none;
+      border-radius: var(--radius-m);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-semibold);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: var(--space-400);
+    }
+
+    .reload-button:hover {
+      background-color: #036146;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-m);
+    }
+
+    .reload-button:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Loader Overlay -->
+  <div class="page-loader-overlay page-loader--active" id="pageLoader" role="status" aria-live="polite">
+    <span class="page-loader__sr-only">Loading page content...</span>
+
+    <div class="page-loader">
+      <div class="page-loader__container">
+
+        <!-- Navigation Skeleton -->
+        <div class="page-loader__nav">
+          <div class="page-loader__nav-logo skeleton"></div>
+          <div class="page-loader__nav-menu skeleton"></div>
+          <div class="page-loader__nav-button skeleton"></div>
+        </div>
+
+        <!-- Hero/Welcome Section Skeleton -->
+        <div class="page-loader__hero">
+          <div class="page-loader__hero-title">
+            <div class="skeleton"></div>
+          </div>
+          <div class="page-loader__hero-content">
+            <div class="page-loader__hero-form skeleton"></div>
+          </div>
+        </div>
+
+        <!-- Services Section Skeleton -->
+        <div class="page-loader__services">
+          <div class="page-loader__services-header skeleton"></div>
+          <div class="page-loader__services-cards">
+            <div class="page-loader__service-card skeleton"></div>
+            <div class="page-loader__service-card skeleton"></div>
+            <div class="page-loader__service-card skeleton"></div>
+          </div>
+        </div>
+
+        <!-- Destinations Section Skeleton (Optional) -->
+        <div class="page-loader__destinations">
+          <div class="page-loader__destinations-header skeleton"></div>
+          <div class="page-loader__destinations-cards">
+            <div class="page-loader__destination-card skeleton"></div>
+            <div class="page-loader__destination-card skeleton"></div>
+            <div class="page-loader__destination-card skeleton"></div>
+            <div class="page-loader__destination-card skeleton"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Actual Page Content (hidden initially) -->
+  <div class="page-content" id="pageContent">
+    <div class="page-content__section">
+      <h1>Page Loaded Successfully!</h1>
+      <p>
+        This demo shows the page loader (skeleton screen) that displays while the anonymous
+        user landing page is loading. The skeleton loader provides visual feedback to users
+        that content is being fetched, improving perceived performance.
+      </p>
+      <p>
+        <strong>Features:</strong><br>
+        • Skeleton placeholders for navigation, hero section, services, and destinations<br>
+        • Smooth shimmer animation effect<br>
+        • Responsive design that adapts to all screen sizes<br>
+        • Accessible with screen reader support<br>
+        • Respects user's motion preferences (prefers-reduced-motion)<br>
+        • Smooth fade-out transition when content loads
+      </p>
+      <p>
+        <strong>Technical Details:</strong><br>
+        • Uses CSS animations for shimmer effect<br>
+        • Gray placeholders (#DBDDDD) matching Figma design<br>
+        • 6px border-radius for all skeleton elements<br>
+        • Maintains exact dimensions from Figma specifications<br>
+        • Fixed overlay at z-index 9999 during loading
+      </p>
+      <button class="reload-button" onclick="reloadPage()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="23 4 23 10 17 10"></polyline>
+          <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+        </svg>
+        See Loader Again
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Simulate page loading
+    const pageLoader = document.getElementById('pageLoader');
+    const pageContent = document.getElementById('pageContent');
+
+    // Function to hide loader and show content
+    function hideLoader() {
+      // Add fade-out class
+      pageLoader.classList.add('page-loader--fade-out');
+
+      // After fade-out animation completes, hide loader and show content
+      setTimeout(() => {
+        pageLoader.classList.remove('page-loader--active');
+        pageLoader.classList.add('page-loader-overlay--hidden');
+        pageContent.classList.add('page-content--visible');
+      }, 500);
+    }
+
+    // Function to show loader again
+    function showLoader() {
+      pageLoader.classList.remove('page-loader-overlay--hidden', 'page-loader--fade-out');
+      pageLoader.classList.add('page-loader--active');
+      pageContent.classList.remove('page-content--visible');
+    }
+
+    // Function to reload page demo
+    function reloadPage() {
+      showLoader();
+      // Simulate loading time
+      setTimeout(hideLoader, 3000);
+    }
+
+    // Simulate initial page load (3 seconds)
+    window.addEventListener('load', () => {
+      setTimeout(hideLoader, 3000);
+    });
+
+    // Handle actual page loading states
+    document.addEventListener('DOMContentLoaded', () => {
+      // If all resources are already loaded
+      if (document.readyState === 'complete') {
+        setTimeout(hideLoader, 3000);
+      }
+    });
+
+    // Optional: Listen for custom events to show/hide loader
+    window.addEventListener('showPageLoader', () => {
+      showLoader();
+    });
+
+    window.addEventListener('hidePageLoader', () => {
+      hideLoader();
+    });
+
+    // Example usage:
+    // To show loader: window.dispatchEvent(new Event('showPageLoader'));
+    // To hide loader: window.dispatchEvent(new Event('hidePageLoader'));
+  </script>
+
+</body>
+</html>

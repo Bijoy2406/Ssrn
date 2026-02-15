@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Booking Form Landing Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-800);
+    }
+
+    .demo-container {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: var(--space-800);
+      align-items: start;
+    }
+
+    .demo-info {
+      background-color: var(--surface-primary);
+      padding: var(--space-800);
+      border-radius: var(--radius-m);
+      box-shadow: var(--shadow-m);
+    }
+
+    .demo-info h1 {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-lg-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-400);
+    }
+
+    .demo-info h2 {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-sm-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      margin-top: var(--space-600);
+      margin-bottom: var(--space-300);
+    }
+
+    .demo-info p {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-300);
+    }
+
+    .demo-info ul {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-400);
+    }
+
+    @media (max-width: 1024px) {
+      .demo-container {
+        grid-template-columns: 1fr;
+      }
+
+      body {
+        padding: var(--space-400);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-container">
+    <!-- Demo Information -->
+    <div class="demo-info">
+      <h1>Booking Form Component</h1>
+      <p>
+        This is the booking form component for the anonymous user landing page.
+        It allows users to search for rides by entering their pickup/dropoff locations,
+        date, and time.
+      </p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Toggle between "One Way Ride" and "Hourly Ride"</li>
+        <li>Location input fields with icons</li>
+        <li>Date picker with calendar icon</li>
+        <li>Time picker with clock icon</li>
+        <li>Search button to see prices</li>
+        <li>Fully responsive design</li>
+        <li>Form validation</li>
+        <li>Loading states</li>
+      </ul>
+
+      <h2>Form Fields</h2>
+      <ul>
+        <li><strong>From:</strong> Pickup location (airport, address, hotel)</li>
+        <li><strong>To:</strong> Dropoff location (airport, address, hotel)</li>
+        <li><strong>Date:</strong> Ride date selection</li>
+        <li><strong>Pickup Time:</strong> Time selection</li>
+      </ul>
+
+      <h2>Try it!</h2>
+      <p>
+        Fill out the form on the right and click "See Prices" to simulate a booking search.
+        Toggle between ride types to see how the form adapts.
+      </p>
+    </div>
+
+    <!-- Booking Form -->
+    <form class="booking-form-landing" id="bookingForm">
+
+      <!-- Ride Type Toggle -->
+      <div class="booking-form-landing__toggle" role="tablist">
+        <button
+          type="button"
+          class="booking-form-landing__toggle-btn booking-form-landing__toggle-btn--active"
+          data-ride-type="one-way"
+          role="tab"
+          aria-selected="true"
+        >
+          One Way Ride
+        </button>
+        <button
+          type="button"
+          class="booking-form-landing__toggle-btn"
+          data-ride-type="hourly"
+          role="tab"
+          aria-selected="false"
+        >
+          Hourly Ride
+        </button>
+      </div>
+
+      <!-- From Field -->
+      <div class="booking-form-landing__field">
+        <label for="from-location" class="booking-form-landing__label">From</label>
+        <div class="booking-form-landing__input-wrapper">
+          <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <input
+            type="text"
+            id="from-location"
+            class="booking-form-landing__input"
+            placeholder="Airport, address, hotel,..."
+            required
+          >
+          <button type="button" class="booking-form-landing__icon-right" aria-label="Search from location">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- To Field -->
+      <div class="booking-form-landing__field">
+        <label for="to-location" class="booking-form-landing__label">To</label>
+        <div class="booking-form-landing__input-wrapper">
+          <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <input
+            type="text"
+            id="to-location"
+            class="booking-form-landing__input"
+            placeholder="Airport, address, hotel,..."
+            required
+          >
+          <button type="button" class="booking-form-landing__icon-right" aria-label="Search to location">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Date Field -->
+      <div class="booking-form-landing__field">
+        <label for="ride-date" class="booking-form-landing__label">Date</label>
+        <div class="booking-form-landing__input-wrapper booking-form-landing__select-wrapper">
+          <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <input
+            type="text"
+            id="ride-date"
+            class="booking-form-landing__input"
+            value="Wed , November 30, 2025"
+            readonly
+            required
+          >
+          <svg class="booking-form-landing__icon-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Pickup Time Field -->
+      <div class="booking-form-landing__field">
+        <label for="pickup-time" class="booking-form-landing__label">Pickup Time</label>
+        <div class="booking-form-landing__input-wrapper booking-form-landing__select-wrapper">
+          <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <select id="pickup-time" class="booking-form-landing__select" required>
+            <option value="">Select time</option>
+            <option value="00:00">12:00 AM</option>
+            <option value="01:00">01:00 AM</option>
+            <option value="02:00">02:00 AM</option>
+            <option value="03:00">03:00 AM</option>
+            <option value="04:00">04:00 AM</option>
+            <option value="05:00">05:00 AM</option>
+            <option value="06:00">06:00 AM</option>
+            <option value="07:00">07:00 AM</option>
+            <option value="08:00">08:00 AM</option>
+            <option value="09:00">09:00 AM</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="12:00">12:00 PM</option>
+            <option value="13:00">01:00 PM</option>
+            <option value="14:00">02:00 PM</option>
+            <option value="15:00">03:00 PM</option>
+            <option value="16:00">04:00 PM</option>
+            <option value="17:00" selected>05:00 PM</option>
+            <option value="18:00">06:00 PM</option>
+            <option value="19:00">07:00 PM</option>
+            <option value="20:00">08:00 PM</option>
+            <option value="21:00">09:00 PM</option>
+            <option value="22:00">10:00 PM</option>
+            <option value="23:00">11:00 PM</option>
+          </select>
+          <svg class="booking-form-landing__icon-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="booking-form-landing__submit">
+        <svg class="booking-form-landing__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        See Prices
+      </button>
+
+    </form>
+  </div>
+
+  <script>
+    // Ride type toggle functionality
+    const toggleButtons = document.querySelectorAll('.booking-form-landing__toggle-btn');
+
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        toggleButtons.forEach(btn => {
+          btn.classList.remove('booking-form-landing__toggle-btn--active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+
+        // Add active class to clicked button
+        button.classList.add('booking-form-landing__toggle-btn--active');
+        button.setAttribute('aria-selected', 'true');
+
+        const rideType = button.dataset.rideType;
+        console.log('Selected ride type:', rideType);
+
+        // You can add logic here to show/hide different fields based on ride type
+      });
+    });
+
+    // Form submission
+    const bookingForm = document.getElementById('bookingForm');
+    const submitButton = bookingForm.querySelector('.booking-form-landing__submit');
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Get form values
+      const formData = {
+        rideType: document.querySelector('.booking-form-landing__toggle-btn--active').dataset.rideType,
+        from: document.getElementById('from-location').value,
+        to: document.getElementById('to-location').value,
+        date: document.getElementById('ride-date').value,
+        time: document.getElementById('pickup-time').value
+      };
+
+      // Validate form
+      if (!formData.from || !formData.to || !formData.time) {
+        alert('Please fill in all required fields');
+        return;
+      }
+
+      // Show loading state
+      submitButton.classList.add('booking-form-landing__submit--loading');
+      submitButton.disabled = true;
+
+      // Simulate API call
+      console.log('Booking form submitted:', formData);
+
+      setTimeout(() => {
+        // Hide loading state
+        submitButton.classList.remove('booking-form-landing__submit--loading');
+        submitButton.disabled = false;
+
+        // Show success message
+        alert(`Searching for ${formData.rideType} rides from "${formData.from}" to "${formData.to}" on ${formData.date} at ${formData.time}`);
+      }, 2000);
+    });
+
+    // Date picker simulation (click to show alert)
+    const dateInput = document.getElementById('ride-date');
+    dateInput.addEventListener('click', () => {
+      alert('Date picker would open here. In production, this would be connected to a date picker library.');
+    });
+
+    // Search icon functionality for location fields
+    document.querySelectorAll('.booking-form-landing__icon-right').forEach(icon => {
+      icon.addEventListener('click', (e) => {
+        const input = e.target.closest('.booking-form-landing__input-wrapper').querySelector('input');
+        if (input && input.type === 'text') {
+          console.log('Search for:', input.value);
+          alert(`Searching for locations matching: "${input.value}"\n\nIn production, this would show autocomplete suggestions.`);
+        }
+      });
+    });
+
+    // Auto-fill demo data (for testing)
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('from-location').value = 'JFK Airport, New York';
+        document.getElementById('to-location').value = 'Times Square, New York';
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
