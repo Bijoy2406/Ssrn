@@ -205,6 +205,16 @@
   --heading-h8-size: 24px;
   --heading-h8-line-height: 32px;
 
+  /* Heading size shortcuts */
+  --heading-xl-size: var(--heading-h2-size);  /* 56px */
+  --heading-xl-line-height: var(--heading-h2-line-height);  /* 64px */
+  --heading-lg-size: var(--heading-h3-size);  /* 48px */
+  --heading-lg-line-height: var(--heading-h3-line-height);  /* 56px */
+  --heading-md-size: var(--heading-h5-size);  /* 36px */
+  --heading-md-line-height: var(--heading-h5-line-height);  /* 44px */
+  --heading-sm-size: var(--heading-h7-size);  /* 28px */
+  --heading-sm-line-height: var(--heading-h7-line-height);  /* 36px */
+
   /* ============================================
      TYPOGRAPHY - BODY TEXT (Desktop)
      Note: Body font is Inter
@@ -287,13 +297,14 @@
   --space-1600: 64px;
   --space-2000: 80px;
   --space-2400: 96px;
+  --space-3000: 120px;
 
   /* ============================================
      GRID SYSTEM
      ============================================ */
   --grid-margin: 24px;
-  --grid-max-width: 1680px;
-  --breakpoint-width: 1680px;
+  --grid-max-width: 1440px;
+  --breakpoint-width: 1440px;
 }
 
 /* ============================================

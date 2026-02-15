@@ -1,0 +1,516 @@
+/**
+ * SSRN Authenticated User Navigation
+ * Based on Figma design system
+ * For logged-in users with profile dropdown
+ */
+
+/* ============================================
+   NAV BAR WRAPPER (Authenticated)
+   ============================================ */
+.auth-nav-wrapper {
+  width: 100%;
+  background-color: var(--surface-primary);
+  box-shadow: 0px 1px 15px 0px rgba(3, 17, 13, 0.1);
+  padding: var(--space-200) 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ============================================
+   NAVIGATION BAR (Authenticated)
+   ============================================ */
+.auth-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-600);
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 0 120px;
+  width: 100%;
+}
+
+/* ============================================
+   LOGO
+   ============================================ */
+.auth-nav__logo {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 137px;
+  flex-shrink: 0;
+}
+
+.auth-nav__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================
+   NAV FILL FRAME (Center navigation)
+   ============================================ */
+.auth-nav__fill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+/* ============================================
+   NAVIGATION BUTTONS
+   ============================================ */
+.auth-nav__buttons {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-200);
+  width: 100%;
+}
+
+/* ============================================
+   NAVIGATION ITEM
+   ============================================ */
+.auth-nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  border-radius: var(--radius-s);
+  flex-shrink: 0;
+}
+
+/* Navigation item button/link */
+.auth-nav-item__button {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-200);
+  padding: var(--space-200) var(--space-400);
+  border-radius: var(--radius-s);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  width: 192px;
+}
+
+.auth-nav-item__button:hover {
+  background-color: var(--grey-90);
+}
+
+.auth-nav-item__button:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+/* Navigation item text */
+.auth-nav-item__text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* Simple nav item (no dropdown) */
+.auth-nav-item--simple .auth-nav-item__button {
+  width: auto;
+}
+
+.auth-nav-item--simple .auth-nav-item__text {
+  font-weight: var(--font-weight-regular);
+}
+
+/* Navigation item icon (chevron) */
+.auth-nav-item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+.auth-nav-item__icon svg {
+  width: 100%;
+  height: 100%;
+  color: var(--text-primary);
+}
+
+/* Rotate icon when menu is open */
+.auth-nav-item--open .auth-nav-item__icon {
+  transform: rotate(0deg);
+}
+
+/* ============================================
+   DROPDOWN MENU
+   ============================================ */
+.auth-nav-item__menu {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 229px;
+  background-color: var(--surface-primary);
+  border-radius: var(--radius-s);
+  box-shadow: var(--shadow-l);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.auth-nav-item--open .auth-nav-item__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Menu items */
+.auth-nav-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-300);
+  background-color: var(--surface-primary);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.auth-nav-menu__item:hover {
+  background-color: var(--grey-90);
+}
+
+.auth-nav-menu__item:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: -2px;
+}
+
+/* Menu item icon (left) */
+.auth-nav-menu__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.auth-nav-menu__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Menu item text */
+.auth-nav-menu__text {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+/* Menu item lock icon (right) */
+.auth-nav-menu__lock {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.auth-nav-menu__lock svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   PROFILE BUTTON & DROPDOWN
+   ============================================ */
+.auth-nav__profile {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.auth-nav__profile-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-300);
+  padding: var(--space-300) var(--space-600);
+  background-color: transparent;
+  border: var(--border-m) solid var(--border-primary);
+  border-radius: var(--radius-m);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.auth-nav__profile-btn:hover {
+  background-color: var(--grey-90);
+  border-color: var(--text-secondary);
+}
+
+.auth-nav__profile-btn:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+.auth-nav__profile-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.auth-nav__profile-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Profile Dropdown Menu */
+.auth-nav__profile-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  background-color: var(--surface-primary);
+  border-radius: var(--radius-s);
+  box-shadow: var(--shadow-l);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.auth-nav__profile--open .auth-nav__profile-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Profile dropdown items */
+.auth-nav__profile-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-300) var(--space-400);
+  background-color: var(--surface-primary);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  text-decoration: none;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.auth-nav__profile-item:hover {
+  background-color: var(--grey-90);
+}
+
+.auth-nav__profile-item:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: -2px;
+}
+
+/* Logout item styling */
+.auth-nav__profile-item--logout {
+  border-top: 1px solid var(--border-tertiary);
+  color: var(--color-error);
+}
+
+.auth-nav__profile-item--logout:hover {
+  background-color: #FFF5F5;
+}
+
+/* ============================================
+   MOBILE MENU TOGGLE
+   ============================================ */
+.auth-nav__mobile-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.auth-nav__mobile-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1440px) {
+  .auth-nav {
+    padding: 0 var(--space-800);
+  }
+}
+
+@media (max-width: 1024px) {
+  .auth-nav {
+    padding: 0 var(--space-600);
+    gap: var(--space-400);
+  }
+
+  .auth-nav-item__button {
+    width: auto;
+    padding: var(--space-200) var(--space-300);
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-nav {
+    padding: 0 var(--space-400);
+    gap: var(--space-300);
+  }
+
+  /* Show mobile toggle */
+  .auth-nav__mobile-toggle {
+    display: flex;
+  }
+
+  /* Hide desktop navigation */
+  .auth-nav__fill {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background-color: var(--surface-primary);
+    box-shadow: var(--shadow-l);
+    padding: var(--space-400);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-16px);
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .auth-nav__fill--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .auth-nav__buttons {
+    flex-direction: column;
+    gap: var(--space-200);
+  }
+
+  .auth-nav-item__button {
+    width: 100%;
+  }
+
+  .auth-nav-item__menu {
+    position: static;
+    width: 100%;
+    margin-top: var(--space-200);
+    box-shadow: none;
+    border: var(--border-m) solid var(--border-tertiary);
+  }
+
+  .auth-nav__profile {
+    margin-top: var(--space-400);
+    width: 100%;
+  }
+
+  .auth-nav__profile-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .auth-nav__profile-menu {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+
+/* ============================================
+   OVERLAY (for mobile menu)
+   ============================================ */
+.auth-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(3, 17, 13, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.auth-nav-overlay--visible {
+  display: block;
+  opacity: 1;
+}
+
+@media (min-width: 769px) {
+  .auth-nav-overlay {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.auth-nav-item__button[aria-expanded="true"] .auth-nav-item__icon {
+  transform: rotate(0deg);
+}
+
+.auth-nav__profile-btn[aria-expanded="true"] ~ .auth-nav__profile-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Focus within for dropdown menus */
+.auth-nav-item:focus-within .auth-nav-item__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.auth-nav__profile:focus-within .auth-nav__profile-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

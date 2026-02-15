@@ -5,15 +5,37 @@
  */
 
 /* ============================================
+   ERROR PAGE WRAPPER
+   ============================================ */
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--surface-page);
+  padding: var(--space-800);
+}
+
+.error-page__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1440px;
+  padding: 100px 120px;
+}
+
+/* ============================================
    ERROR CONTENT CONTAINER
    ============================================ */
 .error-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-800);
-  width: 1200px;
-  max-width: 100%;
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* ============================================
@@ -24,19 +46,26 @@
   flex-direction: column;
   align-items: center;
   align-self: stretch;
-  gap: var(--space-600);
+  gap: 24px;
 }
 
+/* Error icon with circle background */
 .error-content__icon {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   flex-shrink: 0;
+  background-color: var(--text-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .error-content__icon svg,
 .error-content__icon img {
-  width: 100%;
-  height: 100%;
+  width: 32px;
+  height: 32px;
+  color: var(--text-inverse);
 }
 
 /* Text block (heading + body) */
@@ -44,24 +73,24 @@
   display: flex;
   flex-direction: column;
   align-self: stretch;
-  gap: var(--space-300);
+  gap: 8px;
   text-align: center;
 }
 
 .error-content__heading {
   font-family: var(--font-family-heading);
-  font-size: var(--heading-h2-size);
+  font-size: var(--heading-lg-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--heading-h2-line-height);
+  line-height: var(--heading-lg-line-height);
   color: var(--text-primary);
   margin: 0;
 }
 
 .error-content__body {
   font-family: var(--font-family-body);
-  font-size: var(--body-lg-size);
+  font-size: var(--body-md-size);
   font-weight: var(--font-weight-regular);
-  line-height: var(--body-lg-line-height);
+  line-height: var(--body-md-line-height);
   color: var(--text-primary);
   margin: 0;
 }
@@ -78,29 +107,165 @@
   max-width: 100%;
 }
 
-.error-content__actions .btn {
-  align-self: stretch;
+/* Primary button (large) */
+.error-content__btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-300);
+  width: 100%;
+  padding: var(--space-300) var(--space-600);
+  background-color: var(--sea-green-50);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: var(--radius-m);
+  font-family: var(--font-family-body);
+  font-size: var(--body-lg-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-lg-line-height);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.error-content__btn-primary:hover {
+  background-color: var(--sea-green-40);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-m);
+}
+
+.error-content__btn-primary:active {
+  transform: translateY(0);
+}
+
+.error-content__btn-primary:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+/* Secondary button (text link) */
+.error-content__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-300) var(--space-600);
+  background: none;
+  border: none;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.error-content__btn-secondary:hover {
+  color: var(--sea-green-50);
+}
+
+.error-content__btn-secondary:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
+@media (max-width: 1440px) {
+  .error-page__container {
+    padding: 100px var(--space-800);
+  }
+}
+
+@media (max-width: 1024px) {
+  .error-page__container {
+    padding: var(--space-800) var(--space-600);
+  }
+
+  .error-content {
+    gap: var(--space-600);
+  }
+}
+
 @media (max-width: 768px) {
+  .error-page {
+    padding: var(--space-400);
+  }
+
+  .error-page__container {
+    padding: var(--space-600) var(--space-400);
+  }
+
   .error-content {
     width: 100%;
-    padding: 0 var(--space-400);
+    gap: var(--space-500);
+  }
+
+  .error-content__icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .error-content__icon svg,
+  .error-content__icon img {
+    width: 28px;
+    height: 28px;
   }
 
   .error-content__heading {
-    font-size: var(--heading-h3-size);
+    font-size: var(--heading-md-size);
+    line-height: var(--heading-md-line-height);
   }
 
   .error-content__body {
-    font-size: var(--body-md-size);
-    line-height: var(--body-md-line-height);
+    font-size: var(--body-sm-size);
+    line-height: var(--body-sm-line-height);
   }
 
   .error-content__actions {
     width: 100%;
   }
+
+  .error-content__btn-primary {
+    font-size: var(--body-md-size);
+    line-height: var(--body-md-line-height);
+  }
+}
+
+@media (max-width: 480px) {
+  .error-content__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .error-content__icon svg,
+  .error-content__icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .error-content__heading {
+    font-size: var(--heading-sm-size);
+    line-height: var(--heading-sm-line-height);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+/* Screen reader only text */
+.error-page .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

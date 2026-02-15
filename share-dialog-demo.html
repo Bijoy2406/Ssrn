@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Share Dialog Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-800);
+    }
+
+    .demo-container {
+      background-color: var(--surface-primary);
+      padding: var(--space-800);
+      border-radius: var(--radius-m);
+      box-shadow: var(--shadow-m);
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .demo-container h1 {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-xl-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-400) 0;
+    }
+
+    .demo-container p {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-600);
+    }
+
+    .demo-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-200);
+      padding: var(--space-300) var(--space-600);
+      background-color: var(--sea-green-50);
+      color: var(--text-inverse);
+      border: none;
+      border-radius: var(--radius-m);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-semibold);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .demo-button:hover {
+      background-color: var(--sea-green-40);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-m);
+    }
+
+    .demo-button:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: var(--space-400);
+      }
+
+      .demo-container {
+        padding: var(--space-600);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Demo Content -->
+  <div class="demo-container">
+    <h1>Share Dialog Component</h1>
+    <p>
+      This is the share booking dialog overlay for the landing page. It allows users to copy
+      a booking link or send it via email. Click the button below to open the dialog.
+    </p>
+    <button class="demo-button" onclick="openShareDialog()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+      </svg>
+      Open Share Dialog
+    </button>
+  </div>
+
+  <!-- Share Dialog Overlay -->
+  <div class="share-dialog-overlay" id="shareDialogOverlay" role="dialog" aria-modal="true" aria-labelledby="shareDialogTitle">
+    <div class="share-dialog" role="document">
+
+      <!-- Header with Close Button -->
+      <div class="share-dialog__header">
+        <div class="share-dialog__close">
+          <button class="share-dialog__close-btn" onclick="closeShareDialog()" aria-label="Close dialog">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="share-dialog__text">
+          <h2 class="share-dialog__heading" id="shareDialogTitle">Share Booking</h2>
+          <p class="share-dialog__description">
+            Anyone with this link can view your booking details. Personal information and pricing are not shown.
+          </p>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="share-dialog__content">
+
+        <!-- Copy Link Section -->
+        <div class="share-dialog__link-section">
+          <div class="share-dialog__label-wrapper">
+            <label for="bookingLink" class="share-dialog__label">Copy booking Link</label>
+            <div class="share-dialog__help-icon" title="This link allows others to view your booking">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+          </div>
+
+          <div class="share-dialog__input-wrapper">
+            <div class="share-dialog__input-field" id="inputField">
+              <div class="share-dialog__input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </div>
+              <input
+                type="text"
+                id="bookingLink"
+                class="share-dialog__input"
+                value="xyzssrn.com/booking/abc123"
+                readonly
+              >
+              <button class="share-dialog__copy-btn" id="copyBtn" onclick="copyLink()" aria-label="Copy link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+            <p class="share-dialog__helper-text">Click to copy the booking link</p>
+          </div>
+        </div>
+
+        <!-- Separator -->
+        <div class="share-dialog__separator">
+          <div class="share-dialog__separator-line"></div>
+          <span class="share-dialog__separator-text">or send another way</span>
+          <div class="share-dialog__separator-line"></div>
+        </div>
+
+        <!-- Email Button -->
+        <button class="share-dialog__email-btn" onclick="sendEmail()">
+          <div class="share-dialog__email-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          Email
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById('shareDialogOverlay');
+    const inputField = document.getElementById('inputField');
+    const copyBtn = document.getElementById('copyBtn');
+    const bookingLinkInput = document.getElementById('bookingLink');
+
+    // Open dialog
+    function openShareDialog() {
+      overlay.classList.add('share-dialog-overlay--active');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    // Close dialog
+    function closeShareDialog() {
+      overlay.classList.remove('share-dialog-overlay--active');
+      document.body.style.overflow = ''; // Restore scrolling
+
+      // Reset copied state
+      inputField.classList.remove('share-dialog__input-field--copied');
+      copyBtn.classList.remove('share-dialog__copy-btn--copied');
+    }
+
+    // Close on overlay click (outside dialog)
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        closeShareDialog();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.classList.contains('share-dialog-overlay--active')) {
+        closeShareDialog();
+      }
+    });
+
+    // Copy link function
+    async function copyLink() {
+      try {
+        await navigator.clipboard.writeText(bookingLinkInput.value);
+
+        // Show copied state
+        inputField.classList.add('share-dialog__input-field--copied');
+        copyBtn.classList.add('share-dialog__copy-btn--copied');
+
+        // Update helper text temporarily
+        const helperText = document.querySelector('.share-dialog__helper-text');
+        const originalText = helperText.textContent;
+        helperText.textContent = 'Link copied to clipboard!';
+        helperText.style.color = 'var(--sea-green-50)';
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+          inputField.classList.remove('share-dialog__input-field--copied');
+          copyBtn.classList.remove('share-dialog__copy-btn--copied');
+          helperText.textContent = originalText;
+          helperText.style.color = '';
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+        alert('Failed to copy link. Please try again.');
+      }
+    }
+
+    // Send email function
+    function sendEmail() {
+      const subject = encodeURIComponent('SSRN Booking Link');
+      const body = encodeURIComponent('Here is your SSRN booking link: ' + bookingLinkInput.value);
+      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    }
+
+    // Select all text when input is focused
+    bookingLinkInput.addEventListener('focus', function() {
+      this.select();
+    });
+  </script>
+
+</body>
+</html>

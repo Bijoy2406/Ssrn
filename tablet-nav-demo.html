@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Tablet Navigation Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      font-family: var(--font-family-body);
+    }
+
+    /* Demo info banner */
+    .demo-banner {
+      background-color: var(--sea-green-50);
+      color: var(--text-inverse);
+      padding: var(--space-300);
+      text-align: center;
+      font-size: var(--body-sm-size);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    /* Tablet Navigation Bar */
+    .tablet-nav {
+      background-color: var(--surface-primary);
+      box-shadow: 0 0 5px 0 rgba(3, 17, 13, 0.1);
+      padding: 16px 48px;
+    }
+
+    .tablet-nav__container {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      max-width: 1680px;
+      margin: 0 auto;
+    }
+
+    /* Logo */
+    .tablet-nav__logo {
+      width: 137px;
+      height: 48px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--text-primary);
+      color: var(--text-inverse);
+      font-family: var(--font-family-heading);
+      font-size: 24px;
+      font-weight: var(--font-weight-bold);
+      border-radius: var(--radius-s);
+    }
+
+    /* Navigation Items Container */
+    .tablet-nav__items {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Navigation Item */
+    .tablet-nav__item {
+      position: relative;
+      border-radius: var(--radius-s);
+    }
+
+    .tablet-nav__item-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: none;
+      border: none;
+      border-radius: var(--radius-s);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--body-md-line-height);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tablet-nav__item-btn:hover {
+      background-color: var(--grey-90);
+    }
+
+    .tablet-nav__item-btn--active {
+      background-color: var(--grey-80);
+    }
+
+    /* Chevron icon */
+    .tablet-nav__chevron {
+      width: 24px;
+      height: 24px;
+      color: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .tablet-nav__item--open .tablet-nav__chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Regular nav link (no dropdown) */
+    .tablet-nav__link {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-radius: var(--radius-s);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--body-md-line-height);
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tablet-nav__link:hover {
+      background-color: var(--grey-90);
+    }
+
+    /* Dropdown Menu */
+    .tablet-nav__dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 229px;
+      background-color: var(--surface-primary);
+      border-radius: var(--radius-s);
+      box-shadow: var(--shadow-m);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: all 0.2s ease;
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .tablet-nav__item--open .tablet-nav__dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .tablet-nav__dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px;
+      background-color: var(--surface-primary);
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--body-md-line-height);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .tablet-nav__dropdown-item:hover {
+      background-color: var(--grey-90);
+    }
+
+    .tablet-nav__dropdown-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--text-primary);
+    }
+
+    /* Sign In Button */
+    .tablet-nav__signin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px 24px;
+      background-color: transparent;
+      border: var(--border-m) solid var(--border-primary);
+      border-radius: var(--radius-m);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--body-md-line-height);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tablet-nav__signin:hover {
+      background-color: var(--grey-90);
+    }
+
+    .tablet-nav__signin-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Hamburger Menu Button */
+    .tablet-nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .tablet-nav__hamburger-line {
+      width: 24px;
+      height: 3px;
+      background-color: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Sidebar Overlay */
+    .sidebar-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(3, 17, 13, 0.5);
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .sidebar-overlay--active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Sidebar Menu */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 272px;
+      background-color: var(--surface-primary);
+      box-shadow: var(--shadow-l);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      z-index: 10000;
+    }
+
+    .sidebar-overlay--active .sidebar {
+      transform: translateX(0);
+    }
+
+    /* Sidebar Header */
+    .sidebar__header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 16px;
+      border-bottom: 1px solid var(--border-primary);
+    }
+
+    .sidebar__close {
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sidebar__close:hover {
+      color: var(--text-secondary);
+    }
+
+    /* Sidebar Content */
+    .sidebar__content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Sidebar Sign In */
+    .sidebar__signin {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border-primary);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      cursor: pointer;
+      text-align: left;
+      transition: background-color 0.2s ease;
+    }
+
+    .sidebar__signin:hover {
+      background-color: var(--grey-90);
+    }
+
+    .sidebar__signin-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Sidebar Nav Item */
+    .sidebar__nav-item {
+      border-bottom: 1px solid var(--border-primary);
+    }
+
+    .sidebar__nav-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      background: none;
+      border: none;
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-regular);
+      color: var(--text-primary);
+      cursor: pointer;
+      text-align: left;
+      transition: background-color 0.2s ease;
+    }
+
+    .sidebar__nav-btn:hover {
+      background-color: var(--grey-90);
+    }
+
+    .sidebar__nav-chevron {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.2s ease;
+    }
+
+    .sidebar__nav-item--open .sidebar__nav-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Sidebar Submenu */
+    .sidebar__submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background-color: var(--grey-95);
+    }
+
+    .sidebar__nav-item--open .sidebar__submenu {
+      max-height: 500px;
+    }
+
+    .sidebar__submenu-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px 12px 40px;
+      background: none;
+      border: none;
+      width: 100%;
+      font-family: var(--font-family-body);
+      font-size: var(--body-sm-size);
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-align: left;
+      transition: background-color 0.2s ease;
+    }
+
+    .sidebar__submenu-item:hover {
+      background-color: var(--grey-90);
+    }
+
+    /* Sidebar Link (no dropdown) */
+    .sidebar__link {
+      display: block;
+      padding: 16px;
+      border-bottom: 1px solid var(--border-primary);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-regular);
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .sidebar__link:hover {
+      background-color: var(--grey-90);
+    }
+
+    /* Responsive Behavior */
+    @media (max-width: 1024px) {
+      .tablet-nav__items,
+      .tablet-nav__signin {
+        display: none;
+      }
+
+      .tablet-nav__hamburger {
+        display: flex;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .tablet-nav__hamburger {
+        display: none !important;
+      }
+    }
+
+    /* Demo content */
+    .demo-content {
+      padding: var(--space-800);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .demo-content h1 {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-xl-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-600);
+    }
+
+    .demo-content p {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-400);
+    }
+
+    .demo-content ul {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-600);
+      padding-left: var(--space-600);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Demo Banner -->
+  <div class="demo-banner">
+    Tablet Navigation Demo - Resize your browser to see responsive behavior
+  </div>
+
+  <!-- Tablet Navigation Bar -->
+  <nav class="tablet-nav">
+    <div class="tablet-nav__container">
+
+      <!-- Logo -->
+      <div class="tablet-nav__logo">SSRN</div>
+
+      <!-- Hamburger Menu Button (shows on smaller tablets) -->
+      <button class="tablet-nav__hamburger" onclick="openSidebar()" aria-label="Open menu">
+        <span class="tablet-nav__hamburger-line"></span>
+        <span class="tablet-nav__hamburger-line"></span>
+        <span class="tablet-nav__hamburger-line"></span>
+      </button>
+
+      <!-- Navigation Items -->
+      <div class="tablet-nav__items">
+
+        <!-- Our Services Dropdown -->
+        <div class="tablet-nav__item" id="ourServicesItem">
+          <button class="tablet-nav__item-btn" onclick="toggleDropdown('ourServicesItem')">
+            <span>Our Services</span>
+            <svg class="tablet-nav__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <div class="tablet-nav__dropdown">
+            <button class="tablet-nav__dropdown-item">
+              <svg class="tablet-nav__dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Airport Transfer</span>
+            </button>
+            <button class="tablet-nav__dropdown-item">
+              <svg class="tablet-nav__dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Hourly Charter</span>
+            </button>
+            <button class="tablet-nav__dropdown-item">
+              <svg class="tablet-nav__dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Corporate Services</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- For Partners Dropdown -->
+        <div class="tablet-nav__item" id="forPartnersItem">
+          <button class="tablet-nav__item-btn" onclick="toggleDropdown('forPartnersItem')">
+            <span>For Partners</span>
+            <svg class="tablet-nav__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <div class="tablet-nav__dropdown">
+            <button class="tablet-nav__dropdown-item">
+              <svg class="tablet-nav__dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Become a Driver</span>
+            </button>
+            <button class="tablet-nav__dropdown-item">
+              <svg class="tablet-nav__dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Partner with Us</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- About Us Link -->
+        <a href="#" class="tablet-nav__link">About Us</a>
+
+        <!-- Help Link -->
+        <a href="#" class="tablet-nav__link">Help</a>
+
+      </div>
+
+      <!-- Sign In Button -->
+      <button class="tablet-nav__signin">
+        <svg class="tablet-nav__signin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Sign In</span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Sidebar Overlay (shows on smaller tablets/mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()">
+    <div class="sidebar" onclick="event.stopPropagation()">
+
+      <!-- Sidebar Header with Close Button -->
+      <div class="sidebar__header">
+        <button class="sidebar__close" onclick="closeSidebar()" aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Sidebar Content -->
+      <div class="sidebar__content">
+
+        <!-- Sign In Button -->
+        <button class="sidebar__signin">
+          <svg class="sidebar__signin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>Sign In</span>
+        </button>
+
+        <!-- Our Services Dropdown -->
+        <div class="sidebar__nav-item" id="sidebarServicesItem">
+          <button class="sidebar__nav-btn" onclick="toggleSidebarDropdown('sidebarServicesItem')">
+            <span>Our Services</span>
+            <svg class="sidebar__nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="sidebar__submenu">
+            <button class="sidebar__submenu-item">Airport Transfer</button>
+            <button class="sidebar__submenu-item">Hourly Charter</button>
+            <button class="sidebar__submenu-item">Corporate Services</button>
+          </div>
+        </div>
+
+        <!-- For Partners Dropdown -->
+        <div class="sidebar__nav-item" id="sidebarPartnersItem">
+          <button class="sidebar__nav-btn" onclick="toggleSidebarDropdown('sidebarPartnersItem')">
+            <span>For Partners</span>
+            <svg class="sidebar__nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="sidebar__submenu">
+            <button class="sidebar__submenu-item">Become a Driver</button>
+            <button class="sidebar__submenu-item">Partner with Us</button>
+          </div>
+        </div>
+
+        <!-- Help Link -->
+        <a href="#" class="sidebar__link">Help</a>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Demo Content -->
+  <div class="demo-content">
+    <h1>Tablet Navigation Component</h1>
+    <p>
+      This is the tablet-optimized navigation bar for SSRN. It features horizontal layout with dropdown menus
+      for "Our Services" and "For Partners", along with direct links for "About Us" and "Help".
+    </p>
+
+    <p><strong>Component Features:</strong></p>
+    <ul>
+      <li><strong>SSRN Logo</strong> - 137px × 48px branding element</li>
+      <li><strong>Dropdown Navigation</strong> - "Our Services" and "For Partners" with chevron indicators</li>
+      <li><strong>Direct Links</strong> - "About Us" and "Help" for quick access</li>
+      <li><strong>Sign In Button</strong> - Outlined button with user icon</li>
+      <li><strong>Hover States</strong> - Subtle background color changes on interaction</li>
+      <li><strong>Smooth Animations</strong> - Dropdown fade-in and chevron rotation</li>
+    </ul>
+
+    <p><strong>Design Specifications:</strong></p>
+    <ul>
+      <li>Navigation bar padding: 16px vertical, 48px horizontal</li>
+      <li>Items gap: 8px between navigation items</li>
+      <li>Dropdown appears 8px below button</li>
+      <li>Dropdown min-width: 229px</li>
+      <li>Box shadow: 0 0 5px rgba(3, 17, 13, 0.1)</li>
+      <li>Border radius: 8px (small) and 12px (medium)</li>
+    </ul>
+
+    <p><strong>Interactions:</strong></p>
+    <ul>
+      <li><strong>Larger Tablets (>1024px):</strong> Horizontal navigation with dropdowns</li>
+      <li><strong>Smaller Tablets (≤1024px):</strong> Hamburger menu opens sidebar</li>
+      <li>Click dropdown buttons to reveal menu options</li>
+      <li>Click outside dropdown/sidebar to close</li>
+      <li>Hover over items for visual feedback</li>
+      <li>Chevron rotates 180° when dropdown is open</li>
+      <li>Press Escape key to close sidebar</li>
+    </ul>
+
+    <p><strong>Responsive Behavior:</strong></p>
+    <ul>
+      <li><strong>Desktop (>1024px):</strong> Full horizontal navigation with all items visible</li>
+      <li><strong>Tablet (≤1024px):</strong> Logo + Hamburger menu → Opens sidebar overlay</li>
+      <li><strong>Sidebar:</strong> 272px width, slides in from left, gray overlay backdrop</li>
+      <li><strong>Sidebar Content:</strong> Sign In button, collapsible dropdowns, Help link</li>
+    </ul>
+
+    <p>
+      <strong>Note:</strong> Resize your browser window to see the responsive behavior in action!
+      The navigation automatically switches between horizontal layout and sidebar menu based on screen width.
+    </p>
+  </div>
+
+  <script>
+    let currentOpenDropdown = null;
+
+    // Sidebar Functions
+    function openSidebar() {
+      document.getElementById('sidebarOverlay').classList.add('sidebar-overlay--active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+      document.getElementById('sidebarOverlay').classList.remove('sidebar-overlay--active');
+      document.body.style.overflow = '';
+    }
+
+    function toggleSidebarDropdown(itemId) {
+      const item = document.getElementById(itemId);
+      item.classList.toggle('sidebar__nav-item--open');
+    }
+
+    // Close sidebar on Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeSidebar();
+      }
+    });
+
+    // Horizontal Nav Functions
+    function toggleDropdown(itemId) {
+      const item = document.getElementById(itemId);
+      const wasOpen = item.classList.contains('tablet-nav__item--open');
+
+      // Close any currently open dropdown
+      if (currentOpenDropdown && currentOpenDropdown !== item) {
+        currentOpenDropdown.classList.remove('tablet-nav__item--open');
+      }
+
+      // Toggle the clicked dropdown
+      if (wasOpen) {
+        item.classList.remove('tablet-nav__item--open');
+        currentOpenDropdown = null;
+      } else {
+        item.classList.add('tablet-nav__item--open');
+        currentOpenDropdown = item;
+      }
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.tablet-nav__item')) {
+        if (currentOpenDropdown) {
+          currentOpenDropdown.classList.remove('tablet-nav__item--open');
+          currentOpenDropdown = null;
+        }
+      }
+    });
+
+    // Prevent dropdown close when clicking inside
+    document.querySelectorAll('.tablet-nav__item').forEach(item => {
+      item.addEventListener('click', function(event) {
+        event.stopPropagation();
+      });
+    });
+
+    // Handle dropdown item clicks
+    document.querySelectorAll('.tablet-nav__dropdown-item').forEach(item => {
+      item.addEventListener('click', function() {
+        console.log('Selected:', this.textContent.trim());
+        // Close dropdown after selection
+        if (currentOpenDropdown) {
+          currentOpenDropdown.classList.remove('tablet-nav__item--open');
+          currentOpenDropdown = null;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+/**
+ * SSRN Anonymous User Navigation
+ * Based on Figma design system
+ */
+
+/* ============================================
+   NAV BAR WRAPPER
+   ============================================ */
+.nav-bar-wrapper {
+  width: 100%;
+  background-color: var(--surface-primary);
+  box-shadow: 0px 1px 15px 0px rgba(3, 17, 13, 0.1);
+  padding: var(--space-200) 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ============================================
+   NAVIGATION BAR
+   ============================================ */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-600);
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 0 120px;
+  width: 100%;
+}
+
+/* ============================================
+   LOGO
+   ============================================ */
+.nav-bar__logo {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 137px;
+  flex-shrink: 0;
+}
+
+.nav-bar__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================
+   NAV FILL FRAME (Center navigation)
+   ============================================ */
+.nav-bar__fill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+/* ============================================
+   NAVIGATION BUTTONS
+   ============================================ */
+.nav-buttons {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-200);
+  width: 100%;
+}
+
+/* ============================================
+   NAVIGATION ITEM
+   ============================================ */
+.nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+  border-radius: var(--radius-s);
+  flex-shrink: 0;
+}
+
+/* Navigation item button/link */
+.nav-item__button {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-200);
+  padding: var(--space-200) var(--space-400);
+  border-radius: var(--radius-s);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  width: 192px;
+}
+
+.nav-item__button:hover {
+  background-color: var(--grey-90);
+}
+
+.nav-item__button:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+/* Navigation item text */
+.nav-item__text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* Simple nav item (no dropdown) */
+.nav-item--simple .nav-item__button {
+  width: auto;
+}
+
+.nav-item--simple .nav-item__text {
+  font-weight: var(--font-weight-regular);
+}
+
+/* Navigation item icon (chevron) */
+.nav-item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+.nav-item__icon svg {
+  width: 100%;
+  height: 100%;
+  color: var(--text-primary);
+}
+
+/* Rotate icon when menu is open */
+.nav-item--open .nav-item__icon {
+  transform: rotate(0deg);
+}
+
+/* ============================================
+   DROPDOWN MENU
+   ============================================ */
+.nav-item__menu {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 229px;
+  background-color: var(--surface-primary);
+  border-radius: var(--radius-s);
+  box-shadow: var(--shadow-l);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.nav-item--open .nav-item__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Menu items */
+.nav-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-300);
+  background-color: var(--surface-primary);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.nav-menu__item:hover {
+  background-color: var(--grey-90);
+}
+
+.nav-menu__item:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: -2px;
+}
+
+/* Menu item icon (left) */
+.nav-menu__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.nav-menu__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Menu item text */
+.nav-menu__text {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+/* Menu item lock icon (right) */
+.nav-menu__lock {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.nav-menu__lock svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   PROFILE/SIGN IN BUTTON
+   ============================================ */
+.nav-bar__profile {
+  flex-shrink: 0;
+}
+
+.nav-bar__sign-in {
+  display: flex;
+  align-items: center;
+  gap: var(--space-300);
+  padding: var(--space-300) var(--space-600);
+  background-color: transparent;
+  border: var(--border-m) solid var(--border-primary);
+  border-radius: var(--radius-m);
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-bar__sign-in:hover {
+  background-color: var(--grey-90);
+  border-color: var(--text-secondary);
+}
+
+.nav-bar__sign-in:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+.nav-bar__sign-in-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.nav-bar__sign-in-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   MOBILE MENU TOGGLE
+   ============================================ */
+.nav-bar__mobile-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.nav-bar__mobile-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1440px) {
+  .nav-bar {
+    padding: 0 var(--space-800);
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-bar {
+    padding: 0 var(--space-600);
+    gap: var(--space-400);
+  }
+
+  .nav-item__button {
+    width: auto;
+    padding: var(--space-200) var(--space-300);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-bar {
+    padding: 0 var(--space-400);
+    gap: var(--space-300);
+  }
+
+  /* Show mobile toggle */
+  .nav-bar__mobile-toggle {
+    display: flex;
+  }
+
+  /* Hide desktop navigation */
+  .nav-bar__fill {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background-color: var(--surface-primary);
+    box-shadow: var(--shadow-l);
+    padding: var(--space-400);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-16px);
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .nav-bar__fill--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    gap: var(--space-200);
+  }
+
+  .nav-item__button {
+    width: 100%;
+  }
+
+  .nav-item__menu {
+    position: static;
+    width: 100%;
+    margin-top: var(--space-200);
+    box-shadow: none;
+    border: var(--border-m) solid var(--border-tertiary);
+  }
+
+  .nav-bar__profile {
+    margin-top: var(--space-400);
+    width: 100%;
+  }
+
+  .nav-bar__sign-in {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   OVERLAY (for mobile menu)
+   ============================================ */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(3, 17, 13, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-overlay--visible {
+  display: block;
+  opacity: 1;
+}
+
+@media (min-width: 769px) {
+  .nav-overlay {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.nav-item__button[aria-expanded="true"] .nav-item__icon {
+  transform: rotate(0deg);
+}
+
+/* Focus within for dropdown menus */
+.nav-item:focus-within .nav-item__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

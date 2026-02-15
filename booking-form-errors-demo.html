@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSRN Booking Form Error States Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: var(--space-800);
+    }
+
+    .demo-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-800);
+    }
+
+    .demo-header {
+      background-color: var(--surface-primary);
+      padding: var(--space-800);
+      border-radius: var(--radius-m);
+      box-shadow: var(--shadow-m);
+    }
+
+    .demo-header h1 {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-xl-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-400) 0;
+    }
+
+    .demo-header p {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: var(--space-800);
+    }
+
+    .demo-section {
+      background-color: var(--surface-primary);
+      padding: var(--space-600);
+      border-radius: var(--radius-m);
+      box-shadow: var(--shadow-m);
+    }
+
+    .demo-section h2 {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-md-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-400) 0;
+    }
+
+    .demo-section p {
+      font-family: var(--font-family-body);
+      font-size: var(--body-sm-size);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0 0 var(--space-600) 0;
+    }
+
+    @media (max-width: 1024px) {
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      body {
+        padding: var(--space-400);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-container">
+
+    <!-- Demo Header -->
+    <div class="demo-header">
+      <h1>Booking Form Error States</h1>
+      <p>
+        This demo showcases the various validation error states for the booking form component.
+        Error states include red borders, pink backgrounds, error messages, and clear buttons.
+      </p>
+    </div>
+
+    <!-- Error State Examples -->
+    <div class="demo-grid">
+
+      <!-- Error State 1: Empty Field Validation -->
+      <div class="demo-section">
+        <h2>Empty Field Validation</h2>
+        <p>Shows error when required fields are left empty. Displays "Please enter a location" message.</p>
+
+        <form class="booking-form-landing">
+          <div class="booking-form-landing__toggle">
+            <button type="button" class="booking-form-landing__toggle-btn booking-form-landing__toggle-btn--active">
+              One Way Ride
+            </button>
+            <button type="button" class="booking-form-landing__toggle-btn">
+              Hourly Ride
+            </button>
+          </div>
+
+          <div class="booking-form-landing__field booking-form-landing__field--error">
+            <label for="from-error1" class="booking-form-landing__label">From</label>
+            <div class="booking-form-landing__input-wrapper">
+              <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <input
+                type="text"
+                id="from-error1"
+                class="booking-form-landing__input booking-form-landing__input--error"
+                placeholder="Airport, address, hotel,..."
+                value=""
+              >
+            </div>
+            <span class="booking-form-landing__error-message">Please enter a location</span>
+          </div>
+
+          <div class="booking-form-landing__field booking-form-landing__field--error">
+            <label for="to-error1" class="booking-form-landing__label">To</label>
+            <div class="booking-form-landing__input-wrapper">
+              <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <input
+                type="text"
+                id="to-error1"
+                class="booking-form-landing__input booking-form-landing__input--error"
+                placeholder="Airport, address, hotel,..."
+                value=""
+              >
+            </div>
+            <span class="booking-form-landing__error-message">Please enter a location</span>
+          </div>
+
+          <div class="booking-form-landing__field">
+            <label for="date-error1" class="booking-form-landing__label">Date</label>
+            <div class="booking-form-landing__input-wrapper booking-form-landing__select-wrapper">
+              <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <input
+                type="text"
+                id="date-error1"
+                class="booking-form-landing__input"
+                value="Wed , November 30, 2025"
+                readonly
+              >
+              <svg class="booking-form-landing__icon-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <div class="booking-form-landing__field">
+            <label for="time-error1" class="booking-form-landing__label">Pickup Time</label>
+            <div class="booking-form-landing__input-wrapper booking-form-landing__select-wrapper">
+              <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <select id="time-error1" class="booking-form-landing__select">
+                <option value="17:00" selected>05:00 PM</option>
+              </select>
+              <svg class="booking-form-landing__icon-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <button type="submit" class="booking-form-landing__submit">
+            <svg class="booking-form-landing__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            See Prices
+          </button>
+        </form>
+      </div>
+
+      <!-- Error State 2: Same Location Validation -->
+      <div class="demo-section">
+        <h2>Same Location Validation</h2>
+        <p>Shows error when pickup and drop-off locations are the same. Includes clear (X) buttons.</p>
+
+        <form class="booking-form-landing">
+          <div class="booking-form-landing__toggle">
+            <button type="button" class="booking-form-landing__toggle-btn booking-form-landing__toggle-btn--active">
+              One Way Ride
+            </button>
+            <button type="button" class="booking-form-landing__toggle-btn">
+              Hourly Ride
+            </button>
+          </div>
+
+          <div class="booking-form-landing__field booking-form-landing__field--error">
+            <label for="from-error2" class="booking-form-landing__label">From</label>
+            <div class="booking-form-landing__input-wrapper">
+              <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <input
+                type="text"
+                id="from-error2"
+                class="booking-form-landing__input booking-form-landing__input--error"
+                placeholder="Airport, address, hotel,..."
+                value="Airport, address, hotel,..."
+              >
+              <button type="button" class="booking-form-landing__clear-btn" onclick="this.previousElementSibling.value=''">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="15" y1="9" x2="9" y2="15"></line>
+                  <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+              </button>
+            </div>
+            <span class="booking-form-landing__error-message">Pickup and drop-off can't be the same.</span>
+          </div>
+
+          <div class="booking-form-landing__field booking-form-landing__field--error">
+            <label for="to-error2" class="booking-form-landing__label">To</label>
+            <div class="booking-form-landing__input-wrapper">
+              <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <input
+                type="text"
+                id="to-error2"
+                class="booking-form-landing__input booking-form-landing__input--error"
+                placeholder="Airport, address, hotel,..."
+                value="Airport, address, hotel,..."
+              >
+              <button type="button" class="booking-form-landing__clear-btn" onclick="this.previousElementSibling.value=''">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="15" y1="9" x2="9" y2="15"></line>
+                  <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+              </button>
+            </div>
+            <span class="booking-form-landing__error-message">Pickup and drop-off can't be the same.</span>
+          </div>
+
+          <div class="booking-form-landing__field">
+            <label for="date-error2" class="booking-form-landing__label">Date</label>
+            <div class="booking-form-landing__input-wrapper booking-form-landing__select-wrapper">
+              <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <input
+                type="text"
+                id="date-error2"
+                class="booking-form-landing__input"
+                value="Wed , November 30, 2025"
+                readonly
+              >
+              <svg class="booking-form-landing__icon-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <div class="booking-form-landing__field">
+            <label for="time-error2" class="booking-form-landing__label">Pickup Time</label>
+            <div class="booking-form-landing__input-wrapper booking-form-landing__select-wrapper">
+              <svg class="booking-form-landing__icon-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <select id="time-error2" class="booking-form-landing__select">
+                <option value="17:00" selected>05:00 PM</option>
+              </select>
+              <svg class="booking-form-landing__icon-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <button type="submit" class="booking-form-landing__submit">
+            <svg class="booking-form-landing__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            See Prices
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Toggle button functionality
+    document.querySelectorAll('.booking-form-landing__toggle-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const parent = this.closest('.booking-form-landing__toggle');
+        parent.querySelectorAll('.booking-form-landing__toggle-btn').forEach(b => {
+          b.classList.remove('booking-form-landing__toggle-btn--active');
+        });
+        this.classList.add('booking-form-landing__toggle-btn--active');
+      });
+    });
+
+    // Prevent form submission
+    document.querySelectorAll('.booking-form-landing').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Form validation demo - errors are displayed above');
+      });
+    });
+  </script>
+
+</body>
+</html>
