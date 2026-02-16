@@ -68,6 +68,17 @@
     }
 
     /* Mobile nav fixes */
+    .nav-bar__logo {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .nav-bar__logo img {
+      height: 32px;
+      width: auto;
+    }
+
     @media (max-width: 768px) {
       .nav-bar {
         padding: 0 var(--space-400) !important;
@@ -81,6 +92,10 @@
       .nav-bar__logo {
         width: auto !important;
         max-width: 100px;
+      }
+
+      .nav-bar__logo img {
+        height: 24px;
       }
     }
 
@@ -1268,6 +1283,17 @@
       border-bottom: var(--border-s) solid var(--border-default);
     }
 
+    .mobile-menu__logo {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .mobile-menu__logo img {
+      height: 24px;
+      width: auto;
+    }
+
     .mobile-menu__logo svg {
       width: 100px;
       height: auto;
@@ -1742,9 +1768,10 @@
     <nav class="nav-bar">
       <!-- Logo -->
       <div class="nav-bar__logo">
-        <svg width="137" height="48" viewBox="0 0 137 48" fill="none">
-          <text x="10" y="32" font-family="Manrope" font-weight="800" font-size="24" fill="#00695C">SSRN</text>
-        </svg>
+        <img src="../../assets/images/icons/Customer-Log In/S.svg" alt="S">
+        <img src="../../assets/images/icons/Customer-Log In/S.2.svg" alt="S">
+        <img src="../../assets/images/icons/Customer-Log In/R.svg" alt="R">
+        <img src="../../assets/images/icons/Customer-Log In/N.svg" alt="N">
       </div>
 
       <!-- Center Navigation -->
@@ -1834,9 +1861,10 @@
     <div class="mobile-menu">
       <div class="mobile-menu__header">
         <div class="mobile-menu__logo">
-          <svg width="100" height="36" viewBox="0 0 137 48" fill="none">
-            <text x="10" y="28" font-family="Manrope" font-weight="800" font-size="20" fill="#00695C">SSRN</text>
-          </svg>
+          <img src="../../assets/images/icons/Customer-Log In/S.svg" alt="S">
+          <img src="../../assets/images/icons/Customer-Log In/S.2.svg" alt="S">
+          <img src="../../assets/images/icons/Customer-Log In/R.svg" alt="R">
+          <img src="../../assets/images/icons/Customer-Log In/N.svg" alt="N">
         </div>
         <button class="mobile-menu__close" onclick="toggleMobileMenu()" aria-label="Close menu">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2380,9 +2408,10 @@
       <!-- Top Section: Logo + Help -->
       <div class="site-footer__top">
         <div class="site-footer__logo">
-          <svg width="137" height="29" viewBox="0 0 137 29" fill="none">
-            <text x="10" y="22" font-family="Manrope" font-weight="800" font-size="20" fill="#FFFFFF">SSRN</text>
-          </svg>
+          <img src="../../assets/images/icons/Customer-Log In/S.svg" alt="S">
+          <img src="../../assets/images/icons/Customer-Log In/S.2.svg" alt="S">
+          <img src="../../assets/images/icons/Customer-Log In/R.svg" alt="R">
+          <img src="../../assets/images/icons/Customer-Log In/N.svg" alt="N">
         </div>
         <a href="#help" class="site-footer__help-btn">
           <div class="site-footer__help-icon">
