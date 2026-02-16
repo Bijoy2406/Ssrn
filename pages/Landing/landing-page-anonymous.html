@@ -5,18 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SSRN - Your Trusted Chauffeur Service</title>
   <link rel="stylesheet" href="/Ssrn/style.css">
+  <link rel="stylesheet" href="/Ssrn/css/components/booking-form-landing.css">
+  <link rel="stylesheet" href="/Ssrn/css/components/cards-and-modals.css">
   <style>
     /* Page-specific styles */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
     body {
       margin: 0;
       padding: 0;
       background-color: var(--surface-page);
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    section {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    /* Ensure no element causes horizontal scroll */
+    .hero,
+    .services,
+    .destinations,
+    .cta,
+    .why-choose,
+    .nav-bar-wrapper,
+    .site-footer {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .hero__container,
+    .services__container,
+    .destinations__container,
+    .cta__container,
+    .why-choose__container,
+    .site-footer__container {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .page-loader-overlay,
+    .page-loader,
+    .page-loader__container {
+      max-width: 100vw;
+      overflow-x: hidden;
     }
 
     /* Override nav-bar to match Figma 1440px design */
     .nav-bar {
       max-width: 1440px !important;
       padding: 0 120px !important;
+    }
+
+    /* Mobile nav fixes */
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 0 var(--space-400) !important;
+      }
+
+      .nav-item__button {
+        width: auto !important;
+        min-width: auto !important;
+      }
+
+      .nav-bar__logo {
+        width: auto !important;
+        max-width: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-bar {
+        padding: 0 var(--space-300) !important;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .nav-bar {
+        padding: 0 var(--space-200) !important;
+      }
+
+      .nav-bar__logo {
+        max-width: 80px;
+      }
     }
 
     /* Override site-footer to match Figma 1440px design */
@@ -28,6 +109,8 @@
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 120px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     /* Remove extra padding from footer middle section */
@@ -71,51 +154,92 @@
       }
     }
 
+    @media (max-width: 480px) {
+      .site-footer__container {
+        padding: 0 var(--space-300);
+      }
+    }
+
+    @media (max-width: 375px) {
+      .site-footer__container {
+        padding: 0 var(--space-200);
+      }
+    }
+
     /* Hero Section */
     .hero {
       position: relative;
       width: 100%;
-      padding: 40px 0 80px;
       background-color: var(--surface-page);
+      padding-bottom: var(--space-1200);
     }
 
     .hero__container {
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 120px;
-      display: grid;
-      grid-template-columns: 1fr 480px;
-      gap: var(--space-600);
-      align-items: start;
+      position: relative;
+      width: 100%;
     }
 
-    .hero__left {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-500);
+    .hero__content {
+      position: relative;
+      width: 100%;
+    }
+
+    .hero__header {
+      padding: var(--space-600) 0 var(--space-500);
     }
 
     .hero__title {
       font-family: var(--font-family-heading);
-      font-size: 36px;
+      font-size: var(--heading-lg-size);
       font-weight: var(--font-weight-bold);
-      line-height: 1.3;
+      line-height: 1.2;
       color: var(--text-primary);
       margin: 0;
     }
 
-    .hero__image {
+    .hero__image-wrapper {
+      position: relative;
       width: 100%;
-      height: 400px;
+      height: 364.249px;
+      flex-shrink: 0;
+      align-self: stretch;
+      aspect-ratio: 917/272;
       border-radius: var(--radius-l);
       overflow: hidden;
       background-color: var(--grey-80);
+      margin-bottom: 80px;
     }
 
-    .hero__image img {
+    .hero__image {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: var(--radius-l);
+    }
+
+    .hero__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* Booking Form - Overlapping from bottom of image */
+    .hero__form-overlay {
+      position: relative;
+      margin-top: -100px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      max-width: 720px;
+      z-index: 10;
     }
 
     /* Booking Card (Floating on Right) */
@@ -244,9 +368,85 @@
       background-color: var(--sea-green-40);
     }
 
+    /* Why Choose Us Section */
+    .why-choose-us {
+      padding: var(--space-2000) 0;
+      background-color: var(--surface-secondary);
+    }
+
+    .why-choose-us__container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 120px;
+      width: 100%;
+    }
+
+    .why-choose-us__heading {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-xl-size);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--heading-xl-line);
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: var(--space-1200);
+    }
+
+    .why-choose-us__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-800);
+    }
+
+    .why-choose-us__card {
+      background-color: var(--surface-primary);
+      border-radius: var(--radius-l);
+      padding: var(--space-800);
+      text-align: left;
+      box-shadow: var(--shadow-m);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .why-choose-us__card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-l);
+    }
+
+    .why-choose-us__icon {
+      width: 56px;
+      height: 56px;
+      background-color: var(--sea-green-50);
+      border-radius: var(--radius-m);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-500);
+      color: var(--surface-primary);
+    }
+
+    .why-choose-us__icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .why-choose-us__title {
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-sm-size);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--heading-sm-line);
+      color: var(--text-primary);
+      margin-bottom: var(--space-400);
+    }
+
+    .why-choose-us__description {
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      line-height: var(--body-md-line);
+      color: var(--text-secondary);
+    }
+
     /* Services Section */
     .services {
-      padding: 80px 0;
+      padding: var(--space-2000) 0;
       background-color: var(--surface-primary);
     }
 
@@ -254,6 +454,7 @@
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 120px;
+      width: 100%;
     }
 
     .services__heading {
@@ -262,54 +463,66 @@
       font-weight: var(--font-weight-bold);
       text-align: center;
       color: var(--text-primary);
-      margin: 0 0 var(--space-700) 0;
+      margin: 0 0 var(--space-1200) 0;
+    }
+
+    .services__carousel-wrapper {
+      position: relative;
+    }
+
+    .services__carousel {
+      overflow: hidden;
+      width: 100%;
     }
 
     .services__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-600);
-    }
-
-    .service-card {
       display: flex;
-      flex-direction: column;
-      gap: var(--space-400);
+      gap: var(--space-600);
+      transition: transform 0.3s ease;
     }
 
-    .service-card__image {
-      width: 100%;
-      height: 200px;
-      border-radius: var(--radius-m);
-      overflow: hidden;
-      background-color: var(--grey-80);
+    .services__nav {
+      display: none;
     }
 
-    .service-card__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    /* Carousel dots indicator */
+    .services__dots {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-200);
+      margin-top: var(--space-800);
     }
 
-    .service-card__title {
-      font-family: var(--font-family-heading);
-      font-size: var(--heading-sm-size);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-primary);
-      margin: 0;
+    .services__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--grey-60);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
     }
 
-    .service-card__description {
-      font-family: var(--font-family-body);
-      font-size: var(--body-md-size);
-      line-height: var(--body-md-line-height);
-      color: var(--text-secondary);
-      margin: 0;
+    .services__dot:hover {
+      background-color: var(--grey-40);
+    }
+
+    .services__dot--active {
+      width: 10px;
+      height: 10px;
+      background-color: var(--text-primary);
+    }
+
+    /* Service cards in carousel */
+    .services__grid .card-service {
+      flex-shrink: 0;
+      width: 360px;
     }
 
     /* Destinations Section */
     .destinations {
-      padding: 80px 0;
+      padding: var(--space-2000) 0;
       background-color: var(--surface-page);
     }
 
@@ -317,10 +530,20 @@
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 120px;
+      width: 100%;
     }
 
     .destinations__header {
-      margin-bottom: var(--space-600);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-800);
+      margin-bottom: var(--space-1000);
+    }
+
+    .destinations__header-content {
+      flex: 1;
+      max-width: 600px;
     }
 
     .destinations__heading {
@@ -336,29 +559,29 @@
       font-size: var(--body-lg-size);
       line-height: var(--body-lg-line-height);
       color: var(--text-secondary);
-      margin: 0 0 var(--space-600) 0;
+      margin: 0;
     }
 
     .destinations__filters {
       display: flex;
       gap: var(--space-300);
-      margin-bottom: var(--space-600);
+      flex-shrink: 0;
     }
 
     .destinations__filter-btn {
-      padding: var(--space-300) var(--space-500);
+      display: flex;
+      align-items: center;
+      gap: var(--space-200);
+      padding: var(--space-200) var(--space-400);
       background-color: transparent;
       border: var(--border-m) solid var(--border-primary);
-      border-radius: var(--radius-m);
+      border-radius: var(--radius-full);
       font-family: var(--font-family-body);
-      font-size: var(--body-md-size);
+      font-size: var(--body-sm-size);
       font-weight: var(--font-weight-medium);
       color: var(--text-primary);
       cursor: pointer;
       transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: var(--space-200);
     }
 
     .destinations__filter-btn:hover {
@@ -366,9 +589,14 @@
     }
 
     .destinations__filter-btn--active {
-      background-color: var(--sea-green-50);
-      border-color: var(--sea-green-50);
+      background-color: var(--text-primary);
+      border-color: var(--text-primary);
       color: var(--text-inverse);
+    }
+
+    .destinations__filter-btn svg {
+      width: 16px;
+      height: 16px;
     }
 
     .destinations__carousel-wrapper {
@@ -377,6 +605,7 @@
 
     .destinations__carousel {
       overflow: hidden;
+      width: 100%;
     }
 
     .destinations__track {
@@ -385,42 +614,96 @@
       transition: transform 0.3s ease;
     }
 
-    .destinations__nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      gap: var(--space-300);
-      right: 0;
-      margin-top: -150px;
+    /* Card destination content padding */
+    .card-destination__content {
+      padding: var(--space-600) var(--space-400) var(--space-600);
     }
 
-    .destinations__nav-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: var(--surface-primary);
-      border: var(--border-m) solid var(--border-primary);
+    /* Mobile carousel scroll */
+    @media (max-width: 768px) {
+      .destinations__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-600);
+      }
+
+      .destinations__header-content {
+        max-width: 100%;
+      }
+
+      .destinations__filters {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .destinations__carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x mandatory;
+        scroll-padding: var(--space-400);
+      }
+
+      .destinations__carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .destinations__track {
+        transition: none;
+      }
+
+      .card-destination {
+        scroll-snap-align: start;
+      }
+
+      .card-destination__content {
+        padding: var(--space-500) var(--space-400) var(--space-500);
+      }
+    }
+
+    .destinations__nav {
+      display: none;
+    }
+
+    /* Destinations Footer */
+    .destinations__footer {
+      display: flex;
+      justify-content: center;
+      margin-top: var(--space-800);
+    }
+
+    .destinations__explore-link {
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      gap: var(--space-200);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-medium);
+      line-height: var(--body-md-line-height);
+      color: var(--text-primary);
+      text-decoration: none;
       transition: all 0.2s ease;
     }
 
-    .destinations__nav-btn:hover {
-      background-color: var(--grey-90);
+    .destinations__explore-link:hover {
+      color: var(--sea-green-50);
     }
 
-    .destinations__nav-btn svg {
+    .destinations__explore-link:hover svg {
+      transform: translateX(4px);
+    }
+
+    .destinations__explore-link svg {
       width: 20px;
       height: 20px;
-      color: var(--text-primary);
+      transition: transform 0.2s ease;
     }
 
     /* CTA Section */
     .cta {
-      padding: 60px 0;
+      padding: var(--space-1600) 0;
       background-color: var(--surface-page);
       display: flex;
       align-items: center;
@@ -433,11 +716,12 @@
       padding: 0 120px;
       display: flex;
       justify-content: center;
+      width: 100%;
     }
 
     /* Why Choose Us */
     .why-choose {
-      padding: 80px 0;
+      padding: var(--space-2000) 0;
       background-color: var(--surface-primary);
     }
 
@@ -445,6 +729,7 @@
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 120px;
+      width: 100%;
     }
 
     .why-choose__heading {
@@ -453,13 +738,14 @@
       font-weight: var(--font-weight-bold);
       text-align: center;
       color: var(--text-primary);
-      margin: 0 0 var(--space-700) 0;
+      margin: 0 0 var(--space-1200) 0;
     }
 
     .why-choose__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-700);
+      gap: var(--space-600);
+      width: 100%;
     }
 
     /* Responsive */
@@ -484,17 +770,105 @@
         padding-right: var(--space-600);
       }
 
+      .hero {
+        padding: var(--space-600) 0;
+      }
+
       .hero__container {
         grid-template-columns: 1fr;
+        gap: var(--space-1000);
       }
 
-      .booking-card {
-        position: static;
+      .hero__left {
+        order: 1;
       }
 
-      .services__grid,
+      .booking-form-landing {
+        order: 2;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .services__grid {
+        gap: var(--space-500);
+      }
+
+      .service-card {
+        min-width: 350px;
+        max-width: 350px;
+      }
+
+      .services__nav {
+        margin-top: -120px;
+      }
+
+      .why-choose__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-600);
+      }
+
+      .destinations__nav {
+        margin-top: -180px;
+      }
+
+      .card-cta {
+        flex-direction: column;
+        gap: var(--space-600);
+        align-items: flex-start;
+      }
+
+      .card-cta__action {
+        align-self: flex-start;
+      }
+    }
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .hero__container {
+        padding-left: var(--space-400);
+        padding-right: var(--space-400);
+      }
+
+      .hero {
+        padding-bottom: var(--space-1000);
+      }
+
+      .hero__header {
+        padding: var(--space-500) 0 var(--space-400);
+      }
+
+      .hero__title {
+        font-size: var(--heading-lg-size);
+        font-weight: var(--font-weight-bold);
+        line-height: 1.2;
+      }
+
+      .hero__image-wrapper {
+        height: 300px;
+        margin-bottom: 70px;
+      }
+
+      .hero__image {
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .hero__form-overlay {
+        margin-top: -90px;
+        width: calc(100% - var(--space-800));
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 900px) {
       .why-choose__grid {
         grid-template-columns: 1fr;
+        gap: var(--space-600);
+      }
+
+      .card-core-value {
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
       }
     }
 
@@ -503,17 +877,826 @@
       .services__container,
       .destinations__container,
       .cta__container,
-      .why-choose__container {
+      .why-choose__container,
+      .why-choose-us__container {
         padding-left: var(--space-400);
         padding-right: var(--space-400);
       }
 
-      .hero__title {
-        font-size: 28px;
+      .why-choose-us__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-600);
       }
 
-      .booking-card__row {
+      .why-choose-us__heading {
+        font-size: var(--heading-lg-size);
+        margin-bottom: var(--space-800);
+      }
+
+      .why-choose-us__card {
+        padding: var(--space-600);
+      }
+
+      .hero__container {
+        padding-left: var(--space-400);
+        padding-right: var(--space-400);
+      }
+
+      .hero {
+        padding-bottom: var(--space-800);
+      }
+
+      .hero__header {
+        padding: var(--space-400) 0 var(--space-300);
+      }
+
+      .hero__title {
+        font-size: var(--heading-lg-size);
+        font-weight: var(--font-weight-bold);
+        line-height: 1.2;
+        color: var(--text-primary);
+      }
+
+      .hero__image-wrapper {
+        height: 250px;
+        border-radius: var(--radius-m);
+        margin-bottom: 60px;
+      }
+
+      .hero__image {
+        object-fit: cover;
+        object-position: center;
+      }
+
+      /* Mobile: form overlaps bottom of image */
+      .hero__form-overlay {
+        margin-top: -80px;
+        width: calc(100% - var(--space-800));
+        max-width: 100%;
+      }
+
+      .services {
+        padding: var(--space-1600) 0;
+      }
+
+      .services__heading {
+        font-size: var(--heading-xl-size);
+        font-weight: var(--font-weight-bold);
+        margin-bottom: var(--space-600);
+      }
+
+      .services__carousel-wrapper {
+        overflow: visible;
+      }
+
+      .services__carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x mandatory;
+        scroll-padding: var(--space-400);
+        margin: 0 calc(-1 * var(--space-400));
+        padding: 0 var(--space-400);
+      }
+
+      .services__carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .services__grid {
+        gap: var(--space-400);
+      }
+
+      .services__grid .card-service {
+        width: min(320px, calc(100vw - 48px));
+        scroll-snap-align: start;
+      }
+
+      .services__nav {
+        display: none;
+      }
+
+      .destinations {
+        padding: var(--space-1600) 0;
+      }
+
+      .destinations__heading {
+        font-size: var(--heading-xl-size);
+        font-weight: var(--font-weight-bold);
+      }
+
+      .destinations__carousel-wrapper {
+        overflow: visible;
+      }
+
+      .destinations__carousel {
+        margin: 0 calc(-1 * var(--space-400));
+        padding: 0 var(--space-400);
+      }
+
+      .destinations__track {
+        gap: var(--space-400);
+      }
+
+      .card-destination {
+        min-width: min(280px, calc(100vw - 48px));
+        width: min(280px, calc(100vw - 48px));
+        flex-shrink: 0;
+      }
+
+      .destinations__nav {
+        display: none;
+      }
+
+      .cta {
+        padding: var(--space-1000) 0;
+      }
+
+      .card-cta {
+        padding: var(--space-600) var(--space-500);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      .card-cta__heading {
+        font-size: var(--heading-h7-size);
+        line-height: var(--heading-h7-line-height);
+      }
+
+      .card-cta__action {
+        width: 100%;
+      }
+
+      .card-cta__action .btn {
+        width: 100%;
+      }
+
+      .why-choose {
+        padding: var(--space-1600) 0;
+      }
+
+      .why-choose__heading {
+        font-size: var(--heading-xl-size);
+        font-weight: var(--font-weight-bold);
+        margin-bottom: var(--space-600);
+      }
+
+      .why-choose__grid {
         grid-template-columns: 1fr;
+        gap: var(--space-500);
+      }
+
+      .card-core-value {
+        width: 100%;
+        max-width: 100%;
+        padding: var(--space-600) var(--space-500);
+        box-sizing: border-box;
+      }
+
+      .service-card,
+      .booking-form-landing {
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__container,
+      .services__container,
+      .destinations__container,
+      .cta__container,
+      .why-choose__container {
+        padding-left: var(--space-300);
+        padding-right: var(--space-300);
+      }
+
+      .hero__header {
+        padding: var(--space-100) 0 var(--space-200);
+      }
+
+      .hero__title {
+        font-size: var(--heading-lg-size);
+        font-weight: var(--font-weight-bold);
+        line-height: 1.2;
+      }
+
+      .hero__image-wrapper {
+        height: 200px;
+        border-radius: var(--radius-m);
+      }
+
+      .hero__image {
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .hero__form-overlay {
+        margin-top: var(--space-300);
+      }
+
+      .hero {
+        padding-bottom: var(--space-400);
+      }
+
+      .destinations__carousel {
+        margin: 0 calc(-1 * var(--space-300));
+        padding: 0 var(--space-300);
+      }
+
+      .card-destination {
+        min-width: min(260px, calc(100vw - 32px));
+        width: min(260px, calc(100vw - 32px));
+        flex-shrink: 0;
+      }
+
+      .card-cta {
+        padding: var(--space-500) var(--space-400);
+        gap: var(--space-500);
+      }
+
+      .card-cta__heading {
+        font-size: var(--heading-h8-size);
+      }
+
+      .card-cta__body {
+        font-size: var(--body-md-size);
+      }
+
+      .card-core-value {
+        padding: var(--space-500) var(--space-400);
+      }
+
+      .card-core-value__icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .service-card__image {
+        height: 160px;
+      }
+
+      .services__carousel {
+        margin: 0 calc(-1 * var(--space-300));
+        padding: 0 var(--space-300);
+      }
+
+      .service-card {
+        min-width: min(280px, calc(100vw - 32px));
+        max-width: min(280px, calc(100vw - 32px));
+      }
+
+      .card-cta {
+        box-sizing: border-box;
+      }
+
+      .service-card,
+      .card-core-value {
+        box-sizing: border-box;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .hero__container,
+      .services__container,
+      .destinations__container,
+      .cta__container,
+      .why-choose__container {
+        padding-left: var(--space-200);
+        padding-right: var(--space-200);
+      }
+
+      .hero__title {
+        font-size: var(--heading-lg-size);
+        font-weight: var(--font-weight-bold);
+        line-height: 1.2;
+      }
+
+      .hero__image {
+        height: 220px;
+      }
+
+      .destinations__carousel {
+        margin: 0 calc(-1 * var(--space-200));
+        padding: 0 var(--space-200);
+      }
+
+      .card-destination {
+        min-width: min(240px, calc(100vw - 24px));
+        width: min(240px, calc(100vw - 24px));
+      }
+
+      .card-cta {
+        padding: var(--space-400) var(--space-300);
+      }
+
+      .services__heading,
+      .destinations__heading,
+      .why-choose__heading {
+        font-size: var(--heading-xl-size);
+        font-weight: var(--font-weight-bold);
+        line-height: var(--heading-xl-line-height);
+      }
+
+      .card-cta,
+      .service-card,
+      .card-core-value,
+      .booking-form-landing {
+        box-sizing: border-box;
+        max-width: 100%;
+      }
+
+      .services__carousel {
+        margin: 0 calc(-1 * var(--space-200));
+        padding: 0 var(--space-200);
+      }
+
+      .service-card {
+        min-width: min(260px, calc(100vw - 24px));
+        max-width: min(260px, calc(100vw - 24px));
+      }
+    }
+
+    /* ============================================
+       MOBILE MENU OVERLAY
+       ============================================ */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(3, 17, 13, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-menu-overlay--open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 85%;
+      max-width: 400px;
+      height: 100%;
+      background-color: var(--surface-primary);
+      box-shadow: var(--shadow-2xl);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu-overlay--open .mobile-menu {
+      transform: translateX(0);
+    }
+
+    .mobile-menu__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-600) var(--space-500);
+      border-bottom: var(--border-s) solid var(--border-default);
+    }
+
+    .mobile-menu__logo svg {
+      width: 100px;
+      height: auto;
+    }
+
+    .mobile-menu__close {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background-color: transparent;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-s);
+      transition: background-color 0.2s ease;
+    }
+
+    .mobile-menu__close:hover {
+      background-color: var(--grey-70);
+    }
+
+    .mobile-menu__close svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .mobile-menu__content {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-400) 0;
+    }
+
+    .mobile-menu__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: var(--space-400) var(--space-500);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-medium);
+      line-height: var(--body-md-line-height);
+      color: var(--text-primary);
+      text-decoration: none;
+      background-color: transparent;
+      border: none;
+      border-bottom: var(--border-s) solid var(--border-default);
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      text-align: left;
+    }
+
+    .mobile-menu__item:hover {
+      background-color: var(--grey-70);
+    }
+
+    .mobile-menu__item--primary {
+      color: var(--sea-green-50);
+      font-weight: var(--font-weight-semibold);
+      border-top: var(--border-s) solid var(--border-default);
+    }
+
+    .mobile-menu__text {
+      flex: 1;
+    }
+
+    .mobile-menu__chevron {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu__expandable {
+      border-bottom: var(--border-s) solid var(--border-default);
+    }
+
+    .mobile-menu__expandable--open .mobile-menu__chevron {
+      transform: rotate(180deg);
+    }
+
+    .mobile-menu__submenu {
+      max-height: 0;
+      overflow: hidden;
+      background-color: var(--grey-90);
+      transition: max-height 0.3s ease;
+    }
+
+    .mobile-menu__expandable--open .mobile-menu__submenu {
+      max-height: 300px;
+    }
+
+    .mobile-menu__subitem {
+      display: block;
+      padding: var(--space-300) var(--space-500);
+      padding-left: var(--space-800);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--body-md-line-height);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .mobile-menu__subitem:hover {
+      background-color: var(--grey-80);
+      color: var(--text-primary);
+    }
+
+    /* ============================================
+       DATETIME PICKER OVERLAY
+       ============================================ */
+    .datetime-picker-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(3, 17, 13, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .datetime-picker-overlay--open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .datetime-picker {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      max-height: 90%;
+      background-color: var(--surface-primary);
+      border-radius: var(--radius-l) var(--radius-l) 0 0;
+      box-shadow: var(--shadow-2xl);
+      display: flex;
+      flex-direction: column;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .datetime-picker-overlay--open .datetime-picker {
+      transform: translateY(0);
+    }
+
+    .datetime-picker__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-400);
+      padding: var(--space-600) var(--space-500);
+      border-bottom: var(--border-s) solid var(--border-default);
+    }
+
+    .datetime-picker__back {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background-color: transparent;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-s);
+      transition: background-color 0.2s ease;
+    }
+
+    .datetime-picker__back:hover {
+      background-color: var(--grey-70);
+    }
+
+    .datetime-picker__title {
+      flex: 1;
+      font-family: var(--font-family-heading);
+      font-size: var(--heading-h7-size);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--heading-h7-line-height);
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .datetime-picker__content {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-600) var(--space-500);
+    }
+
+    .datetime-picker__section {
+      margin-bottom: var(--space-800);
+    }
+
+    .datetime-picker__section-title {
+      font-family: var(--font-family-body);
+      font-size: var(--body-lg-size);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--body-lg-line-height);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-400) 0;
+    }
+
+    /* Calendar */
+    .calendar {
+      width: 100%;
+    }
+
+    .calendar__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-400);
+    }
+
+    .calendar__nav {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background-color: transparent;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-s);
+      transition: background-color 0.2s ease;
+    }
+
+    .calendar__nav:hover {
+      background-color: var(--grey-70);
+    }
+
+    .calendar__month {
+      font-family: var(--font-family-body);
+      font-size: var(--body-lg-size);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--body-lg-line-height);
+      color: var(--text-primary);
+    }
+
+    .calendar__weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: var(--space-100);
+      margin-bottom: var(--space-200);
+    }
+
+    .calendar__weekday {
+      text-align: center;
+      font-family: var(--font-family-body);
+      font-size: var(--body-sm-size);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--body-sm-line-height);
+      color: var(--text-secondary);
+      padding: var(--space-200);
+    }
+
+    .calendar__days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: var(--space-100);
+    }
+
+    .calendar__day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--body-md-line-height);
+      color: var(--text-primary);
+      background-color: transparent;
+      border: var(--border-s) solid transparent;
+      border-radius: var(--radius-s);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .calendar__day:hover:not(.calendar__day--disabled):not(.calendar__day--selected) {
+      background-color: var(--grey-70);
+      border-color: var(--border-default);
+    }
+
+    .calendar__day--disabled {
+      color: var(--text-disabled);
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    .calendar__day--today {
+      border-color: var(--sea-green-50);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .calendar__day--selected {
+      background-color: var(--sea-green-50);
+      color: var(--text-inverse);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .calendar__day--other-month {
+      color: var(--text-tertiary);
+    }
+
+    /* Time Picker */
+    .time-picker__toggle {
+      display: flex;
+      gap: var(--space-200);
+      margin-bottom: var(--space-400);
+    }
+
+    .time-picker__toggle-btn {
+      flex: 1;
+      padding: var(--space-200) var(--space-400);
+      background-color: transparent;
+      border: var(--border-m) solid var(--border-primary);
+      border-radius: var(--radius-s);
+      font-family: var(--font-family-body);
+      font-size: var(--body-sm-size);
+      font-weight: var(--font-weight-medium);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .time-picker__toggle-btn--active {
+      background-color: var(--text-primary);
+      border-color: var(--text-primary);
+      color: var(--text-inverse);
+    }
+
+    .time-picker {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--space-300);
+      max-width: 400px;
+    }
+
+    .time-picker__group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-200);
+    }
+
+    .time-picker__separator {
+      font-family: var(--font-family-body);
+      font-size: 24px;
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      padding-bottom: var(--space-200);
+    }
+
+    .time-picker__label {
+      font-family: var(--font-family-body);
+      font-size: var(--body-sm-size);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--body-sm-line-height);
+      color: var(--text-secondary);
+    }
+
+    .time-picker__select {
+      width: 100%;
+      padding: var(--space-300) var(--space-400);
+      background-color: var(--surface-primary);
+      border: var(--border-m) solid var(--border-primary);
+      border-radius: var(--radius-s);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-medium);
+      line-height: var(--body-md-line-height);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .time-picker__select:hover {
+      border-color: var(--text-secondary);
+    }
+
+    .time-picker__select:focus {
+      outline: none;
+      border-color: var(--sea-green-50);
+      box-shadow: 0 0 0 3px rgba(0, 105, 92, 0.1);
+    }
+
+    .datetime-picker__footer {
+      padding: var(--space-500);
+      border-top: var(--border-s) solid var(--border-default);
+    }
+
+    .datetime-picker__confirm {
+      width: 100%;
+      padding: var(--space-400) var(--space-600);
+      background-color: var(--sea-green-50);
+      border: none;
+      border-radius: var(--radius-s);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--body-md-line-height);
+      color: var(--text-inverse);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .datetime-picker__confirm:hover {
+      background-color: var(--sea-green-40);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-m);
+    }
+
+    .datetime-picker__confirm:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-s);
+    }
+
+    /* Hide overlays on desktop */
+    @media (min-width: 769px) {
+      .mobile-menu-overlay,
+      .datetime-picker-overlay {
+        display: none;
       }
     }
   </style>
@@ -646,26 +1829,200 @@
   <!-- Mobile Nav Overlay -->
   <div class="nav-overlay" id="navOverlay" onclick="toggleMobileNav()"></div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero__container">
-      <!-- Left Side: Title & Image -->
-      <div class="hero__left">
-        <h1 class="hero__title">SSRN<br>Your Trusted Chauffeur Service</h1>
-        <div class="hero__image">
-          <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-            <rect width="100" height="100" fill="#D0D0D0"/>
-            <text x="50" y="55" text-anchor="middle" font-size="10" fill="#666">Chauffeur with Car</text>
+  <!-- Mobile Menu Overlay (Full Screen) -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu">
+      <div class="mobile-menu__header">
+        <div class="mobile-menu__logo">
+          <svg width="100" height="36" viewBox="0 0 137 48" fill="none">
+            <text x="10" y="28" font-family="Manrope" font-weight="800" font-size="20" fill="#00695C">SSRN</text>
           </svg>
+        </div>
+        <button class="mobile-menu__close" onclick="toggleMobileMenu()" aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="mobile-menu__content">
+        <!-- Sign In -->
+        <a href="#signin" class="mobile-menu__item mobile-menu__item--primary">
+          <span class="mobile-menu__text">Sign In</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+            <polyline points="10 17 15 12 10 7"/>
+            <line x1="15" y1="12" x2="3" y2="12"/>
+          </svg>
+        </a>
+
+        <!-- Our Services Expandable -->
+        <div class="mobile-menu__expandable">
+          <button class="mobile-menu__item" onclick="toggleMobileMenuSection('services')">
+            <span class="mobile-menu__text">Our Services</span>
+            <svg class="mobile-menu__chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="mobile-menu__submenu" id="mobileServicesSubmenu">
+            <a href="#airport" class="mobile-menu__subitem">Airport Transfers</a>
+            <a href="#city" class="mobile-menu__subitem">City-to-City Rides</a>
+            <a href="#hourly" class="mobile-menu__subitem">Hourly Rides</a>
+          </div>
+        </div>
+
+        <!-- For Partners Expandable -->
+        <div class="mobile-menu__expandable">
+          <button class="mobile-menu__item" onclick="toggleMobileMenuSection('partners')">
+            <span class="mobile-menu__text">For Partners</span>
+            <svg class="mobile-menu__chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="mobile-menu__submenu" id="mobilePartnersSubmenu">
+            <a href="#drive" class="mobile-menu__subitem">Drive with Us</a>
+            <a href="#fleet" class="mobile-menu__subitem">Fleet Partners</a>
+          </div>
+        </div>
+
+        <!-- About Us -->
+        <a href="#about" class="mobile-menu__item">
+          <span class="mobile-menu__text">About Us</span>
+        </a>
+
+        <!-- Help -->
+        <a href="#help" class="mobile-menu__item">
+          <span class="mobile-menu__text">Help</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendar/Time Picker Overlay -->
+  <div class="datetime-picker-overlay" id="datetimePickerOverlay">
+    <div class="datetime-picker">
+      <div class="datetime-picker__header">
+        <button class="datetime-picker__back" onclick="closeDatetimePicker()" aria-label="Back">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <h2 class="datetime-picker__title">Select Date & Time</h2>
+      </div>
+
+      <div class="datetime-picker__content">
+        <!-- Date Picker -->
+        <div class="datetime-picker__section">
+          <h3 class="datetime-picker__section-title">Choose Date</h3>
+          <div class="calendar">
+            <div class="calendar__header">
+              <button class="calendar__nav" onclick="changeMonth(-1)" aria-label="Previous month">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"/>
+                </svg>
+              </button>
+              <span class="calendar__month" id="calendarMonth">November 2025</span>
+              <button class="calendar__nav" onclick="changeMonth(1)" aria-label="Next month">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </button>
+            </div>
+            <div class="calendar__weekdays">
+              <div class="calendar__weekday">Sun</div>
+              <div class="calendar__weekday">Mon</div>
+              <div class="calendar__weekday">Tue</div>
+              <div class="calendar__weekday">Wed</div>
+              <div class="calendar__weekday">Thu</div>
+              <div class="calendar__weekday">Fri</div>
+              <div class="calendar__weekday">Sat</div>
+            </div>
+            <div class="calendar__days" id="calendarDays">
+              <!-- Days will be generated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Time Picker -->
+        <div class="datetime-picker__section">
+          <h3 class="datetime-picker__section-title">Choose Time</h3>
+
+          <!-- 12h/24h Toggle -->
+          <div class="time-picker__toggle">
+            <button class="time-picker__toggle-btn time-picker__toggle-btn--active" onclick="toggle24Hour(false)" id="toggle12h">12 h</button>
+            <button class="time-picker__toggle-btn" onclick="toggle24Hour(true)" id="toggle24h">24 h</button>
+          </div>
+
+          <div class="time-picker">
+            <div class="time-picker__group">
+              <label class="time-picker__label">Hour</label>
+              <select class="time-picker__select" id="hourSelect">
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </div>
+            <div class="time-picker__separator">:</div>
+            <div class="time-picker__group">
+              <label class="time-picker__label">Minute</label>
+              <select class="time-picker__select" id="minuteSelect">
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+              </select>
+            </div>
+            <div class="time-picker__group">
+              <label class="time-picker__label">Period</label>
+              <select class="time-picker__select" id="periodSelect">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Right Side: Booking Form -->
-      <div class="booking-form-landing">
+      <div class="datetime-picker__footer">
+        <button class="datetime-picker__confirm" onclick="confirmDatetime()">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__container">
+      <!-- Header with Tagline ABOVE image -->
+      <div class="hero__header">
+        <h1 class="hero__title">Your Trusted Chauffeur Service</h1>
+      </div>
+
+      <!-- Hero Image with Overlay Form -->
+      <div class="hero__content">
+        <div class="hero__image-wrapper">
+          <img src="../../assets/images/photos/Landing page/Landing Page/Hero Section Image.png" alt="" class="hero__image">
+          <div class="hero__overlay"></div>
+        </div>
+
+        <!-- Booking Form Overlapping Bottom -->
+        <div class="hero__form-overlay">
+            <form class="booking-form-landing" id="landingBookingForm">
         <!-- Ride Type Toggle -->
         <div class="booking-form-landing__toggle">
-          <button class="booking-form-landing__toggle-btn booking-form-landing__toggle-btn--active" onclick="switchTab('oneway')">One Way Ride</button>
-          <button class="booking-form-landing__toggle-btn" onclick="switchTab('hourly')">Hourly Ride</button>
+          <button type="button" class="booking-form-landing__toggle-btn booking-form-landing__toggle-btn--active" onclick="switchTab('oneway')">One Way Ride</button>
+          <button type="button" class="booking-form-landing__toggle-btn" onclick="switchTab('hourly')">Hourly Ride</button>
         </div>
 
         <!-- Form Fields -->
@@ -673,7 +2030,7 @@
         <div class="booking-form-landing__field">
           <label class="booking-form-landing__label">From</label>
           <div class="booking-form-landing__input-wrapper">
-            <div class="booking-form-landing__icon booking-form-landing__icon--left">
+            <div class="booking-form-landing__icon-left">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                 <circle cx="12" cy="10" r="3"/>
@@ -685,7 +2042,7 @@
               placeholder="Airport, address, hotel,..."
               id="pickupLocation"
             >
-            <div class="booking-form-landing__icon booking-form-landing__icon--right">
+            <div class="booking-form-landing__icon-right">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="11" cy="11" r="8"/>
                 <path d="m21 21-4.35-4.35"/>
@@ -698,7 +2055,7 @@
         <div class="booking-form-landing__field">
           <label class="booking-form-landing__label">To</label>
           <div class="booking-form-landing__input-wrapper">
-            <div class="booking-form-landing__icon booking-form-landing__icon--left">
+            <div class="booking-form-landing__icon-left">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                 <circle cx="12" cy="10" r="3"/>
@@ -710,7 +2067,7 @@
               placeholder="Airport, address, hotel,..."
               id="dropoffLocation"
             >
-            <div class="booking-form-landing__icon booking-form-landing__icon--right">
+            <div class="booking-form-landing__icon-right">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="11" cy="11" r="8"/>
                 <path d="m21 21-4.35-4.35"/>
@@ -723,7 +2080,7 @@
         <div class="booking-form-landing__field">
           <label class="booking-form-landing__label">Date</label>
           <div class="booking-form-landing__input-wrapper">
-            <div class="booking-form-landing__icon booking-form-landing__icon--left">
+            <div class="booking-form-landing__icon-left">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                 <line x1="16" y1="2" x2="16" y2="6"/>
@@ -738,7 +2095,7 @@
               id="pickupDate"
               readonly
             >
-            <div class="booking-form-landing__icon booking-form-landing__icon--right">
+            <div class="booking-form-landing__icon-right">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"/>
               </svg>
@@ -750,7 +2107,7 @@
         <div class="booking-form-landing__field">
           <label class="booking-form-landing__label">Pickup Time</label>
           <div class="booking-form-landing__input-wrapper">
-            <div class="booking-form-landing__icon booking-form-landing__icon--left">
+            <div class="booking-form-landing__icon-left">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"/>
                 <polyline points="12 6 12 12 16 14"/>
@@ -763,7 +2120,7 @@
               id="pickupTime"
               readonly
             >
-            <div class="booking-form-landing__icon booking-form-landing__icon--right">
+            <div class="booking-form-landing__icon-right">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"/>
               </svg>
@@ -779,6 +2136,8 @@
           </svg>
           See Prices
         </button>
+        </form>
+        </div>
       </div>
     </div>
   </section>
@@ -788,42 +2147,50 @@
     <div class="services__container">
       <h2 class="services__heading">Our Services</h2>
 
-      <div class="services__grid">
+      <div class="services__carousel-wrapper">
+        <div class="services__carousel">
+          <div class="services__grid" id="servicesTrack">
         <!-- Airport Transfers -->
-        <div class="service-card">
-          <div class="service-card__image">
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-              <rect width="100" height="100" fill="#B0BEC5"/>
-              <text x="50" y="55" text-anchor="middle" font-size="10" fill="#37474F">Chauffeur Image</text>
-            </svg>
+        <div class="card-service">
+          <div class="card-service__image">
+            <img src="https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=600&q=80" alt="Airport Transfer - Chauffeur with car at airport" loading="lazy">
           </div>
-          <h3 class="service-card__title">Airport Transfers</h3>
-          <p class="service-card__description">Reliable rides to and from the airport. Our chauffeurs track your flight and adjust pickup times for on-time service.</p>
+          <div class="card-service__content">
+            <h3 class="card-service__heading">Airport Transfers</h3>
+            <p class="card-service__body">Reliable rides to and from the airport. Our chauffeur tracks your flight and arrives on time, every time</p>
+          </div>
         </div>
 
         <!-- City-to-City Rides -->
-        <div class="service-card">
-          <div class="service-card__image">
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-              <rect width="100" height="100" fill="#B0BEC5"/>
-              <text x="50" y="55" text-anchor="middle" font-size="10" fill="#37474F">Inside Car</text>
-            </svg>
+        <div class="card-service">
+          <div class="card-service__image">
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&q=80" alt="City to City Rides - Luxury car interior" loading="lazy">
           </div>
-          <h3 class="service-card__title">City-to-City Rides</h3>
-          <p class="service-card__description">Travel between cities with comfort and ease. Enjoy a luxurious, uninterrupted ride to your destination.</p>
+          <div class="card-service__content">
+            <h3 class="card-service__heading">City-to-city Rides</h3>
+            <p class="card-service__body">Travel between cities with comfort and ease. Enjoy a quiet, uninterrupted ride from door to door</p>
+          </div>
         </div>
 
         <!-- Hourly Rides -->
-        <div class="service-card">
-          <div class="service-card__image">
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-              <rect width="100" height="100" fill="#B0BEC5"/>
-              <text x="50" y="55" text-anchor="middle" font-size="10" fill="#37474F">Passenger in Car</text>
-            </svg>
+        <div class="card-service">
+          <div class="card-service__image">
+            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80" alt="Hourly Rides - Professional chauffeur service" loading="lazy">
           </div>
-          <h3 class="service-card__title">Hourly Rides</h3>
-          <p class="service-card__description">Stay in control of your time. Our chauffeur waits for you while you attend to your business.</p>
+          <div class="card-service__content">
+            <h3 class="card-service__heading">Hourly Rides</h3>
+            <p class="card-service__body">Stay in control of your schedule while your chauffeur waits for you wherever you are.</p>
+          </div>
         </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Dots Indicator -->
+      <div class="services__dots" id="servicesDots">
+        <button class="services__dot services__dot--active" onclick="scrollServicesToSlide(0)" aria-label="Go to slide 1"></button>
+        <button class="services__dot" onclick="scrollServicesToSlide(1)" aria-label="Go to slide 2"></button>
+        <button class="services__dot" onclick="scrollServicesToSlide(2)" aria-label="Go to slide 3"></button>
       </div>
     </div>
   </section>
@@ -832,25 +2199,28 @@
   <section class="destinations" id="destinations">
     <div class="destinations__container">
       <div class="destinations__header">
-        <h2 class="destinations__heading">Destinations</h2>
-        <p class="destinations__subtitle">Travel effortlessly between U.S. airports and cities with chauffeurs who value your time, comfort, and peace of mind.</p>
-      </div>
+        <div class="destinations__header-content">
+          <h2 class="destinations__heading">Destinations</h2>
+          <p class="destinations__subtitle">Travel effortlessly between U.S. airports and cities with chauffeurs who value your time, comfort, and peace of mind.</p>
+        </div>
 
-      <div class="destinations__filters">
-        <button class="destinations__filter-btn destinations__filter-btn--active" onclick="filterDestinations('hotel')">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
-          Hotel
-        </button>
-        <button class="destinations__filter-btn" onclick="filterDestinations('attraction')">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          Attraction
-        </button>
+        <!-- Filter Buttons -->
+        <div class="destinations__filters">
+          <button class="destinations__filter-btn destinations__filter-btn--active">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Cities
+          </button>
+          <button class="destinations__filter-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Attractions
+          </button>
+        </div>
       </div>
 
       <div class="destinations__carousel-wrapper">
@@ -859,103 +2229,84 @@
             <!-- Destination Cards -->
             <div class="card-destination">
               <div class="card-destination__image">
-                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-                  <rect width="100" height="100" fill="#81C784"/>
-                  <text x="50" y="55" text-anchor="middle" font-size="8" fill="#2E7D32">Statue of Liberty</text>
-                </svg>
+                <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="Statue of Liberty, New York" loading="lazy">
               </div>
               <div class="card-destination__content">
                 <h3 class="card-destination__heading">New York</h3>
                 <div class="card-destination__location">
                   <div class="card-destination__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
+                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                     </svg>
                   </div>
-                  <span class="card-destination__text">JFK/J. Kennedy International Airport</span>
+                  <span class="card-destination__text">John F. Kennedy International Airport</span>
                 </div>
               </div>
             </div>
 
             <div class="card-destination">
               <div class="card-destination__image">
-                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-                  <rect width="100" height="100" fill="#81C784"/>
-                  <text x="50" y="55" text-anchor="middle" font-size="8" fill="#2E7D32">Statue of Liberty</text>
-                </svg>
+                <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="Statue of Liberty, New York" loading="lazy">
               </div>
               <div class="card-destination__content">
                 <h3 class="card-destination__heading">New York</h3>
                 <div class="card-destination__location">
                   <div class="card-destination__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
+                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                     </svg>
                   </div>
-                  <span class="card-destination__text">LGA/La Guardia International Airport</span>
+                  <span class="card-destination__text">LaGuardia Airport</span>
                 </div>
               </div>
             </div>
 
             <div class="card-destination">
               <div class="card-destination__image">
-                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-                  <rect width="100" height="100" fill="#81C784"/>
-                  <text x="50" y="55" text-anchor="middle" font-size="8" fill="#2E7D32">Statue of Liberty</text>
-                </svg>
+                <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="Statue of Liberty, New York" loading="lazy">
               </div>
               <div class="card-destination__content">
                 <h3 class="card-destination__heading">New York</h3>
                 <div class="card-destination__location">
                   <div class="card-destination__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
+                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                     </svg>
                   </div>
-                  <span class="card-destination__text">EWR/Newark Liberty International Airport</span>
+                  <span class="card-destination__text">Newark Liberty International Airport</span>
                 </div>
               </div>
             </div>
 
             <div class="card-destination">
               <div class="card-destination__image">
-                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-                  <rect width="100" height="100" fill="#81C784"/>
-                  <text x="50" y="55" text-anchor="middle" font-size="8" fill="#2E7D32">Statue of Liberty</text>
-                </svg>
+                <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="Statue of Liberty, New York" loading="lazy">
               </div>
               <div class="card-destination__content">
                 <h3 class="card-destination__heading">New York</h3>
                 <div class="card-destination__location">
                   <div class="card-destination__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
+                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                     </svg>
                   </div>
-                  <span class="card-destination__text">JFK/J. Kennedy International Airport</span>
+                  <span class="card-destination__text">John F. Kennedy International Airport</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Navigation Arrows -->
-        <div class="destinations__nav">
-          <button class="destinations__nav-btn" onclick="scrollCarousel(-1)" aria-label="Previous">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="15 18 9 12 15 6"/>
-            </svg>
-          </button>
-          <button class="destinations__nav-btn" onclick="scrollCarousel(1)" aria-label="Next">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </button>
-        </div>
+      </div>
+
+      <!-- Explore More Link -->
+      <div class="destinations__footer">
+        <a href="#destinations" class="destinations__explore-link">
+          <span>Explore more destinations</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
       </div>
     </div>
   </section>
@@ -975,7 +2326,7 @@
     </div>
   </section>
 
-  <!-- Why Choose Us Section -->
+
   <section class="why-choose">
     <div class="why-choose__container">
       <h2 class="why-choose__heading">Why Choose Us?</h2>
@@ -985,8 +2336,8 @@
         <div class="card-core-value">
           <div class="card-core-value__header">
             <div class="card-core-value__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="41" viewBox="0 0 32 41" fill="none">
+                <path d="M16 41C15.5667 41 15.15 40.9333 14.75 40.8C14.35 40.6667 13.9667 40.4667 13.6 40.2L1.6 31.2C1.1 30.8333 0.708333 30.3667 0.425 29.8C0.141667 29.2333 0 28.6333 0 28V4C0 2.9 0.391667 1.95833 1.175 1.175C1.95833 0.391667 2.9 0 4 0H28C29.1 0 30.0417 0.391667 30.825 1.175C31.6083 1.95833 32 2.9 32 4V28C32 28.6333 31.8583 29.2333 31.575 29.8C31.2917 30.3667 30.9 30.8333 30.4 31.2L18.4 40.2C18.0333 40.4667 17.65 40.6667 17.25 40.8C16.85 40.9333 16.4333 41 16 41ZM13.9 20.3L11.1 17.5C10.7 17.1 10.2333 16.9083 9.7 16.925C9.16667 16.9417 8.7 17.1333 8.3 17.5C7.9 17.9 7.69167 18.375 7.675 18.925C7.65833 19.475 7.85 19.95 8.25 20.35L12.5 24.6C12.9 25 13.3667 25.2 13.9 25.2C14.4333 25.2 14.9 25 15.3 24.6L23.8 16.1C24.2 15.7 24.3917 15.2333 24.375 14.7C24.3583 14.1667 24.1667 13.7 23.8 13.3C23.4 12.9 22.925 12.6917 22.375 12.675C21.825 12.6583 21.35 12.85 20.95 13.25L13.9 20.3Z" fill="#9B8262"/>
               </svg>
             </div>
             <h3 class="card-core-value__heading">Safety First</h3>
@@ -998,11 +2349,8 @@
         <div class="card-core-value">
           <div class="card-core-value__header">
             <div class="card-core-value__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="1" y="3" width="15" height="13"/>
-                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-                <circle cx="5.5" cy="18.5" r="2.5"/>
-                <circle cx="18.5" cy="18.5" r="2.5"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M12 38V39C12 39.8333 11.7083 40.5417 11.125 41.125C10.5417 41.7083 9.83333 42 9 42C8.16667 42 7.45833 41.7083 6.875 41.125C6.29167 40.5417 6 39.8333 6 39V24.7C6 24.4667 6.01667 24.2333 6.05 24C6.08333 23.7667 6.13333 23.55 6.2 23.35L9.95 12.7C10.2167 11.9 10.7 11.25 11.4 10.75C12.1 10.25 12.8833 10 13.75 10H34.25C35.1167 10 35.9 10.25 36.6 10.75C37.3 11.25 37.7833 11.9 38.05 12.7L41.8 23.35C41.8667 23.55 41.9167 23.7667 41.95 24C41.9833 24.2333 42 24.4667 42 24.7V39C42 39.8333 41.7083 40.5417 41.125 41.125C40.5417 41.7083 39.8333 42 39 42C38.1667 42 37.4583 41.7083 36.875 41.125C36.2917 40.5417 36 39.8333 36 39V38H12ZM11.6 20H36.4L34.3 14H13.7L11.6 20ZM15 32C15.8333 32 16.5417 31.7083 17.125 31.125C17.7083 30.5417 18 29.8333 18 29C18 28.1667 17.7083 27.4583 17.125 26.875C16.5417 26.2917 15.8333 26 15 26C14.1667 26 13.4583 26.2917 12.875 26.875C12.2917 27.4583 12 28.1667 12 29C12 29.8333 12.2917 30.5417 12.875 31.125C13.4583 31.7083 14.1667 32 15 32ZM33 32C33.8333 32 34.5417 31.7083 35.125 31.125C35.7083 30.5417 36 29.8333 36 29C36 28.1667 35.7083 27.4583 35.125 26.875C34.5417 26.2917 33.8333 26 33 26C32.1667 26 31.4583 26.2917 30.875 26.875C30.2917 27.4583 30 28.1667 30 29C30 29.8333 30.2917 30.5417 30.875 31.125C31.4583 31.7083 32.1667 32 33 32Z" fill="#9B8262"/>
               </svg>
             </div>
             <h3 class="card-core-value__heading">Comfortable Rides</h3>
@@ -1014,9 +2362,8 @@
         <div class="card-core-value">
           <div class="card-core-value__header">
             <div class="card-core-value__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M12 40C10.9 40 9.95833 39.6083 9.175 38.825C8.39167 38.0417 8 37.1 8 36V34.4C8 33.2667 8.29167 32.225 8.875 31.275C9.45833 30.325 10.2333 29.6 11.2 29.1C12.8667 28.2667 14.5833 27.6 16.35 27.1C18.1167 26.6 19.9167 26.2667 21.75 26.1C22.3833 26.0333 22.9167 26.2167 23.35 26.65C23.7833 27.0833 24 27.6167 24 28.25V33.1C24 33.8333 24.05 34.5583 24.15 35.275C24.25 35.9917 24.4 36.7 24.6 37.4C24.7667 38.0667 24.6667 38.6667 24.3 39.2C23.9333 39.7333 23.4333 40 22.8 40H12ZM24 24C21.8 24 19.9167 23.2167 18.35 21.65C16.7833 20.0833 16 18.2 16 16C16 13.8 16.7833 11.9167 18.35 10.35C19.9167 8.78333 21.8 8 24 8C26.2 8 28.0833 8.78333 29.65 10.35C31.2167 11.9167 32 13.8 32 16C32 18.2 31.2167 20.0833 29.65 21.65C28.0833 23.2167 26.2 24 24 24ZM36 43.85C35.7667 43.85 35.5417 43.825 35.325 43.775C35.1083 43.725 34.9 43.6667 34.7 43.6C32.6333 42.7667 31 41.3833 29.8 39.45C28.6 37.5167 28 35.4 28 33.1V29.25C28 28.8833 28.0917 28.5333 28.275 28.2C28.4583 27.8667 28.7333 27.6167 29.1 27.45L35.1 24.45C35.3667 24.2833 35.6667 24.2 36 24.2C36.3333 24.2 36.6333 24.2833 36.9 24.45L42.9 27.45C43.2667 27.6167 43.5417 27.8667 43.725 28.2C43.9083 28.5333 44 28.8833 44 29.25V33.1C44 35.4 43.4 37.5167 42.2 39.45C41 41.3833 39.3667 42.7667 37.3 43.6C37.1 43.6667 36.8917 43.725 36.675 43.775C36.4583 43.825 36.2333 43.85 36 43.85Z" fill="#9B8262"/>
               </svg>
             </div>
             <h3 class="card-core-value__heading">Professional Chauffeurs</h3>
@@ -1176,16 +2523,237 @@
       navOverlay.classList.toggle('nav-overlay--visible');
     }
 
+    // Mobile Menu Overlay
+    function toggleMobileMenu() {
+      const overlay = document.getElementById('mobileMenuOverlay');
+      overlay.classList.toggle('mobile-menu-overlay--open');
+      document.body.style.overflow = overlay.classList.contains('mobile-menu-overlay--open') ? 'hidden' : '';
+    }
+
+    function toggleMobileMenuSection(section) {
+      const expandable = event.target.closest('.mobile-menu__expandable');
+      expandable.classList.toggle('mobile-menu__expandable--open');
+    }
+
+    // Open mobile menu from hamburger
+    const mobileToggle = document.querySelector('.nav-bar__mobile-toggle');
+    if (mobileToggle) {
+      mobileToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMobileMenu();
+      });
+    }
+
+    // Datetime Picker
+    let selectedDate = null;
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+
+    function openDatetimePicker() {
+      const overlay = document.getElementById('datetimePickerOverlay');
+      overlay.classList.add('datetime-picker-overlay--open');
+      document.body.style.overflow = 'hidden';
+      generateCalendar();
+    }
+
+    function closeDatetimePicker() {
+      const overlay = document.getElementById('datetimePickerOverlay');
+      overlay.classList.remove('datetime-picker-overlay--open');
+      document.body.style.overflow = '';
+    }
+
+    function changeMonth(direction) {
+      currentMonth += direction;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      } else if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      generateCalendar();
+    }
+
+    function generateCalendar() {
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const monthDisplay = document.getElementById('calendarMonth');
+      const daysContainer = document.getElementById('calendarDays');
+
+      monthDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+      const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+      const daysInPrevMonth = new Date(currentYear, currentMonth, 0).getDate();
+
+      const today = new Date();
+      const isCurrentMonth = today.getMonth() === currentMonth && today.getFullYear() === currentYear;
+      const todayDate = today.getDate();
+
+      daysContainer.innerHTML = '';
+
+      // Previous month days
+      for (let i = firstDay - 1; i >= 0; i--) {
+        const dayBtn = document.createElement('button');
+        dayBtn.className = 'calendar__day calendar__day--other-month calendar__day--disabled';
+        dayBtn.textContent = daysInPrevMonth - i;
+        daysContainer.appendChild(dayBtn);
+      }
+
+      // Current month days
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayBtn = document.createElement('button');
+        dayBtn.className = 'calendar__day';
+        dayBtn.textContent = day;
+
+        const isPast = currentYear < today.getFullYear() ||
+                       (currentYear === today.getFullYear() && currentMonth < today.getMonth()) ||
+                       (currentYear === today.getFullYear() && currentMonth === today.getMonth() && day < todayDate);
+
+        if (isPast) {
+          dayBtn.classList.add('calendar__day--disabled');
+        } else {
+          if (isCurrentMonth && day === todayDate) {
+            dayBtn.classList.add('calendar__day--today');
+          }
+
+          dayBtn.addEventListener('click', function() {
+            document.querySelectorAll('.calendar__day--selected').forEach(d => {
+              d.classList.remove('calendar__day--selected');
+            });
+            dayBtn.classList.add('calendar__day--selected');
+            selectedDate = new Date(currentYear, currentMonth, day);
+          });
+        }
+
+        daysContainer.appendChild(dayBtn);
+      }
+
+      // Next month days to fill grid
+      const totalCells = daysContainer.children.length;
+      const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+      for (let i = 1; i <= remainingCells; i++) {
+        const dayBtn = document.createElement('button');
+        dayBtn.className = 'calendar__day calendar__day--other-month calendar__day--disabled';
+        dayBtn.textContent = i;
+        daysContainer.appendChild(dayBtn);
+      }
+    }
+
+    // 12h/24h toggle
+    let is24Hour = false;
+    function toggle24Hour(use24) {
+      is24Hour = use24;
+      const toggle12 = document.getElementById('toggle12h');
+      const toggle24 = document.getElementById('toggle24h');
+      const periodSelect = document.getElementById('periodSelect');
+
+      if (use24) {
+        toggle24.classList.add('time-picker__toggle-btn--active');
+        toggle12.classList.remove('time-picker__toggle-btn--active');
+        periodSelect.style.display = 'none';
+        periodSelect.parentElement.style.display = 'none';
+        // Update hour options to 00-23
+        const hourSelect = document.getElementById('hourSelect');
+        hourSelect.innerHTML = '';
+        for (let i = 0; i < 24; i++) {
+          const option = document.createElement('option');
+          option.value = i.toString().padStart(2, '0');
+          option.textContent = i.toString().padStart(2, '0');
+          hourSelect.appendChild(option);
+        }
+      } else {
+        toggle12.classList.add('time-picker__toggle-btn--active');
+        toggle24.classList.remove('time-picker__toggle-btn--active');
+        periodSelect.style.display = '';
+        periodSelect.parentElement.style.display = '';
+        // Update hour options to 01-12
+        const hourSelect = document.getElementById('hourSelect');
+        hourSelect.innerHTML = '';
+        for (let i = 1; i <= 12; i++) {
+          const option = document.createElement('option');
+          option.value = i.toString().padStart(2, '0');
+          option.textContent = i.toString().padStart(2, '0');
+          hourSelect.appendChild(option);
+        }
+      }
+    }
+
+    function confirmDatetime() {
+      if (!selectedDate) {
+        alert('Please select a date');
+        return;
+      }
+
+      const hour = document.getElementById('hourSelect').value;
+      const minute = document.getElementById('minuteSelect').value;
+      const period = is24Hour ? '' : ' ' + document.getElementById('periodSelect').value;
+
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+      const dateString = `${dayNames[selectedDate.getDay()]}, ${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
+      const timeString = `${hour}:${minute}${period}`;
+
+      document.getElementById('pickupDate').value = dateString;
+      document.getElementById('pickupTime').value = timeString;
+
+      closeDatetimePicker();
+    }
+
+    // Make date and time inputs open the picker on mobile
+    function setupDatetimeInputs() {
+      const dateInput = document.getElementById('pickupDate');
+      const timeInput = document.getElementById('pickupTime');
+
+      if (window.innerWidth <= 768) {
+        if (dateInput) {
+          dateInput.addEventListener('click', openDatetimePicker);
+          dateInput.addEventListener('focus', openDatetimePicker);
+        }
+        if (timeInput) {
+          timeInput.addEventListener('click', openDatetimePicker);
+          timeInput.addEventListener('focus', openDatetimePicker);
+        }
+      }
+    }
+
+    // Close overlays when clicking outside
+    document.getElementById('mobileMenuOverlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        toggleMobileMenu();
+      }
+    });
+
+    document.getElementById('datetimePickerOverlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeDatetimePicker();
+      }
+    });
+
+    // Initialize
+    window.addEventListener('load', setupDatetimeInputs);
+    window.addEventListener('resize', setupDatetimeInputs);
+
     // Booking Form Tabs
     function switchTab(tab) {
-      const tabs = document.querySelectorAll('.booking-card__tab');
-      tabs.forEach(t => t.classList.remove('booking-card__tab--active'));
-      event.target.classList.add('booking-card__tab--active');
+      // Handle both booking card tabs and landing form toggle buttons
+      const cardTabs = document.querySelectorAll('.booking-card__tab');
+      const toggleBtns = document.querySelectorAll('.booking-form-landing__toggle-btn');
+
+      cardTabs.forEach(t => t.classList.remove('booking-card__tab--active'));
+      toggleBtns.forEach(t => t.classList.remove('booking-form-landing__toggle-btn--active'));
+
+      event.target.classList.add(
+        event.target.classList.contains('booking-form-landing__toggle-btn')
+          ? 'booking-form-landing__toggle-btn--active'
+          : 'booking-card__tab--active'
+      );
     }
 
     // Booking Form Validation
-    const bookingForm = document.getElementById('bookingForm');
-    bookingForm.addEventListener('submit', function(e) {
+    const bookingForm = document.getElementById('landingBookingForm');
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const pickup = document.getElementById('pickupLocation').value.trim();
       const dropoff = document.getElementById('dropoffLocation').value.trim();
@@ -1203,28 +2771,102 @@
       }
 
       alert('Searching for available prices...');
-    });
-
-    // Destinations Filter
-    function filterDestinations(category) {
-      const buttons = document.querySelectorAll('.destinations__filter-btn');
-      buttons.forEach(btn => btn.classList.remove('destinations__filter-btn--active'));
-      event.target.closest('.destinations__filter-btn').classList.add('destinations__filter-btn--active');
+      });
     }
 
-    // Carousel Scroll
+    // Services Carousel with Dots
+    let currentServiceSlide = 0;
+
+    function scrollServicesToSlide(slideIndex) {
+      const track = document.getElementById('servicesTrack');
+      const dots = document.querySelectorAll('.services__dot');
+      const cardWidth = track.children[0].offsetWidth + 24; // card width + gap
+
+      currentServiceSlide = slideIndex;
+      const translateValue = -slideIndex * cardWidth;
+
+      track.style.transform = `translateX(${translateValue}px)`;
+
+      // Update dot indicators
+      dots.forEach((dot, index) => {
+        if (index === slideIndex) {
+          dot.classList.add('services__dot--active');
+        } else {
+          dot.classList.remove('services__dot--active');
+        }
+      });
+    }
+
+    // Auto-update dots on scroll (for touch/swipe)
+    function updateServicesDots() {
+      const track = document.getElementById('servicesTrack');
+      const carousel = document.querySelector('.services__carousel');
+      if (!carousel || !track) return;
+
+      carousel.addEventListener('scroll', () => {
+        const cardWidth = track.children[0].offsetWidth + 24;
+        const scrollLeft = carousel.scrollLeft;
+        const slideIndex = Math.round(scrollLeft / cardWidth);
+
+        if (slideIndex !== currentServiceSlide) {
+          currentServiceSlide = slideIndex;
+          const dots = document.querySelectorAll('.services__dot');
+          dots.forEach((dot, index) => {
+            if (index === slideIndex) {
+              dot.classList.add('services__dot--active');
+            } else {
+              dot.classList.remove('services__dot--active');
+            }
+          });
+        }
+      });
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', updateServicesDots);
+
+    // Destinations Carousel Scroll
     let carouselPosition = 0;
     function scrollCarousel(direction) {
       const track = document.getElementById('destinationsTrack');
-      const cardWidth = 300 + 20; // card width + gap
+      const trackWrapper = track.parentElement;
+      const cardWidth = track.children[0].offsetWidth + 20; // card width + gap
+      const visibleCards = Math.floor(trackWrapper.offsetWidth / cardWidth);
+      const maxScroll = -(track.children.length - visibleCards) * cardWidth;
+
       carouselPosition += direction * cardWidth;
 
-      const maxScroll = -(track.children.length - 3) * cardWidth;
       if (carouselPosition > 0) carouselPosition = 0;
       if (carouselPosition < maxScroll) carouselPosition = maxScroll;
 
       track.style.transform = `translateX(${carouselPosition}px)`;
     }
+
+    // Desktop-only carousel controls
+    function updateCarouselControls() {
+      const isMobile = window.innerWidth <= 768;
+      const destinationsTrack = document.getElementById('destinationsTrack');
+      const servicesTrack = document.getElementById('servicesTrack');
+
+      // Destinations carousel
+      if (!isMobile && destinationsTrack) {
+        destinationsTrack.style.transform = `translateX(${carouselPosition}px)`;
+      } else if (destinationsTrack) {
+        destinationsTrack.style.transform = 'none';
+        carouselPosition = 0;
+      }
+
+      // Services carousel
+      if (!isMobile && servicesTrack) {
+        servicesTrack.style.transform = `translateX(${servicesCarouselPosition}px)`;
+      } else if (servicesTrack) {
+        servicesTrack.style.transform = 'none';
+        servicesCarouselPosition = 0;
+      }
+    }
+
+    // Reset carousel on window resize
+    window.addEventListener('resize', updateCarouselControls);
 
     // Scroll to Booking
     function scrollToBooking() {
