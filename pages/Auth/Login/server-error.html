@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error - SSRN</title>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/tokens.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 32px;
+        }
+
+        /* Error Content */
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .error-icon-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            width: 100%;
+        }
+
+        .error-icon {
+            width: 72px;
+            height: 72px;
+            flex-shrink: 0;
+        }
+
+        .error-icon-circle {
+            fill: none;
+            stroke: #03110D;
+            stroke-width: 2;
+        }
+
+        .error-icon-cross {
+            stroke: #03110D;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .error-text-block {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .error-heading {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.167em;
+            text-align: center;
+            color: #03110D;
+        }
+
+        .error-body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.6em;
+            text-align: center;
+            color: #03110D;
+        }
+
+        /* Button */
+        .error-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            width: 272px;
+        }
+
+        .btn-primary-large {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 24px;
+            background: #306968;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 1.6em;
+            color: #EBF0F0;
+            transition: background 0.2s ease;
+            width: 100%;
+        }
+
+        .btn-primary-large:hover {
+            background: #254f4e;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .error-heading {
+                font-size: 32px;
+            }
+
+            .error-body {
+                font-size: 16px;
+            }
+
+            .error-buttons {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="error-container">
+        <!-- Error Icon and Text -->
+        <div class="error-icon-text">
+            <!-- Error Icon -->
+            <svg class="error-icon" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="36" cy="36" r="30" class="error-icon-circle" />
+                <path d="M24 24L48 48M48 24L24 48" class="error-icon-cross" />
+            </svg>
+
+            <!-- Text Block -->
+            <div class="error-text-block">
+                <h1 class="error-heading">We couldn't complete your request</h1>
+                <p class="error-body">An unexpected issue occurred. Let's get you back on track.</p>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="error-buttons">
+            <button type="button" id="homepage-btn" class="btn-primary-large">
+                Back to Homepage
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Back to homepage button
+        document.getElementById('homepage-btn').addEventListener('click', () => {
+            window.location.href = '/';
+        });
+    </script>
+
+</body>
+
+</html>
