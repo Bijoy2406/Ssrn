@@ -4,519 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SSRN - Your Trusted Chauffeur Service</title>
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="/Ssrn/css/base.css">
+  <link rel="stylesheet" href="/Ssrn/css/tokens.css">
+
+  <!-- Layout -->
+  <link rel="stylesheet" href="/Ssrn/css/layout/grid.css">
+  <link rel="stylesheet" href="/Ssrn/css/layout/header.css">
+  <link rel="stylesheet" href="/Ssrn/css/layout/footer.css">
+
+  <!-- Components -->
+  <link rel="stylesheet" href="/Ssrn/css/components/buttons.css">
+  <link rel="stylesheet" href="/Ssrn/css/components/booking-form-landing.css">
+  <link rel="stylesheet" href="/Ssrn/css/components/cards-and-modals.css">
+  <link rel="stylesheet" href="/Ssrn/css/components/anonymous-nav.css">
+  <link rel="stylesheet" href="/Ssrn/css/components/site-footer.css">
+
+  <!-- Page Specific -->
+  <link rel="stylesheet" href="/Ssrn/css/pages/landing-page-anonymous.css">
+
+  <!-- Global Styles -->
   <link rel="stylesheet" href="/Ssrn/style.css">
-  <style>
-    /* Page-specific styles */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: var(--surface-page);
-    }
-
-    /* Override nav-bar to match Figma 1440px design */
-    .nav-bar {
-      max-width: 1440px !important;
-      padding: 0 120px !important;
-    }
-
-    /* Override site-footer to match Figma 1440px design */
-    .site-footer {
-      padding: 64px 0 !important;
-    }
-
-    .site-footer__container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 120px;
-    }
-
-    /* Remove extra padding from footer middle section */
-    .site-footer__middle {
-      padding-right: 0 !important;
-    }
-
-    /* Remove min-width from legal section */
-    .site-footer__legal {
-      min-width: auto !important;
-    }
-
-    /* Responsive nav padding */
-    @media (max-width: 1440px) {
-      .nav-bar {
-        padding: 0 var(--space-800) !important;
-      }
-
-      .site-footer__container {
-        padding: 0 var(--space-800);
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .nav-bar {
-        padding: 0 var(--space-600) !important;
-      }
-
-      .site-footer__container {
-        padding: 0 var(--space-600);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-bar {
-        padding: 0 var(--space-400) !important;
-      }
-
-      .site-footer__container {
-        padding: 0 var(--space-400);
-      }
-    }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      width: 100%;
-      padding: 40px 0 80px;
-      background-color: var(--surface-page);
-    }
-
-    .hero__container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 120px;
-      display: grid;
-      grid-template-columns: 1fr 480px;
-      gap: var(--space-600);
-      align-items: start;
-    }
-
-    .hero__left {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-500);
-    }
-
-    .hero__title {
-      font-family: var(--font-family-heading);
-      font-size: 36px;
-      font-weight: var(--font-weight-bold);
-      line-height: 1.3;
-      color: var(--text-primary);
-      margin: 0;
-    }
-
-    .hero__image {
-      width: 100%;
-      height: 400px;
-      border-radius: var(--radius-l);
-      overflow: hidden;
-      background-color: var(--grey-80);
-    }
-
-    .hero__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Booking Card (Floating on Right) */
-    .booking-card {
-      background-color: var(--surface-primary);
-      border-radius: var(--radius-l);
-      box-shadow: var(--shadow-l);
-      padding: var(--space-600);
-      position: sticky;
-      top: 100px;
-    }
-
-    .booking-card__tabs {
-      display: flex;
-      gap: var(--space-300);
-      margin-bottom: var(--space-500);
-      border-bottom: 1px solid var(--border-primary);
-    }
-
-    .booking-card__tab {
-      flex: 1;
-      padding: var(--space-300) var(--space-400);
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      font-family: var(--font-family-body);
-      font-size: var(--body-md-size);
-      font-weight: var(--font-weight-medium);
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: center;
-    }
-
-    .booking-card__tab--active {
-      color: var(--text-primary);
-      border-bottom-color: var(--sea-green-50);
-      font-weight: var(--font-weight-semibold);
-    }
-
-    .booking-card__tab:hover {
-      color: var(--text-primary);
-    }
-
-    .booking-card__form {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-400);
-    }
-
-    .booking-card__field {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-200);
-    }
-
-    .booking-card__input-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-      background-color: var(--surface-primary);
-      border: var(--border-m) solid var(--border-primary);
-      border-radius: var(--radius-s);
-      padding: var(--space-300);
-      transition: border-color 0.2s ease;
-    }
-
-    .booking-card__input-wrapper:focus-within {
-      border-color: var(--sea-green-50);
-    }
-
-    .booking-card__icon {
-      width: 24px;
-      height: 24px;
-      color: var(--text-primary);
-      margin-right: var(--space-300);
-      flex-shrink: 0;
-    }
-
-    .booking-card__input {
-      flex: 1;
-      border: none;
-      outline: none;
-      font-family: var(--font-family-body);
-      font-size: var(--body-md-size);
-      color: var(--text-primary);
-      background: transparent;
-    }
-
-    .booking-card__input::placeholder {
-      color: var(--text-tertiary);
-    }
-
-    .booking-card__search-icon {
-      width: 20px;
-      height: 20px;
-      color: var(--text-secondary);
-      cursor: pointer;
-    }
-
-    .booking-card__row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-300);
-    }
-
-    .booking-card__submit {
-      width: 100%;
-      padding: var(--space-400);
-      background-color: var(--sea-green-50);
-      color: var(--text-inverse);
-      border: none;
-      border-radius: var(--radius-m);
-      font-family: var(--font-family-body);
-      font-size: var(--body-md-size);
-      font-weight: var(--font-weight-semibold);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-200);
-    }
-
-    .booking-card__submit:hover {
-      background-color: var(--sea-green-40);
-    }
-
-    /* Services Section */
-    .services {
-      padding: 80px 0;
-      background-color: var(--surface-primary);
-    }
-
-    .services__container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 120px;
-    }
-
-    .services__heading {
-      font-family: var(--font-family-heading);
-      font-size: var(--heading-xl-size);
-      font-weight: var(--font-weight-bold);
-      text-align: center;
-      color: var(--text-primary);
-      margin: 0 0 var(--space-700) 0;
-    }
-
-    .services__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-600);
-    }
-
-    .service-card {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-400);
-    }
-
-    .service-card__image {
-      width: 100%;
-      height: 200px;
-      border-radius: var(--radius-m);
-      overflow: hidden;
-      background-color: var(--grey-80);
-    }
-
-    .service-card__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .service-card__title {
-      font-family: var(--font-family-heading);
-      font-size: var(--heading-sm-size);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-primary);
-      margin: 0;
-    }
-
-    .service-card__description {
-      font-family: var(--font-family-body);
-      font-size: var(--body-md-size);
-      line-height: var(--body-md-line-height);
-      color: var(--text-secondary);
-      margin: 0;
-    }
-
-    /* Destinations Section */
-    .destinations {
-      padding: 80px 0;
-      background-color: var(--surface-page);
-    }
-
-    .destinations__container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 120px;
-    }
-
-    .destinations__header {
-      margin-bottom: var(--space-600);
-    }
-
-    .destinations__heading {
-      font-family: var(--font-family-heading);
-      font-size: var(--heading-xl-size);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-primary);
-      margin: 0 0 var(--space-300) 0;
-    }
-
-    .destinations__subtitle {
-      font-family: var(--font-family-body);
-      font-size: var(--body-lg-size);
-      line-height: var(--body-lg-line-height);
-      color: var(--text-secondary);
-      margin: 0 0 var(--space-600) 0;
-    }
-
-    .destinations__filters {
-      display: flex;
-      gap: var(--space-300);
-      margin-bottom: var(--space-600);
-    }
-
-    .destinations__filter-btn {
-      padding: var(--space-300) var(--space-500);
-      background-color: transparent;
-      border: var(--border-m) solid var(--border-primary);
-      border-radius: var(--radius-m);
-      font-family: var(--font-family-body);
-      font-size: var(--body-md-size);
-      font-weight: var(--font-weight-medium);
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: var(--space-200);
-    }
-
-    .destinations__filter-btn:hover {
-      background-color: var(--grey-90);
-    }
-
-    .destinations__filter-btn--active {
-      background-color: var(--sea-green-50);
-      border-color: var(--sea-green-50);
-      color: var(--text-inverse);
-    }
-
-    .destinations__carousel-wrapper {
-      position: relative;
-    }
-
-    .destinations__carousel {
-      overflow: hidden;
-    }
-
-    .destinations__track {
-      display: flex;
-      gap: var(--space-500);
-      transition: transform 0.3s ease;
-    }
-
-    .destinations__nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      gap: var(--space-300);
-      right: 0;
-      margin-top: -150px;
-    }
-
-    .destinations__nav-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: var(--surface-primary);
-      border: var(--border-m) solid var(--border-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .destinations__nav-btn:hover {
-      background-color: var(--grey-90);
-    }
-
-    .destinations__nav-btn svg {
-      width: 20px;
-      height: 20px;
-      color: var(--text-primary);
-    }
-
-    /* CTA Section */
-    .cta {
-      padding: 60px 0;
-      background-color: var(--surface-page);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .cta__container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 120px;
-      display: flex;
-      justify-content: center;
-    }
-
-    /* Why Choose Us */
-    .why-choose {
-      padding: 80px 0;
-      background-color: var(--surface-primary);
-    }
-
-    .why-choose__container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 120px;
-    }
-
-    .why-choose__heading {
-      font-family: var(--font-family-heading);
-      font-size: var(--heading-xl-size);
-      font-weight: var(--font-weight-bold);
-      text-align: center;
-      color: var(--text-primary);
-      margin: 0 0 var(--space-700) 0;
-    }
-
-    .why-choose__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-700);
-    }
-
-    /* Responsive */
-    @media (max-width: 1440px) {
-      .hero__container,
-      .services__container,
-      .destinations__container,
-      .cta__container,
-      .why-choose__container {
-        padding-left: var(--space-800);
-        padding-right: var(--space-800);
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .hero__container,
-      .services__container,
-      .destinations__container,
-      .cta__container,
-      .why-choose__container {
-        padding-left: var(--space-600);
-        padding-right: var(--space-600);
-      }
-
-      .hero__container {
-        grid-template-columns: 1fr;
-      }
-
-      .booking-card {
-        position: static;
-      }
-
-      .services__grid,
-      .why-choose__grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero__container,
-      .services__container,
-      .destinations__container,
-      .cta__container,
-      .why-choose__container {
-        padding-left: var(--space-400);
-        padding-right: var(--space-400);
-      }
-
-      .hero__title {
-        font-size: 28px;
-      }
-
-      .booking-card__row {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -792,37 +301,34 @@
         <!-- Airport Transfers -->
         <div class="service-card">
           <div class="service-card__image">
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-              <rect width="100" height="100" fill="#B0BEC5"/>
-              <text x="50" y="55" text-anchor="middle" font-size="10" fill="#37474F">Chauffeur Image</text>
-            </svg>
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=250&fit=crop" alt="Airport Transfers - Professional chauffeur service" loading="lazy">
           </div>
-          <h3 class="service-card__title">Airport Transfers</h3>
-          <p class="service-card__description">Reliable rides to and from the airport. Our chauffeurs track your flight and adjust pickup times for on-time service.</p>
+          <div class="service-card__content">
+            <h3 class="service-card__title">Airport Transfers</h3>
+            <p class="service-card__description">Reliable rides to and from the airport. Our chauffeurs track your flight and adjust pickup times for on-time service.</p>
+          </div>
         </div>
 
         <!-- City-to-City Rides -->
         <div class="service-card">
           <div class="service-card__image">
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-              <rect width="100" height="100" fill="#B0BEC5"/>
-              <text x="50" y="55" text-anchor="middle" font-size="10" fill="#37474F">Inside Car</text>
-            </svg>
+            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&h=250&fit=crop" alt="City-to-City Rides - Luxury car interior" loading="lazy">
           </div>
-          <h3 class="service-card__title">City-to-City Rides</h3>
-          <p class="service-card__description">Travel between cities with comfort and ease. Enjoy a luxurious, uninterrupted ride to your destination.</p>
+          <div class="service-card__content">
+            <h3 class="service-card__title">City-to-City Rides</h3>
+            <p class="service-card__description">Travel between cities with comfort and ease. Enjoy a luxurious, uninterrupted ride to your destination.</p>
+          </div>
         </div>
 
         <!-- Hourly Rides -->
         <div class="service-card">
           <div class="service-card__image">
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-              <rect width="100" height="100" fill="#B0BEC5"/>
-              <text x="50" y="55" text-anchor="middle" font-size="10" fill="#37474F">Passenger in Car</text>
-            </svg>
+            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=250&fit=crop" alt="Hourly Rides - Professional driver waiting" loading="lazy">
           </div>
-          <h3 class="service-card__title">Hourly Rides</h3>
-          <p class="service-card__description">Stay in control of your time. Our chauffeur waits for you while you attend to your business.</p>
+          <div class="service-card__content">
+            <h3 class="service-card__title">Hourly Rides</h3>
+            <p class="service-card__description">Stay in control of your time. Our chauffeur waits for you while you attend to your business.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1133,109 +639,8 @@
     </div>
   </footer>
 
-  <script>
-    // Page Loader
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        const loader = document.getElementById('pageLoader');
-        loader.classList.add('page-loader-overlay--hidden');
-      }, 2000);
-    });
-
-    // Navigation Dropdowns
-    function toggleNavDropdown(menuId) {
-      const navItem = document.getElementById(menuId + 'Nav');
-      const isOpen = navItem.classList.contains('nav-item--open');
-
-      // Close all dropdowns
-      document.querySelectorAll('.nav-item--open').forEach(item => {
-        item.classList.remove('nav-item--open');
-      });
-
-      // Toggle current dropdown
-      if (!isOpen) {
-        navItem.classList.add('nav-item--open');
-      }
-    }
-
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.nav-item')) {
-        document.querySelectorAll('.nav-item--open').forEach(item => {
-          item.classList.remove('nav-item--open');
-        });
-      }
-    });
-
-    // Mobile Navigation Toggle
-    function toggleMobileNav() {
-      const navFill = document.getElementById('navFill');
-      const navOverlay = document.getElementById('navOverlay');
-
-      navFill.classList.toggle('nav-bar__fill--open');
-      navOverlay.classList.toggle('nav-overlay--visible');
-    }
-
-    // Booking Form Tabs
-    function switchTab(tab) {
-      const tabs = document.querySelectorAll('.booking-card__tab');
-      tabs.forEach(t => t.classList.remove('booking-card__tab--active'));
-      event.target.classList.add('booking-card__tab--active');
-    }
-
-    // Booking Form Validation
-    const bookingForm = document.getElementById('bookingForm');
-    bookingForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const pickup = document.getElementById('pickupLocation').value.trim();
-      const dropoff = document.getElementById('dropoffLocation').value.trim();
-      const date = document.getElementById('pickupDate').value;
-      const time = document.getElementById('pickupTime').value;
-
-      if (!pickup || !dropoff || !date || !time) {
-        alert('Please fill in all fields');
-        return;
-      }
-
-      if (pickup.toLowerCase() === dropoff.toLowerCase()) {
-        alert('Pickup and dropoff locations must be different');
-        return;
-      }
-
-      alert('Searching for available prices...');
-    });
-
-    // Destinations Filter
-    function filterDestinations(category) {
-      const buttons = document.querySelectorAll('.destinations__filter-btn');
-      buttons.forEach(btn => btn.classList.remove('destinations__filter-btn--active'));
-      event.target.closest('.destinations__filter-btn').classList.add('destinations__filter-btn--active');
-    }
-
-    // Carousel Scroll
-    let carouselPosition = 0;
-    function scrollCarousel(direction) {
-      const track = document.getElementById('destinationsTrack');
-      const cardWidth = 300 + 20; // card width + gap
-      carouselPosition += direction * cardWidth;
-
-      const maxScroll = -(track.children.length - 3) * cardWidth;
-      if (carouselPosition > 0) carouselPosition = 0;
-      if (carouselPosition < maxScroll) carouselPosition = maxScroll;
-
-      track.style.transform = `translateX(${carouselPosition}px)`;
-    }
-
-    // Scroll to Booking
-    function scrollToBooking() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-      document.getElementById('pickupLocation').focus();
-    }
-
-  </script>
+  <!-- Page Scripts -->
+  <script src="/Ssrn/js/pages/landing-page-anonymous.js"></script>
 
 </body>
 </html>
