@@ -36,7 +36,13 @@
   flex: 1;
   display: flex;
   align-items: center;
+  gap: 2px;
   height: 29px;
+}
+
+.site-footer__logo img {
+  height: 24px;
+  width: auto;
 }
 
 .site-footer__logo svg {
