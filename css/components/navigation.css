@@ -27,10 +27,33 @@
   height: 48px;
 }
 
-.nav-bar__logo img {
+.nav-bar__logo img,
+.nav-bar__logo svg {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* ============================================
+   MOBILE TOGGLE (Hidden on desktop)
+   ============================================ */
+.nav-bar__mobile-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.nav-bar__mobile-toggle svg {
+  width: 24px;
+  height: 24px;
 }
 
 /* ============================================
@@ -403,7 +426,17 @@
    ============================================ */
 @media (max-width: 768px) {
   .nav-bar {
-    gap: var(--space-400);
+    gap: var(--space-300);
+    padding: var(--space-400) var(--space-400);
+  }
+
+  .nav-bar__logo {
+    width: 100px;
+    height: auto;
+  }
+
+  .nav-bar__fill {
+    display: none !important;
   }
 
   .nav-bar__buttons {
@@ -414,11 +447,45 @@
     display: none;
   }
 
-  /* Mobile hamburger menu will be shown instead */
+  .nav-bar__profile {
+    display: none;
+  }
+
+  .nav-bar__mobile-toggle {
+    display: flex !important;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary);
+  }
+
+  .nav-bar__mobile-toggle svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Mobile menu overlay already implemented in HTML */
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 769px) {
   .nav-bar {
     gap: var(--space-600);
+    padding: var(--space-400) var(--space-600);
+  }
+
+  .nav-bar__logo {
+    width: 120px;
+  }
+
+  .nav-item__button {
+    padding: var(--space-200) var(--space-300);
+  }
+
+  .nav-item__label {
+    font-size: var(--body-sm-size);
   }
 }
