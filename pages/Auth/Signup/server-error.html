@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error - SSRN</title>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="/Ssrn/css/base.css">
+    <link rel="stylesheet" href="/Ssrn/css/tokens.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            max-width: 520px;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .error-icon-box {
+            width: 56px;
+            height: 56px;
+            background: #03110D;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+        }
+
+        .error-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .error-heading {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            line-height: 1.125em;
+            color: #03110D;
+        }
+
+        .error-subtext {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5em;
+            color: #03110D;
+        }
+
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 24px;
+            background: #306968;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.5em;
+            color: #EBF0F0;
+            transition: background 0.2s ease;
+            width: 200px;
+        }
+
+        .btn-primary:hover {
+            background: #254f4e;
+        }
+
+        .link-secondary {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: underline;
+            color: #03110D;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="error-container">
+        <div class="error-icon-box">
+            <!-- Wrench Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.5 13.5L12 21L7.5 16.5L9 15L19.5 13.5Z" fill="currentColor" />
+                <path d="M19.5 13.5L15 9L16.5 7.5L21 12L19.5 13.5Z" fill="currentColor" />
+                <path
+                    d="M14.28 9.77L13.5 10.55L4.5 9L3 3L9 4.5L9.78 5.27C9.37 5.75 9.17 6.37 9.23 6.99C9.3 7.61 9.61 8.18 10.11 8.59C10.61 9.01 11.23 9.22 11.85 9.18C12.47 9.14 13.06 8.85 13.5 8.35L14.28 9.13L16.5 6.91C16.5 6.91 19.5 3.91 20.2 3.2C20.65 2.76 20.65 2.04 20.2 1.6C19.78 1.18 19.11 1.18 18.69 1.6C17.96 2.33 14.88 5.4 14.88 5.4L12.65 7.63L14.28 9.77Z"
+                    fill="currentColor" />
+            </svg>
+        </div>
+
+        <div class="error-content">
+            <h1 class="error-heading">Something went wrong on our side</h1>
+            <p class="error-subtext">We're working to resolve this issue. Thank you for your patience</p>
+        </div>
+
+        <button onclick="window.location.reload()" class="btn-primary">
+            Refresh Page
+        </button>
+
+        <a href="/Ssrn/pages/landing/home.html" class="link-secondary">Back to homepage</a>
+    </div>
+
+</body>
+
+</html>

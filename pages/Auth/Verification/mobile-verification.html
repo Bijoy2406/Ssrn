@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Mobile - SSRN</title>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="/Ssrn/css/base.css">
+    <link rel="stylesheet" href="/Ssrn/css/tokens.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            overflow-y: scroll;
+        }
+
+        /* Navigation Bar */
+        .nav-wrapper {
+            padding: 16px 32px;
+            box-shadow: 0px 0px 5px -1px rgba(3, 17, 13, 0.1);
+            background: #FFFFFF;
+        }
+
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .ssrn-logo {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            height: 40px;
+        }
+
+        .ssrn-logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 115px;
+            padding: 0 32px 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Card */
+        .verification-card {
+            width: 100%;
+            max-width: 584px;
+            padding: 64px 32px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0px 1px 15px -1px rgba(3, 17, 13, 0.1);
+        }
+
+        .verification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+        }
+
+        /* Header */
+        .verification-header {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .verification-heading {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            line-height: 1.125em;
+            text-align: center;
+            color: #03110D;
+        }
+
+        .verification-subtext {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5em;
+            text-align: center;
+            color: #03110D;
+        }
+
+        /* Form Body */
+        .form-body {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* OTP Inputs */
+        .otp-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .otp-label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.5em;
+            color: #03110D;
+        }
+
+        .otp-inputs {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .otp-field {
+            width: 56px;
+            height: 56px;
+            border: 2px solid #616262;
+            border-radius: 8px;
+            background: #F9FAFA;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            text-align: center;
+            color: #03110D;
+            transition: all 0.2s ease;
+        }
+
+        .otp-field:focus {
+            border-color: #03110D;
+            outline: none;
+        }
+
+        .otp-field.error {
+            border-color: #CC455C;
+            background: #EBD0D4;
+        }
+
+        /* Error Text */
+        .error-text {
+            display: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: #CC455C;
+            text-align: left;
+        }
+
+        .error-text.show {
+            display: block;
+        }
+
+        /* Actions */
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 24px;
+            background: #306968;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.5em;
+            color: #EBF0F0;
+            transition: background 0.2s ease;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #254f4e;
+        }
+
+        .edit-number-link {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: underline;
+            color: #03110D;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            margin-top: 16px;
+        }
+
+        .resend-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 32px;
+        }
+
+        .resend-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #03110D;
+        }
+
+        .resend-link {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: underline;
+            color: #03110D;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Error Banner */
+        .error-banner {
+            display: none;
+            padding: 16px 12px;
+            background: #F9FAFA;
+            border: 2px solid #CC455C;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .error-banner.show {
+            display: flex;
+        }
+
+        .error-banner__content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .error-banner__icon {
+            width: 24px;
+            height: 24px;
+            color: #CC455C;
+        }
+
+        .error-banner__text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #CC455C;
+        }
+
+        /* Skeleton Loader */
+        .skeleton-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FFFFFF;
+            z-index: 9999;
+            display: none;
+        }
+
+        .skeleton-loader.show {
+            display: block;
+        }
+
+        .skeleton-logo-box {
+            width: 156px;
+            height: 44px;
+            background: #DBDDDD;
+            border-radius: 6px;
+        }
+
+        .skeleton-loader-content {
+            margin-top: 115px;
+            padding: 0 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .skeleton-card {
+            width: 100%;
+            max-width: 584px;
+            padding: 64px 32px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0px 1px 15px -1px rgba(3, 17, 13, 0.1);
+        }
+
+        .skeleton-loader-frame {
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .skeleton-header-box {
+            background: #DBDDDD;
+            height: 96px;
+            width: 100%;
+            border-radius: 6px;
+        }
+
+        .skeleton-inputs {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .skeleton-input-box {
+            width: 56px;
+            height: 56px;
+            background: #DBDDDD;
+            border-radius: 6px;
+        }
+
+        .skeleton-button {
+            width: 100%;
+            height: 56px;
+            background: #DBDDDD;
+            border-radius: 12px;
+            margin-top: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Skeleton Loader -->
+    <div class="skeleton-loader" id="skeleton-loader">
+        <div class="nav-wrapper">
+            <div class="nav-bar">
+                <div class="skeleton-logo-box"></div>
+            </div>
+        </div>
+        <div class="skeleton-loader-content">
+            <div class="skeleton-card">
+                <div class="skeleton-loader-frame">
+                    <div class="skeleton-header-box"></div>
+                    <div class="skeleton-inputs">
+                        <div class="skeleton-input-box"></div>
+                        <div class="skeleton-input-box"></div>
+                        <div class="skeleton-input-box"></div>
+                        <div class="skeleton-input-box"></div>
+                        <div class="skeleton-input-box"></div>
+                        <div class="skeleton-input-box"></div>
+                    </div>
+                    <div class="skeleton-button"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="nav-wrapper">
+        <div class="nav-bar">
+            <div class="ssrn-logo">
+                <img src="/Ssrn/assets/images/icons/Customer-Log In/S.svg" alt="S">
+                <img src="/Ssrn/assets/images/icons/Customer-Log In/S.2.svg" alt="S">
+                <img src="/Ssrn/assets/images/icons/Customer-Log In/R.svg" alt="R">
+                <img src="/Ssrn/assets/images/icons/Customer-Log In/N.svg" alt="N">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="verification-card">
+            <div class="verification-content">
+                <!-- Header -->
+                <div class="verification-header">
+                    <h1 class="verification-heading">Verify your mobile number</h1>
+                    <p class="verification-subtext">We've sent a 6-digit code to your phone. Enter it below to continue.
+                    </p>
+                </div>
+
+                <!-- Form Body -->
+                <div class="form-body">
+                    <!-- Timeout Error Banner -->
+                    <div id="error-banner" class="error-banner">
+                        <div class="error-banner__content">
+                            <svg class="error-banner__icon" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                                <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                <circle cx="12" cy="16" r="1" fill="currentColor" />
+                            </svg>
+                            <span class="error-banner__text">Verification attempt timed out. Please try again</span>
+                        </div>
+                    </div>
+
+                    <div class="otp-container">
+                        <label class="otp-label">Verification Code</label>
+                        <div class="otp-inputs" id="otp-inputs">
+                            <input type="text" maxlength="1" class="otp-field" placeholder="0">
+                            <input type="text" maxlength="1" class="otp-field" placeholder="0">
+                            <input type="text" maxlength="1" class="otp-field" placeholder="0">
+                            <input type="text" maxlength="1" class="otp-field" placeholder="0">
+                            <input type="text" maxlength="1" class="otp-field" placeholder="0">
+                            <input type="text" maxlength="1" class="otp-field" placeholder="0">
+                        </div>
+                        <div id="otp-error" class="error-text">Incorrect verification code. Please check and try again.
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button type="button" id="verify-btn" class="btn-primary">Verify</button>
+                        <a href="/Ssrn/pages/Auth/Profile/complete-profile.html" class="edit-number-link">Edit mobile
+                            number</a>
+                    </div>
+                </div>
+
+                <!-- Resend -->
+                <div class="resend-row" style="margin-top: 0;">
+                    <span class="resend-text">Didn't receive the code?</span>
+                    <a id="resend-btn" class="resend-link">
+                        Resend code
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/Ssrn/js/pages/verification.js"></script>
+    <script>
+        if (typeof Verification !== 'undefined') {
+            Verification.init();
+        }
+    </script>
+</body>
+
+</html>
