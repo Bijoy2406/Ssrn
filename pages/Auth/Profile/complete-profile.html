@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome - Log In - SSRN</title>
+    <title>Complete Profile - SSRN</title>
 
     <!-- Design System -->
     <link rel="stylesheet" href="/Ssrn/css/base.css">
@@ -58,46 +58,47 @@
         /* Main Content */
         .main-content {
             margin-top: 115px;
-            padding: 0 32px;
+            padding: 0 32px 64px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Login Card */
-        .login-card {
+        /* Card */
+        .profile-card {
             width: 100%;
-            max-width: 680px;
+            max-width: 584px;
+            /* Matches Figma */
             padding: 64px 32px;
             background: #FFFFFF;
             border-radius: 20px;
             box-shadow: 0px 1px 15px -1px rgba(3, 17, 13, 0.1);
         }
 
-        .login-content {
+        .profile-content {
             display: flex;
             flex-direction: column;
             gap: 56px;
         }
 
         /* Header */
-        .login-header {
+        .profile-header {
             display: flex;
             flex-direction: column;
             gap: 8px;
             align-items: center;
         }
 
-        .login-heading {
+        .profile-heading {
             font-family: 'Manrope', sans-serif;
             font-weight: 800;
-            font-size: 24px;
-            line-height: 1.167em;
+            font-size: 32px;
+            line-height: 1.125em;
             text-align: center;
             color: #03110D;
         }
 
-        .login-subtext {
+        .profile-subtext {
             font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 16px;
@@ -119,11 +120,12 @@
             gap: 16px;
         }
 
-        /* Input */
+        /* Input Wrapper */
         .input-wrapper {
             display: flex;
             flex-direction: column;
             gap: 8px;
+            position: relative;
         }
 
         .input-label {
@@ -134,32 +136,35 @@
             color: #03110D;
         }
 
+        /* Generic Input Container */
         .input-field-container {
             display: flex;
             align-items: center;
             gap: 8px;
             padding: 16px 12px;
             background: #F9FAFA;
-            border: 2px solid #03110D;
+            border: 2px solid #616262;
+            /* Default border color matching tokens */
             border-radius: 8px;
+            cursor: text;
         }
 
-        /* Error state - empty field */
-        .input-field-container.error-empty {
+        /* Focus state */
+        .input-field-container:focus-within {
+            border-color: #03110D;
+        }
+
+        /* Error state */
+        .input-field-container.error {
             background: #F9FAFA;
-            border: 2px solid #CC455C;
+            /* Light background for empty error */
+            border-color: #CC455C;
         }
 
-        /* Error state - filled field */
         .input-field-container.error-filled {
             background: #EBD0D4;
-            border: 2px solid #CC455C;
-        }
-
-        .input-icon {
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
+            /* Pink background for invalid filled */
+            border-color: #CC455C;
         }
 
         .input-field {
@@ -171,6 +176,11 @@
             font-weight: 400;
             font-size: 16px;
             line-height: 1.5em;
+            color: #616262;
+            /* Placeholder color, changes to dark on input */
+        }
+
+        .input-field:not(:placeholder-shown) {
             color: #03110D;
         }
 
@@ -178,10 +188,136 @@
             color: #616262;
         }
 
+        /* Dropdown specific */
+        .dropdown-trigger {
+            cursor: pointer;
+            justify-content: space-between;
+        }
+
+        .dropdown-value {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5em;
+            color: #616262;
+        }
+
+        .dropdown-value.selected {
+            color: #03110D;
+        }
+
+        .dropdown-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        /* Dropdown options */
+        .dropdown-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 4px;
+            z-index: 10;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #E0E0E0;
+        }
+
+        .dropdown-options.show {
+            display: flex;
+        }
+
+        .dropdown-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #03110D;
+            transition: background 0.2s;
+        }
+
+        .dropdown-option:hover {
+            background: #F5F5F5;
+        }
+
+        /* Mobile Input Group */
+        .mobile-input-group {
+            display: flex;
+            gap: 0;
+            width: 100%;
+            border-radius: 8px;
+            /* The container itself doesn't have border, inner elements do */
+        }
+
+        .country-code-container {
+            width: 130px;
+            flex-shrink: 0;
+        }
+
+        .country-code-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 12px;
+            background: #F9FAFA;
+            border: 2px solid #616262;
+            border-right: none;
+            /* Combine borders */
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .mobile-number-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 16px 12px;
+            background: #F9FAFA;
+            border: 2px solid #616262;
+            border-left: 2px solid #616262;
+            /* Keep separation line */
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        /* Error state for mobile group */
+        .mobile-input-group.error .country-code-trigger,
+        .mobile-input-group.error .mobile-number-container {
+            border-color: #CC455C;
+            background: #EBD0D4;
+            /* As per Figma specific error state */
+        }
+
+        .mobile-input-group.error-empty .country-code-trigger,
+        .mobile-input-group.error-empty .mobile-number-container {
+            border-color: #CC455C;
+            background: #F9FAFA;
+        }
+
+        .flag-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flag-img {
+            width: 22px;
+            height: auto;
+        }
+
         /* Helper text below input */
         .input-helper {
             display: none;
-            padding-left: 12px;
             font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 12px;
@@ -193,7 +329,7 @@
             display: block;
         }
 
-        /* Button */
+        /* Buttons */
         .btn-primary {
             display: flex;
             align-items: center;
@@ -215,47 +351,14 @@
             background: #254f4e;
         }
 
-        /* Redirect */
-        .redirect-row {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .redirect-text {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.5em;
-            color: #03110D;
-        }
-
-        .redirect-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 1.5em;
-            color: #03110D;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-
-        .redirect-link:hover {
-            background: rgba(48, 105, 104, 0.1);
-        }
-
-        /* Error Banner (Timeout) */
+        /* Error Banner */
         .error-banner {
             display: none;
             padding: 16px 12px;
             background: #F9FAFA;
             border: 2px solid #CC455C;
             border-radius: 8px;
+            margin-bottom: 24px;
         }
 
         .error-banner.show {
@@ -264,7 +367,7 @@
 
         .error-banner__content {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 8px;
             width: 100%;
         }
@@ -277,11 +380,9 @@
         }
 
         .error-banner__text {
-            flex: 1;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
             font-size: 16px;
-            line-height: 1.5em;
             color: #CC455C;
         }
 
@@ -310,6 +411,7 @@
 
         .skeleton-loader-content {
             margin-top: 115px;
+            /* Matches main content margin */
             padding: 0 32px;
             display: flex;
             flex-direction: column;
@@ -318,43 +420,47 @@
 
         .skeleton-card {
             width: 100%;
-            max-width: 680px;
+            max-width: 584px;
+            /* height based on content + padding, but we can set min-height */
             padding: 64px 32px;
-            background: #FFFFFF;
-            border-radius: 20px;
-            box-shadow: 0px 1px 15px -1px rgba(3, 17, 13, 0.1);
+            /* Matches profile card */
         }
 
-        .skeleton-content {
+        .skeleton-loader-frame {
             display: flex;
             flex-direction: column;
             gap: 56px;
+            align-items: center;
+            width: 100%;
         }
 
-        .skeleton-box {
+        .skeleton-header-box {
             background: #DBDDDD;
+            height: 96px;
+            width: 100%;
             border-radius: 6px;
         }
 
-        .skeleton-heading {
-            height: 96px;
-            width: 100%;
-        }
-
-        .skeleton-inputs {
+        .skeleton-filters {
             display: flex;
             flex-direction: column;
             gap: 16px;
+            width: 100%;
         }
 
         .skeleton-input {
+            background: #DBDDDD;
             height: 64px;
             width: 100%;
+            border-radius: 6px;
         }
 
-        .skeleton-button {
-            height: 48px;
+        .skeleton-short-input {
+            background: #DBDDDD;
+            height: 32px;
+            /* The last small bar in Figma loader */
             width: 100%;
+            border-radius: 6px;
         }
     </style>
 </head>
@@ -364,17 +470,24 @@
     <!-- Skeleton Loader -->
     <div class="skeleton-loader" id="skeleton-loader">
         <div class="nav-wrapper">
+            <!-- Loader top frame with logo placeholder -->
             <div class="nav-bar">
                 <div class="skeleton-logo-box"></div>
             </div>
         </div>
         <div class="skeleton-loader-content">
+            <!-- Loader frame -->
             <div class="skeleton-card">
-                <div class="skeleton-content">
-                    <div class="skeleton-box skeleton-heading"></div>
-                    <div class="skeleton-inputs">
-                        <div class="skeleton-box skeleton-input"></div>
-                        <div class="skeleton-box skeleton-button"></div>
+                <div class="skeleton-loader-frame">
+                    <div class="skeleton-header-box"></div>
+                    <div class="skeleton-filters">
+                        <!-- Field Loaders -->
+                        <div class="skeleton-input"></div>
+                        <div class="skeleton-input"></div>
+                        <div class="skeleton-input"></div>
+                        <div class="skeleton-input"></div>
+                        <div class="skeleton-input"></div>
+                        <div class="skeleton-short-input"></div>
                     </div>
                 </div>
             </div>
@@ -393,9 +506,9 @@
                     <path
                         d="M12.6023 5.57862C11.3803 7.19987 10.7693 9.21685 10.7693 11.6551C10.7693 13.3785 11.0621 14.8082 11.6349 15.9444C12.2077 17.0805 12.9333 17.9869 13.8117 18.6762C14.6773 19.3656 15.5811 19.889 16.5103 20.2592C17.4396 20.6294 18.2543 20.9103 18.9544 21.1145L28.3362 23.8847C29.049 24.1017 29.6219 24.3442 30.0801 24.6123C30.5511 24.8804 30.9076 25.174 31.1494 25.4676C31.404 25.774 31.5822 26.0931 31.6968 26.4378C31.7986 26.7825 31.8623 27.1399 31.8623 27.5101C31.8623 28.5186 31.5186 29.3612 30.8439 30.0505C30.1565 30.7399 29.2909 31.2633 28.2471 31.6207C27.1905 31.9654 26.0958 32.1441 24.9756 32.1441C22.9643 32.1441 21.1821 31.5824 19.6037 30.459C18.0379 29.3356 16.9941 27.7271 16.4976 25.6463L9.35629 26.7059C9.72545 29.1569 10.6038 31.2633 11.9913 33.0377C13.3661 34.8121 15.1355 36.1653 17.2869 37.11C19.4382 38.0674 21.8441 38.5397 24.53 38.5397C26.3631 38.5397 28.158 38.2972 29.8892 37.8376C31.6204 37.3653 33.1735 36.6504 34.5483 35.7057C35.3884 35.1313 36.1267 34.4419 36.7505 33.676V39.3695H0V0H36.7505V6.85519C36.4704 6.44669 36.1776 6.06372 35.8721 5.69351C34.5483 4.12333 32.9061 2.93611 30.9585 2.10634C28.9981 1.28934 26.7704 0.8553 24.2754 0.829769C21.7931 0.804238 19.54 1.19998 17.5033 1.97869C15.4538 2.77016 13.8244 3.97014 12.6023 5.57862Z"
                         fill="#03110D" />
-                </svg>
-                <!-- S -->
-                <svg viewBox="0 0 29 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12.6023 5.57862C11.3803 7.19987 10.7693 9.21685 10.7693 11.6551C10.7693 13.3785 11.0621 14.8082 11.6349 15.9444C12.2077 17.0805 12.9333 17.9869 13.8117 18.6762C14.6773 19.3656 15.5811 19.889 16.5103 20.2592C17.4396 20.6294 18.2543 20.9103 18.9544 21.1145L28.3362 23.8847C29.049 24.1017 29.6219 24.3442 30.0801 24.6123C30.5511 24.8804 30.9076 25.174 31.1494 25.4676C31.404 25.774 31.5822 26.0931 31.6968 26.4378C31.7986 26.7825 31.8623 27.1399 31.8623 27.5101C31.8623 28.5186 31.5186 29.3612 30.8439 30.0505C30.1565 30.7399 29.2909 31.2633 28.2471 31.6207C27.1905 31.9654 26.0958 32.1441 24.9756 32.1441C22.9643 32.1441 21.1821 31.5824 19.6037 30.459C18.0379 29.3356 16.9941 27.7271 16.4976 25.6463L9.35629 26.7059C9.72545 29.1569 10.6038 31.2633 11.9913 33.0377C13.3661 34.8121 15.1355 36.1653 17.2869 37.11C19.4382 38.0674 21.8441 38.5397 24.53 38.5397C26.3631 38.5397 28.158 38.2972 29.8892 37.8376C31.6204 37.3653 33.1735 36.6504 34.5483 35.7057C35.3884 35.1313 36.1267 34.4419 36.7505 33.676V39.3695H0V0H36.7505V6.85519C36.4704 6.44669 36.1776 6.06372 35.8721 5.69351C34.5483 4.12333 32.9061 2.93611 30.9585 2.10634C28.9981 1.28934 26.7704 0.8553 24.2754 0.829769C21.7931 0.804238 19.54 1.19998 17.5033 1.97869C15.4538 2.77016 13.8244 3.97014 12.6023 5.57862Z"
+                        fill="#03110D" />
                     <path
                         d="M28.0047 21.8177C27.3453 20.6085 26.4994 19.6438 25.4792 18.9105C24.459 18.1773 23.3891 17.5985 22.2819 17.1868C21.1622 16.7752 20.1544 16.4407 19.2338 16.1835L13.1004 14.4598C12.3539 14.2539 11.6075 13.9967 10.8983 13.7008C10.1768 13.3921 9.57958 12.9933 9.10682 12.4916C8.62162 11.99 8.38524 11.3468 8.38524 10.5493C8.38524 9.6874 8.68383 8.94132 9.25612 8.32387C9.84084 7.69355 10.5997 7.21761 11.5204 6.88315C12.441 6.5487 13.4239 6.4072 14.4813 6.44579C15.5388 6.47152 16.559 6.70306 17.5294 7.12756C18.4998 7.55206 19.3458 8.1695 20.0425 8.9799C20.7516 9.79031 21.2368 10.7808 21.4981 11.9642L28.7014 10.7036C28.1291 8.41391 27.1961 6.48438 25.9146 4.90217C24.6208 3.31996 23.0159 2.12365 21.1 1.28752C19.184 0.464257 17.0069 0.0268975 14.5684 0.00117048C12.1549 -0.0245565 9.94037 0.374214 7.94981 1.15889C5.95924 1.95643 4.35436 3.1656 3.16002 4.7864C1.96568 6.42007 1.36851 8.4525 1.36851 10.9094C1.36851 12.646 1.65466 14.0867 2.2145 15.2316C2.78679 16.3764 3.49593 17.2897 4.34192 17.9844C5.1879 18.679 6.07121 19.2064 6.97941 19.5794C7.8876 19.9525 8.68383 20.2355 9.36808 20.4413L18.5495 23.2327C19.2338 23.4514 19.8061 23.6958 20.254 23.9659C20.7018 24.236 21.0502 24.5319 21.299 24.8278C21.5478 25.1365 21.722 25.4581 21.8215 25.8054C21.9335 26.1527 21.9833 26.5129 21.9833 26.8859C21.9833 27.9021 21.6474 28.7511 20.988 29.4458C20.3286 30.1404 19.4826 30.6678 18.45 31.028C17.4174 31.3753 16.3599 31.5554 15.2651 31.5554C13.2994 31.5554 11.5453 30.9894 10.015 29.8574C8.47233 28.7254 7.46461 27.1046 6.96697 25.0078L0 26.0755C0.360789 28.5453 1.21922 30.6678 2.56285 32.4558C3.91892 34.2438 5.63578 35.6074 7.73831 36.5593C9.84084 37.524 12.2046 38 14.8172 38C16.6212 38 18.3629 37.7556 20.0549 37.2925C21.7469 36.8166 23.2647 36.0962 24.6083 35.1443C25.952 34.1924 27.0219 32.9832 27.8057 31.5168C28.6019 30.0503 29 28.3395 29 26.3842C29 24.5319 28.6641 23.014 28.0047 21.8177Z"
                         fill="#03110D" />
@@ -417,19 +530,19 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Login Card -->
-        <div class="login-card">
-            <div class="login-content">
+        <div class="profile-card">
+            <div class="profile-content">
                 <!-- Header -->
-                <div class="login-header">
-                    <h1 class="login-heading">Welcome</h1>
-                    <p class="login-subtext">Log in to manage your trips and pick up where you left off</p>
+                <div class="profile-header">
+                    <h1 class="profile-heading">Complete your profile</h1>
+                    <p class="profile-subtext">Your details help us personalize your ride experience.</p>
                 </div>
 
                 <!-- Form Body -->
                 <div class="form-body">
                     <div class="form-fields">
-                        <!-- Timeout Error Banner (hidden by default) -->
+
+                        <!-- Timeout Error Banner -->
                         <div id="error-banner" class="error-banner">
                             <div class="error-banner__content">
                                 <svg class="error-banner__icon" viewBox="0 0 24 24" fill="none"
@@ -438,20 +551,92 @@
                                     <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                                     <circle cx="12" cy="16" r="1" fill="currentColor" />
                                 </svg>
-                                <span class="error-banner__text">Your log in attempt timed out. Please try again</span>
+                                <span class="error-banner__text">Your sign up attempt timed out. Please try again</span>
                             </div>
                         </div>
 
-                        <!-- Email Input -->
+                        <!-- Title Dropdown -->
                         <div class="input-wrapper">
-                            <label class="input-label">E-mail</label>
-                            <div id="input-container" class="input-field-container">
-                                <img src="/Ssrn/assets/images/icons/E-mail.svg" alt="" class="input-icon">
-                                <input type="email" id="email-input" class="input-field"
-                                    placeholder="alextaylor@gmail.com" autocomplete="email" required>
+                            <label class="input-label">Title</label>
+                            <div id="title-container" class="input-field-container dropdown-trigger" tabindex="0">
+                                <span id="title-value" class="dropdown-value selected">Mx.</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="dropdown-icon">
+                                    <path d="M6 9L12 15L18 9" stroke="#616262" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <!-- Dropdown Options -->
+                            <div id="title-options" class="dropdown-options">
+                                <div class="dropdown-option" data-value="Mx.">Mx.</div>
+                                <div class="dropdown-option" data-value="Mr.">Mr.</div>
+                                <div class="dropdown-option" data-value="Ms.">Ms.</div>
+                                <div class="dropdown-option" data-value="Mrs.">Mrs.</div>
+                            </div>
+                        </div>
+
+                        <!-- First Name -->
+                        <div class="input-wrapper">
+                            <label class="input-label">First Name</label>
+                            <div id="firstname-container" class="input-field-container">
+                                <input type="text" id="firstname-input" class="input-field" placeholder="Alex" required>
                             </div>
                             <!-- Helper text for validation errors -->
-                            <div id="input-helper" class="input-helper"></div>
+                            <div id="firstname-helper" class="input-helper">Please enter you first name</div>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="input-wrapper">
+                            <label class="input-label">Last Name</label>
+                            <div id="lastname-container" class="input-field-container">
+                                <input type="text" id="lastname-input" class="input-field" placeholder="Taylor"
+                                    required>
+                            </div>
+                            <div id="lastname-helper" class="input-helper">Please enter you last name</div>
+                        </div>
+
+                        <!-- Mobile Number -->
+                        <div class="input-wrapper">
+                            <label class="input-label">Mobile Number</label>
+                            <div class="mobile-input-group" id="mobile-group">
+                                <!-- Country Code -->
+                                <div class="country-code-container position-relative">
+                                    <div id="country-trigger" class="country-code-trigger" tabindex="0">
+                                        <div class="flag-icon">
+                                            <!-- Bangladesh Flag (Simple generic representation or img) -->
+                                            <img src="/Ssrn/assets/images/icons/Bangladesh-flag.svg" alt="BD"
+                                                class="flag-img"
+                                                onError="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                                            <div
+                                                style="width: 20px; height: 14px; background: #006a4e; border-radius: 2px; position: absolute; display: none;">
+                                                <div
+                                                    style="width: 8px; height: 8px; background: #f42a41; border-radius: 50%; margin: 3px auto;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="dropdown-value selected">+880</span>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" class="dropdown-icon"
+                                            style="margin-left: auto;">
+                                            <path d="M6 9L12 15L18 9" stroke="#616262" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                    <!-- Country Dropdown Options (Simplified for now) -->
+                                    <div id="country-options" class="dropdown-options" style="width: 130px;">
+                                        <div class="dropdown-option" data-value="+880">
+                                            <span style="margin-right:8px">🇧🇩</span> +880
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Number Input -->
+                                <div class="mobile-number-container">
+                                    <input type="tel" id="mobile-input" class="input-field"
+                                        placeholder="Enter your mobile no.">
+                                </div>
+                            </div>
+                            <div id="mobile-helper" class="input-helper">Please enter your mobile number</div>
                         </div>
 
                         <!-- Continue Button -->
@@ -459,32 +644,17 @@
                             Continue
                         </button>
                     </div>
-
-                    <!-- Redirect -->
-                    <div class="redirect-row">
-                        <span class="redirect-text">Don't have an account?</span>
-                        <a href="/Ssrn/pages/Auth/Signup/email.html" class="redirect-link">
-                            <span style="text-decoration: underline;">Sign Up</span>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="/Ssrn/js/pages/login.js"></script>
+    <script src="/Ssrn/js/pages/profile.js"></script>
     <script>
-        // Initialize email page
-        if (typeof Login !== 'undefined') {
-            Login.initEmailPage();
+        if (typeof Profile !== 'undefined') {
+            Profile.init();
         }
     </script>
-
 </body>
 
 </html>
