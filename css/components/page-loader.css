@@ -11,15 +11,15 @@
   width: 100%;
   min-height: 100vh;
   background-color: var(--surface-page);
-  padding: 0 120px;
+  padding: 0 var(--space-3000);
   overflow: hidden;
 }
 
 .page-loader__container {
   display: flex;
   flex-direction: column;
-  gap: 58px;
-  padding-top: 16px;
+  gap: var(--space-1200);
+  padding-top: var(--space-400);
   width: 100%;
 }
 
@@ -27,8 +27,8 @@
    SKELETON LOADER BASE
    ============================================ */
 .skeleton {
-  background-color: #DBDDDD;
-  border-radius: 6px;
+  background-color: var(--grey-60);
+  border-radius: var(--radius-s);
   position: relative;
   overflow: hidden;
 }
@@ -80,7 +80,7 @@
 .page-loader__nav {
   display: flex;
   align-items: center;
-  gap: 68px;
+  gap: var(--space-1600);
   width: 100%;
 }
 
@@ -108,7 +108,7 @@
 .page-loader__hero {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--space-600);
   width: 100%;
 }
 
@@ -123,17 +123,26 @@
   height: 36px;
 }
 
-.page-loader__hero-content {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+/* Image + form overlay container */
+.page-loader__hero-image-wrapper {
+  position: relative;
   width: 100%;
 }
 
+.page-loader__hero-image {
+  width: 100%;
+  height: 500px;
+  border-radius: var(--radius-m);
+}
+
 .page-loader__hero-form {
-  width: 417px;
-  height: 529px;
+  position: absolute;
+  top: var(--space-800);
+  right: var(--space-800);
+  width: 360px;
+  height: 420px;
   flex-shrink: 0;
+  border-radius: var(--radius-m);
 }
 
 /* ============================================
@@ -147,20 +156,21 @@
 }
 
 .page-loader__services-header {
-  width: 100%;
-  height: 56px;
+  width: 300px;
+  height: 48px;
+  margin: 0 auto;
 }
 
+/* Desktop: 3-column grid matching actual layout */
 .page-loader__services-cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-600);
-  height: 168px;
   width: 100%;
 }
 
 .page-loader__service-card {
-  flex: 1;
-  height: 100%;
+  height: 320px;
   min-width: 0;
 }
 
@@ -174,7 +184,7 @@
   flex-direction: column;
   gap: var(--space-600);
   width: 100%;
-  margin-top: 58px;
+  margin-top: var(--space-1200);
 }
 
 .page-loader__destinations-header {
@@ -191,7 +201,7 @@
 
 .page-loader__destination-card {
   height: 240px;
-  border-radius: 6px;
+  border-radius: var(--radius-s);
 }
 
 /* ============================================
@@ -233,18 +243,22 @@
    ============================================ */
 @media (max-width: 1440px) {
   .page-loader {
-    padding: 0 var(--space-800);
+    padding: 0 var(--space-2000);
+  }
+
+  .page-loader__hero-image {
+    height: 460px;
   }
 
   .page-loader__hero-form {
-    width: 380px;
-    height: 480px;
+    width: 340px;
+    height: 400px;
   }
 }
 
 @media (max-width: 1024px) {
   .page-loader {
-    padding: 0 var(--space-600);
+    padding: 0 var(--space-1200);
   }
 
   .page-loader__container {
@@ -260,9 +274,24 @@
     max-width: 491px;
   }
 
+  /* Tablet: form goes below image */
+  .page-loader__hero-image {
+    height: 360px;
+  }
+
   .page-loader__hero-form {
-    width: 350px;
-    height: 450px;
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-width: 600px;
+    height: 380px;
+    margin: var(--space-600) auto 0;
+  }
+
+  /* Services: 2-column on tablet */
+  .page-loader__services-cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .page-loader__destinations-cards {
@@ -304,27 +333,28 @@
 
   .page-loader__hero-title .skeleton {
     width: 100%;
-    height: 32px;
+    height: var(--space-800);
   }
 
-  .page-loader__hero-content {
-    justify-content: center;
+  .page-loader__hero-image {
+    height: 250px;
   }
 
   .page-loader__hero-form {
     width: 100%;
-    max-width: 400px;
-    height: 400px;
+    max-width: 100%;
+    height: 380px;
+    margin-top: var(--space-400);
   }
 
+  /* Services: 1-column on mobile */
   .page-loader__services-cards {
-    flex-direction: column;
-    height: auto;
+    grid-template-columns: 1fr;
     gap: var(--space-400);
   }
 
   .page-loader__service-card {
-    height: 140px;
+    height: 260px;
   }
 
   .page-loader__destinations-cards {
@@ -344,24 +374,28 @@
 
   .page-loader__nav-logo {
     width: 80px;
-    height: 32px;
+    height: var(--space-800);
   }
 
   .page-loader__nav-button {
     width: 80px;
-    height: 32px;
+    height: var(--space-800);
   }
 
   .page-loader__nav-menu {
-    height: 32px;
+    height: var(--space-800);
+  }
+
+  .page-loader__hero-image {
+    height: 200px;
   }
 
   .page-loader__hero-form {
-    height: 350px;
+    height: 340px;
   }
 
   .page-loader__service-card {
-    height: 120px;
+    height: 240px;
   }
 }
 

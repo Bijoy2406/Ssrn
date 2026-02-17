@@ -221,3 +221,25 @@
    ============================================ */
 /* Auth Page Layout */
 @import url('./css/pages/auth.css');
+
+/* ============================================
+   GLOBAL BASE STYLES
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family-heading);
+}
+
+body {
+  font-family: var(--font-family-heading);
+  font-size: var(--body-md-size);
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
