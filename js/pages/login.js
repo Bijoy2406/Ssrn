@@ -63,7 +63,7 @@ const Login = {
     const storedEmail = sessionStorage.getItem('loginEmail');
     if (!storedEmail) {
       // Redirect back to email page if no email stored
-      window.location.href = '/pages/Auth/Login/email.html';
+      window.location.href = '/Ssrn/pages/Auth/Login/email.html';
       return;
     }
 
@@ -140,7 +140,7 @@ const Login = {
 
     // Simulate API call delay
     setTimeout(() => {
-      window.location.href = '/pages/Auth/Login/password.html';
+      window.location.href = '/Ssrn/pages/Auth/Login/password.html';
     }, 800);
   },
 
@@ -257,7 +257,7 @@ const Login = {
       sessionStorage.removeItem('loginEmail');
 
       // Redirect to user landing page
-      window.location.href = '/pages/User/landing-user.html';
+      window.location.href = '/Ssrn/pages/landing/landing-page-user.html';
     } else {
       // Authentication failed - show filled error state (pink background)
       this.hideSkeletonLoader();
@@ -281,10 +281,10 @@ const Login = {
       window.location.reload();
     } else if (error.type === 'SERVER_ERROR') {
       // Server error - show server-side error page
-      window.location.href = '/pages/Auth/Login/server-error.html';
+      window.location.href = '/Ssrn/pages/Auth/Login/server-error.html';
     } else if (error.name === 'TypeError') {
       // Network error - show client-side error page
-      window.location.href = '/pages/Auth/Login/error.html';
+      window.location.href = '/Ssrn/pages/Auth/Login/error.html';
     } else {
       // Other errors - show inline error with filled state
       this.hideSkeletonLoader();
