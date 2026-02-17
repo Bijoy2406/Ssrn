@@ -162,8 +162,8 @@
   /* ============================================
      TYPOGRAPHY - FONT FAMILIES
      ============================================ */
-  --font-family-heading: 'Manrope', sans-serif;
-  --font-family-body: 'Inter', sans-serif;
+  --font-family-heading: 'Manrope';
+  --font-family-body: 'Manrope';
 
   /* ============================================
      TYPOGRAPHY - FONT WEIGHTS

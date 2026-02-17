@@ -186,18 +186,13 @@
       position: relative;
       width: 100%;
       background-color: var(--surface-page);
-      padding-bottom: var(--space-1200);
+      padding-bottom: 0;
     }
 
     .hero__container {
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 120px;
-      position: relative;
-      width: 100%;
-    }
-
-    .hero__content {
       position: relative;
       width: 100%;
     }
@@ -215,17 +210,19 @@
       margin: 0;
     }
 
+    /* Desktop: image fills full width, form floats on top-right */
+    .hero__content {
+      position: relative;
+      width: 100%;
+    }
+
     .hero__image-wrapper {
       position: relative;
       width: 100%;
-      height: 364.249px;
-      flex-shrink: 0;
-      align-self: stretch;
-      aspect-ratio: 917/272;
+      height: 500px;
       border-radius: var(--radius-l);
       overflow: hidden;
       background-color: var(--grey-80);
-      margin-bottom: 80px;
     }
 
     .hero__image {
@@ -234,7 +231,6 @@
       object-fit: cover;
       object-position: center;
       display: block;
-      border-radius: var(--radius-l);
     }
 
     .hero__overlay {
@@ -246,14 +242,12 @@
       pointer-events: none;
     }
 
-    /* Booking Form - Overlapping from bottom of image */
+    /* Booking Form - Floating on top-right of image */
     .hero__form-overlay {
-      position: relative;
-      margin-top: -100px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 100%;
-      max-width: 720px;
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      width: 360px;
       z-index: 10;
     }
 
@@ -490,49 +484,25 @@
       width: 100%;
     }
 
+    /* Desktop: 3-column grid */
     .services__grid {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: var(--space-600);
-      transition: transform 0.3s ease;
     }
 
     .services__nav {
       display: none;
     }
 
-    /* Carousel dots indicator */
+    /* Hide dots on desktop */
     .services__dots {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-200);
-      margin-top: var(--space-800);
+      display: none;
     }
 
-    .services__dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: var(--grey-60);
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      padding: 0;
-    }
-
-    .services__dot:hover {
-      background-color: var(--grey-40);
-    }
-
-    .services__dot--active {
-      width: 10px;
-      height: 10px;
-      background-color: var(--text-primary);
-    }
-
-    /* Service cards in carousel */
+    /* Service cards in grid */
     .services__grid .card-service {
-      flex-shrink: 0;
-      width: 360px;
+      width: 100%;
     }
 
     /* Destinations Section */
@@ -678,8 +648,30 @@
       }
     }
 
+    /* Desktop: show nav buttons bottom-right */
     .destinations__nav {
-      display: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-300);
+      margin-top: var(--space-600);
+    }
+
+    .destinations__nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--surface-primary);
+      border: var(--border-m) solid var(--border-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--text-primary);
+    }
+
+    .destinations__nav-btn:hover {
+      background-color: var(--grey-90);
     }
 
     /* Destinations Footer */
@@ -789,32 +781,76 @@
         padding: var(--space-600) 0;
       }
 
-      .hero__container {
-        grid-template-columns: 1fr;
-        gap: var(--space-1000);
+      /* Tablet: form goes below image */
+      .hero__image-wrapper {
+        height: 360px;
       }
 
-      .hero__left {
-        order: 1;
-      }
-
-      .booking-form-landing {
-        order: 2;
-        max-width: 100%;
+      .hero__form-overlay {
+        position: relative;
+        top: auto;
+        right: auto;
         width: 100%;
+        max-width: 600px;
+        margin: var(--space-600) auto 0;
+      }
+
+      /* Tablet: swipe carousel */
+      /* Allow carousel to scroll without being clipped */
+      .services {
+        overflow-x: visible;
+      }
+
+      .services__carousel-wrapper {
+        overflow: visible;
+      }
+
+      .services__carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x mandatory;
+      }
+
+      .services__carousel::-webkit-scrollbar {
+        display: none;
       }
 
       .services__grid {
-        gap: var(--space-500);
+        display: flex;
+        gap: var(--space-600);
       }
 
-      .service-card {
-        min-width: 350px;
-        max-width: 350px;
+      /* Show 2 full cards + partial 3rd peek */
+      .services__grid .card-service {
+        flex: 0 0 calc((100% - var(--space-600) * 1.5) / 2);
+        min-width: 240px;
+        scroll-snap-align: start;
       }
 
-      .services__nav {
-        margin-top: -120px;
+      .services__dots {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-200);
+        margin-top: var(--space-800);
+      }
+
+      .services__dot {
+        width: 8px;
+        height: 8px;
+        border-radius: var(--radius-full);
+        background-color: var(--grey-60);
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease, width 0.2s ease;
+        padding: 0;
+      }
+
+      .services__dot--active {
+        width: 20px;
+        background-color: var(--sea-green-50);
       }
 
       .why-choose__grid {
@@ -823,7 +859,7 @@
       }
 
       .destinations__nav {
-        margin-top: -180px;
+        display: none;
       }
 
       .card-cta {
@@ -981,16 +1017,14 @@
       }
 
       .services__grid {
+        display: flex;
         gap: var(--space-400);
       }
 
       .services__grid .card-service {
+        flex-shrink: 0;
         width: min(320px, calc(100vw - 48px));
         scroll-snap-align: start;
-      }
-
-      .services__nav {
-        display: none;
       }
 
       .destinations {
@@ -1740,17 +1774,19 @@
           <div class="page-loader__nav-button skeleton"></div>
         </div>
 
-        <!-- Hero Skeleton -->
+        <!-- Hero Skeleton: title + image with form overlay -->
         <div class="page-loader__hero">
           <div class="page-loader__hero-title">
             <div class="skeleton"></div>
           </div>
-          <div class="page-loader__hero-content">
+          <!-- Image wrapper with form floating on top-right -->
+          <div class="page-loader__hero-image-wrapper">
+            <div class="page-loader__hero-image skeleton"></div>
             <div class="page-loader__hero-form skeleton"></div>
           </div>
         </div>
 
-        <!-- Services Skeleton -->
+        <!-- Services Skeleton: 3-column grid -->
         <div class="page-loader__services">
           <div class="page-loader__services-header skeleton"></div>
           <div class="page-loader__services-cards">
@@ -2236,17 +2272,24 @@
         <div class="destinations__filters">
           <button class="destinations__filter-btn destinations__filter-btn--active">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             </svg>
             Cities
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
           </button>
           <button class="destinations__filter-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4l3 3"/>
             </svg>
             Attractions
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
           </button>
         </div>
       </div>
@@ -2327,14 +2370,18 @@
 
       </div>
 
-      <!-- Explore More Link -->
-      <div class="destinations__footer">
-        <a href="#destinations" class="destinations__explore-link">
-          <span>Explore more destinations</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <!-- Navigation Buttons -->
+      <div class="destinations__nav">
+        <button class="destinations__nav-btn" onclick="scrollDestCarousel(-1)" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <button class="destinations__nav-btn" onclick="scrollDestCarousel(1)" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
             <polyline points="9 18 15 12 9 6"/>
           </svg>
-        </a>
+        </button>
       </div>
     </div>
   </section>
@@ -2405,7 +2452,8 @@
   <!-- Site Footer -->
   <footer class="site-footer">
     <div class="site-footer__container">
-      <!-- Top Section: Logo + Help -->
+
+      <!-- Top: Logo + Help -->
       <div class="site-footer__top">
         <div class="site-footer__logo">
           <img src="../../assets/images/icons/Customer-Log In/S.svg" alt="S">
@@ -2414,26 +2462,27 @@
           <img src="../../assets/images/icons/Customer-Log In/N.svg" alt="N">
         </div>
         <a href="#help" class="site-footer__help-btn">
+          <span>Help</span>
           <div class="site-footer__help-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <circle cx="12" cy="12" r="10"/>
               <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
               <line x1="12" y1="17" x2="12.01" y2="17"/>
             </svg>
           </div>
-          <span>Help</span>
         </a>
       </div>
 
-      <!-- Middle Section: Link Groups -->
+      <!-- Middle: Link Groups -->
       <div class="site-footer__middle">
         <div class="site-footer__link-groups">
+
           <!-- Company -->
           <div class="site-footer__link-group">
             <h3 class="site-footer__link-group-title">Company</h3>
             <div class="site-footer__links">
               <a href="#about" class="site-footer__link">About Us</a>
-              <a href="#chauffeurs" class="site-footer__link">Our Chauffeurs</a>
+              <a href="#chauffeurs" class="site-footer__link">For Chauffeurs</a>
               <a href="#partners" class="site-footer__link">For Partners</a>
             </div>
           </div>
@@ -2443,7 +2492,7 @@
             <h3 class="site-footer__link-group-title">Explore</h3>
             <div class="site-footer__links">
               <a href="#airport" class="site-footer__link">Airport Transfers</a>
-              <a href="#city" class="site-footer__link">City-to-City Rides</a>
+              <a href="#city" class="site-footer__link">City-to-city Rides</a>
               <a href="#hourly" class="site-footer__link">Hourly Rides</a>
             </div>
           </div>
@@ -2453,16 +2502,18 @@
             <h3 class="site-footer__link-group-title">Top Cities</h3>
             <div class="site-footer__links">
               <a href="#ny" class="site-footer__link">New York</a>
-              <a href="#ny" class="site-footer__link">New York</a>
-              <a href="#ny" class="site-footer__link">New York</a>
-              <a href="#ny" class="site-footer__link">New York</a>
-              <a href="#ny" class="site-footer__link">New York</a>
+              <a href="#la" class="site-footer__link">New York</a>
+              <a href="#ch" class="site-footer__link">New York</a>
+              <a href="#mi" class="site-footer__link">New York</a>
+              <a href="#sf" class="site-footer__link">New York</a>
+              <a href="#bo" class="site-footer__link">New York</a>
             </div>
           </div>
+
         </div>
       </div>
 
-      <!-- Bottom Section: Legal + Social -->
+      <!-- Bottom: Legal + Socials -->
       <div class="site-footer__bottom">
         <div class="site-footer__legal">
           <a href="#terms" class="site-footer__legal-link">Terms and Conditions</a>
@@ -2472,6 +2523,7 @@
         </div>
 
         <div class="site-footer__socials">
+          <!-- Facebook -->
           <a href="#facebook" class="site-footer__social-link" aria-label="Facebook">
             <div class="site-footer__social-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -2479,33 +2531,33 @@
               </svg>
             </div>
           </a>
+          <!-- Instagram -->
           <a href="#instagram" class="site-footer__social-link" aria-label="Instagram">
             <div class="site-footer__social-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
               </svg>
             </div>
           </a>
+          <!-- TikTok -->
           <a href="#tiktok" class="site-footer__social-link" aria-label="TikTok">
             <div class="site-footer__social-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z"/>
               </svg>
             </div>
           </a>
+          <!-- LinkedIn -->
           <a href="#linkedin" class="site-footer__social-link" aria-label="LinkedIn">
             <div class="site-footer__social-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/>
-                <circle cx="4" cy="4" r="2"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
             </div>
           </a>
         </div>
       </div>
+
     </div>
   </footer>
 
@@ -2807,48 +2859,49 @@
     let currentServiceSlide = 0;
 
     function scrollServicesToSlide(slideIndex) {
+      const carousel = document.querySelector('.services__carousel');
       const track = document.getElementById('servicesTrack');
-      const dots = document.querySelectorAll('.services__dot');
-      const cardWidth = track.children[0].offsetWidth + 24; // card width + gap
+      if (!carousel || !track) return;
+      const cards = track.querySelectorAll('.card-service');
+      if (!cards[slideIndex]) return;
+
+      // Use native scroll for tablet/mobile carousel
+      if (window.innerWidth <= 1024) {
+        carousel.scrollTo({ left: cards[slideIndex].offsetLeft, behavior: 'smooth' });
+      } else {
+        // Desktop: transform-based
+        const cardWidth = cards[0].offsetWidth + 24;
+        currentServiceSlide = slideIndex;
+        track.style.transform = `translateX(${-slideIndex * cardWidth}px)`;
+      }
 
       currentServiceSlide = slideIndex;
-      const translateValue = -slideIndex * cardWidth;
-
-      track.style.transform = `translateX(${translateValue}px)`;
-
-      // Update dot indicators
-      dots.forEach((dot, index) => {
-        if (index === slideIndex) {
-          dot.classList.add('services__dot--active');
-        } else {
-          dot.classList.remove('services__dot--active');
-        }
+      document.querySelectorAll('.services__dot').forEach((dot, i) => {
+        dot.classList.toggle('services__dot--active', i === slideIndex);
       });
     }
 
     // Auto-update dots on scroll (for touch/swipe)
     function updateServicesDots() {
-      const track = document.getElementById('servicesTrack');
       const carousel = document.querySelector('.services__carousel');
+      const track = document.getElementById('servicesTrack');
       if (!carousel || !track) return;
 
       carousel.addEventListener('scroll', () => {
-        const cardWidth = track.children[0].offsetWidth + 24;
-        const scrollLeft = carousel.scrollLeft;
-        const slideIndex = Math.round(scrollLeft / cardWidth);
+        const cards = track.querySelectorAll('.card-service');
+        let closest = 0, minDiff = Infinity;
+        cards.forEach((card, i) => {
+          const diff = Math.abs(card.offsetLeft - carousel.scrollLeft);
+          if (diff < minDiff) { minDiff = diff; closest = i; }
+        });
 
-        if (slideIndex !== currentServiceSlide) {
-          currentServiceSlide = slideIndex;
-          const dots = document.querySelectorAll('.services__dot');
-          dots.forEach((dot, index) => {
-            if (index === slideIndex) {
-              dot.classList.add('services__dot--active');
-            } else {
-              dot.classList.remove('services__dot--active');
-            }
+        if (closest !== currentServiceSlide) {
+          currentServiceSlide = closest;
+          document.querySelectorAll('.services__dot').forEach((dot, i) => {
+            dot.classList.toggle('services__dot--active', i === closest);
           });
         }
-      });
+      }, { passive: true });
     }
 
     // Initialize on page load
@@ -2856,6 +2909,11 @@
 
     // Destinations Carousel Scroll
     let carouselPosition = 0;
+
+    function scrollDestCarousel(direction) {
+      scrollCarousel(direction);
+    }
+
     function scrollCarousel(direction) {
       const track = document.getElementById('destinationsTrack');
       const trackWrapper = track.parentElement;
@@ -2873,11 +2931,12 @@
 
     // Desktop-only carousel controls
     function updateCarouselControls() {
+      const isTabletOrMobile = window.innerWidth <= 1024;
       const isMobile = window.innerWidth <= 768;
       const destinationsTrack = document.getElementById('destinationsTrack');
       const servicesTrack = document.getElementById('servicesTrack');
 
-      // Destinations carousel
+      // Destinations carousel (desktop transform, mobile/tablet native scroll)
       if (!isMobile && destinationsTrack) {
         destinationsTrack.style.transform = `translateX(${carouselPosition}px)`;
       } else if (destinationsTrack) {
@@ -2885,12 +2944,16 @@
         carouselPosition = 0;
       }
 
-      // Services carousel
-      if (!isMobile && servicesTrack) {
-        servicesTrack.style.transform = `translateX(${servicesCarouselPosition}px)`;
-      } else if (servicesTrack) {
+      // Services carousel (tablet+mobile: native scroll; desktop: transform)
+      if (isTabletOrMobile && servicesTrack) {
         servicesTrack.style.transform = 'none';
         servicesCarouselPosition = 0;
+        currentServiceSlide = 0;
+        document.querySelectorAll('.services__dot').forEach((dot, i) => {
+          dot.classList.toggle('services__dot--active', i === 0);
+        });
+      } else if (servicesTrack) {
+        servicesTrack.style.transform = `translateX(${servicesCarouselPosition}px)`;
       }
     }
 
