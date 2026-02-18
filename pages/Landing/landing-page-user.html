@@ -130,28 +130,25 @@
       fill: var(--text-inverse);
     }
 
-    /* Hero Section */
+    /* ── Hero Section ── */
     .hero {
       position: relative;
       width: 100%;
-      padding: var(--space-800) 0 var(--space-2000);
       background-color: var(--surface-page);
+      overflow-x: hidden;
     }
 
+    /* Max-width wrapper — title only, padded */
     .hero__container {
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 120px;
-      display: grid;
-      grid-template-columns: 1fr minmax(380px, 480px);
-      gap: var(--space-600);
-      align-items: start;
+      position: relative;
     }
 
-    .hero__left {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-500);
+    /* Title above the image */
+    .hero__title-bar {
+      padding: var(--space-600) 0 var(--space-500);
     }
 
     .hero__title {
@@ -163,15 +160,50 @@
       margin: 0;
     }
 
-    .hero__image {
+    /* Image + floating form — direct child of .hero, full viewport width */
+    .hero__image-form {
+      position: relative;
       width: 100%;
-      height: 400px;
-      border-radius: var(--radius-m);
+      margin-bottom: var(--space-800);
       overflow: hidden;
     }
 
-    .hero__image img,
-    .hero__image-img {
+    /* Full-width image, no border-radius on desktop */
+    .hero__bg {
+      width: 100%;
+      height: 500px;
+      border-radius: 0;
+      overflow: hidden;
+      background-color: var(--grey-80);
+    }
+
+    .hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Hide unused elements */
+    .hero__left,
+    .hero__image {
+      display: none;
+    }
+
+    /* Mobile-only greeting (hidden on desktop) */
+    .hero__greeting {
+      display: none;
+    }
+
+    /* Mobile image wrapper (hidden on desktop) */
+    .hero__image-wrapper {
+      display: none;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .hero__image-wrapper .hero__image-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -344,6 +376,104 @@
       flex: 1;
     }
 
+    /* New Figma-matched upcoming ride elements */
+    .upcoming-ride__booking-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .upcoming-ride__booking-id {
+      font-family: var(--font-family-body);
+      font-size: var(--body-sm-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--sea-green-50);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .upcoming-ride__share-icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-primary);
+      padding: var(--space-100);
+      display: flex;
+      align-items: center;
+      transition: color 0.2s ease;
+    }
+
+    .upcoming-ride__share-icon:hover {
+      color: var(--sea-green-50);
+    }
+
+    .upcoming-ride__passenger {
+      font-family: var(--font-family-heading);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-regular);
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .upcoming-ride__class {
+      font-family: var(--font-family-heading);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .upcoming-ride__divider {
+      height: 1px;
+      background-color: var(--border-default);
+      width: 100%;
+    }
+
+    .upcoming-ride__action-primary {
+      width: 100%;
+      border-radius: var(--radius-m);
+    }
+
+    .upcoming-ride__action-secondary {
+      width: 100%;
+      background: none;
+      border: none;
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      text-decoration: none;
+      cursor: pointer;
+      padding: var(--space-300) 0;
+      text-align: center;
+      display: block;
+    }
+
+    .upcoming-ride__action-secondary:hover {
+      color: var(--sea-green-50);
+    }
+
+    /* Destinations: explore more link */
+    .destinations__explore {
+      display: none; /* shown only on mobile */
+    }
+
+    .destinations__explore-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-200);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .destinations__explore-link:hover {
+      color: var(--sea-green-50);
+    }
+
     /* Services Section */
     .services {
       padding: var(--space-2000) 0;
@@ -445,7 +575,17 @@
     }
 
     .destinations__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-600);
       margin-bottom: var(--space-800);
+    }
+
+    .destinations__header-left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-200);
     }
 
     .destinations__heading {
@@ -454,8 +594,8 @@
       font-weight: var(--font-weight-bold);
       line-height: var(--heading-h3-line-height);
       color: var(--text-primary);
-      margin: 0 0 var(--space-300) 0;
-      text-align: center;
+      margin: 0;
+      text-align: left;
     }
 
     .destinations__subtitle {
@@ -463,19 +603,23 @@
       font-size: var(--body-md-size);
       line-height: var(--body-md-line-height);
       color: var(--text-secondary);
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto;
+      text-align: left;
+      margin: 0;
+      max-width: 560px;
     }
 
     .destinations__filters {
       display: flex;
-      justify-content: center;
+      align-items: center;
       gap: var(--space-300);
-      margin-bottom: var(--space-600);
+      flex-shrink: 0;
+      margin-top: var(--space-100);
     }
 
     .destinations__filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-200);
       padding: var(--space-200) var(--space-400);
       background-color: transparent;
       border: var(--border-s) solid var(--border-primary);
@@ -486,6 +630,7 @@
       color: var(--text-primary);
       cursor: pointer;
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
     .destinations__filter-btn:hover {
@@ -496,6 +641,10 @@
       background-color: var(--text-primary);
       color: var(--text-inverse);
       border-color: var(--text-primary);
+    }
+
+    .destinations__filter-btn--active svg {
+      stroke: var(--text-inverse);
     }
 
     .destinations__carousel-wrapper {
@@ -525,29 +674,38 @@
     }
 
     .destinations__nav {
-      display: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-300);
+      margin-top: var(--space-600);
     }
 
     .destinations__nav-btn {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background-color: var(--surface-primary);
-      border: var(--border-m) solid var(--border-primary);
+      border: var(--border-s) solid var(--border-primary);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: all 0.2s ease;
+      flex-shrink: 0;
     }
 
     .destinations__nav-btn:hover {
       background-color: var(--grey-90);
     }
 
+    .destinations__nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
     .destinations__nav-btn svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       color: var(--text-primary);
     }
 
@@ -562,6 +720,7 @@
         padding-left: var(--space-1600);
         padding-right: var(--space-1600);
       }
+
     }
 
     @media (max-width: 1280px) {
@@ -573,14 +732,6 @@
         padding-right: var(--space-1200);
       }
 
-      .hero__container {
-        grid-template-columns: 1fr minmax(340px, 420px);
-        gap: var(--space-500);
-      }
-
-      .hero__image {
-        height: 340px;
-      }
     }
 
     /* Tablet landscape (1024px) */
@@ -593,13 +744,8 @@
         padding-right: var(--space-800);
       }
 
-      .hero__container {
-        grid-template-columns: 1fr;
-      }
-
-      .hero__image {
-        height: 300px;
-        max-width: 100%;
+      .hero__bg {
+        height: 480px;
       }
 
       /* Services tablet: show 2 cards, 3rd partially visible */
@@ -662,55 +808,11 @@
       }
     }
 
-    /* Tablet portrait */
+    /* Tablet portrait (769px–1024px handled by tablet block above;
+       this catches 768px and below before the full mobile block) */
     @media (max-width: 768px) {
-      .hero__container,
-      .services__container,
-      .destinations__container,
-      .upcoming-ride__container {
-        padding-left: var(--space-600);
-        padding-right: var(--space-600);
-      }
-
-      .hero__image {
-        height: 240px;
-      }
-
-      .destinations__filters {
-        flex-wrap: wrap;
-      }
-
-      .upcoming-ride__actions {
-        flex-direction: column;
-      }
-
       .upcoming-ride__map {
         height: 220px;
-      }
-    }
-
-    /* Mobile */
-    @media (max-width: 480px) {
-      .hero__container,
-      .services__container,
-      .destinations__container,
-      .upcoming-ride__container {
-        padding-left: var(--space-400);
-        padding-right: var(--space-400);
-      }
-
-      .hero {
-        padding: var(--space-600) 0 var(--space-800);
-      }
-
-      .hero__image {
-        height: 200px;
-      }
-
-      .services,
-      .destinations,
-      .upcoming-ride {
-        padding: var(--space-1200) 0;
       }
     }
 
@@ -1269,7 +1371,7 @@
        MOBILE RESPONSIVE BREAKPOINTS
        ============================================ */
     @media (max-width: 768px) {
-      /* Show hamburger, hide desktop nav & profile btn */
+      /* ── Navigation ── */
       .auth-nav__hamburger {
         display: flex;
       }
@@ -1286,34 +1388,69 @@
         justify-content: space-between;
       }
 
-      /* Hero mobile overrides */
+      /* ── Hero mobile ── */
+      .hero {
+        overflow: hidden;
+      }
+
+      /* Hero container: no horizontal padding on mobile */
       .hero__container {
-        grid-template-columns: 1fr !important;
-        gap: var(--space-600);
-        padding-left: var(--space-400) !important;
-        padding-right: var(--space-400) !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
       }
 
-      .hero__left {
-        gap: var(--space-500);
+      /* Hide desktop title bar */
+      .hero__title-bar {
+        display: none;
       }
 
-      .hero__title {
-        font-size: var(--heading-h6-size);
-        line-height: var(--heading-h6-line-height);
+      /* Hide desktop image */
+      .hero__bg {
+        display: none;
       }
 
-      .hero__image {
+      /* Hide desktop form overlay */
+      .hero__form-overlay {
+        display: none;
+      }
+
+      /* image-form: normal flow on mobile */
+      .hero__image-form {
+        position: static;
+        overflow: visible;
+        margin-bottom: 0;
+      }
+
+      /* Show mobile greeting */
+      .hero__greeting {
+        display: block;
+        font-family: var(--font-family-heading);
+        font-size: var(--heading-h8-size);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-primary);
+        margin: 0;
+        padding: var(--space-400) var(--space-400) var(--space-300);
+      }
+
+      /* Show mobile image */
+      .hero__image-wrapper {
+        display: block;
         height: 220px;
-        border-radius: var(--radius-m);
       }
 
-      /* Booking form: full width, touch-friendly */
+      /* Booking form below image, card style */
       .booking-form-landing {
+        width: 100%;
         padding: var(--space-500) var(--space-400);
         gap: var(--space-400);
-        box-shadow: var(--shadow-s);
+        box-shadow: var(--shadow-l);
         border-radius: var(--radius-m);
+        background-color: var(--surface-primary);
+        border: none;
+        max-width: 100%;
+        margin: calc(-1 * var(--space-800)) var(--space-400) 0;
+        position: relative;
+        z-index: 1;
       }
 
       .booking-form-landing__toggle {
@@ -1321,12 +1458,16 @@
       }
 
       .booking-form-landing__toggle-btn {
-        padding: var(--space-200) var(--space-300);
+        flex: 1;
+        padding: var(--space-300) var(--space-200);
         font-size: var(--body-md-size);
+        font-weight: var(--font-weight-semibold);
+        text-align: center;
       }
 
       .booking-form-landing__label {
         font-size: var(--body-md-size);
+        font-weight: var(--font-weight-semibold);
       }
 
       .booking-form-landing__input {
@@ -1338,15 +1479,15 @@
       }
 
       .booking-form-landing__submit {
-        padding: var(--space-300) var(--space-400);
+        padding: var(--space-400);
         font-size: var(--body-md-size);
         min-height: 52px;
         border-radius: var(--radius-s);
       }
 
-      /* Upcoming ride: single column */
+      /* ── Upcoming Ride ── */
       .upcoming-ride {
-        padding: var(--space-1200) 0;
+        padding: var(--space-1200) 0 var(--space-1000);
       }
 
       .upcoming-ride__container {
@@ -1355,9 +1496,12 @@
       }
 
       .upcoming-ride__heading {
-        font-size: var(--heading-h7-size);
-        line-height: var(--heading-h7-line-height);
+        font-family: var(--font-family-heading);
+        font-size: var(--heading-h6-size);
+        line-height: var(--heading-h6-line-height);
+        font-weight: var(--font-weight-bold);
         margin-bottom: var(--space-500);
+        text-align: center;
       }
 
       .upcoming-ride__card {
@@ -1365,49 +1509,80 @@
         gap: 0;
         border-radius: var(--radius-m);
         overflow: hidden;
+        box-shadow: var(--shadow-s);
+        border: var(--border-s) solid var(--border-default);
       }
 
       .upcoming-ride__map {
-        height: 200px;
+        height: 190px;
         order: -1;
       }
 
       .upcoming-ride__details {
-        padding: var(--space-500) var(--space-400);
-        gap: var(--space-400);
+        padding: var(--space-400) var(--space-400);
+        gap: var(--space-300);
       }
 
+      /* Mobile ride elements */
+      .upcoming-ride__booking-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .upcoming-ride__info {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-100);
+      }
+
+      .upcoming-ride__passenger {
+        font-size: var(--body-md-size);
+        font-weight: var(--font-weight-regular);
+      }
+
+      .upcoming-ride__datetime {
+        font-weight: var(--font-weight-bold);
+        color: var(--text-primary);
+        font-size: var(--body-md-size);
+      }
+
+      .upcoming-ride__class {
+        font-size: var(--body-md-size);
+        font-weight: var(--font-weight-bold);
+      }
+
+      /* Stack actions vertically: primary first, then text link */
+      .upcoming-ride__actions {
+        flex-direction: column;
+        gap: var(--space-100);
+        margin-top: var(--space-100);
+      }
+
+      .upcoming-ride__actions .btn {
+        width: 100%;
+        min-height: 52px;
+      }
+
+      /* Hide old share button (replaced by share icon) */
       .upcoming-ride__share {
         position: static;
         align-self: flex-end;
         margin-bottom: calc(-1 * var(--space-200));
       }
 
-      .upcoming-ride__driver {
-        font-size: var(--body-lg-size);
-        line-height: var(--body-lg-line-height);
-      }
-
-      .upcoming-ride__datetime {
-        font-size: var(--body-sm-size);
-        line-height: var(--body-sm-line-height);
-      }
-
       .upcoming-ride__location-text {
         font-size: var(--body-md-size);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
-      .upcoming-ride__actions {
-        flex-direction: column;
-        gap: var(--space-300);
+      .upcoming-ride__divider {
+        margin: var(--space-100) 0;
       }
 
-      .upcoming-ride__actions .btn {
-        width: 100%;
-        min-height: 48px;
-      }
-
-      /* Services mobile */
+      /* ── Services Carousel ── */
       .services {
         padding: var(--space-1200) 0;
       }
@@ -1415,23 +1590,81 @@
       .services__container {
         padding-left: var(--space-400) !important;
         padding-right: var(--space-400) !important;
+        overflow: visible;
       }
 
       .services__heading {
-        font-size: var(--heading-h7-size);
-        line-height: var(--heading-h7-line-height);
+        font-family: var(--font-family-heading);
+        font-size: var(--heading-h6-size);
+        line-height: var(--heading-h6-line-height);
+        font-weight: var(--font-weight-bold);
         margin-bottom: var(--space-500);
+        text-align: center;
       }
 
-      /* Services mobile card size */
+      .services__carousel-wrapper {
+        overflow: visible;
+      }
+
+      /* Pull carousel full-bleed, use padding for inset */
+      .services__carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin: 0 calc(-1 * var(--space-400));
+        padding: 0 var(--space-400) var(--space-100);
+        scroll-padding: var(--space-400);
+      }
+
+      .services__carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .services__track {
+        gap: var(--space-400);
+        padding-right: var(--space-400);
+      }
+
+      /* One full card + visible peek (~48px) of next card */
       .services__track .card-service {
-        flex: 0 0 calc(100% - var(--space-800));
-        max-width: 300px;
-        border-radius: var(--radius-m);
-        overflow: hidden;
+        flex: 0 0 calc(100vw - 80px);
+        max-width: none;
+        scroll-snap-align: start;
       }
 
-      /* Destinations mobile */
+      /* Show dots on mobile */
+      .services__dots {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-200);
+        margin-top: var(--space-500);
+      }
+
+      .services__dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 100px;
+        background-color: var(--grey-70);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: width 0.2s ease, background-color 0.2s ease;
+      }
+
+      .services__dot--active {
+        background-color: var(--sea-green-50);
+        width: 20px;
+      }
+
+      /* Hide desktop nav arrows on mobile */
+      .services__nav {
+        display: none;
+      }
+
+      /* ── Destinations Carousel ── */
       .destinations {
         padding: var(--space-1200) 0;
       }
@@ -1439,28 +1672,38 @@
       .destinations__container {
         padding-left: var(--space-400) !important;
         padding-right: var(--space-400) !important;
+        overflow: visible;
+      }
+
+      /* Stack header on mobile */
+      .destinations__header {
+        flex-direction: column;
+        gap: var(--space-400);
+        margin-bottom: var(--space-500);
       }
 
       .destinations__heading {
-        font-size: var(--heading-h7-size);
-        line-height: var(--heading-h7-line-height);
-        margin-bottom: var(--space-200);
+        font-family: var(--font-family-heading);
+        font-size: var(--heading-h6-size);
+        line-height: var(--heading-h6-line-height);
+        font-weight: var(--font-weight-bold);
+        margin-bottom: 0;
+        text-align: left;
       }
 
       .destinations__subtitle {
-        font-size: var(--body-sm-size);
-        line-height: var(--body-sm-line-height);
-        margin-bottom: var(--space-400);
+        font-size: var(--body-md-size);
+        line-height: var(--body-md-line-height);
+        color: var(--text-secondary);
       }
 
+      /* Scrollable filter pills on mobile */
       .destinations__filters {
         justify-content: flex-start;
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        padding-bottom: var(--space-100);
-        margin-bottom: var(--space-400);
         gap: var(--space-200);
       }
 
@@ -1475,14 +1718,49 @@
         font-size: var(--body-sm-size);
       }
 
-      /* Destinations mobile card size */
+      .destinations__carousel-wrapper {
+        overflow: visible;
+      }
+
+      .destinations__carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin: 0 calc(-1 * var(--space-400));
+        padding: 0 var(--space-400);
+        scroll-padding: var(--space-400);
+      }
+
+      .destinations__carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .destinations__track {
+        gap: var(--space-400);
+      }
+
       .card-destination {
-        flex: 0 0 calc(100% - var(--space-800));
-        max-width: 280px;
+        flex: 0 0 min(260px, calc(100vw - var(--space-800)));
         scroll-snap-align: start;
       }
 
-      /* Footer mobile */
+      /* Hide desktop nav arrows */
+      .destinations__nav {
+        display: none;
+      }
+
+      /* Show explore more link on mobile */
+      .destinations__explore {
+        display: flex;
+        justify-content: center;
+        margin-top: var(--space-600);
+        padding: 0 var(--space-400);
+      }
+
+      /* ── Footer ── */
       .site-footer {
         padding: var(--space-1000) 0 var(--space-600) !important;
       }
@@ -1522,7 +1800,7 @@
         gap: var(--space-400);
       }
 
-      /* Page loader mobile */
+      /* ── Page Loader ── */
       .page-loader__hero {
         flex-direction: column;
       }
@@ -1535,22 +1813,89 @@
       .page-loader__services-grid {
         grid-template-columns: 1fr;
       }
+
+      /* ── Date Picker: bottom sheet on mobile ── */
+      .date-picker-overlay {
+        align-items: flex-end;
+        padding: 0;
+      }
+
+      .date-picker {
+        width: 100%;
+        border-radius: var(--radius-m) var(--radius-m) 0 0;
+        max-width: 100%;
+        padding: var(--space-600) var(--space-500) var(--space-800);
+      }
+
+      /* ── Time Picker: bottom sheet on mobile ── */
+      .time-picker-overlay {
+        align-items: flex-end;
+        padding: 0;
+      }
+
+      .time-picker {
+        width: 100%;
+        border-radius: var(--radius-m) var(--radius-m) 0 0;
+        max-width: 100%;
+        padding-bottom: var(--space-800);
+      }
+
+      /* ── Share Dialog: centered with horizontal margin ── */
+      .share-dialog {
+        margin: var(--space-400);
+        max-width: calc(100% - var(--space-800));
+      }
     }
 
     @media (max-width: 480px) {
+      /* ── Hero ── */
+      .hero {
+        padding: var(--space-400) 0 var(--space-800);
+      }
+
+      .hero__container {
+        padding-left: var(--space-300) !important;
+        padding-right: var(--space-300) !important;
+        gap: var(--space-400);
+      }
+
       .hero__title {
         font-size: var(--heading-h7-size);
         line-height: var(--heading-h7-line-height);
       }
 
+      .hero__image {
+        height: 190px;
+      }
+
+      /* ── Services ── */
+      .services__carousel {
+        margin: 0 calc(-1 * var(--space-300));
+        padding: 0 var(--space-300);
+      }
+
       .services__track .card-service {
-        flex: 0 0 85vw;
-        max-width: 85vw;
+        flex: 0 0 calc(100vw - var(--space-800));
+      }
+
+      /* ── Destinations ── */
+      .destinations__carousel {
+        margin: 0 calc(-1 * var(--space-300));
+        padding: 0 var(--space-300);
       }
 
       .card-destination {
-        flex: 0 0 85vw;
-        max-width: 85vw;
+        flex: 0 0 min(240px, calc(100vw - var(--space-600)));
+      }
+
+      /* ── Upcoming Ride ── */
+      .upcoming-ride__container {
+        padding-left: var(--space-300) !important;
+        padding-right: var(--space-300) !important;
+      }
+
+      .upcoming-ride__details {
+        padding: var(--space-400) var(--space-300);
       }
     }
   </style>
@@ -1881,17 +2226,29 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero__container">
-      <!-- Left Side: Content -->
-      <div class="hero__left">
+      <!-- Title above image (desktop) / greeting (mobile) -->
+      <div class="hero__title-bar">
         <h1 class="hero__title">Welcome back, Mr. Mehrab.</h1>
+      </div>
+      <p class="hero__greeting">Welcome back, Mr. Mehrab.</p>
+    </div><!-- /.hero__container -->
 
-        <div class="hero__image">
+    <!-- Image + floating form — full viewport width -->
+    <div class="hero__image-form">
+
+        <!-- Mobile image wrapper -->
+        <div class="hero__image-wrapper">
           <img src="../../assets/images/photos/Landing page/Landing Page/Hero Section Image.png" alt="" class="hero__image-img">
         </div>
-      </div>
 
-      <!-- Right Side: Booking Form -->
-      <div class="booking-form-landing">
+        <!-- Desktop: full-width image -->
+        <div class="hero__bg">
+          <img src="../../assets/images/photos/Landing page/Landing Page/Hero Section Image.png" alt="">
+        </div>
+
+        <!-- Booking form floats over image -->
+        <div class="hero__form-overlay">
+          <div class="booking-form-landing">
         <!-- Ride Type Toggle -->
         <div class="booking-form-landing__toggle">
           <button class="booking-form-landing__toggle-btn booking-form-landing__toggle-btn--active" onclick="switchTab('oneway')">One Way Ride</button>
@@ -1986,8 +2343,9 @@
           </svg>
           See Prices
         </button>
-      </div>
-    </div>
+        </div><!-- /.booking-form-landing -->
+        </div><!-- /.hero__form-overlay -->
+    </div><!-- /.hero__image-form -->
   </section>
 
   <!-- Your Upcoming Ride Section -->
@@ -1998,35 +2356,126 @@
       <div class="upcoming-ride__card">
         <!-- Map -->
         <div class="upcoming-ride__map">
-          <svg width="100%" height="100%" viewBox="0 0 600 400" fill="none">
-            <rect width="600" height="400" fill="#E8F5E9"/>
-            <path d="M150 100 L200 150 L250 120 L300 180 L350 150 L400 200 L450 170" stroke="#4CAF50" stroke-width="3" fill="none"/>
-            <circle cx="150" cy="100" r="8" fill="#2E7D32"/>
-            <circle cx="450" cy="170" r="8" fill="#C62828"/>
-            <text x="300" y="350" text-anchor="middle" class="map-label">Route Map</text>
+          <svg width="100%" height="100%" viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
+            <!-- Base map background -->
+            <rect width="400" height="220" fill="#E8EBE4"/>
+
+            <!-- Water/bay area (Newark Bay) -->
+            <path d="M0 140 L30 130 L50 120 L60 100 L55 80 L45 60 L30 40 L0 30 Z" fill="#C9D8E8" opacity="0.7"/>
+            <path d="M340 0 L400 0 L400 60 L380 80 L360 90 L350 70 L340 40 Z" fill="#C9D8E8" opacity="0.6"/>
+
+            <!-- Parks / green areas -->
+            <rect x="180" y="60" width="40" height="30" rx="3" fill="#C8D8B8" opacity="0.8"/>
+            <rect x="280" y="150" width="35" height="25" rx="3" fill="#C8D8B8" opacity="0.8"/>
+            <rect x="100" y="170" width="25" height="18" rx="2" fill="#C8D8B8" opacity="0.7"/>
+
+            <!-- City blocks -->
+            <rect x="140" y="50" width="18" height="12" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="162" y="50" width="14" height="12" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="140" y="66" width="18" height="10" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="162" y="66" width="14" height="10" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="220" y="80" width="16" height="11" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="240" y="80" width="12" height="11" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="255" y="80" width="16" height="11" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="220" y="95" width="16" height="10" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="240" y="95" width="12" height="10" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="255" y="95" width="16" height="10" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="300" y="50" width="20" height="13" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="324" y="50" width="15" height="13" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="342" y="50" width="20" height="13" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="300" y="67" width="20" height="11" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="324" y="67" width="15" height="11" rx="1" fill="#D8D4CE" opacity="0.9"/>
+            <rect x="342" y="67" width="20" height="11" rx="1" fill="#D8D4CE" opacity="0.9"/>
+
+            <!-- Airport area (bottom left - EWR) -->
+            <rect x="30" y="155" width="55" height="40" rx="2" fill="#D0CEC8" opacity="0.9"/>
+            <rect x="35" y="160" width="45" height="6" rx="1" fill="#BEC0BE" opacity="0.8"/>
+            <rect x="35" y="170" width="45" height="6" rx="1" fill="#BEC0BE" opacity="0.8"/>
+            <rect x="35" y="180" width="30" height="6" rx="1" fill="#BEC0BE" opacity="0.8"/>
+
+            <!-- Major highway / turnpike (NJ Turnpike) - thick -->
+            <path d="M58 220 L65 195 L72 180 L80 168 L90 155 L105 140 L120 128 L140 118 L165 108 L190 100 L215 92 L240 85 L268 78 L290 72 L315 65 L345 57 L375 50 L400 44" stroke="#E8E2D4" stroke-width="8" stroke-linecap="round"/>
+            <path d="M58 220 L65 195 L72 180 L80 168 L90 155 L105 140 L120 128 L140 118 L165 108 L190 100 L215 92 L240 85 L268 78 L290 72 L315 65 L345 57 L375 50 L400 44" stroke="#D4CEBC" stroke-width="5" stroke-linecap="round"/>
+
+            <!-- Secondary road (Route 1/9) -->
+            <path d="M50 220 L60 195 L70 175 L82 162 L95 148 L112 135 L130 125 L155 115 L182 106 L210 98 L238 90 L265 83 L292 76" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+
+            <!-- Local roads - horizontal grid -->
+            <path d="M0 85 L60 84 L120 82 L180 80 L240 78 L300 76 L360 74 L400 72" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M0 105 L70 104 L140 102 L200 100 L270 98 L340 96 L400 95" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M0 128 L80 126 L160 124 L240 122 L320 120 L400 119" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M0 148 L80 147 L165 146 L250 145 L335 144 L400 144" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Local roads - vertical grid -->
+            <path d="M120 0 L118 50 L116 100 L115 150 L114 200 L113 220" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M200 0 L199 55 L197 110 L196 165 L195 220" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M280 0 L279 60 L278 120 L277 180 L276 220" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M355 0 L354 55 L353 110 L352 165 L351 220" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M80 0 L79 50 L78 100 L77 150 L76 220" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Bridge (connecting to Manhattan) -->
+            <path d="M270 72 L295 55 L318 42 L340 32" stroke="#C8C0B0" stroke-width="5" stroke-linecap="round"/>
+            <path d="M270 72 L295 55 L318 42 L340 32" stroke="#E0D8C8" stroke-width="3" stroke-linecap="round"/>
+
+            <!-- Map labels (subtle) -->
+            <text x="38" y="152" font-family="Arial,sans-serif" font-size="7" fill="#888880" letter-spacing="0.3">Newark</text>
+            <text x="38" y="161" font-family="Arial,sans-serif" font-size="6" fill="#999990" letter-spacing="0.2">Int'l Airport</text>
+            <text x="148" y="76" font-family="Arial,sans-serif" font-size="6" fill="#888880" letter-spacing="0.2">Elizabeth</text>
+            <text x="225" y="73" font-family="Arial,sans-serif" font-size="6" fill="#888880" letter-spacing="0.2">Bayonne</text>
+            <text x="308" y="47" font-family="Arial,sans-serif" font-size="6" fill="#888880" letter-spacing="0.2">Jersey City</text>
+            <text x="190" y="57" font-family="Arial,sans-serif" font-size="6" fill="#888880">I-95</text>
+
+            <!-- Route line (Newark → Times Square area) -->
+            <path d="M58 192 L72 178 L82 165 L96 150 L112 136 L132 124 L158 112 L186 103 L218 94 L250 86 L278 78 L308 68 L338 58" stroke="#2E7D55" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0"/>
+
+            <!-- Origin marker (EWR) -->
+            <circle cx="58" cy="192" r="9" fill="#2E7D55" opacity="0.25"/>
+            <circle cx="58" cy="192" r="6" fill="#2E7D55"/>
+            <circle cx="58" cy="192" r="3" fill="white"/>
+
+            <!-- Destination marker (Times Square) -->
+            <circle cx="338" cy="58" r="11" fill="#2E7D55" opacity="0.2"/>
+            <circle cx="338" cy="58" r="8" fill="#2E7D55"/>
+            <circle cx="338" cy="58" r="4" fill="white"/>
+
+            <!-- Scale indicator -->
+            <line x1="350" y1="208" x2="390" y2="208" stroke="#888880" stroke-width="1.5"/>
+            <line x1="350" y1="205" x2="350" y2="211" stroke="#888880" stroke-width="1.5"/>
+            <line x1="390" y1="205" x2="390" y2="211" stroke="#888880" stroke-width="1.5"/>
+            <text x="360" y="218" font-family="Arial,sans-serif" font-size="6" fill="#888880">5 km</text>
+
+            <!-- Copyright-style label -->
+            <text x="6" y="216" font-family="Arial,sans-serif" font-size="5.5" fill="#AAAAAA">© OpenStreetMap contributors</text>
           </svg>
         </div>
 
         <!-- Ride Details -->
         <div class="upcoming-ride__details">
-          <button class="upcoming-ride__share" onclick="shareRide()">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="18" cy="5" r="3"/>
-              <circle cx="6" cy="12" r="3"/>
-              <circle cx="18" cy="19" r="3"/>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-            </svg>
-            Share
-          </button>
-
-          <span class="upcoming-ride__status">BOOKING ACCEPTED</span>
-
-          <div class="upcoming-ride__info">
-            <h3 class="upcoming-ride__driver">Midash Jalim</h3>
-            <p class="upcoming-ride__datetime">Sunday, 23 Nov 2025, 01:40 pm</p>
+          <!-- Booking ID row -->
+          <div class="upcoming-ride__booking-row">
+            <span class="upcoming-ride__booking-id">BOOKING ID: #12345678</span>
+            <button class="upcoming-ride__share-icon" onclick="shareRide()" aria-label="Share booking">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <circle cx="18" cy="5" r="3"/>
+                <circle cx="6" cy="12" r="3"/>
+                <circle cx="18" cy="19" r="3"/>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              </svg>
+            </button>
           </div>
 
+          <!-- Passenger & ride info -->
+          <div class="upcoming-ride__info">
+            <p class="upcoming-ride__passenger">Mehrab Islam</p>
+            <p class="upcoming-ride__datetime">Sunday, 23 Nov 2025, 01:45 pm</p>
+            <p class="upcoming-ride__class">Standard Class</p>
+          </div>
+
+          <!-- Divider -->
+          <div class="upcoming-ride__divider"></div>
+
+          <!-- Locations -->
           <div class="upcoming-ride__locations">
             <div class="upcoming-ride__location">
               <div class="upcoming-ride__location-icon">
@@ -2035,7 +2484,7 @@
                   <circle cx="12" cy="12" r="3"/>
                 </svg>
               </div>
-              <span class="upcoming-ride__location-text">Newark (John's Airport (EWR)</span>
+              <span class="upcoming-ride__location-text">Newark Liberty Airport (EWR)</span>
             </div>
 
             <div class="upcoming-ride__location">
@@ -2045,21 +2494,29 @@
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
               </div>
-              <span class="upcoming-ride__location-text">From Face New York City / Times Square</span>
+              <span class="upcoming-ride__location-text">Hyatt Place New York City / Times S...</span>
+            </div>
+
+            <div class="upcoming-ride__location">
+              <div class="upcoming-ride__location-icon upcoming-ride__location-icon--route">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="16 3 21 8 16 13"/>
+                  <line x1="21" y1="8" x2="9" y2="8"/>
+                  <polyline points="8 21 3 16 8 11"/>
+                  <line x1="3" y1="16" x2="15" y2="16"/>
+                </svg>
+              </div>
+              <span class="upcoming-ride__location-text">25 km . 20 min</span>
             </div>
           </div>
 
-          <div class="upcoming-ride__distance">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-            25 km / 22 min
-          </div>
+          <!-- Divider before actions -->
+          <div class="upcoming-ride__divider"></div>
 
+          <!-- Actions -->
           <div class="upcoming-ride__actions">
-            <button class="btn btn--secondary btn--md">View Details</button>
-            <button class="btn btn--primary btn--md">Book Return</button>
+            <button class="btn btn--primary btn--md upcoming-ride__action-primary">Book Return</button>
+            <button class="upcoming-ride__action-secondary">View Details</button>
           </div>
         </div>
       </div>
@@ -2077,29 +2534,29 @@
             <!-- Airport Transfers -->
             <div class="card-service">
               <div class="card-service__image">
-                <img src="https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=600&q=80" alt="Airport Transfer - Chauffeur with car at airport" loading="lazy">
+                <img src="../../assets/images/photos/source/Airport Transfer.png" alt="Airport Transfer - Chauffeur with car at airport" loading="lazy">
               </div>
               <div class="card-service__content">
                 <h3 class="card-service__heading">Airport Transfers</h3>
-                <p class="card-service__body">Reliable rides to and from the airport. Your chauffeur tracks your flight and arrives on time, every time.</p>
+                <p class="card-service__body">Reliable rides to and from the airport. Your chauffeur tracks your flight and arrives on time, every time</p>
               </div>
             </div>
 
             <!-- City-to-City Rides -->
             <div class="card-service">
               <div class="card-service__image">
-                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&q=80" alt="City to City Rides - Luxury car interior" loading="lazy">
+                <img src="../../assets/images/photos/source/City to city rides.png" alt="City to City Rides - Luxury car interior" loading="lazy">
               </div>
               <div class="card-service__content">
                 <h3 class="card-service__heading">City-to-City Rides</h3>
-                <p class="card-service__body">Travel between cities with comfort and ease. Enjoy a luxurious, uninterrupted ride to your destination.</p>
+                <p class="card-service__body">Travel between cities with comfort and ease. Enjoy a luxurious, uninterrupted ride from door to door</p>
               </div>
             </div>
 
             <!-- Hourly Rides -->
             <div class="card-service">
               <div class="card-service__image">
-                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80" alt="Hourly Rides - Professional chauffeur service" loading="lazy">
+                <img src="../../assets/images/photos/source/Hourly Rides.png" alt="Hourly Rides - Professional chauffeur service" loading="lazy">
               </div>
               <div class="card-service__content">
                 <h3 class="card-service__heading">Hourly Rides</h3>
@@ -2123,7 +2580,7 @@
           </button>
         </div>
 
-        <!-- Dot Indicators (tablet only) -->
+        <!-- Dot Indicators (tablet + mobile) -->
         <div class="services__dots" id="servicesDots" aria-hidden="true">
           <button class="services__dot services__dot--active" onclick="scrollToServiceCard(0)" aria-label="Go to card 1"></button>
           <button class="services__dot" onclick="scrollToServiceCard(1)" aria-label="Go to card 2"></button>
@@ -2137,23 +2594,35 @@
   <section class="destinations" id="destinations">
     <div class="destinations__container">
       <div class="destinations__header">
-        <h2 class="destinations__heading">Destinations</h2>
-        <p class="destinations__subtitle">Travel effortlessly between U.S. airports and cities with chauffeurs who value your time, comfort, and peace of mind.</p>
-      </div>
-
-      <div class="destinations__filters">
-        <button class="destinations__filter-btn destinations__filter-btn--active" onclick="filterDestinations('hotel')">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-          </svg>
-          Hotel
-        </button>
-        <button class="destinations__filter-btn" onclick="filterDestinations('attraction')">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-          </svg>
-          Attraction
-        </button>
+        <div class="destinations__header-left">
+          <h2 class="destinations__heading">Destinations</h2>
+          <p class="destinations__subtitle">Travel effortlessly between U.S. airports and cities with chauffeurs who value your time, comfort, and peace of mind.</p>
+        </div>
+        <div class="destinations__filters">
+          <button class="destinations__filter-btn destinations__filter-btn--active" onclick="filterDestinations('cities')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            Cities
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+          <button class="destinations__filter-btn" onclick="filterDestinations('attractions')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            Attractions
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div class="destinations__carousel-wrapper">
@@ -2162,76 +2631,83 @@
             <!-- Destination Cards -->
             <div class="card-destination">
               <div class="card-destination__image">
-                <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="Statue of Liberty, New York" loading="lazy">
+                <img src="../../assets/images/photos/source/New York.png" alt="Statue of Liberty, New York" loading="lazy">
               </div>
               <div class="card-destination__content">
                 <h3 class="card-destination__heading">New York</h3>
                 <div class="card-destination__location">
                   <div class="card-destination__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                     </svg>
                   </div>
-                  <span class="card-destination__text">JFK/J. Kennedy International Airport</span>
+                  <span class="card-destination__text">John F. Kennedy International Airport</span>
                 </div>
               </div>
             </div>
 
             <div class="card-destination">
               <div class="card-destination__image">
-                <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="Statue of Liberty, New York" loading="lazy">
+                <img src="../../assets/images/photos/source/New York.png" alt="Statue of Liberty, New York" loading="lazy">
               </div>
               <div class="card-destination__content">
                 <h3 class="card-destination__heading">New York</h3>
                 <div class="card-destination__location">
                   <div class="card-destination__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                     </svg>
                   </div>
-                  <span class="card-destination__text">LGA/La Guardia International Airport</span>
+                  <span class="card-destination__text">La Guardia International Airport</span>
                 </div>
               </div>
             </div>
 
             <div class="card-destination">
               <div class="card-destination__image">
-                <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="Statue of Liberty, New York" loading="lazy">
+                <img src="../../assets/images/photos/source/New York.png" alt="Statue of Liberty, New York" loading="lazy">
               </div>
               <div class="card-destination__content">
                 <h3 class="card-destination__heading">New York</h3>
                 <div class="card-destination__location">
                   <div class="card-destination__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                     </svg>
                   </div>
-                  <span class="card-destination__text">EWR/Newark Liberty International Airport</span>
+                  <span class="card-destination__text">Newark Liberty International Airport</span>
                 </div>
               </div>
             </div>
 
             <div class="card-destination">
               <div class="card-destination__image">
-                <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="Statue of Liberty, New York" loading="lazy">
+                <img src="../../assets/images/photos/source/New York.png" alt="Statue of Liberty, New York" loading="lazy">
               </div>
               <div class="card-destination__content">
                 <h3 class="card-destination__heading">New York</h3>
                 <div class="card-destination__location">
                   <div class="card-destination__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                     </svg>
                   </div>
-                  <span class="card-destination__text">JFK/J. Kennedy International Airport</span>
+                  <span class="card-destination__text">John F. Kennedy International Airport</span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Explore more link (mobile) -->
+        <div class="destinations__explore">
+          <a href="#destinations" class="destinations__explore-link">
+            Explore more destinations
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
         </div>
 
         <!-- Navigation -->
@@ -2801,12 +3277,15 @@
       }
     });
 
-    // Services carousel dot indicators (tablet)
+    // Services carousel dot indicators (tablet + mobile)
     function scrollToServiceCard(index) {
       const carousel = document.querySelector('.services__carousel');
       const cards = carousel.querySelectorAll('.card-service');
       if (!cards[index]) return;
-      carousel.scrollTo({ left: cards[index].offsetLeft, behavior: 'smooth' });
+      // offsetLeft is relative to offsetParent (the track); scroll carousel to match
+      const track = carousel.querySelector('.services__track');
+      const cardLeft = cards[index].offsetLeft + (track ? track.offsetLeft : 0);
+      carousel.scrollTo({ left: cardLeft, behavior: 'smooth' });
       updateServicesDots(index);
     }
 
@@ -2817,16 +3296,19 @@
       });
     }
 
-    // Track scroll position to update dots
+    // Track scroll position to update dots (works for both tablet and mobile)
     document.addEventListener('DOMContentLoaded', function() {
       const carousel = document.querySelector('.services__carousel');
       if (!carousel) return;
+      const track = carousel.querySelector('.services__track');
       carousel.addEventListener('scroll', function() {
         const cards = carousel.querySelectorAll('.card-service');
+        const trackOffset = track ? track.offsetLeft : 0;
         let closestIndex = 0;
         let minDiff = Infinity;
         cards.forEach((card, i) => {
-          const diff = Math.abs(card.offsetLeft - carousel.scrollLeft);
+          const cardScrollLeft = card.offsetLeft + trackOffset;
+          const diff = Math.abs(cardScrollLeft - carousel.scrollLeft);
           if (diff < minDiff) { minDiff = diff; closestIndex = i; }
         });
         updateServicesDots(closestIndex);

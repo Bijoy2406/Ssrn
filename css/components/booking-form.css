@@ -1,7 +1,7 @@
 /**
  * SSRN Booking Form Component
- * Card-based booking form with ride type toggle
- * Based on Figma design system
+ * Node: 696-22718 — BookingForm (One way ride + Hourly Ride, Desktop + Mobile)
+ * Figma: https://www.figma.com/design/qZqrAbd4PQ3zL6FAHWbiTj/SSRN?node-id=696-22718
  */
 
 /* ============================================
@@ -11,29 +11,36 @@
   display: flex;
   justify-content: stretch;
   align-items: stretch;
-  padding: var(--space-800);
-  background-color: var(--white);
-  border-radius: var(--radius-m);
-  box-shadow: var(--shadow-2xl);
+  padding: var(--space-800);         /* 32px */
+  background-color: var(--white);    /* #ffffff */
+  border-radius: var(--radius-m);    /* 12px */
+  box-shadow: 0px 1px 25px 0px var(--shadow-color); /* Drop Shadow/2XL */
   width: 441px;
   max-width: 100%;
+  position: relative;
 }
 
 .booking-form__inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-600);
+  gap: var(--space-600);             /* 24px */
   flex: 1;
+  isolation: isolate;
+  align-items: flex-start;
 }
 
 /* ============================================
-   BOOKING DETAILS (fields container)
+   BOOKING DETAILS — fields container
    ============================================ */
 .booking-form__details {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   align-self: stretch;
-  gap: var(--space-300);
+  gap: var(--space-300);             /* 12px */
+  isolation: isolate;
+  position: relative;
+  z-index: 3;
 }
 
 /* ============================================
@@ -44,106 +51,452 @@
   flex-direction: row;
   align-items: center;
   align-self: stretch;
-  gap: var(--space-400);
+  gap: var(--space-400);             /* 16px */
+  position: relative;
+  z-index: 6;
 }
 
 .booking-form__ride-type {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--space-300);
-  padding: var(--space-300) var(--space-600);
+  gap: var(--space-300);             /* 12px */
+  padding: var(--space-300) var(--space-600); /* 12px 24px */
   flex: 1;
   font-family: var(--font-family-body);
-  font-size: var(--body-sm-size);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--body-sm-line-height);
+  font-size: var(--body-sm-size);           /* 12px */
+  font-weight: var(--font-weight-semibold); /* 600 */
+  line-height: 16px;
   text-align: center;
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-s);    /* 8px */
   cursor: pointer;
-  border: var(--border-m) solid transparent;
-  transition: all 0.2s ease;
+  border: var(--border-m) solid transparent; /* 2px */
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
 }
 
-/* Active ride type (filled neutral) */
+/* Active ride type — filled dark */
 .booking-form__ride-type--active {
-  background-color: var(--grey-10);
-  color: var(--white);
+  background-color: var(--grey-10);  /* #313131 */
+  color: var(--white);               /* #ffffff */
   border-color: var(--grey-10);
 }
 
-/* Inactive ride type (outline neutral) */
+/* Inactive ride type — outline */
 .booking-form__ride-type--inactive {
   background-color: transparent;
-  color: var(--black);
+  color: var(--black);               /* #03110d */
   border-color: var(--black);
 }
 
 .booking-form__ride-type--inactive:hover {
-  background-color: var(--grey-70);
+  background-color: var(--grey-70);  /* #f3f6f6 */
+}
+
+.booking-form__ride-type:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
 }
 
 /* ============================================
-   FORM FIELD GROUP
+   FORM FIELD
    ============================================ */
 .booking-form__field {
   display: flex;
   flex-direction: column;
   align-self: stretch;
-  gap: var(--space-200);
+  gap: var(--space-200);             /* 8px */
+  position: relative;
 }
 
 /* ============================================
-   SUBMIT BUTTON
+   FIELD LABEL
+   ============================================ */
+.booking-form__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);             /* 8px */
+  align-self: stretch;
+}
+
+.booking-form__label-text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);           /* 16px */
+  font-weight: var(--font-weight-medium);   /* 500 */
+  line-height: var(--body-md-line-height);  /* 24px */
+  color: var(--text-primary);              /* #03110d */
+}
+
+/* Optional question-mark icon next to label (e.g. Flight No.) */
+.booking-form__label-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   INPUT WRAPPER
+   ============================================ */
+.booking-form__input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);             /* 8px */
+  align-self: stretch;
+  padding: var(--space-400) var(--space-300);  /* 16px 12px */
+  background-color: var(--surface-primary);    /* #f9fafa */
+  border: var(--border-m) solid var(--border-tertiary); /* 2px solid #616262 */
+  border-radius: var(--radius-s);    /* 8px */
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+/* Active / focused state — primary border */
+.booking-form__input-wrapper--active,
+.booking-form__input-wrapper:focus-within {
+  border-color: var(--border-primary); /* #03110d */
+}
+
+.booking-form__input-wrapper:hover:not(:focus-within) {
+  border-color: var(--border-secondary); /* #494a4a */
+}
+
+/* ============================================
+   INPUT FIELD (text / native input inside wrapper)
+   ============================================ */
+.booking-form__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);           /* 16px */
+  font-weight: var(--font-weight-regular);  /* 400 */
+  line-height: var(--body-md-line-height);  /* 24px */
+  color: var(--text-primary);              /* #03110d */
+  min-width: 0;
+}
+
+.booking-form__input::placeholder {
+  color: var(--text-tertiary);             /* #616262 */
+  font-weight: var(--font-weight-regular);
+}
+
+/* ============================================
+   INPUT ICONS
+   ============================================ */
+.booking-form__input-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);             /* #03110d */
+}
+
+.booking-form__input-icon--trailing {
+  color: var(--text-tertiary);            /* #616262 */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.booking-form__input-icon--trailing:hover {
+  color: var(--text-primary);
+}
+
+/* Clear / cancel icon */
+.booking-form__input-clear {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.booking-form__input-clear:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   AUTOCOMPLETE / DROPDOWN MENU
+   ============================================ */
+.booking-form__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: var(--surface-primary); /* #f9fafa */
+  border-radius: var(--radius-s);           /* 8px */
+  box-shadow: 0px 1px 15px -1px var(--shadow-color); /* Drop Shadow/L */
+  overflow: hidden;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.booking-form__menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);             /* 8px */
+  padding: var(--space-300);         /* 12px */
+  width: 100%;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);           /* 16px */
+  font-weight: var(--font-weight-regular);  /* 400 */
+  line-height: var(--body-md-line-height);  /* 24px */
+  color: var(--text-primary);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.booking-form__menu-item:hover {
+  background-color: var(--grey-70);  /* #f3f6f6 */
+}
+
+.booking-form__menu-item-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   TIME PICKER PANEL
+   ============================================ */
+.booking-form__time-picker {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: var(--surface-primary); /* #f9fafa */
+  border-radius: var(--radius-s);           /* 8px */
+  box-shadow: 0px 1px 15px 0px var(--shadow-color);
+  padding: var(--space-500) var(--space-400); /* 20px 16px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-300);             /* 12px */
+  z-index: 100;
+}
+
+/* Hour format toggle (12h / 24h) */
+.booking-form__time-format {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);             /* 8px */
+}
+
+.booking-form__time-format-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-200) var(--space-400); /* 8px 16px */
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);           /* 12px */
+  font-weight: var(--font-weight-semibold); /* 600 */
+  line-height: 16px;
+  border-radius: var(--radius-xs);          /* 4px */
+  cursor: pointer;
+  border: var(--border-m) solid transparent; /* 2px */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.booking-form__time-format-btn--active {
+  background-color: var(--grey-10);  /* #313131 */
+  color: var(--white);
+  border-color: var(--grey-10);
+}
+
+.booking-form__time-format-btn--inactive {
+  background-color: transparent;
+  color: var(--black);               /* #03110d */
+  border-color: var(--black);
+}
+
+/* Scrollable time columns */
+.booking-form__time-columns {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.booking-form__time-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 147px;
+  overflow-y: auto;
+  scrollbar-width: none;            /* Firefox */
+}
+
+.booking-form__time-col::-webkit-scrollbar {
+  display: none;
+}
+
+.booking-form__time-col + .booking-form__time-col {
+  border-left: var(--border-xs) solid var(--border-tertiary); /* 0.5px solid #616262 */
+}
+
+.booking-form__time-item {
+  width: 100%;
+  padding: var(--space-200) var(--space-100); /* 8px 4px */
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
+  text-align: center;
+  cursor: pointer;
+  border-radius: var(--radius-xxs);
+  transition: background-color 0.15s ease;
+}
+
+.booking-form__time-item:hover {
+  background-color: var(--grey-70);
+}
+
+.booking-form__time-item--selected {
+  font-weight: var(--font-weight-semibold);
+  background-color: var(--grey-60);  /* #dbdddd */
+}
+
+/* Scrollbar thumb (custom) */
+.booking-form__time-scrollbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--space-100);       /* 0 4px */
+  height: 147px;
+}
+
+.booking-form__time-scrollbar-thumb {
+  width: 12px;
+  height: 60px;
+  background-color: var(--grey-30);  /* #616262 */
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+   PRICE UPDATE ROW
+   ============================================ */
+.booking-form__price-update {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-200);             /* 8px */
+  align-self: stretch;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);           /* 16px */
+  font-weight: var(--font-weight-regular);  /* 400 */
+  line-height: var(--body-md-line-height);  /* 24px */
+  color: var(--text-primary);              /* #03110d */
+  position: relative;
+  z-index: 1;
+}
+
+.booking-form__price-label {
+  flex: 1;
+}
+
+.booking-form__price-value {
+  text-align: right;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ============================================
+   SUBMIT BUTTON — "See Prices"
    ============================================ */
 .booking-form__submit {
   display: flex;
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  gap: var(--space-300);
-  padding: var(--space-400) var(--space-600);
-  background-color: var(--sea-green-50);
-  color: var(--sea-green-100);
+  gap: var(--space-200);             /* 8px */
+  padding: var(--space-400) var(--space-600); /* 16px 24px */
+  background-color: var(--surface-brand-primary); /* #306968 */
+  color: var(--sea-green-100);               /* #ebf0f0 */
   font-family: var(--font-family-body);
-  font-size: var(--body-md-size);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--body-md-line-height);
+  font-size: var(--body-md-size);            /* 16px */
+  font-weight: var(--font-weight-semibold);  /* 600 */
+  line-height: var(--body-md-line-height);   /* 24px */
   border: none;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-m);            /* 12px */
   cursor: pointer;
+  width: 100%;
   transition: background-color 0.2s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .booking-form__submit:hover {
-  background-color: var(--golden-50);
-  color: var(--text-inverse);
+  background-color: var(--sea-green-40);     /* #275756 */
 }
 
 .booking-form__submit:active {
-  background-color: var(--sea-green-40);
+  background-color: var(--sea-green-30);
+}
+
+.booking-form__submit:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
+}
+
+.booking-form__submit:disabled {
+  background-color: var(--grey-60);
+  color: var(--text-disabled);
+  cursor: not-allowed;
 }
 
 .booking-form__submit-icon {
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+  color: currentColor;
 }
 
 /* ============================================
-   RESPONSIVE
+   RESPONSIVE — Tablet & Mobile
    ============================================ */
+@media (max-width: 1024px) {
+  .booking-form {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
 @media (max-width: 480px) {
   .booking-form {
-    padding: var(--space-600);
+    padding: var(--space-600);       /* 24px */
     width: 100%;
   }
 
   .booking-form__ride-types {
-    gap: var(--space-200);
+    gap: var(--space-200);           /* 8px */
   }
 
   .booking-form__ride-type {
-    padding: var(--space-200) var(--space-400);
+    padding: var(--space-200) var(--space-400); /* 8px 16px */
   }
+
+  .booking-form__input-wrapper {
+    padding: var(--space-300) var(--space-300); /* 12px 12px */
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.booking-form__input-wrapper:focus-visible {
+  outline: 2px solid var(--sea-green-50);
+  outline-offset: 2px;
 }
