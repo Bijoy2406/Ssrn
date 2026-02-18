@@ -20,6 +20,53 @@
 }
 
 /* ============================================
+   HERO OVERLAY LAYOUT
+   Form floats over hero image — 32px from all edges
+   ============================================ */
+.hero__form-overlay {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  bottom: 32px;
+  width: 360px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+.hero__form-overlay .booking-form-landing {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: var(--radius-l);
+  gap: 0;
+  justify-content: space-between;
+}
+
+/* Tablet: form stacks below image */
+@media (max-width: 1024px) {
+  .hero__form-overlay {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    max-width: 600px;
+    margin: var(--space-600) auto 0;
+  }
+
+  .hero__form-overlay .booking-form-landing {
+    flex: none;
+    height: auto;
+    gap: var(--space-400);
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================
    RIDE TYPE TOGGLE
    ============================================ */
 .booking-form-landing__toggle {
