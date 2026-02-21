@@ -130,22 +130,29 @@
 
         .otp-inputs {
             display: flex;
-            gap: 12px;
-            justify-content: center;
+            gap: 8px;
+            justify-content: space-between;
         }
 
         .otp-field {
-            width: 56px;
-            height: 56px;
-            border: 2px solid #616262;
+            width: 100%;
+            max-width: 56px;
+            aspect-ratio: 1;
+            border: 1px solid #616262;
             border-radius: 8px;
-            background: #F9FAFA;
-            font-family: 'Manrope', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
+            background: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
             text-align: center;
             color: #03110D;
             transition: all 0.2s ease;
+            padding: 0;
+        }
+
+        .otp-field::placeholder {
+            color: #616262;
+            font-weight: 400;
         }
 
         .otp-field:focus {
@@ -209,9 +216,10 @@
 
         .resend-row {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
             gap: 8px;
-            margin-top: 32px;
+            margin-top: 24px;
         }
 
         .resend-text {
@@ -341,6 +349,17 @@
             background: #DBDDDD;
             border-radius: 12px;
             margin-top: 24px;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 0 16px 64px;
+            }
+
+            .verification-card {
+                padding: 40px 24px;
+            }
         }
     </style>
 </head>

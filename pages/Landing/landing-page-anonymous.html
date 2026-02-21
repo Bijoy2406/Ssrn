@@ -249,6 +249,15 @@
       border-color: var(--sea-green-50);
     }
 
+    /* Tablet: Match Figma spacing */
+    @media (max-width: 1024px) {
+      .hero__form-overlay {
+        margin: -120px auto 0 !important;
+        position: relative;
+        z-index: 20;
+      }
+    }
+
     .booking-card__icon {
       width: 24px;
       height: 24px;
@@ -603,9 +612,9 @@
       background-color: var(--grey-90);
     }
 
-    /* Destinations Footer */
+    /* Destinations Footer — hidden on desktop, shown on mobile */
     .destinations__footer {
-      display: flex;
+      display: none;
       justify-content: center;
       margin-top: var(--space-800);
     }
@@ -776,8 +785,42 @@
       }
 
       .why-choose__grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: var(--space-600);
+      }
+
+      /* Tablet destinations carousel */
+      .destinations {
+        overflow-x: visible;
+      }
+
+      .destinations__carousel-wrapper {
+        overflow: visible;
+      }
+
+      .destinations__carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x mandatory;
+      }
+
+      .destinations__carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .destinations__track {
+        display: flex;
+        gap: var(--space-500);
+        min-width: min-content;
+      }
+
+      .destinations__track>.card-destination {
+        flex: 0 0 calc((100% - var(--space-500)) / 2);
+        min-width: 260px;
+        scroll-snap-align: start;
       }
 
       .destinations__nav {
@@ -816,8 +859,8 @@
       }
 
       .hero__image-wrapper {
-        height: 300px;
-        margin-bottom: 70px;
+        height: 380px;
+        margin-bottom: 0;
       }
 
       .hero__image {
@@ -866,17 +909,18 @@
         padding: var(--space-600);
       }
 
-      .hero__container {
-        padding-left: var(--space-400);
-        padding-right: var(--space-400);
+      /* ── Hero mobile ── */
+      .hero {
+        padding-bottom: 0;
       }
 
-      .hero {
-        padding-bottom: var(--space-800);
+      .hero__container {
+        padding-left: 0;
+        padding-right: 0;
       }
 
       .hero__header {
-        padding: var(--space-400) 0 var(--space-300);
+        padding: var(--space-400) var(--space-400) var(--space-300);
       }
 
       .hero__title {
@@ -889,7 +933,7 @@
       .hero__image-wrapper {
         height: 250px;
         border-radius: 0;
-        margin-bottom: 60px;
+        margin-bottom: 0;
       }
 
       .hero__image {
@@ -897,8 +941,81 @@
         object-position: center;
       }
 
+      /* Form overlay becomes normal flow below image */
+      .hero__content {
+        overflow: visible;
+      }
+
+      .hero__form-overlay {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: auto;
+        min-height: auto;
+        margin: calc(-1 * var(--space-800)) var(--space-400) 0;
+        z-index: 2;
+      }
+
+      .hero__form-overlay .booking-form-landing {
+        width: 100%;
+        max-width: 100%;
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-l);
+        padding: var(--space-500) var(--space-400);
+        gap: var(--space-400);
+      }
+
+      /* Booking form mobile adjustments */
+      .booking-form-landing__toggle {
+        gap: var(--space-300);
+      }
+
+      .booking-form-landing__toggle-btn {
+        flex: 1;
+        padding: var(--space-300) var(--space-400);
+        font-size: var(--body-sm-size);
+        font-weight: var(--font-weight-semibold);
+        text-align: center;
+      }
+
+      .booking-form-landing__label {
+        font-size: var(--body-md-size);
+        font-weight: var(--font-weight-medium);
+      }
+
+      .booking-form-landing__input,
+      .booking-form-landing__select {
+        padding: var(--space-300) var(--space-300);
+        padding-left: 44px;
+        padding-right: 44px;
+        font-size: var(--body-md-size);
+        min-height: 48px;
+      }
+
+      .booking-form-landing__icon-left,
+      .booking-form-landing__icon-right {
+        width: 24px;
+        height: 24px;
+      }
+
+      .booking-form-landing__icon-left {
+        left: 12px;
+      }
+
+      .booking-form-landing__icon-right {
+        right: 12px;
+      }
+
+      .booking-form-landing__submit {
+        padding: var(--space-400);
+        font-size: var(--body-md-size);
+        min-height: 52px;
+        border-radius: var(--radius-s);
+      }
+
+      /* ── Services mobile ── */
       .services {
-        padding: var(--space-1600) 0;
+        padding: var(--space-1200) 0;
       }
 
       .services__heading {
@@ -934,12 +1051,46 @@
 
       .services__grid .card-service {
         flex-shrink: 0;
-        width: min(320px, calc(100vw - 48px));
+        width: min(280px, calc(100vw - 64px));
         scroll-snap-align: start;
       }
 
+      .services__dots {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-200);
+        margin-top: var(--space-600);
+      }
+
+      .services__dot {
+        width: 8px;
+        height: 8px;
+        border-radius: var(--radius-full);
+        background-color: var(--grey-60);
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease, width 0.2s ease;
+        padding: 0;
+      }
+
+      .services__dot--active {
+        width: 20px;
+        background-color: var(--sea-green-50);
+      }
+
+      /* ── Destinations mobile ── */
       .destinations {
-        padding: var(--space-1600) 0;
+        padding: var(--space-1200) 0;
+      }
+
+      .destinations__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-400);
+      }
+
+      .destinations__header-content {
+        max-width: 100%;
       }
 
       .destinations__heading {
@@ -947,13 +1098,35 @@
         font-weight: var(--font-weight-bold);
       }
 
+      .destinations__filters {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .destinations__filters::-webkit-scrollbar {
+        display: none;
+      }
+
       .destinations__carousel-wrapper {
         overflow: visible;
       }
 
       .destinations__carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x mandatory;
         margin: 0 calc(-1 * var(--space-400));
         padding: 0 var(--space-400);
+      }
+
+      .destinations__carousel::-webkit-scrollbar {
+        display: none;
       }
 
       .destinations__track {
@@ -961,15 +1134,24 @@
       }
 
       .card-destination {
-        min-width: min(280px, calc(100vw - 48px));
-        width: min(280px, calc(100vw - 48px));
+        min-width: min(260px, calc(100vw - 48px));
+        width: min(260px, calc(100vw - 48px));
         flex-shrink: 0;
+        scroll-snap-align: start;
       }
 
       .destinations__nav {
         display: none;
       }
 
+      /* Show explore more link on mobile */
+      .destinations__footer {
+        display: flex;
+        justify-content: center;
+        margin-top: var(--space-600);
+      }
+
+      /* ── CTA mobile ── */
       .cta {
         padding: var(--space-1000) 0;
       }
@@ -979,6 +1161,9 @@
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
+        flex-direction: column;
+        gap: var(--space-500);
+        align-items: flex-start;
       }
 
       .card-cta__heading {
@@ -994,8 +1179,9 @@
         width: 100%;
       }
 
+      /* ── Why Choose Us mobile ── */
       .why-choose {
-        padding: var(--space-1600) 0;
+        padding: var(--space-1200) 0;
       }
 
       .why-choose__heading {
@@ -1880,111 +2066,6 @@
     </div>
   </div>
 
-  <!-- Calendar/Time Picker Overlay -->
-  <div class="datetime-picker-overlay" id="datetimePickerOverlay">
-    <div class="datetime-picker">
-      <div class="datetime-picker__header">
-        <button class="datetime-picker__back" onclick="closeDatetimePicker()" aria-label="Back">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-        </button>
-        <h2 class="datetime-picker__title">Select Date & Time</h2>
-      </div>
-
-      <div class="datetime-picker__content">
-        <!-- Date Picker -->
-        <div class="datetime-picker__section">
-          <h3 class="datetime-picker__section-title">Choose Date</h3>
-          <div class="calendar">
-            <div class="calendar__header">
-              <button class="calendar__nav" onclick="changeMonth(-1)" aria-label="Previous month">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2">
-                  <polyline points="15 18 9 12 15 6" />
-                </svg>
-              </button>
-              <span class="calendar__month" id="calendarMonth">November 2025</span>
-              <button class="calendar__nav" onclick="changeMonth(1)" aria-label="Next month">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </button>
-            </div>
-            <div class="calendar__weekdays">
-              <div class="calendar__weekday">Sun</div>
-              <div class="calendar__weekday">Mon</div>
-              <div class="calendar__weekday">Tue</div>
-              <div class="calendar__weekday">Wed</div>
-              <div class="calendar__weekday">Thu</div>
-              <div class="calendar__weekday">Fri</div>
-              <div class="calendar__weekday">Sat</div>
-            </div>
-            <div class="calendar__days" id="calendarDays">
-              <!-- Days will be generated by JavaScript -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Time Picker -->
-        <div class="datetime-picker__section">
-          <h3 class="datetime-picker__section-title">Choose Time</h3>
-
-          <!-- 12h/24h Toggle -->
-          <div class="time-picker__toggle">
-            <button class="time-picker__toggle-btn time-picker__toggle-btn--active" onclick="toggle24Hour(false)"
-              id="toggle12h">12 h</button>
-            <button class="time-picker__toggle-btn" onclick="toggle24Hour(true)" id="toggle24h">24 h</button>
-          </div>
-
-          <div class="time-picker">
-            <div class="time-picker__group">
-              <label class="time-picker__label">Hour</label>
-              <select class="time-picker__select" id="hourSelect">
-                <option value="01">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
-            </div>
-            <div class="time-picker__separator">:</div>
-            <div class="time-picker__group">
-              <label class="time-picker__label">Minute</label>
-              <select class="time-picker__select" id="minuteSelect">
-                <option value="00">00</option>
-                <option value="15">15</option>
-                <option value="30">30</option>
-                <option value="45">45</option>
-              </select>
-            </div>
-            <div class="time-picker__group">
-              <label class="time-picker__label">Period</label>
-              <select class="time-picker__select" id="periodSelect">
-                <option value="AM">AM</option>
-                <option value="PM">PM</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="datetime-picker__footer">
-        <button class="datetime-picker__confirm" onclick="confirmDatetime()">
-          Confirm
-        </button>
-      </div>
-    </div>
-  </div>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -2111,8 +2192,7 @@
               <input type="text" class="booking-form-landing__input" placeholder="Select duration" id="durationInput"
                 readonly>
               <div class="booking-form-landing__icon-right">
-                <img src="../../assets/images/icons/booking form/Chevron down.svg" alt="Select" width="24"
-                  height="24">
+                <img src="../../assets/images/icons/booking form/Chevron down.svg" alt="Select" width="24" height="24">
               </div>
             </div>
             <!-- Duration Dropdown -->
@@ -2141,8 +2221,8 @@
               <div class="booking-form-landing__icon-left">
                 <img src="../../assets/images/icons/booking form/Calendar.svg" alt="Date" width="24" height="24">
               </div>
-              <input type="text" class="booking-form-landing__input"
-                placeholder="Wed , November 30, 2025" id="pickupDate" readonly style="cursor:pointer;">
+              <input type="text" class="booking-form-landing__input" placeholder="Wed , November 30, 2025"
+                id="pickupDate" readonly style="cursor:pointer;">
               <div class="booking-form-landing__icon-right booking-form-landing__date-chevron">
                 <img src="../../assets/images/icons/booking form/Chevron down.svg" alt="Toggle" width="24" height="24">
               </div>
@@ -2181,8 +2261,8 @@
               <div class="booking-form-landing__icon-left">
                 <img src="../../assets/images/icons/booking form/Clock.svg" alt="Time" width="24" height="24">
               </div>
-              <input type="text" class="booking-form-landing__input"
-                placeholder="05:00 PM" id="pickupTime" readonly style="cursor:pointer;" value="05:00 PM">
+              <input type="text" class="booking-form-landing__input" placeholder="05:00 PM" id="pickupTime" readonly
+                style="cursor:pointer;" value="05:00 PM">
               <div class="booking-form-landing__icon-right booking-form-landing__time-chevron">
                 <img src="../../assets/images/icons/booking form/Chevron down.svg" alt="Toggle" width="24" height="24">
               </div>
@@ -2390,7 +2470,7 @@
 
       </div>
 
-      <!-- Navigation Buttons -->
+      <!-- Navigation Buttons (desktop) -->
       <div class="destinations__nav">
         <button class="destinations__nav-btn" onclick="scrollDestCarousel(-1)" aria-label="Previous">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -2404,6 +2484,18 @@
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </button>
+      </div>
+
+      <!-- Explore more (mobile) -->
+      <div class="destinations__footer">
+        <a href="#destinations" class="destinations__explore-link">
+          Explore more destinations
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            width="20" height="20">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
@@ -2661,179 +2753,6 @@
       });
     }
 
-    // Datetime Picker
-    let selectedDate = null;
-    let currentMonth = new Date().getMonth();
-    let currentYear = new Date().getFullYear();
-
-    function openDatetimePicker() {
-      const overlay = document.getElementById('datetimePickerOverlay');
-      overlay.classList.add('datetime-picker-overlay--open');
-      document.body.style.overflow = 'hidden';
-      generateCalendar();
-    }
-
-    function closeDatetimePicker() {
-      const overlay = document.getElementById('datetimePickerOverlay');
-      overlay.classList.remove('datetime-picker-overlay--open');
-      document.body.style.overflow = '';
-    }
-
-    function changeMonth(direction) {
-      currentMonth += direction;
-      if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
-      } else if (currentMonth < 0) {
-        currentMonth = 11;
-        currentYear--;
-      }
-      generateCalendar();
-    }
-
-    function generateCalendar() {
-      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      const monthDisplay = document.getElementById('calendarMonth');
-      const daysContainer = document.getElementById('calendarDays');
-
-      monthDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
-
-      const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-      const daysInPrevMonth = new Date(currentYear, currentMonth, 0).getDate();
-
-      const today = new Date();
-      const isCurrentMonth = today.getMonth() === currentMonth && today.getFullYear() === currentYear;
-      const todayDate = today.getDate();
-
-      daysContainer.innerHTML = '';
-
-      // Previous month days
-      for (let i = firstDay - 1; i >= 0; i--) {
-        const dayBtn = document.createElement('button');
-        dayBtn.className = 'calendar__day calendar__day--other-month calendar__day--disabled';
-        dayBtn.textContent = daysInPrevMonth - i;
-        daysContainer.appendChild(dayBtn);
-      }
-
-      // Current month days
-      for (let day = 1; day <= daysInMonth; day++) {
-        const dayBtn = document.createElement('button');
-        dayBtn.className = 'calendar__day';
-        dayBtn.textContent = day;
-
-        const isPast = currentYear < today.getFullYear() ||
-          (currentYear === today.getFullYear() && currentMonth < today.getMonth()) ||
-          (currentYear === today.getFullYear() && currentMonth === today.getMonth() && day < todayDate);
-
-        if (isPast) {
-          dayBtn.classList.add('calendar__day--disabled');
-        } else {
-          if (isCurrentMonth && day === todayDate) {
-            dayBtn.classList.add('calendar__day--today');
-          }
-
-          dayBtn.addEventListener('click', function () {
-            document.querySelectorAll('.calendar__day--selected').forEach(d => {
-              d.classList.remove('calendar__day--selected');
-            });
-            dayBtn.classList.add('calendar__day--selected');
-            selectedDate = new Date(currentYear, currentMonth, day);
-          });
-        }
-
-        daysContainer.appendChild(dayBtn);
-      }
-
-      // Next month days to fill grid
-      const totalCells = daysContainer.children.length;
-      const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
-      for (let i = 1; i <= remainingCells; i++) {
-        const dayBtn = document.createElement('button');
-        dayBtn.className = 'calendar__day calendar__day--other-month calendar__day--disabled';
-        dayBtn.textContent = i;
-        daysContainer.appendChild(dayBtn);
-      }
-    }
-
-    // 12h/24h toggle
-    let is24Hour = false;
-    function toggle24Hour(use24) {
-      is24Hour = use24;
-      const toggle12 = document.getElementById('toggle12h');
-      const toggle24 = document.getElementById('toggle24h');
-      const periodSelect = document.getElementById('periodSelect');
-
-      if (use24) {
-        toggle24.classList.add('time-picker__toggle-btn--active');
-        toggle12.classList.remove('time-picker__toggle-btn--active');
-        periodSelect.style.display = 'none';
-        periodSelect.parentElement.style.display = 'none';
-        // Update hour options to 00-23
-        const hourSelect = document.getElementById('hourSelect');
-        hourSelect.innerHTML = '';
-        for (let i = 0; i < 24; i++) {
-          const option = document.createElement('option');
-          option.value = i.toString().padStart(2, '0');
-          option.textContent = i.toString().padStart(2, '0');
-          hourSelect.appendChild(option);
-        }
-      } else {
-        toggle12.classList.add('time-picker__toggle-btn--active');
-        toggle24.classList.remove('time-picker__toggle-btn--active');
-        periodSelect.style.display = '';
-        periodSelect.parentElement.style.display = '';
-        // Update hour options to 01-12
-        const hourSelect = document.getElementById('hourSelect');
-        hourSelect.innerHTML = '';
-        for (let i = 1; i <= 12; i++) {
-          const option = document.createElement('option');
-          option.value = i.toString().padStart(2, '0');
-          option.textContent = i.toString().padStart(2, '0');
-          hourSelect.appendChild(option);
-        }
-      }
-    }
-
-    function confirmDatetime() {
-      if (!selectedDate) {
-        alert('Please select a date');
-        return;
-      }
-
-      const hour = document.getElementById('hourSelect').value;
-      const minute = document.getElementById('minuteSelect').value;
-      const period = is24Hour ? '' : ' ' + document.getElementById('periodSelect').value;
-
-      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-      const dateString = `${dayNames[selectedDate.getDay()]}, ${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
-      const timeString = `${hour}:${minute}${period}`;
-
-      document.getElementById('pickupDate').value = dateString;
-      document.getElementById('pickupTime').value = timeString;
-
-      closeDatetimePicker();
-    }
-
-    // Make date and time inputs open the picker on mobile
-    function setupDatetimeInputs() {
-      const dateInput = document.getElementById('pickupDate');
-      const timeInput = document.getElementById('pickupTime');
-
-      if (window.innerWidth <= 768) {
-        if (dateInput) {
-          dateInput.addEventListener('click', openDatetimePicker);
-          dateInput.addEventListener('focus', openDatetimePicker);
-        }
-        if (timeInput) {
-          timeInput.addEventListener('click', openDatetimePicker);
-          timeInput.addEventListener('focus', openDatetimePicker);
-        }
-      }
-    }
-
     // Close overlays when clicking outside
     document.getElementById('mobileMenuOverlay').addEventListener('click', function (e) {
       if (e.target === this) {
@@ -2841,15 +2760,6 @@
       }
     });
 
-    document.getElementById('datetimePickerOverlay').addEventListener('click', function (e) {
-      if (e.target === this) {
-        closeDatetimePicker();
-      }
-    });
-
-    // Initialize
-    window.addEventListener('load', setupDatetimeInputs);
-    window.addEventListener('resize', setupDatetimeInputs);
 
     // Booking Form Tabs
     function switchTab(tab) {
