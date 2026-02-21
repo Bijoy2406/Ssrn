@@ -307,6 +307,7 @@
   .nav-bar {
     padding: 0 var(--space-400);
     gap: var(--space-300);
+    justify-content: space-between;
   }
 
   .nav-bar__logo img {
@@ -316,56 +317,16 @@
   /* Show mobile toggle */
   .nav-bar__mobile-toggle {
     display: flex;
+    margin-left: auto;
   }
 
-  /* Hide desktop navigation */
+  /* Hide desktop navigation and sign-in on mobile */
   .nav-bar__fill {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background-color: var(--surface-primary);
-    box-shadow: var(--shadow-l);
-    padding: var(--space-400);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-16px);
-    transition: all 0.3s ease;
-    z-index: 999;
-  }
-
-  .nav-bar__fill--open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .nav-buttons {
-    flex-direction: column;
-    gap: var(--space-200);
-  }
-
-  .nav-item__button {
-    width: 100%;
-  }
-
-  .nav-item__menu {
-    position: static;
-    width: 100%;
-    margin-top: var(--space-200);
-    box-shadow: none;
-    border: var(--border-m) solid var(--border-tertiary);
+    display: none;
   }
 
   .nav-bar__profile {
-    margin-top: var(--space-400);
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .nav-bar__sign-in {
-    width: 100%;
-    justify-content: center;
+    display: none;
   }
 }
 
