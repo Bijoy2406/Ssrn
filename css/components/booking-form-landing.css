@@ -27,8 +27,12 @@
   position: absolute;
   top: 32px;
   right: 32px;
-  bottom: 32px;
-  width: 360px;
+  height: auto;
+  /* Allow form to grow beyond container if needed, but since container is now taller it should fit */
+  min-height: 640px;
+  /* Ensure minimum height matches Figma - accounts for 5 fields + toggle + submit */
+  width: 441px;
+  /* Exact Figma width */
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -39,11 +43,11 @@
   flex: 1;
   width: 100%;
   max-width: 100%;
-  height: 100%;
+  height: auto;
   box-sizing: border-box;
   border-radius: var(--radius-l);
-  gap: 0;
-  justify-content: space-between;
+  gap: var(--space-400);
+  justify-content: flex-start;
 }
 
 /* Tablet: form stacks below image */
@@ -69,9 +73,12 @@
 /* ============================================
    RIDE TYPE TOGGLE
    ============================================ */
+/* ============================================
+   RIDE TYPE TOGGLE
+   ============================================ */
 .booking-form-landing__toggle {
   display: flex;
-  gap: var(--space-300);
+  gap: 16px;
   width: 100%;
 }
 
@@ -80,15 +87,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-300) var(--space-600);
+  padding: 12px 24px;
   background-color: transparent;
-  border: var(--border-m) solid var(--border-primary);
-  border-radius: var(--radius-s);
+  border: 2px solid #03110d;
+  border-radius: 8px;
   font-family: var(--font-family-body);
-  font-size: var(--body-md-size);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--body-md-line-height);
-  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #03110d;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
@@ -96,7 +103,6 @@
 
 .booking-form-landing__toggle-btn:hover:not(.booking-form-landing__toggle-btn--active) {
   background-color: var(--grey-90);
-  border-color: var(--text-secondary);
 }
 
 .booking-form-landing__toggle-btn:focus-visible {
@@ -105,9 +111,9 @@
 }
 
 .booking-form-landing__toggle-btn--active {
-  background-color: var(--text-primary);
-  color: var(--text-inverse);
-  border-color: var(--text-primary);
+  background-color: #313131;
+  color: #ffffff;
+  border-color: #313131;
 }
 
 /* ============================================
@@ -116,15 +122,16 @@
 .booking-form-landing__field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-200);
+  gap: 8px;
+  position: relative;
 }
 
 .booking-form-landing__label {
   font-family: var(--font-family-body);
-  font-size: var(--body-md-size);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--body-md-line-height);
-  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #03110d;
 }
 
 /* ============================================
@@ -139,26 +146,31 @@
 
 .booking-form-landing__input {
   width: 100%;
-  padding: var(--space-300) var(--space-400);
-  padding-left: 48px;
-  padding-right: 48px;
-  background-color: var(--surface-primary);
-  border: var(--border-m) solid var(--border-primary);
-  border-radius: var(--radius-s);
+  padding: 14px 12px;
+  /* Adjusted for total height ~52px with border */
+  padding-left: 44px;
+  /* Icon space */
+  padding-right: 44px;
+  /* Icon/Action space */
+  background-color: #f9fafa;
+  border: 2px solid #03110d;
+  /* Slightly darker default border per Figma */
+  border-radius: 8px;
   font-family: var(--font-family-body);
-  font-size: var(--body-md-size);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--body-md-line-height);
-  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #03110d;
   transition: all 0.2s ease;
 }
 
 .booking-form-landing__input::placeholder {
-  color: var(--text-tertiary);
+  color: #616262;
+  /* Neutral tertiary */
 }
 
 .booking-form-landing__input:hover {
-  border-color: var(--text-secondary);
+  border-color: #03110d;
 }
 
 .booking-form-landing__input:focus {
@@ -179,11 +191,14 @@
    ============================================ */
 .booking-form-landing__icon-left {
   position: absolute;
-  left: var(--space-300);
+  left: 12px;
   width: 24px;
   height: 24px;
-  color: var(--text-primary);
+  color: #03110d;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .booking-form-landing__icon-left svg {
@@ -193,16 +208,19 @@
 
 .booking-form-landing__icon-right {
   position: absolute;
-  right: var(--space-300);
+  right: 12px;
   width: 24px;
   height: 24px;
-  color: var(--text-primary);
+  color: #03110d;
   cursor: pointer;
   transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .booking-form-landing__icon-right:hover {
-  color: var(--sea-green-50);
+  color: #306968;
 }
 
 .booking-form-landing__icon-right svg {
@@ -215,17 +233,17 @@
    ============================================ */
 .booking-form-landing__select {
   width: 100%;
-  padding: var(--space-300) var(--space-400);
-  padding-left: 48px;
-  padding-right: 48px;
-  background-color: var(--surface-primary);
-  border: var(--border-m) solid var(--border-primary);
-  border-radius: var(--radius-s);
+  padding: 14px 12px;
+  padding-left: 44px;
+  padding-right: 44px;
+  background-color: #f9fafa;
+  border: 2px solid #03110d;
+  border-radius: 8px;
   font-family: var(--font-family-body);
-  font-size: var(--body-md-size);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--body-md-line-height);
-  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #03110d;
   cursor: pointer;
   appearance: none;
   transition: all 0.2s ease;
@@ -509,4 +527,378 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* ============================================
+   DROPDOWN MENU (From/To)
+   ============================================ */
+.booking-form-landing__dropdown {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: #f9fafa;
+  border-radius: 8px;
+  box-shadow: 0px 1px 15px -1px rgba(3, 17, 13, 0.1);
+  overflow: hidden;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-form-landing__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: #f9fafa;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.booking-form-landing__dropdown-item:hover {
+  background-color: #eef1f1;
+}
+
+.booking-form-landing__dropdown-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #03110d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booking-form-landing__dropdown-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.booking-form-landing__dropdown-text {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  color: #03110d;
+  flex: 1;
+}
+
+/* ============================================
+   TIME PICKER CUSTOM
+   ============================================ */
+.booking-form-landing__time-picker {
+  position: absolute;
+  top: 63px;
+  left: 0;
+  right: 0;
+  background-color: #f9fafa;
+  border-radius: 8px;
+  box-shadow: 0px 1px 15px 0px rgba(3, 17, 13, 0.1);
+  padding: 20px 16px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.time-picker__header-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.time-picker__toggle-option {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  cursor: pointer;
+  width: auto;
+  min-width: 43px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-picker__toggle-option--active {
+  background-color: #313131;
+  color: #ffffff;
+}
+
+.time-picker__toggle-option--inactive {
+  border: 2px solid #03110d;
+  color: #03110d;
+  background-color: transparent;
+}
+
+.time-picker__columns-header {
+  display: flex;
+  width: 100%;
+}
+
+.time-picker__column-title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: #03110d;
+  padding: 4px 0;
+}
+
+.time-picker__columns-wrapper {
+  display: flex;
+  height: 200px;
+  border: 1px solid #616262;
+  /* border-xs style */
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.time-picker__column {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  border-right: 0.5px solid #616262;
+  align-items: center;
+  padding: 0;
+}
+
+.time-picker__column:last-child {
+  border-right: none;
+}
+
+/* AM/PM column — only 2 items, don't stretch */
+#ampmColumn {
+  justify-content: flex-start;
+  padding-top: 0;
+}
+
+/* Scrollbar styling */
+.time-picker__column::-webkit-scrollbar {
+  width: 4px;
+}
+
+.time-picker__column::-webkit-scrollbar-thumb {
+  background-color: #616262;
+  border-radius: 4px;
+}
+
+.time-picker__item {
+  padding: 6px 12px;
+  text-align: center;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  color: #03110d;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.time-picker__item:hover {
+  background-color: #eef1f1;
+}
+
+.time-picker__item--selected {
+  background-color: #306968;
+  color: #ffffff;
+}
+
+.booking-form-landing__confirm-btn {
+  background-color: #306968;
+  color: #ebf0f0;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: none;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ============================================
+   INLINE DATE + TIME PICKER
+   Expands in-flow below the date input field
+   ============================================ */
+.booking-form-landing__inline-picker {
+  display: none;
+  flex-direction: column;
+  background-color: #f9fafa;
+  border: 2px solid #03110d;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.booking-form-landing__inline-picker--open {
+  display: flex;
+}
+
+/* Chevron rotation when picker is open */
+.booking-form-landing__date-chevron img,
+.booking-form-landing__date-chevron svg,
+.booking-form-landing__time-chevron img,
+.booking-form-landing__time-chevron svg {
+  transition: transform 0.2s ease;
+}
+
+.booking-form-landing__date-chevron--open img,
+.booking-form-landing__date-chevron--open svg,
+.booking-form-landing__time-chevron--open img,
+.booking-form-landing__time-chevron--open svg {
+  transform: rotate(180deg);
+}
+
+/* Calendar section */
+.inline-picker__calendar {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(3, 17, 13, 0.12);
+}
+
+/* Time section */
+.inline-picker__time {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(3, 17, 13, 0.12);
+}
+
+/* Confirm section */
+.inline-picker__confirm-section {
+  padding: 12px 16px;
+}
+
+/* ============================================
+   DATE PICKER CUSTOM (kept for legacy use)
+   ============================================ */
+.booking-form-landing__date-picker {
+  position: absolute;
+  top: 85px;
+  left: 0;
+  right: 0;
+  background-color: #f9fafa;
+  border-radius: 8px;
+  box-shadow: 0px 1px 15px 0px rgba(3, 17, 13, 0.1);
+  padding: 16px;
+  z-index: 21;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.date-picker__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+  width: 100%;
+}
+
+.date-picker__nav-group {
+  display: flex;
+  gap: 8px;
+  /* Space between the double arrows */
+}
+
+.date-picker__title {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: #03110d;
+  flex: 1;
+  /* Allow title to take up remaining space if needed, or just center it */
+  text-align: center;
+}
+
+.date-picker__nav-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  font-weight: bold;
+  cursor: pointer;
+  color: #03110d;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-picker__nav-btn:hover {
+  color: #306968;
+  background-color: #eef1f1;
+  border-radius: 4px;
+}
+
+.date-picker__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: #616262;
+  margin-bottom: 4px;
+}
+
+.date-picker__weekdays span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+}
+
+.date-picker__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.date-picker__day {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  color: #03110d;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.date-picker__day:hover {
+  background-color: #eef1f1;
+}
+
+.date-picker__day--selected {
+  background-color: #313131 !important;
+  color: #ffffff !important;
+}
+
+.date-picker__day--today {
+  border: 1px solid #313131;
+  font-weight: 600;
+}
+
+.date-picker__day--muted {
+  color: #ccc;
+  pointer-events: none;
 }
