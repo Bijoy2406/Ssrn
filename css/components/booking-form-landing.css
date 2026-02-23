@@ -1,7 +1,6 @@
 /**
  * SSRN Booking Form (Landing Page)
- * Form component for anonymous user landing page
- * Based on Figma design system
+ * Figma node: 902-23904 — Desktop exact match
  */
 
 /* ============================================
@@ -10,10 +9,10 @@
 .booking-form-landing {
   display: flex;
   flex-direction: column;
-  gap: var(--space-400);
-  padding: var(--space-800);
-  background-color: var(--surface-primary);
-  border-radius: var(--radius-m);
+  gap: var(--space-400);        /* 16px between fields */
+  padding: var(--space-800);   /* 32px all sides */
+  background-color: var(--surface-primary);   /* #f9fafa */
+  border-radius: var(--radius-l);             /* 20px */
   box-shadow: var(--shadow-l);
   width: 100%;
   max-width: 720px;
@@ -21,18 +20,14 @@
 
 /* ============================================
    HERO OVERLAY LAYOUT
-   Form floats over hero image — 32px from all edges
+   Form floats over hero image — 32px from top/right
    ============================================ */
 .hero__form-overlay {
   position: absolute;
   top: 32px;
   right: 32px;
-  height: auto;
-  /* Allow form to grow beyond container if needed, but since container is now taller it should fit */
-  min-height: 640px;
-  /* Ensure minimum height matches Figma - accounts for 5 fields + toggle + submit */
   width: 441px;
-  /* Exact Figma width */
+  height: auto;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -43,9 +38,8 @@
   flex: 1;
   width: 100%;
   max-width: 100%;
-  height: auto;
   box-sizing: border-box;
-  border-radius: var(--radius-l);
+  border-radius: var(--radius-l);   /* 20px */
   gap: var(--space-400);
   justify-content: flex-start;
 }
@@ -56,7 +50,6 @@
     position: relative;
     top: auto;
     right: auto;
-    bottom: auto;
     width: 100%;
     max-width: 600px;
     margin: -120px auto 0;
@@ -74,12 +67,9 @@
 /* ============================================
    RIDE TYPE TOGGLE
    ============================================ */
-/* ============================================
-   RIDE TYPE TOGGLE
-   ============================================ */
 .booking-form-landing__toggle {
   display: flex;
-  gap: 16px;
+  gap: var(--space-400);   /* 16px */
   width: 100%;
 }
 
@@ -88,22 +78,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
+  padding: var(--space-300) var(--space-600);   /* 12px 24px */
   background-color: transparent;
-  border: 2px solid #03110d;
-  border-radius: 8px;
+  border: var(--border-m) solid var(--black);   /* 2px solid #03110D */
+  border-radius: var(--radius-s);               /* 8px */
   font-family: var(--font-family-body);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 16px;
-  color: #03110d;
+  font-size: var(--body-md-size);               /* 16px */
+  font-weight: var(--font-weight-semibold);     /* 600 */
+  line-height: var(--body-md-line-height);      /* 24px */
+  color: var(--black);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   white-space: nowrap;
 }
 
 .booking-form-landing__toggle-btn:hover:not(.booking-form-landing__toggle-btn--active) {
-  background-color: var(--grey-90);
+  background-color: var(--grey-70);
 }
 
 .booking-form-landing__toggle-btn:focus-visible {
@@ -111,10 +101,11 @@
   outline-offset: 2px;
 }
 
+/* Active/selected toggle */
 .booking-form-landing__toggle-btn--active {
-  background-color: #313131;
-  color: #ffffff;
-  border-color: #313131;
+  background-color: var(--grey-10);   /* #313131 */
+  color: var(--white);                /* #fefefe */
+  border-color: var(--grey-10);
 }
 
 /* ============================================
@@ -123,20 +114,20 @@
 .booking-form-landing__field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-200);    /* 8px */
   position: relative;
 }
 
 .booking-form-landing__label {
   font-family: var(--font-family-body);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  color: #03110d;
+  font-size: var(--body-md-size);           /* 16px */
+  font-weight: var(--font-weight-medium);   /* 500 */
+  line-height: var(--body-md-line-height);  /* 24px */
+  color: var(--text-primary);              /* #03110D */
 }
 
 /* ============================================
-   INPUT FIELD
+   INPUT WRAPPER
    ============================================ */
 .booking-form-landing__input-wrapper {
   position: relative;
@@ -145,66 +136,81 @@
   width: 100%;
 }
 
+/* ============================================
+   INPUT FIELD
+   ============================================ */
 .booking-form-landing__input {
   width: 100%;
   padding: 14px 12px;
-  /* Adjusted for total height ~52px with border */
-  padding-left: 44px;
-  /* Icon space */
-  padding-right: 44px;
-  /* Icon/Action space */
-  background-color: #f9fafa;
-  border: 2px solid #03110d;
-  /* Slightly darker default border per Figma */
-  border-radius: 8px;
+  padding-left: 44px;    /* room for left icon */
+  padding-right: 44px;   /* room for right icon */
+  background-color: var(--surface-primary);   /* #f9fafa */
+  border: var(--border-m) solid var(--black); /* 2px solid #03110D */
+  border-radius: var(--radius-s);             /* 8px */
   font-family: var(--font-family-body);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  color: #03110d;
-  transition: all 0.2s ease;
+  font-size: var(--body-md-size);             /* 16px */
+  font-weight: var(--font-weight-regular);    /* 400 */
+  line-height: var(--body-md-line-height);    /* 24px */
+  color: var(--text-primary);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
 }
 
 .booking-form-landing__input::placeholder {
-  color: #616262;
-  /* Neutral tertiary */
+  color: var(--grey-30);   /* #616262 */
+  font-weight: var(--font-weight-regular);
 }
 
 .booking-form-landing__input:hover {
-  border-color: #03110d;
+  border-color: var(--text-secondary);   /* #494a4a */
 }
 
 .booking-form-landing__input:focus {
   outline: none;
   border-color: var(--sea-green-50);
-  box-shadow: 0 0 0 3px rgba(0, 105, 92, 0.1);
+  box-shadow: 0 0 0 3px rgba(48, 105, 104, 0.12);
 }
 
 .booking-form-landing__input:disabled {
-  background-color: var(--grey-90);
-  color: var(--text-disabled);
+  background-color: var(--grey-70);
+  color: var(--grey-40);
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.7;
+}
+
+/* Read-only fields (date, time) */
+.booking-form-landing__input[readonly] {
+  cursor: pointer;
+  user-select: none;
+}
+
+.booking-form-landing__input[readonly]:focus {
+  outline: none;
+  border-color: var(--black);
+  box-shadow: none;
 }
 
 /* ============================================
-   INPUT ICONS
+   ICONS INSIDE INPUTS
    ============================================ */
 .booking-form-landing__icon-left {
   position: absolute;
   left: 12px;
   width: 24px;
   height: 24px;
-  color: #03110d;
+  color: var(--text-primary);
   pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
+.booking-form-landing__icon-left img,
 .booking-form-landing__icon-left svg {
-  width: 100%;
-  height: 100%;
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 .booking-form-landing__icon-right {
@@ -212,42 +218,65 @@
   right: 12px;
   width: 24px;
   height: 24px;
-  color: #03110d;
-  cursor: pointer;
-  transition: color 0.2s ease;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
-.booking-form-landing__icon-right:hover {
-  color: #306968;
-}
-
+.booking-form-landing__icon-right img,
 .booking-form-landing__icon-right svg {
-  width: 100%;
-  height: 100%;
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Search icon in From/To: no pointer event (not clickable separately) */
+.booking-form-landing__icon-right--static {
+  pointer-events: none;
+}
+
+/* Chevron transitions for date/time/return pickers */
+.booking-form-landing__date-chevron img,
+.booking-form-landing__date-chevron svg,
+.booking-form-landing__time-chevron img,
+.booking-form-landing__time-chevron svg,
+.booking-form-landing__return-chevron img,
+.booking-form-landing__return-chevron svg {
+  transition: transform 0.2s ease;
+}
+
+.booking-form-landing__date-chevron--open img,
+.booking-form-landing__date-chevron--open svg,
+.booking-form-landing__time-chevron--open img,
+.booking-form-landing__time-chevron--open svg,
+.booking-form-landing__return-chevron--open img,
+.booking-form-landing__return-chevron--open svg {
+  transform: rotate(180deg);
 }
 
 /* ============================================
-   SELECT/DROPDOWN FIELD
+   SELECT/DROPDOWN FIELD (legacy)
    ============================================ */
 .booking-form-landing__select {
   width: 100%;
   padding: 14px 12px;
   padding-left: 44px;
   padding-right: 44px;
-  background-color: #f9fafa;
-  border: 2px solid #03110d;
-  border-radius: 8px;
+  background-color: var(--surface-primary);
+  border: var(--border-m) solid var(--black);
+  border-radius: var(--radius-s);
   font-family: var(--font-family-body);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  color: #03110d;
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-md-line-height);
+  color: var(--text-primary);
   cursor: pointer;
   appearance: none;
-  transition: all 0.2s ease;
+  transition: border-color 0.15s ease;
+  box-sizing: border-box;
 }
 
 .booking-form-landing__select:hover {
@@ -257,17 +286,9 @@
 .booking-form-landing__select:focus {
   outline: none;
   border-color: var(--sea-green-50);
-  box-shadow: 0 0 0 3px rgba(0, 105, 92, 0.1);
+  box-shadow: 0 0 0 3px rgba(48, 105, 104, 0.12);
 }
 
-.booking-form-landing__select:disabled {
-  background-color: var(--grey-90);
-  color: var(--text-disabled);
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-/* Dropdown arrow icon */
 .booking-form-landing__select-wrapper .booking-form-landing__icon-right {
   pointer-events: none;
 }
@@ -279,30 +300,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-200);
+  gap: var(--space-200);            /* 8px */
   width: 100%;
-  padding: var(--space-400) var(--space-600);
-  background-color: var(--sea-green-50);
+  padding: var(--space-400) var(--space-600);  /* 16px 24px */
+  background-color: var(--sea-green-50);       /* #306968 */
   border: none;
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-s);              /* 8px */
   font-family: var(--font-family-body);
-  font-size: var(--body-md-size);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--body-md-line-height);
-  color: var(--text-inverse);
+  font-size: var(--body-md-size);              /* 16px */
+  font-weight: var(--font-weight-semibold);    /* 600 */
+  line-height: var(--body-md-line-height);     /* 24px */
+  color: var(--sea-green-100);                 /* #EBF0F0 (light teal text) */
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.15s ease;
+  min-height: 56px;
 }
 
 .booking-form-landing__submit:hover {
   background-color: var(--sea-green-40);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-m);
 }
 
 .booking-form-landing__submit:active {
-  transform: translateY(0);
-  box-shadow: var(--shadow-s);
+  background-color: var(--sea-green-30);
 }
 
 .booking-form-landing__submit:focus-visible {
@@ -312,443 +331,42 @@
 
 .booking-form-landing__submit:disabled {
   background-color: var(--grey-60);
-  color: var(--text-disabled);
+  color: var(--grey-40);
   cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
 }
 
 .booking-form-landing__submit-icon {
   width: 20px;
   height: 20px;
-  color: currentColor;
-}
-
-.booking-form-landing__submit-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* ============================================
-   FORM VALIDATION STATES
-   ============================================ */
-/* Error state with pink background */
-.booking-form-landing__input--error,
-.booking-form-landing__select--error {
-  border-color: #D32F2F;
-  background-color: #FCE4EC;
-}
-
-.booking-form-landing__input--error:focus,
-.booking-form-landing__select--error:focus {
-  border-color: #D32F2F;
-  background-color: #FCE4EC;
-  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
-}
-
-.booking-form-landing__input--error:hover,
-.booking-form-landing__select--error:hover {
-  border-color: #D32F2F;
-}
-
-/* Error state icon color */
-.booking-form-landing__field--error .booking-form-landing__icon-left {
-  color: #D32F2F;
-}
-
-/* Error message below field */
-.booking-form-landing__error-message {
-  font-family: var(--font-family-body);
-  font-size: var(--body-sm-size);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--body-sm-line-height);
-  color: #D32F2F;
-  margin-top: 4px;
-}
-
-/* Clear button (X) for error state */
-.booking-form-landing__clear-btn {
-  position: absolute;
-  right: var(--space-300);
-  width: 24px;
-  height: 24px;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: var(--text-primary);
-  transition: color 0.2s ease;
-  display: none;
-}
-
-.booking-form-landing__field--error .booking-form-landing__clear-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.booking-form-landing__clear-btn:hover {
-  color: #D32F2F;
-}
-
-.booking-form-landing__clear-btn svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* Success state */
-.booking-form-landing__input--success,
-.booking-form-landing__select--success {
-  border-color: var(--color-success);
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 768px) {
-  .booking-form-landing {
-    padding: var(--space-500) var(--space-400);
-    gap: var(--space-400);
-  }
-
-  .booking-form-landing__toggle {
-    gap: var(--space-300);
-  }
-
-  .booking-form-landing__toggle-btn {
-    flex: 1;
-    padding: var(--space-300) var(--space-400);
-    font-size: var(--body-sm-size);
-    font-weight: var(--font-weight-semibold);
-    text-align: center;
-  }
-
-  .booking-form-landing__label {
-    font-size: var(--body-md-size);
-    font-weight: var(--font-weight-medium);
-  }
-
-  .booking-form-landing__input,
-  .booking-form-landing__select {
-    padding: var(--space-300) var(--space-300);
-    padding-left: 44px;
-    padding-right: 44px;
-    font-size: var(--body-md-size);
-    min-height: 48px;
-  }
-
-  .booking-form-landing__icon-left,
-  .booking-form-landing__icon-right {
-    width: 24px;
-    height: 24px;
-  }
-
-  .booking-form-landing__icon-left {
-    left: 12px;
-  }
-
-  .booking-form-landing__icon-right {
-    right: 12px;
-  }
-
-  .booking-form-landing__submit {
-    padding: var(--space-400);
-    font-size: var(--body-md-size);
-    min-height: 52px;
-    border-radius: var(--radius-s);
-  }
-}
-
-/* ============================================
-   ACCESSIBILITY
-   ============================================ */
-.booking-form-landing__input:focus-visible,
-.booking-form-landing__select:focus-visible {
-  outline: 2px solid var(--sea-green-50);
-  outline-offset: 2px;
-}
-
-/* Screen reader only text */
-.booking-form-landing .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* ============================================
-   LOADING STATE
-   ============================================ */
-.booking-form-landing--loading {
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-.booking-form-landing__submit--loading {
-  position: relative;
-  color: transparent;
-}
-
-.booking-form-landing__submit--loading::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 50%;
-  left: 50%;
-  margin-left: -10px;
-  margin-top: -10px;
-  border: 3px solid var(--text-inverse);
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* ============================================
-   DROPDOWN MENU (From/To)
-   ============================================ */
-.booking-form-landing__dropdown {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
-  background-color: #f9fafa;
-  border-radius: 8px;
-  box-shadow: 0px 1px 15px -1px rgba(3, 17, 13, 0.1);
-  overflow: hidden;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-}
-
-.booking-form-landing__dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px;
-  background-color: #f9fafa;
-  border: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.booking-form-landing__dropdown-item:hover {
-  background-color: #eef1f1;
-}
-
-.booking-form-landing__dropdown-icon {
-  width: 24px;
-  height: 24px;
   flex-shrink: 0;
-  color: #03110d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.booking-form-landing__dropdown-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.booking-form-landing__dropdown-text {
-  font-family: var(--font-family-body);
-  font-size: 16px;
-  color: #03110d;
-  flex: 1;
+.booking-form-landing__submit-icon img,
+.booking-form-landing__submit-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 /* ============================================
-   TIME PICKER CUSTOM
-   ============================================ */
-.booking-form-landing__time-picker {
-  position: absolute;
-  top: 63px;
-  left: 0;
-  right: 0;
-  background-color: #f9fafa;
-  border-radius: 8px;
-  box-shadow: 0px 1px 15px 0px rgba(3, 17, 13, 0.1);
-  padding: 20px 16px;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.time-picker__header-toggle {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.time-picker__toggle-option {
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-family: var(--font-family-body);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 16px;
-  cursor: pointer;
-  width: auto;
-  min-width: 43px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.time-picker__toggle-option--active {
-  background-color: #313131;
-  color: #ffffff;
-}
-
-.time-picker__toggle-option--inactive {
-  border: 2px solid #03110d;
-  color: #03110d;
-  background-color: transparent;
-}
-
-.time-picker__columns-header {
-  display: flex;
-  width: 100%;
-}
-
-.time-picker__column-title {
-  flex: 1;
-  text-align: center;
-  font-family: var(--font-family-body);
-  font-size: 16px;
-  font-weight: 600;
-  color: #03110d;
-  padding: 4px 0;
-}
-
-.time-picker__columns-wrapper {
-  display: flex;
-  height: 200px;
-  border: 1px solid #616262;
-  /* border-xs style */
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.time-picker__column {
-  flex: 1;
-  height: 100%;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  border-right: 0.5px solid #616262;
-  align-items: center;
-  padding: 0;
-}
-
-.time-picker__column:last-child {
-  border-right: none;
-}
-
-/* AM/PM column — only 2 items, don't stretch */
-#ampmColumn {
-  justify-content: flex-start;
-  padding-top: 0;
-}
-
-/* Scrollbar styling */
-.time-picker__column::-webkit-scrollbar {
-  width: 4px;
-}
-
-.time-picker__column::-webkit-scrollbar-thumb {
-  background-color: #616262;
-  border-radius: 4px;
-}
-
-.time-picker__item {
-  padding: 6px 12px;
-  text-align: center;
-  font-family: var(--font-family-body);
-  font-size: 16px;
-  color: #03110d;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.time-picker__item:hover {
-  background-color: #eef1f1;
-}
-
-.time-picker__item--selected {
-  background-color: #306968;
-  color: #ffffff;
-}
-
-.booking-form-landing__confirm-btn {
-  background-color: #306968;
-  color: #ebf0f0;
-  padding: 12px 24px;
-  border-radius: 4px;
-  border: none;
-  font-family: var(--font-family-body);
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ============================================
-   INLINE DATE + TIME PICKER
+   INLINE DATE PICKER
    Expands in-flow below the date input field
    ============================================ */
 .booking-form-landing__inline-picker {
   display: none;
   flex-direction: column;
-  background-color: #f9fafa;
-  border: 2px solid #03110d;
-  border-radius: 8px;
+  background-color: var(--surface-primary);
+  border: var(--border-m) solid var(--black);
+  border-radius: var(--radius-s);
   overflow: hidden;
   margin-top: 4px;
 }
 
 .booking-form-landing__inline-picker--open {
   display: flex;
-}
-
-/* Chevron rotation when picker is open */
-.booking-form-landing__date-chevron img,
-.booking-form-landing__date-chevron svg,
-.booking-form-landing__time-chevron img,
-.booking-form-landing__time-chevron svg {
-  transition: transform 0.2s ease;
-}
-
-.booking-form-landing__date-chevron--open img,
-.booking-form-landing__date-chevron--open svg,
-.booking-form-landing__time-chevron--open img,
-.booking-form-landing__time-chevron--open svg {
-  transform: rotate(180deg);
 }
 
 /* Calendar section */
@@ -769,65 +387,49 @@
 }
 
 /* ============================================
-   DATE PICKER CUSTOM (kept for legacy use)
+   DATE PICKER INSIDE INLINE PICKER
    ============================================ */
-.booking-form-landing__date-picker {
-  position: absolute;
-  top: 85px;
-  left: 0;
-  right: 0;
-  background-color: #f9fafa;
-  border-radius: 8px;
-  box-shadow: 0px 1px 15px 0px rgba(3, 17, 13, 0.1);
-  padding: 16px;
-  z-index: 21;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .date-picker__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 4px;
+  margin-bottom: var(--space-300);
   width: 100%;
 }
 
 .date-picker__nav-group {
   display: flex;
-  gap: 8px;
-  /* Space between the double arrows */
+  gap: var(--space-200);
 }
 
 .date-picker__title {
   font-family: var(--font-family-body);
-  font-size: 16px;
-  font-weight: 600;
-  color: #03110d;
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
   flex: 1;
-  /* Allow title to take up remaining space if needed, or just center it */
   text-align: center;
 }
 
 .date-picker__nav-btn {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1;
-  font-weight: bold;
   cursor: pointer;
-  color: #03110d;
+  color: var(--text-primary);
   padding: 4px 8px;
+  border-radius: var(--radius-xs);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.15s ease;
 }
 
 .date-picker__nav-btn:hover {
-  color: #306968;
-  background-color: #eef1f1;
-  border-radius: 4px;
+  background-color: var(--grey-70);
+  color: var(--sea-green-50);
 }
 
 .date-picker__weekdays {
@@ -836,8 +438,8 @@
   text-align: center;
   font-family: var(--font-family-body);
   font-size: 14px;
-  font-weight: 500;
-  color: #616262;
+  font-weight: var(--font-weight-medium);
+  color: var(--grey-30);
   margin-bottom: 4px;
 }
 
@@ -862,54 +464,336 @@
   justify-content: center;
   font-family: var(--font-family-body);
   font-size: 14px;
-  color: #03110d;
+  color: var(--text-primary);
   background: none;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   padding: 0;
+  transition: background-color 0.15s ease;
 }
 
-.date-picker__day:hover {
-  background-color: #eef1f1;
+.date-picker__day:hover:not(:disabled) {
+  background-color: var(--grey-70);
 }
 
 .date-picker__day--selected {
-  background-color: #313131 !important;
-  color: #ffffff !important;
+  background-color: var(--grey-10) !important;   /* #313131 */
+  color: var(--white) !important;
+  border-color: transparent !important;
 }
 
 .date-picker__day--today {
-  border: 1px solid #313131;
-  font-weight: 600;
+  border: 1px solid var(--grey-10);
+  font-weight: var(--font-weight-semibold);
 }
 
 .date-picker__day--muted {
-  color: #ccc;
+  color: var(--grey-50);
   pointer-events: none;
 }
 
 /* ============================================
-   MOBILE BOTTOM SHEET PICKERS
+   TIME PICKER INSIDE INLINE PICKER
+   ============================================ */
+.time-picker__header-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.time-picker__toggle-option {
+  padding: 6px 14px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 16px;
+  cursor: pointer;
+  min-width: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.time-picker__toggle-option--active {
+  background-color: var(--grey-10);   /* #313131 */
+  color: var(--white);
+}
+
+.time-picker__toggle-option--inactive {
+  border: var(--border-m) solid var(--black);
+  color: var(--text-primary);
+  background-color: transparent;
+}
+
+.time-picker__columns-header {
+  display: flex;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.time-picker__column-title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  padding: 4px 0;
+}
+
+.time-picker__columns-wrapper {
+  display: flex;
+  height: 200px;
+  border: 1px solid var(--grey-30);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+}
+
+.time-picker__column {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  border-right: 0.5px solid var(--grey-30);
+  align-items: center;
+  padding: 0;
+}
+
+.time-picker__column:last-child {
+  border-right: none;
+}
+
+#ampmColumn {
+  justify-content: flex-start;
+}
+
+/* Scrollbar */
+.time-picker__column::-webkit-scrollbar {
+  width: 4px;
+}
+
+.time-picker__column::-webkit-scrollbar-thumb {
+  background-color: var(--grey-30);
+  border-radius: 4px;
+}
+
+.time-picker__item {
+  padding: 8px 12px;
+  text-align: center;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.15s ease;
+}
+
+.time-picker__item:hover {
+  background-color: var(--grey-70);
+}
+
+.time-picker__item--selected {
+  background-color: var(--sea-green-50);
+  color: var(--white);
+}
+
+.booking-form-landing__confirm-btn {
+  background-color: var(--sea-green-50);
+  color: var(--sea-green-100);
+  padding: var(--space-300) var(--space-600);
+  border-radius: var(--radius-xs);
+  border: none;
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.15s ease;
+}
+
+.booking-form-landing__confirm-btn:hover {
+  background-color: var(--sea-green-40);
+}
+
+/* ============================================
+   VALIDATION STATES
+   ============================================ */
+.booking-form-landing__input--error,
+.booking-form-landing__select--error {
+  border-color: var(--red-50);
+  background-color: var(--red-100);
+}
+
+.booking-form-landing__input--error:focus {
+  border-color: var(--red-50);
+  box-shadow: 0 0 0 3px rgba(204, 69, 92, 0.1);
+}
+
+.booking-form-landing__error-message {
+  font-family: var(--font-family-body);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-regular);
+  color: var(--red-50);
+  margin-top: 4px;
+}
+
+.booking-form-landing__input--success,
+.booking-form-landing__select--success {
+  border-color: var(--green-50);
+}
+
+/* ============================================
+   AUTOCOMPLETE DROPDOWN (From/To)
+   ============================================ */
+.booking-form-landing__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: var(--surface-primary);
+  border-radius: var(--radius-s);
+  border: var(--border-s) solid var(--border-default);
+  box-shadow: var(--shadow-l);
+  overflow: hidden;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-form-landing__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-300) var(--space-300);
+  background-color: var(--surface-primary);
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.booking-form-landing__dropdown-item:hover {
+  background-color: var(--grey-70);
+}
+
+.booking-form-landing__dropdown-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booking-form-landing__dropdown-icon svg,
+.booking-form-landing__dropdown-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.booking-form-landing__dropdown-text {
+  font-family: var(--font-family-body);
+  font-size: var(--body-md-size);
+  color: var(--text-primary);
+  flex: 1;
+  font-weight: var(--font-weight-regular);
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+.booking-form-landing--loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.booking-form-landing__submit--loading {
+  position: relative;
+  color: transparent;
+}
+
+.booking-form-landing__submit--loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--sea-green-100);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: bfl-spin 0.6s linear infinite;
+}
+
+@keyframes bfl-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE
    ============================================ */
 @media (max-width: 768px) {
+  .booking-form-landing {
+    padding: var(--space-500) var(--space-400);
+    gap: var(--space-400);
+    border-radius: var(--radius-m);
+  }
+
+  .booking-form-landing__toggle {
+    gap: var(--space-300);
+  }
+
+  .booking-form-landing__toggle-btn {
+    padding: var(--space-300) var(--space-400);
+    font-size: var(--body-md-size);
+  }
+
+  .booking-form-landing__input,
+  .booking-form-landing__select {
+    padding: 12px 12px 12px 44px;
+    padding-right: 44px;
+    font-size: var(--body-md-size);
+    min-height: 48px;
+  }
+
+  .booking-form-landing__submit {
+    padding: var(--space-400);
+    min-height: 52px;
+  }
+
+  /* Mobile bottom-sheet pickers */
   .booking-form-landing__inline-picker.booking-form-landing__inline-picker--open {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 9999;
-    background-color: #f9fafa;
+    background-color: var(--surface-primary);
     border-radius: 24px 24px 0 0;
     border: none;
     margin: 0;
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
-    /* Overlay */
     max-height: 90vh;
     padding-bottom: max(16px, env(safe-area-inset-bottom));
   }
 
-  /* Remove borders and adjust spacing to match bottom sheet design */
   .time-picker__columns-wrapper {
     border: none;
     height: 240px;
@@ -919,17 +803,7 @@
     border-right: none;
   }
 
-  .time-picker__column::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .time-picker__column::-webkit-scrollbar-thumb {
-    background-color: #616262;
-    border-radius: 6px;
-  }
-
   .time-picker__item {
-    font-size: 16px;
     padding: 12px 0;
   }
 
@@ -941,6 +815,20 @@
 
   .inline-picker__confirm-section {
     padding-bottom: 24px;
-    /* Extra padding at bottom for mobile */
   }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.booking-form-landing .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

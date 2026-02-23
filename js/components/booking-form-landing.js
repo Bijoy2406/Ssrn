@@ -1,26 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Tab switching ──────────────────────────────────────────────
+  // ── Tab switching — 3 tabs: oneway / roundtrip / hourly ───────
   window.switchTab = function (type) {
     const btns = document.querySelectorAll('.booking-form-landing__toggle-btn');
-    btns.forEach(btn => {
-      btn.classList.remove('booking-form-landing__toggle-btn--active');
-      if (btn.textContent.toLowerCase().includes(type === 'oneway' ? 'one way' : 'hourly')) {
-        btn.classList.add('booking-form-landing__toggle-btn--active');
-      }
-    });
+    btns.forEach(btn => btn.classList.remove('booking-form-landing__toggle-btn--active'));
 
-    const toField = document.getElementById('dropoffLocation')?.closest('.booking-form-landing__field');
+    const activeId = { oneway: 'tab-oneway', roundtrip: 'tab-roundtrip', hourly: 'tab-hourly' }[type];
+    if (activeId) document.getElementById(activeId)?.classList.add('booking-form-landing__toggle-btn--active');
+
+    const toField       = document.getElementById('dropoffLocation')?.closest('.booking-form-landing__field');
     const durationField = document.getElementById('durationField');
-    if (toField && durationField) {
-      if (type === 'hourly') {
-        toField.style.display = 'none';
-        durationField.style.display = 'flex';
-      } else {
-        toField.style.display = 'flex';
-        durationField.style.display = 'none';
-      }
-    }
+    const returnField   = document.getElementById('returnDateField');
+
+    if (toField)       toField.style.display       = (type === 'hourly') ? 'none' : 'flex';
+    if (durationField) durationField.style.display  = (type === 'hourly') ? 'flex' : 'none';
+    if (returnField)   returnField.style.display    = (type === 'roundtrip') ? 'flex' : 'none';
   };
 
   // ── Location / Duration Dropdowns ─────────────────────────────
@@ -379,10 +373,103 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // ── Return Date Picker (Round Trip — node 902-23905) ──────────
+  const returnDateInput   = document.getElementById('returnDate');
+  const returnDatePicker  = document.getElementById('inlineReturnDatePicker');
+  const returnChevron     = document.getElementById('returnDateChevron');
+
+  if (returnDateInput && returnDatePicker) {
+    let rViewDate     = new Date();
+    let rSelectedDate = null;
+
+    const rMonthYearEl   = document.getElementById('rCurrentMonthYear');
+    const rDaysContainer = document.getElementById('rCalendarDays');
+
+    function renderReturnCalendar() {
+      if (!rMonthYearEl || !rDaysContainer) return;
+      const year  = rViewDate.getFullYear();
+      const month = rViewDate.getMonth();
+      rMonthYearEl.textContent = rViewDate.toLocaleString('en-US', { month: 'long' }) + ' ' + year;
+      rDaysContainer.innerHTML = '';
+
+      const today         = new Date();
+      const firstDay      = new Date(year, month, 1).getDay();
+      const daysInMonth   = new Date(year, month + 1, 0).getDate();
+      const prevMonthDays = new Date(year, month, 0).getDate();
+
+      for (let i = firstDay - 1; i >= 0; i--) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-picker__day date-picker__day--muted';
+        btn.textContent = prevMonthDays - i;
+        btn.disabled = true;
+        rDaysContainer.appendChild(btn);
+      }
+      for (let d = 1; d <= daysInMonth; d++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-picker__day';
+        btn.textContent = d;
+        const isToday = d === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+        if (isToday) btn.classList.add('date-picker__day--today');
+        if (rSelectedDate && d === rSelectedDate.getDate() && month === rSelectedDate.getMonth() && year === rSelectedDate.getFullYear()) {
+          btn.classList.add('date-picker__day--selected');
+        }
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          rSelectedDate = new Date(year, month, d);
+          const dayName   = rSelectedDate.toLocaleDateString('en-US', { weekday: 'short' });
+          const monthName = rSelectedDate.toLocaleDateString('en-US', { month: 'long' });
+          returnDateInput.value = `${dayName} , ${monthName} ${d}, ${year}`;
+          returnDatePicker.classList.remove('booking-form-landing__inline-picker--open');
+          if (returnChevron) returnChevron.classList.remove('booking-form-landing__return-chevron--open');
+          renderReturnCalendar();
+        });
+        rDaysContainer.appendChild(btn);
+      }
+      const total    = firstDay + daysInMonth;
+      const trailing = total % 7 === 0 ? 0 : 7 - (total % 7);
+      for (let d = 1; d <= trailing; d++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-picker__day date-picker__day--muted';
+        btn.textContent = d;
+        btn.disabled = true;
+        rDaysContainer.appendChild(btn);
+      }
+    }
+
+    const returnWrapper = returnDateInput.closest('.booking-form-landing__input-wrapper');
+    if (returnWrapper) {
+      returnWrapper.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = returnDatePicker.classList.contains('booking-form-landing__inline-picker--open');
+        closeAllPickers(['inlineReturnDatePicker']);
+        if (!isOpen) {
+          returnDatePicker.classList.add('booking-form-landing__inline-picker--open');
+          if (returnChevron) returnChevron.classList.add('booking-form-landing__return-chevron--open');
+          renderReturnCalendar();
+        } else {
+          returnDatePicker.classList.remove('booking-form-landing__inline-picker--open');
+          if (returnChevron) returnChevron.classList.remove('booking-form-landing__return-chevron--open');
+        }
+      });
+    }
+
+    document.getElementById('rPrevMonth')?.addEventListener('click', e => { e.stopPropagation(); rViewDate = new Date(rViewDate.getFullYear(), rViewDate.getMonth() - 1, 1); renderReturnCalendar(); });
+    document.getElementById('rNextMonth')?.addEventListener('click', e => { e.stopPropagation(); rViewDate = new Date(rViewDate.getFullYear(), rViewDate.getMonth() + 1, 1); renderReturnCalendar(); });
+    document.getElementById('rPrevYear')?.addEventListener('click',  e => { e.stopPropagation(); rViewDate = new Date(rViewDate.getFullYear() - 1, rViewDate.getMonth(), 1);  renderReturnCalendar(); });
+    document.getElementById('rNextYear')?.addEventListener('click',  e => { e.stopPropagation(); rViewDate = new Date(rViewDate.getFullYear() + 1, rViewDate.getMonth(), 1);  renderReturnCalendar(); });
+  }
+
   // ── Click outside to close ────────────────────────────────────
   document.addEventListener('click', e => {
     if (!e.target.closest('.booking-form-landing')) {
       closeAllPickers();
+      if (returnDatePicker) {
+        returnDatePicker.classList.remove('booking-form-landing__inline-picker--open');
+        if (returnChevron) returnChevron.classList.remove('booking-form-landing__return-chevron--open');
+      }
     }
   });
 });

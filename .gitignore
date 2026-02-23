@@ -5,7 +5,7 @@
 /fetch-figma.js
 /figma_fetch.js
 /DESIGN_SYSTEM.md
-
+.mcp.json
 # Ignore OS & editor files
 .DS_Store
 Thumbs.db
