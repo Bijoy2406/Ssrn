@@ -1593,6 +1593,7 @@
 
       .auth-nav {
         justify-content: space-between;
+        padding: 0 var(--space-400);
       }
 
       /* Show mobile notification badge */
@@ -2645,6 +2646,85 @@
         padding: 0 var(--space-800);
       }
     }
+
+    /* Desktop-only top area alignment (token-based) */
+    @media (min-width: 1025px) {
+      .auth-nav,
+      .hero__title-bar {
+        padding-left: var(--space-800);
+        padding-right: var(--space-800);
+      }
+
+      .auth-nav-wrapper {
+        padding: var(--space-200) 0;
+        box-shadow: var(--shadow-xs);
+      }
+
+      .auth-nav {
+        padding-top: 0;
+        padding-bottom: 0;
+        gap: var(--space-500);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .auth-nav__logo-group {
+        gap: var(--space-400);
+      }
+
+      .auth-nav__logo {
+        width: 137px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      .auth-nav__logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .auth-nav__fill {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex: 0 0 auto;
+        width: auto;
+      }
+
+      .auth-nav__buttons {
+        display: flex;
+        align-items: center;
+        gap: var(--space-600);
+        width: auto;
+      }
+
+      .auth-nav__profile {
+        margin-left: var(--space-500);
+      }
+
+      .auth-nav-item__button {
+        padding: var(--space-200) var(--space-300);
+      }
+
+      .auth-nav__profile-btn {
+        padding: var(--space-200) var(--space-400);
+        border: var(--border-m) solid var(--text-primary);
+        border-radius: var(--radius-s);
+      }
+
+      .hero__title-bar {
+        max-width: 100%;
+        padding-top: var(--space-500);
+        padding-bottom: var(--space-400);
+        background-color: var(--surface-primary);
+        box-shadow: inset 0 calc(-1 * var(--border-s)) 0 var(--border-default);
+      }
+    }
   </style>
 </head>
 
@@ -3104,14 +3184,12 @@
       <!-- Booking form floats over image -->
       <div class="hero__form-overlay">
         <div class="booking-form-landing">
-          <!-- Ride Type Toggle — 3 tabs: One Way / Round Trip / Hourly -->
+          <!-- Ride Type Toggle — 2 tabs: One Way Ride / Hourly Ride -->
           <div class="booking-form-landing__toggle">
             <button class="booking-form-landing__toggle-btn booking-form-landing__toggle-btn--active"
-              onclick="switchTab('oneway')" id="tab-oneway">One Way</button>
+              onclick="switchTab('oneway')" id="tab-oneway">One Way Ride</button>
             <button class="booking-form-landing__toggle-btn"
-              onclick="switchTab('roundtrip')" id="tab-roundtrip">Round Trip</button>
-            <button class="booking-form-landing__toggle-btn"
-              onclick="switchTab('hourly')" id="tab-hourly">Hourly</button>
+              onclick="switchTab('hourly')" id="tab-hourly">Hourly Ride</button>
           </div>
 
           <!-- From Field -->
