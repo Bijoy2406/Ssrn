@@ -43,11 +43,13 @@
 .site-footer__logo img {
   height: 24px;
   width: auto;
+  filter: brightness(0) invert(1);
 }
 
 .site-footer__logo svg {
   height: 100%;
   width: auto;
+  filter: brightness(0) invert(1);
 }
 
 /* Help Button */
@@ -173,9 +175,9 @@
 .site-footer__legal {
   flex: 1;
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-800);
   align-items: flex-start;
-  min-width: 592px;
 }
 
 .site-footer__legal-link {
@@ -193,7 +195,6 @@
   transition: background-color 0.2s ease;
   cursor: pointer;
   white-space: nowrap;
-  width: 100px;
 }
 
 .site-footer__legal-link:hover {
