@@ -194,6 +194,11 @@
       display: block;
     }
 
+    /* Mobile booking form wrapper (hidden on desktop/tablet) */
+    .hero__mobile-form {
+      display: none;
+    }
+
     /* ============================================
        YOUR UPCOMING RIDE SECTION — Figma exact
        ============================================ */
@@ -392,6 +397,16 @@
       font-weight: var(--font-weight-bold);
       color: var(--text-primary);
       white-space: nowrap;
+    }
+
+    /* Mobile-only class label (hidden on desktop) */
+    .upcoming-ride__class-mobile {
+      display: none;
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-200) 0;
     }
 
     /* Action buttons — bottom, side by side, centered */
@@ -1263,6 +1278,30 @@
        NAV — FIGMA-EXACT OVERRIDES (Desktop)
        ============================================ */
 
+    /* Nav logo group (logo + mobile badge) */
+    .auth-nav__logo-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-200);
+    }
+
+    /* Notification badge — hidden on desktop/tablet, shown mobile only */
+    .auth-nav__mobile-badge {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      padding: 0 var(--space-100);
+      background-color: var(--red-50);
+      color: var(--white);
+      font-family: var(--font-family-body);
+      font-size: var(--body-sm-size);
+      font-weight: var(--font-weight-bold);
+      border-radius: var(--radius-s);
+      line-height: 1;
+    }
+
     /* Nav wrapper */
     .auth-nav-wrapper {
       background-color: var(--surface-primary);
@@ -1556,6 +1595,11 @@
         justify-content: space-between;
       }
 
+      /* Show mobile notification badge */
+      .auth-nav__mobile-badge {
+        display: flex;
+      }
+
       /* ── Hero mobile ── */
       .hero {
         overflow: hidden;
@@ -1576,6 +1620,11 @@
         display: none;
       }
 
+      /* Hide tablet form on mobile */
+      .hero__tablet-form {
+        display: none !important;
+      }
+
       /* image-form: normal flow on mobile */
       .hero__image-form {
         position: static;
@@ -1587,9 +1636,10 @@
       .hero__greeting {
         display: block;
         font-family: var(--font-family-heading);
-        font-size: var(--heading-h8-size);
-        font-weight: var(--font-weight-bold);
-        color: var(--text-primary);
+        font-size: var(--heading-h5-size);        /* 28px on mobile via token */
+        font-weight: var(--font-weight-bold);     /* 700 */
+        line-height: var(--heading-h5-line-height); /* 36px on mobile */
+        color: var(--text-primary);               /* #03110D */
         margin: 0;
         padding: var(--space-400) var(--space-400) var(--space-300);
       }
@@ -1600,33 +1650,91 @@
         height: 220px;
       }
 
-      /* Booking form below image, card style */
-      .booking-form-landing {
-        width: 100%;
-        padding: var(--space-500) var(--space-400);
-        gap: var(--space-400);
-        box-shadow: var(--shadow-l);
-        border-radius: var(--radius-m);
-        background-color: var(--surface-primary);
-        border: none;
-        max-width: 100%;
-        margin: calc(-1 * var(--space-800)) var(--space-400) 0;
+      /* Show mobile booking form */
+      .hero__mobile-form {
+        display: block;
+        padding: 0 var(--space-400) var(--space-400);
+        margin-top: calc(-1 * var(--space-600));
         position: relative;
-        z-index: 1;
+        z-index: 2;
       }
 
-      .booking-form-landing__toggle {
-        gap: var(--space-200);
+      /* ── Mobile Booking Form Card ── */
+      .booking-form-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-400);
+        padding: var(--space-500) var(--space-400);
+        background-color: var(--white);
+        border-radius: var(--radius-l);
+        box-shadow: var(--shadow-l);
+        width: 100%;
+        box-sizing: border-box;
       }
 
-      .booking-form-landing__toggle-btn {
+      /* ── Mobile Tab Toggle ── */
+      .booking-form-mobile__toggle {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-300);
+        width: 100%;
+      }
+
+      .booking-form-mobile__toggle-btn {
         flex: 1;
-        padding: var(--space-300) var(--space-200);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-300) var(--space-300);
+        background-color: transparent;
+        border: var(--border-m) solid var(--black);
+        border-radius: var(--radius-s);
+        font-family: var(--font-family-body);
         font-size: var(--body-md-size);
         font-weight: var(--font-weight-semibold);
-        text-align: center;
+        line-height: var(--body-md-line-height);
+        color: var(--black);
+        cursor: pointer;
+        transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+        white-space: nowrap;
       }
 
+      .booking-form-mobile__toggle-btn--active {
+        background-color: var(--grey-10);
+        color: var(--white);
+        border-color: var(--grey-10);
+      }
+
+      /* ── Mobile form uses shared booking-form-landing styles ── */
+      .booking-form-mobile .booking-form-landing__label {
+        font-size: var(--body-md-size);
+        font-weight: var(--font-weight-semibold);
+      }
+
+      .booking-form-mobile .booking-form-landing__input {
+        padding: var(--space-300) var(--space-400);
+        padding-left: 44px;
+        padding-right: 44px;
+        font-size: var(--body-md-size);
+        min-height: 48px;
+        background-color: var(--white);
+        border: var(--border-s) solid var(--border-default);
+        border-radius: var(--radius-s);
+      }
+
+      .booking-form-mobile .booking-form-landing__input:focus {
+        border-color: var(--sea-green-50);
+        box-shadow: 0 0 0 3px rgba(48, 105, 104, 0.12);
+      }
+
+      .booking-form-mobile .booking-form-landing__submit {
+        padding: var(--space-400);
+        font-size: var(--body-md-size);
+        min-height: 52px;
+        border-radius: var(--radius-s);
+      }
+
+      /* Booking form below image, card style (desktop form hidden on mobile) */
       .booking-form-landing__label {
         font-size: var(--body-md-size);
         font-weight: var(--font-weight-semibold);
@@ -1701,13 +1809,39 @@
 
       .upcoming-ride__actions {
         flex-direction: column;
-        gap: var(--space-200);
+        gap: var(--space-300);
+        align-items: center;
       }
 
-      .upcoming-ride__btn-outline,
-      .upcoming-ride__btn-primary {
+      /* Mobile: Book Return = full-width primary button */
+      .upcoming-ride__btn-book-return {
         width: 100%;
         text-align: center;
+        order: -1;
+        padding: var(--space-400) var(--space-600);
+        min-height: 52px;
+        border-radius: var(--radius-s);
+        font-size: var(--body-md-size);
+      }
+
+      /* Mobile: View Details = text link style */
+      .upcoming-ride__btn-view-details {
+        width: auto;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-family: var(--font-family-body);
+        font-size: var(--body-md-size);
+        font-weight: var(--font-weight-semibold);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        padding: var(--space-100) 0;
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+
+      .upcoming-ride__btn-view-details:hover {
+        color: var(--sea-green-50);
       }
 
       .upcoming-ride__location-text {
@@ -1723,6 +1857,20 @@
 
       .upcoming-ride__class-col {
         display: none;
+      }
+
+      /* Locations take full width when class column is hidden */
+      .upcoming-ride__body-row {
+        justify-content: flex-start;
+      }
+
+      .upcoming-ride__locations {
+        width: 100%;
+      }
+
+      /* Show "Standard Class" below date on mobile */
+      .upcoming-ride__class-mobile {
+        display: block;
       }
 
       /* ── Services Carousel ── */
@@ -1997,7 +2145,11 @@
 
       /* ── Hero ── */
       .hero {
-        padding: var(--space-400) 0 var(--space-800);
+        padding: 0;
+      }
+
+      .hero__mobile-form {
+        padding: 0 var(--space-300) var(--space-400);
       }
 
       .hero__title {
@@ -2535,9 +2687,13 @@
   <!-- Navigation -->
   <div class="auth-nav-wrapper">
     <nav class="auth-nav">
-      <a href="/" class="auth-nav__logo" style="display:flex;align-items:center;">
-        <img src="../../assets/images/logo-ssrn.svg" alt="SSRN" width="137" height="48" style="object-fit:contain;display:block;">
-      </a>
+      <div class="auth-nav__logo-group">
+        <a href="/" class="auth-nav__logo" style="display:flex;align-items:center;">
+          <img src="../../assets/images/logo-ssrn.svg" alt="SSRN" width="137" height="48" style="object-fit:contain;display:block;">
+        </a>
+        <!-- Notification badge — visible on mobile only -->
+        
+      </div>
 
       <div class="auth-nav__fill" id="navFill">
         <div class="auth-nav__buttons">
@@ -2744,6 +2900,105 @@
           class="hero__image-img">
         <!-- Tablet badge removed -->
       </div>
+
+      <!-- Mobile Booking Form — 2 tabs (One Way Ride / Hourly Ride) — hidden on desktop & tablet -->
+      <div class="hero__mobile-form">
+        <div class="booking-form-mobile">
+
+          <!-- Tab Toggle: 2 tabs -->
+          <div class="booking-form-mobile__toggle">
+            <button
+              class="booking-form-mobile__toggle-btn booking-form-mobile__toggle-btn--active"
+              onclick="switchMobileTab('oneway')"
+              id="mobile-tab-oneway">
+              One Way Ride
+            </button>
+            <button
+              class="booking-form-mobile__toggle-btn"
+              onclick="switchMobileTab('hourly')"
+              id="mobile-tab-hourly">
+              Hourly Ride
+            </button>
+          </div>
+
+          <!-- From Field -->
+          <div class="booking-form-landing__field">
+            <label class="booking-form-landing__label">From</label>
+            <div class="booking-form-landing__input-wrapper">
+              <div class="booking-form-landing__icon-left">
+                <img src="../../assets/images/icons/booking form/Location.svg" alt="Location" width="24" height="24">
+              </div>
+              <input type="text" class="booking-form-landing__input" placeholder="Airport, address, hotel,..." id="mobilePickupLocation">
+              <div class="booking-form-landing__icon-right booking-form-landing__icon-right--static">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 16C7.68333 16 6.14583 15.3708 4.8875 14.1125C3.62917 12.8542 3 11.3167 3 9.5C3 7.68333 3.62917 6.14583 4.8875 4.8875C6.14583 3.62917 7.68333 3 9.5 3C11.3167 3 12.8542 3.62917 14.1125 4.8875C15.3708 6.14583 16 7.68333 16 9.5C16 10.2333 15.8833 10.925 15.65 11.575C15.4167 12.225 15.1 12.8 14.7 13.3L20.3 18.9C20.4833 19.0833 20.575 19.3167 20.575 19.6C20.575 19.8833 20.4833 20.1167 20.3 20.3C20.1167 20.4833 19.8833 20.575 19.6 20.575C19.3167 20.575 19.0833 20.4833 18.9 20.3L13.3 14.7C12.8 15.1 12.225 15.4167 11.575 15.65C10.925 15.8833 10.2333 16 9.5 16ZM9.5 14C10.75 14 11.8125 13.5625 12.6875 12.6875C13.5625 11.8125 14 10.75 14 9.5C14 8.25 13.5625 7.1875 12.6875 6.3125C11.8125 5.4375 10.75 5 9.5 5C8.25 5 7.1875 5.4375 6.3125 6.3125C5.4375 7.1875 5 8.25 5 9.5C5 10.75 5.4375 11.8125 6.3125 12.6875C7.1875 13.5625 8.25 14 9.5 14Z" fill="#03110D"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- To Field (shown for One Way, hidden for Hourly) -->
+          <div class="booking-form-landing__field" id="mobileToField">
+            <label class="booking-form-landing__label">To</label>
+            <div class="booking-form-landing__input-wrapper">
+              <div class="booking-form-landing__icon-left">
+                <img src="../../assets/images/icons/booking form/Location.svg" alt="Location" width="24" height="24">
+              </div>
+              <input type="text" class="booking-form-landing__input" placeholder="Airport, address, hotel,..." id="mobileDropoffLocation">
+              <div class="booking-form-landing__icon-right booking-form-landing__icon-right--static">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 16C7.68333 16 6.14583 15.3708 4.8875 14.1125C3.62917 12.8542 3 11.3167 3 9.5C3 7.68333 3.62917 6.14583 4.8875 4.8875C6.14583 3.62917 7.68333 3 9.5 3C11.3167 3 12.8542 3.62917 14.1125 4.8875C15.3708 6.14583 16 7.68333 16 9.5C16 10.2333 15.8833 10.925 15.65 11.575C15.4167 12.225 15.1 12.8 14.7 13.3L20.3 18.9C20.4833 19.0833 20.575 19.3167 20.575 19.6C20.575 19.8833 20.4833 20.1167 20.3 20.3C20.1167 20.4833 19.8833 20.575 19.6 20.575C19.3167 20.575 19.0833 20.4833 18.9 20.3L13.3 14.7C12.8 15.1 12.225 15.4167 11.575 15.65C10.925 15.8833 10.2333 16 9.5 16ZM9.5 14C10.75 14 11.8125 13.5625 12.6875 12.6875C13.5625 11.8125 14 10.75 14 9.5C14 8.25 13.5625 7.1875 12.6875 6.3125C11.8125 5.4375 10.75 5 9.5 5C8.25 5 7.1875 5.4375 6.3125 6.3125C5.4375 7.1875 5 8.25 5 9.5C5 10.75 5.4375 11.8125 6.3125 12.6875C7.1875 13.5625 8.25 14 9.5 14Z" fill="#03110D"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Date Field -->
+          <div class="booking-form-landing__field">
+            <label class="booking-form-landing__label">Date</label>
+            <div class="booking-form-landing__input-wrapper" style="cursor:pointer;" onclick="openMobileDatePicker()">
+              <div class="booking-form-landing__icon-left">
+                <img src="../../assets/images/icons/booking form/Calendar.svg" alt="Date" width="24" height="24">
+              </div>
+              <input type="text" class="booking-form-landing__input" placeholder="Wed , November 30, 2025" id="mobilePickupDate" readonly style="cursor:pointer;">
+              <div class="booking-form-landing__icon-right booking-form-landing__date-chevron" id="mobileDateChevron">
+                <img src="../../assets/images/icons/booking form/Chevron down.svg" alt="Toggle" width="24" height="24">
+              </div>
+            </div>
+          </div>
+
+          <!-- Duration Field — shown only for Hourly tab -->
+          <div class="booking-form-landing__field" id="mobileDurationField" style="display:none;">
+            <label class="booking-form-landing__label">Duration</label>
+            <div class="booking-form-landing__input-wrapper" style="cursor:pointer;">
+              <div class="booking-form-landing__icon-left">
+                <img src="../../assets/images/icons/booking form/Duration.svg" alt="Duration" width="24" height="24">
+              </div>
+              <input type="text" class="booking-form-landing__input" placeholder="Select duration" id="mobileDuration" readonly style="cursor:pointer;">
+              <div class="booking-form-landing__icon-right">
+                <img src="../../assets/images/icons/booking form/Chevron down.svg" alt="Toggle" width="24" height="24">
+              </div>
+            </div>
+          </div>
+
+          <!-- Pickup Time Field -->
+          <div class="booking-form-landing__field">
+            <label class="booking-form-landing__label">Pickup Time</label>
+            <div class="booking-form-landing__input-wrapper" style="cursor:pointer;" onclick="openMobileTimePicker()">
+              <div class="booking-form-landing__icon-left">
+                <img src="../../assets/images/icons/booking form/Clock.svg" alt="Time" width="24" height="24">
+              </div>
+              <input type="text" class="booking-form-landing__input" placeholder="05:00 PM" id="mobilePickupTime" readonly style="cursor:pointer;" value="05:00 PM">
+              <div class="booking-form-landing__icon-right booking-form-landing__time-chevron" id="mobileTimeChevron">
+                <img src="../../assets/images/icons/booking form/Chevron down.svg" alt="Toggle" width="24" height="24">
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="booking-form-landing__submit">
+            <img src="../../assets/images/icons/booking form/Search.svg" alt="Search" width="20" height="20">
+            See Prices
+          </button>
+
+        </div><!-- /.booking-form-mobile -->
+      </div><!-- /.hero__mobile-form -->
 
       <!-- Tablet Booking Form (2 tabs: One Way Ride / Hourly Ride) — hidden on desktop & mobile -->
       <div class="hero__tablet-form">
@@ -3233,6 +3488,9 @@
           <!-- Date — bold -->
           <p class="upcoming-ride__datetime">Sunday, 23 Nov 2025, 01:45 pm</p>
 
+          <!-- Class label — shown on mobile below date (hidden on desktop via class-col) -->
+          <p class="upcoming-ride__class-mobile">Standard Class</p>
+
           <!-- Divider -->
           <div class="upcoming-ride__divider"></div>
 
@@ -3317,8 +3575,8 @@
 
           <!-- Action buttons -->
           <div class="upcoming-ride__actions">
-            <button class="upcoming-ride__btn-outline">View Details</button>
-            <button class="upcoming-ride__btn-primary">Book Return</button>
+            <button class="upcoming-ride__btn-outline upcoming-ride__btn-view-details">View Details</button>
+            <button class="upcoming-ride__btn-primary upcoming-ride__btn-book-return">Book Return</button>
           </div>
 
         </div>
@@ -4015,6 +4273,42 @@
       // Placeholder — could show a context menu
       const menu = document.querySelector('.upcoming-ride__ride-menu');
       if (menu) menu.classList.toggle('upcoming-ride__ride-menu--open');
+    }
+
+    // ── Mobile Booking Form Tab Switching ──
+    function switchMobileTab(tab) {
+      ['oneway', 'hourly'].forEach(function(t) {
+        const btn = document.getElementById('mobile-tab-' + t);
+        if (btn) btn.classList.remove('booking-form-mobile__toggle-btn--active');
+      });
+      const activeBtn = document.getElementById('mobile-tab-' + tab);
+      if (activeBtn) activeBtn.classList.add('booking-form-mobile__toggle-btn--active');
+
+      const toField = document.getElementById('mobileToField');
+      const durationField = document.getElementById('mobileDurationField');
+
+      if (tab === 'hourly') {
+        if (toField) toField.style.display = 'none';
+        if (durationField) durationField.style.display = 'flex';
+      } else {
+        if (toField) toField.style.display = '';
+        if (durationField) durationField.style.display = 'none';
+      }
+    }
+
+    // ── Mobile date/time pickers (delegates to main date-picker overlay) ──
+    function openMobileDatePicker() {
+      const overlay = document.getElementById('datePicker');
+      if (overlay) {
+        overlay.classList.add('date-picker-overlay--active');
+      }
+    }
+
+    function openMobileTimePicker() {
+      const overlay = document.getElementById('timePicker');
+      if (overlay) {
+        overlay.classList.add('time-picker-overlay--active');
+      }
     }
   </script>
 
