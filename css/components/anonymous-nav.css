@@ -303,6 +303,31 @@
 /* ============================================
    RESPONSIVE
    ============================================ */
+
+/* Tablet: 769px–1024px — logo + hamburger only */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .nav-bar {
+    padding: 0 var(--space-400);
+    gap: var(--space-300);
+    justify-content: space-between;
+  }
+
+  /* Show mobile toggle on tablet too */
+  .nav-bar__mobile-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+
+  /* Hide desktop nav links and sign-in */
+  .nav-bar__fill {
+    display: none;
+  }
+
+  .nav-bar__profile {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-bar {
     padding: 0 var(--space-400);
@@ -348,7 +373,7 @@
   opacity: 1;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .nav-overlay {
     display: none !important;
   }
