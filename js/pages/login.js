@@ -257,7 +257,7 @@ const Login = {
       sessionStorage.removeItem('loginEmail');
 
       // Redirect to user landing page
-      window.location.href = '/Ssrn/pages/landing/landing-page-user.html';
+      window.location.href = '/Ssrn/pages/Landing/landing-page-user.html';
     } else {
       // Authentication failed - show filled error state (pink background)
       this.hideSkeletonLoader();

@@ -22,7 +22,7 @@ const Success = {
 
         // Simulate delay then redirect
         setTimeout(() => {
-            window.location.href = '/Ssrn/pages/landing/landing-page-user.html';
+            window.location.href = '/Ssrn/pages/Landing/landing-page-user.html';
         }, 2000);
     }
 };
