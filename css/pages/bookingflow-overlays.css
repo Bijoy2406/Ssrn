@@ -1,0 +1,811 @@
+/**
+ * Booking Flow Overlays — Anonymous User
+ * Figma node: 1234-51742 — Desktop 640px overlays
+ * Service class details overlay + Booking form overlay
+ * All sizes use exact Figma pixel values. Token vars for colors only.
+ */
+
+/* ============================================
+   OVERLAY BACKDROP
+   ============================================ */
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(3, 17, 13, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.overlay-backdrop--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ============================================
+   OVERLAY MODAL CONTAINER
+   ============================================ */
+.overlay-modal {
+  width: 640px;
+  max-width: 100%;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  background-color: var(--surface-page);
+  border-radius: 12px;
+  box-shadow: 0px 0px 5px 0px var(--shadow-color);
+  transform: translateY(16px);
+  transition: transform 0.2s ease;
+}
+
+.overlay-backdrop--open .overlay-modal {
+  transform: translateY(0);
+}
+
+/* Scrollbar styling */
+.overlay-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overlay-modal::-webkit-scrollbar-thumb {
+  background-color: var(--grey-40);
+  border-radius: 6px;
+}
+
+/* ============================================
+   SERVICE CLASS DETAILS OVERLAY
+   ============================================ */
+.scd-overlay {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 24px;
+}
+
+/* ── Header (title + class name) ── */
+.scd-overlay__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--black);
+}
+
+.scd-overlay__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scd-overlay__title {
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.scd-overlay__close {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.scd-overlay__close svg {
+  width: 100%;
+  height: 100%;
+}
+
+.scd-overlay__class-name {
+  font-family: var(--font-family-body);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--golden-40);
+  margin: 0;
+}
+
+/* ── Content sections ── */
+.scd-overlay__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Section (Vehicle Details / Included / Price breakdown) */
+.scd-overlay__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scd-overlay__section-title {
+  font-family: var(--font-family-body);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Icon + text rows */
+.scd-overlay__items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scd-overlay__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.scd-overlay__item-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.scd-overlay__item-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.scd-overlay__item-text {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ── Price breakdown ── */
+.scd-overlay__prices {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scd-overlay__price-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--black);
+}
+
+.scd-overlay__price-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.scd-overlay__price-label {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.scd-overlay__price-value {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  text-align: right;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Total row */
+.scd-overlay__price-total .scd-overlay__price-label,
+.scd-overlay__price-total .scd-overlay__price-value {
+  font-weight: 600;
+}
+
+/* ── Continue button ── */
+.scd-overlay__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 24px;
+  background-color: var(--sea-green-50);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--sea-green-100);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  min-height: 48px;
+}
+
+.scd-overlay__btn:hover {
+  background-color: var(--golden-50);
+  color: var(--text-inverse);
+}
+
+.scd-overlay__btn:active {
+  background-color: var(--sea-green-40);
+}
+
+/* ============================================
+   BOOKING FORM OVERLAY
+   ============================================ */
+.bfo-overlay {
+  padding: 32px;
+}
+
+.bfo-overlay__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.bfo-overlay__title {
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET
+   ============================================ */
+@media (max-width: 1024px) {
+  .overlay-backdrop {
+    padding: 24px;
+  }
+
+  .overlay-modal {
+    width: 600px;
+  }
+}
+
+/* ============================================
+   DATE PICKER OVERLAY (Tablet)
+   Figma node: 1264-59159 — Full-width calendar sheet
+   ============================================ */
+.datepicker-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(3, 17, 13, 0.5);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.datepicker-overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.datepicker-overlay__panel {
+  width: 100%;
+  max-width: 744px;
+  background-color: var(--surface-page);
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px 0px var(--shadow-color);
+  padding: 24px;
+  box-sizing: border-box;
+  transform: translateY(16px);
+  transition: transform 0.2s ease;
+}
+
+.datepicker-overlay--open .datepicker-overlay__panel {
+  transform: translateY(0);
+}
+
+/* ── Month navigation ── */
+.datepicker-overlay__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 0 12px;
+  min-width: 324px;
+}
+
+.datepicker-overlay__month-title {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 32px;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0;
+  min-width: 156px;
+  max-width: 164px;
+}
+
+.datepicker-overlay__nav-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.datepicker-overlay__nav-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  border-radius: 4px;
+  padding: 0;
+  transition: background-color 0.15s ease;
+}
+
+.datepicker-overlay__nav-btn:hover {
+  background-color: var(--grey-70);
+}
+
+.datepicker-overlay__nav-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Weekday header row ── */
+.datepicker-overlay__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 8px;
+}
+
+.datepicker-overlay__weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--grey-30);
+}
+
+/* ── Days grid ── */
+.datepicker-overlay__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 8px;
+}
+
+.datepicker-overlay__day {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--text-primary);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.15s ease;
+}
+
+.datepicker-overlay__day:hover:not(:disabled):not(.datepicker-overlay__day--blank) {
+  background-color: var(--grey-70);
+}
+
+/* Current date (today) */
+.datepicker-overlay__day--current {
+  border-color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Selected date */
+.datepicker-overlay__day--selected {
+  background-color: var(--grey-10) !important;
+  color: var(--white) !important;
+  border-color: transparent !important;
+}
+
+/* Disabled / past dates */
+.datepicker-overlay__day--disabled {
+  color: var(--grey-50);
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Blank cells (padding at start/end of month) */
+.datepicker-overlay__day--blank {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ============================================
+   TIME PICKER OVERLAY (Tablet)
+   Figma node: 1264-59160 — Full-width time sheet
+   ============================================ */
+.timepicker-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(3, 17, 13, 0.5);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.timepicker-overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.timepicker-overlay__panel {
+  width: 100%;
+  max-width: 744px;
+  background-color: var(--surface-page);
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px 0px var(--shadow-color);
+  padding: 16px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: translateY(16px);
+  transition: transform 0.2s ease;
+}
+
+.timepicker-overlay--open .timepicker-overlay__panel {
+  transform: translateY(0);
+}
+
+/* ── 24h / 12h toggle ── */
+.timepicker-overlay__toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.timepicker-overlay__toggle-btn {
+  width: 147px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.timepicker-overlay__toggle-btn--active {
+  background-color: var(--grey-10);
+  color: var(--white);
+  border: 2px solid var(--grey-10);
+}
+
+.timepicker-overlay__toggle-btn--inactive {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--black);
+}
+
+.timepicker-overlay__toggle-btn--inactive:hover {
+  background-color: var(--grey-70);
+}
+
+/* ── Column headers ── */
+.timepicker-overlay__headers {
+  display: flex;
+  width: 100%;
+}
+
+.timepicker-overlay__header-label {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--text-primary);
+  padding: 4px 0;
+}
+
+/* ── Hour / Minute columns ── */
+.timepicker-overlay__columns {
+  display: flex;
+  height: 240px;
+  border: 1px solid var(--grey-30);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.timepicker-overlay__column {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timepicker-overlay__column:first-child {
+  border-right: 1px solid var(--grey-30);
+}
+
+.timepicker-overlay__column::-webkit-scrollbar {
+  width: 4px;
+}
+
+.timepicker-overlay__column::-webkit-scrollbar-thumb {
+  background-color: var(--grey-40);
+  border-radius: 4px;
+}
+
+.timepicker-overlay__item {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.timepicker-overlay__item:hover {
+  background-color: var(--grey-70);
+}
+
+.timepicker-overlay__item--selected {
+  background-color: var(--sea-green-50);
+  color: var(--white);
+}
+
+/* ── Confirm button ── */
+.timepicker-overlay__confirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 24px;
+  background-color: var(--sea-green-50);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--sea-green-100);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  min-height: 48px;
+}
+
+.timepicker-overlay__confirm:hover {
+  background-color: var(--golden-50);
+  color: var(--text-inverse);
+}
+
+.timepicker-overlay__confirm:active {
+  background-color: var(--sea-green-40);
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (Figma 390px mobile overlays)
+   Bottom-sheet style overlays for mobile
+   ============================================ */
+@media (max-width: 768px) {
+
+  /* ── Overlay backdrop: bottom-sheet positioning ── */
+  .overlay-backdrop {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  /* ── Modal container: full-width bottom sheet ── */
+  .overlay-modal {
+    width: 100%;
+    max-height: 90vh;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0px 0px 5px 0px var(--shadow-color);
+  }
+
+  /* ── Service Class Details Overlay ── */
+  .scd-overlay {
+    gap: 32px;
+    padding: 32px 24px;
+  }
+
+  .scd-overlay__header {
+    gap: 16px;
+    padding-bottom: 24px;
+  }
+
+  .scd-overlay__title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .scd-overlay__class-name {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .scd-overlay__section-title {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .scd-overlay__item-text,
+  .scd-overlay__price-label,
+  .scd-overlay__price-value {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .scd-overlay__btn {
+    border-radius: 12px;
+  }
+
+  /* ── Booking Form Overlay ── */
+  .bfo-overlay {
+    padding: 32px;
+  }
+
+  /* ── Date Picker Overlay — mobile bottom sheet ── */
+  .datepicker-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .datepicker-overlay__panel {
+    max-width: 100%;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0px 1px 15px 0px var(--shadow-color);
+  }
+
+  .datepicker-overlay__nav {
+    gap: 16px;
+    padding: 0 12px;
+  }
+
+  .datepicker-overlay__month-title {
+    font-size: 20px;
+    font-weight: var(--font-weight-medium);
+    line-height: 32px;
+    text-align: center;
+    flex: 1;
+    min-width: 156px;
+    max-width: 164px;
+  }
+
+  .datepicker-overlay__nav-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .datepicker-overlay__weekday {
+    font-size: 16px;
+    font-weight: var(--font-weight-medium);
+    line-height: 24px;
+    color: var(--text-primary);
+    height: 40px;
+  }
+
+  .datepicker-overlay__day {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: var(--font-weight-medium);
+    line-height: 24px;
+    border-radius: 4px;
+  }
+
+  .datepicker-overlay__day--current {
+    border: 1px solid var(--black);
+    border-radius: 4px;
+  }
+
+  .datepicker-overlay__day--selected {
+    background-color: var(--grey-10) !important;
+    color: var(--white) !important;
+    border-radius: 4px !important;
+  }
+
+  /* ── Time Picker Overlay — mobile bottom sheet ── */
+  .timepicker-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .timepicker-overlay__panel {
+    max-width: 100%;
+    border-radius: 12px 12px 0 0;
+    padding: 20px 16px;
+    gap: 12px;
+  }
+
+  .timepicker-overlay__toggle {
+    gap: 8px;
+  }
+
+  .timepicker-overlay__toggle-btn {
+    width: 147px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .timepicker-overlay__header-label {
+    font-size: 16px;
+    font-weight: var(--font-weight-semibold);
+    line-height: 24px;
+  }
+
+  .timepicker-overlay__columns {
+    height: 240px;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .timepicker-overlay__column {
+    border-right: none;
+  }
+
+  .timepicker-overlay__item {
+    padding: 12px 0;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .timepicker-overlay__confirm {
+    border-radius: 12px;
+  }
+}

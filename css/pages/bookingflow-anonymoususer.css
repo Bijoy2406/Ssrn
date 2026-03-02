@@ -1,0 +1,727 @@
+/**
+ * Booking Flow — Anonymous User (Select Service Class)
+ * Figma node: 1094-63041 — Desktop 1440px exact match
+ * All sizes/margins/paddings use exact Figma pixel values.
+ * Token vars used ONLY for colors and button styles.
+ */
+
+/* ============================================
+   PAGE LAYOUT
+   ============================================ */
+.bf-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--surface-page);
+}
+
+.bf-page__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 112px; /* space for sticky bottom CTA */
+}
+
+/* ============================================
+   PROGRESS SECTION
+   ============================================ */
+.bf-progress {
+  width: 100%;
+  padding: 0 120px;
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.bf-progress__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  max-width: 856px;
+  min-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Tablet step header — hidden on desktop, shown at tablet */
+.bf-progress__step-header {
+  display: none;
+  align-items: flex-end;
+  gap: 32px;
+  width: 100%;
+}
+
+.bf-progress__step-title {
+  flex: 1;
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.bf-progress__step-count {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Step buttons row */
+.bf-progress__buttons {
+  display: flex;
+  gap: 64px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.bf-progress__btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--text-primary);
+  text-align: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.bf-progress__btn--active {
+  border: 2px solid var(--black);
+}
+
+/* Progress track (dots + bars) */
+.bf-progress__track {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 71px;
+  box-sizing: border-box;
+}
+
+.bf-progress__step {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  height: 24px;
+}
+
+.bf-progress__step--last {
+  flex: 0 0 auto;
+}
+
+.bf-progress__dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.bf-progress__dot--active {
+  background-color: var(--grey-60);
+  border: 2px solid var(--black);
+}
+
+.bf-progress__dot--disabled {
+  background-color: var(--grey-50);
+  border: 2px solid var(--grey-40);
+}
+
+.bf-progress__bar {
+  height: 4px;
+  flex: 1;
+  background-color: var(--grey-60);
+}
+
+/* ============================================
+   MAP SECTION
+   ============================================ */
+.bf-map {
+  max-width: 856px;
+  width: 100%;
+  margin: 24px auto 0;
+  padding: 0 120px;
+  box-sizing: border-box;
+  max-width: 1440px;
+}
+
+.bf-map__inner {
+  max-width: 856px;
+  margin: 0 auto;
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--surface-primary);
+}
+
+.bf-map__inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================
+   MAIN CONTENT AREA (856px centered)
+   ============================================ */
+.bf-content {
+  max-width: 856px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 120px;
+  box-sizing: border-box;
+  max-width: 1440px;
+}
+
+.bf-content__inner {
+  max-width: 856px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ============================================
+   VEHICLE CLASS SECTION
+   ============================================ */
+.bf-vehicle {
+  margin-top: 36px;
+}
+
+.bf-vehicle__heading {
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.bf-vehicle__subtitle {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin: 4px 0 0;
+}
+
+/* ============================================
+   SERVICE CLASS CARDS CONTAINER
+   ============================================ */
+.bf-cards {
+  margin-top: 24px;
+  border-radius: 12px;
+  box-shadow: 0px 1px 15px -1px var(--shadow-color);
+  overflow: hidden;
+}
+
+/* Individual card item */
+.bf-card-item {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-page);
+  border-bottom: 1px solid var(--grey-70);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.bf-card-item:last-child {
+  border-bottom: none;
+}
+
+.bf-card-item:hover:not(.bf-card-item--selected) {
+  background-color: var(--grey-70);
+}
+
+/* Selected state */
+.bf-card-item--selected {
+  border: 2px solid var(--black);
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Card content row */
+.bf-card-item__content {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 32px 24px;
+  min-height: 104px;
+}
+
+/* Car image */
+.bf-card-item__image {
+  width: 144px;
+  height: 73px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bf-card-item__image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Details area (name, description, specs) */
+.bf-card-item__details {
+  display: flex;
+  flex: 1;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.bf-card-item__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+  min-width: 240px;
+}
+
+.bf-card-item__class {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bf-card-item__name {
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.bf-card-item__car {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Specs (passengers + luggage) */
+.bf-card-item__specs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bf-card-item__spec {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bf-card-item__spec--luggage {
+  flex: 1;
+}
+
+.bf-card-item__spec-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.bf-card-item__spec-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bf-card-item__spec-value {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+/* Price */
+.bf-card-item__price {
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* See Details button (selected only) */
+.bf-card-item__actions {
+  display: none;
+  padding: 0 24px 32px;
+  justify-content: center;
+}
+
+.bf-card-item--selected .bf-card-item__actions {
+  display: flex;
+}
+
+.bf-card-item__details-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--text-primary);
+  background-color: transparent;
+  border: 2px solid var(--black);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.bf-card-item__details-btn:hover {
+  background-color: var(--grey-70);
+}
+
+/* ============================================
+   YOUR BOOKING SECTION
+   ============================================ */
+.bf-booking {
+  margin-top: 36px;
+}
+
+.bf-booking__heading {
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Booking card */
+.bf-booking-card {
+  margin-top: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 32px 24px;
+  background-color: var(--surface-primary);
+  border-radius: 12px;
+}
+
+.bf-booking-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 24px;
+}
+
+.bf-booking-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.bf-booking-card__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.bf-booking-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bf-booking-card__text {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Edit button */
+.bf-booking-card__edit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}
+
+.bf-booking-card__edit:hover {
+  background-color: var(--grey-70);
+}
+
+.bf-booking-card__edit-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-primary);
+}
+
+.bf-booking-card__edit-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bf-booking-card__edit-text {
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   ADDITIONAL DISCLAIMERS
+   ============================================ */
+.bf-disclaimers {
+  margin-top: 36px;
+  padding: 32px 24px;
+  background-color: var(--surface-primary);
+  border-radius: 12px;
+}
+
+.bf-disclaimers__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bf-disclaimers__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.bf-disclaimers__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.bf-disclaimers__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bf-disclaimers__text {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ============================================
+   BOTTOM CTA BAR
+   ============================================ */
+.bf-bottom-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 120px;
+  background-color: var(--surface-page);
+  box-shadow: 0px 1px 25px -1px var(--shadow-color);
+  z-index: 100;
+}
+
+.bf-bottom-cta__btn {
+  display: flex;
+  flex: 1;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: var(--sea-green-50);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-family-body);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--sea-green-100);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  min-height: 56px;
+}
+
+.bf-bottom-cta__btn:hover {
+  background-color: var(--golden-50);
+  color: var(--text-inverse);
+}
+
+.bf-bottom-cta__btn:active {
+  background-color: var(--sea-green-40);
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (Figma 744px)
+   ============================================ */
+@media (max-width: 1024px) {
+  .bf-progress,
+  .bf-map,
+  .bf-content {
+    padding: 0 32px;
+  }
+
+  .bf-progress__inner {
+    min-width: 0;
+    gap: 16px;
+  }
+
+  /* Hide desktop step buttons, show tablet header */
+  .bf-progress__buttons {
+    display: none;
+  }
+
+  .bf-progress__step-header {
+    display: flex;
+  }
+
+  .bf-progress__track {
+    padding: 0;
+  }
+
+  /* Section spacing — tighter at tablet */
+  .bf-vehicle {
+    margin-top: 32px;
+  }
+
+  .bf-cards {
+    margin-top: 16px;
+  }
+
+  .bf-booking {
+    margin-top: 32px;
+  }
+
+  .bf-booking-card {
+    margin-top: 16px;
+  }
+
+  .bf-disclaimers {
+    margin-top: 32px;
+  }
+
+  .bf-bottom-cta {
+    padding: 24px 32px;
+  }
+
+  .bf-page__main {
+    padding-bottom: 104px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (Figma 390px)
+   ============================================ */
+@media (max-width: 390px) {
+  .bf-progress,
+  .bf-map,
+  .bf-content {
+    padding: 0 16px;
+  }
+
+  .bf-map__inner {
+    height: 200px;
+  }
+
+  .bf-vehicle {
+    margin-top: 24px;
+  }
+
+  .bf-card-item__content {
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .bf-card-item__image {
+    width: 80px;
+    height: 41px;
+  }
+
+  .bf-card-item__info {
+    min-width: 0;
+  }
+
+  .bf-card-item__details {
+    gap: 8px;
+  }
+
+  .bf-card-item__name {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .bf-card-item__price {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .bf-card-item__actions {
+    padding: 0 16px 16px;
+  }
+
+  .bf-booking {
+    margin-top: 24px;
+  }
+
+  .bf-booking-card {
+    padding: 32px 24px;
+  }
+
+  .bf-disclaimers {
+    margin-top: 24px;
+    padding: 32px 24px;
+  }
+
+  .bf-bottom-cta {
+    padding: 16px;
+  }
+
+  .bf-bottom-cta__btn {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .bf-page__main {
+    padding-bottom: 88px;
+  }
+}

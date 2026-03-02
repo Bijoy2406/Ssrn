@@ -1,0 +1,293 @@
+/**
+ * Booking Flow — Skeleton Loader
+ * Figma node: 1374-58596 — Loaders section
+ * Skeleton placeholders shown while page content loads.
+ * All sizes use exact Figma pixel values. Token vars for colors only.
+ */
+
+/* ============================================
+   SHIMMER ANIMATION
+   ============================================ */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+/* ============================================
+   BASE SKELETON BLOCK
+   ============================================ */
+.skeleton-block {
+  background-color: var(--grey-60);
+  background-image: linear-gradient(
+    90deg,
+    var(--grey-60) 0%,
+    #e8eaea 40%,
+    var(--grey-60) 80%
+  );
+  background-size: 800px 100%;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+/* ============================================
+   SKELETON WRAPPER (replaces page content)
+   ============================================ */
+.bf-skeleton {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--surface-page);
+}
+
+.bf-skeleton__body {
+  flex: 1;
+  padding: 0 120px;
+  padding-top: 85px;
+  padding-bottom: 112px;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bf-skeleton__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  max-width: 856px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ============================================
+   TOP SECTION (Progress + Map)
+   ============================================ */
+.bf-skeleton__top {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Progress buttons row — 4 equal blocks */
+.bf-skeleton__progress {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+
+.bf-skeleton__progress-btn {
+  flex: 1;
+  height: 48px;
+}
+
+/* Map block */
+.bf-skeleton__map {
+  width: 100%;
+  height: 200px;
+}
+
+/* ============================================
+   BOTTOM SECTION (Cards + Booking + Disclaimers)
+   ============================================ */
+.bf-skeleton__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* ── Cards section ── */
+.bf-skeleton__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Heading placeholder */
+.bf-skeleton__heading {
+  width: 100%;
+  height: 36px;
+}
+
+/* Card rows container */
+.bf-skeleton__card-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Single card row — image + content */
+.bf-skeleton__card-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+}
+
+.bf-skeleton__card-image {
+  flex: 1;
+  max-width: 140px;
+  height: 91px;
+}
+
+.bf-skeleton__card-content {
+  flex: 1;
+  height: 91px;
+}
+
+/* ── Booking card placeholder ── */
+.bf-skeleton__booking {
+  width: 100%;
+  height: 280px;
+}
+
+/* ── Disclaimers placeholder ── */
+.bf-skeleton__disclaimers {
+  width: 100%;
+  height: 192px;
+}
+
+/* ============================================
+   BOTTOM CTA BAR (Sticky)
+   ============================================ */
+.bf-skeleton__cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 120px;
+  background-color: var(--grey-60);
+  z-index: 100;
+}
+
+.bf-skeleton__cta-block {
+  max-width: 856px;
+  width: 100%;
+  height: 80px;
+}
+
+/* ============================================
+   OVERLAY BUTTON LOADER (See Prices spinner)
+   ============================================ */
+.bfo-overlay__submit--loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.bfo-overlay__submit--loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--sea-green-100);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: bfo-spin 0.6s linear infinite;
+}
+
+@keyframes bfo-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   HIDE/SHOW LOGIC
+   ============================================ */
+.bf-skeleton--hidden {
+  display: none;
+}
+
+.bf-page__main--loading {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET
+   ============================================ */
+@media (max-width: 1024px) {
+  .bf-skeleton__body {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .bf-skeleton__cta {
+    padding: 0 32px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE
+   ============================================ */
+@media (max-width: 390px) {
+  .bf-skeleton__body {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 60px;
+    padding-bottom: 80px;
+  }
+
+  .bf-skeleton__progress {
+    gap: 12px;
+  }
+
+  .bf-skeleton__progress-btn {
+    height: 36px;
+  }
+
+  .bf-skeleton__map {
+    height: 200px;
+  }
+
+  .bf-skeleton__inner {
+    gap: 24px;
+  }
+
+  .bf-skeleton__bottom {
+    gap: 24px;
+  }
+
+  .bf-skeleton__card-rows {
+    gap: 16px;
+  }
+
+  .bf-skeleton__card-row {
+    gap: 12px;
+  }
+
+  .bf-skeleton__card-image {
+    max-width: 100px;
+    height: 70px;
+  }
+
+  .bf-skeleton__card-content {
+    height: 70px;
+  }
+
+  .bf-skeleton__booking {
+    height: 200px;
+  }
+
+  .bf-skeleton__disclaimers {
+    height: 140px;
+  }
+
+  .bf-skeleton__cta {
+    padding: 0 16px;
+  }
+
+  .bf-skeleton__cta-block {
+    height: 56px;
+  }
+}
