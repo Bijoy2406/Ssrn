@@ -1,0 +1,244 @@
+/**
+ * Booking Flow — Error States
+ * Figma node: 1376-59468 — Error states section
+ * 1. Inline timeout error banner
+ * 2. Full-page error layouts (client, server, generic fallback)
+ * All sizes use exact Figma pixel values. Token vars for colors only.
+ */
+
+/* ============================================
+   INLINE ERROR BANNER (Timeout)
+   ============================================ */
+.bf-error-banner {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border: 1px solid var(--red-50);
+  border-radius: 12px;
+  background-color: var(--red-100);
+  max-width: 856px;
+  width: 100%;
+  margin: 24px auto 0;
+  box-sizing: border-box;
+}
+
+.bf-error-banner--visible {
+  display: flex;
+}
+
+.bf-error-banner__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--red-50);
+}
+
+.bf-error-banner__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bf-error-banner__text {
+  flex: 1;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--red-50);
+  margin: 0;
+}
+
+/* Banner wrapper — uses same padding as bf-content */
+.bf-error-banner-wrapper {
+  padding: 0 120px;
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ============================================
+   FULL-PAGE ERROR LAYOUT
+   ============================================ */
+.bf-error-page {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--surface-page);
+  padding: 0 120px;
+  box-sizing: border-box;
+}
+
+.bf-error-page--visible {
+  display: flex;
+}
+
+.bf-error-page__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ── Icon + text group ── */
+.bf-error-page__icon-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.bf-error-page__icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-primary);
+}
+
+.bf-error-page__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Copy block (heading + description) ── */
+.bf-error-page__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.bf-error-page__heading {
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: center;
+}
+
+.bf-error-page__description {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Buttons group ── */
+.bf-error-page__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 272px;
+}
+
+.bf-error-page__btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 24px;
+  background-color: var(--sea-green-50);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-family-body);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--sea-green-100);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  min-height: 56px;
+}
+
+.bf-error-page__btn-primary:hover {
+  background-color: var(--golden-50);
+  color: var(--text-inverse);
+}
+
+.bf-error-page__btn-primary:active {
+  background-color: var(--sea-green-40);
+}
+
+.bf-error-page__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--text-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.bf-error-page__btn-secondary:hover {
+  color: var(--sea-green-50);
+}
+
+/* ============================================
+   RESPONSIVE — TABLET
+   ============================================ */
+@media (max-width: 1024px) {
+  .bf-error-banner-wrapper {
+    padding: 0 32px;
+  }
+
+  .bf-error-page {
+    padding: 0 32px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (Figma 390px)
+   ============================================ */
+@media (max-width: 390px) {
+  .bf-error-banner-wrapper {
+    padding: 0 16px;
+  }
+
+  .bf-error-banner {
+    padding: 12px 16px;
+    margin-top: 16px;
+  }
+
+  .bf-error-banner__text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .bf-error-page {
+    padding: 0 16px;
+  }
+
+  .bf-error-page__heading {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .bf-error-page__buttons {
+    width: 100%;
+    max-width: 272px;
+  }
+
+  .bf-error-page__btn-primary {
+    font-size: 16px;
+    line-height: 24px;
+    min-height: 48px;
+  }
+}
