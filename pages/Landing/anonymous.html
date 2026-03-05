@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SSRN - Premium Ride Service</title>
   <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
 </head>
+
 <body>
   <!-- Header (Logged Out) -->
   <div id="header"></div>
@@ -52,16 +55,16 @@
   </main>
 
   <!-- Footer -->
-  <div id="footer"></div>
+  <div id="site-footer-container"></div>
 
   <!-- Scripts -->
   <script src="../../js/utils/includes.js"></script>
   <script src="../../main.js"></script>
+  <script src="/Ssrn/js/components/footer.js"></script>
   <script>
     // Load header (logged out state)
     Includes.loadComponent('header', '../../includes/header-logged-out.html');
-    // Load footer
-    Includes.loadComponent('footer', '../../includes/footer.html');
   </script>
 </body>
+
 </html>
