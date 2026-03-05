@@ -40,13 +40,22 @@
     .destinations,
     .cta,
     .why-choose,
-    .nav-bar-wrapper,
     .footer {
       max-width: 100%;
       overflow-x: hidden;
     }
 
-    .hero__container,
+    .hero {
+      overflow-y: visible !important;
+    }
+
+    /* Nav wrapper must NOT clip overflow — dropdowns must escape it */
+    .nav-bar-wrapper {
+      max-width: 100%;
+      overflow: visible;
+    }
+
+    .hero__content,
     .services__container,
     .destinations__container,
     .cta__container,
@@ -56,6 +65,10 @@
       overflow-x: hidden;
     }
 
+    .hero__content {
+      overflow-y: visible !important;
+    }
+
     .page-loader-overlay,
     .page-loader,
     .page-loader__container {
@@ -63,59 +76,6 @@
       overflow-x: hidden;
     }
 
-    /* Override nav-bar to match Figma 1440px design */
-    .nav-bar {
-      max-width: 1440px !important;
-      padding: 0 120px !important;
-    }
-
-    /* Mobile nav fixes */
-    .nav-bar__logo {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-    }
-
-    .nav-bar__logo img {
-      height: 32px;
-      width: auto;
-    }
-
-    @media (max-width: 768px) {
-      .nav-bar {
-        padding: 0 var(--space-400) !important;
-      }
-
-      .nav-item__button {
-        width: auto !important;
-        min-width: auto !important;
-      }
-
-      .nav-bar__logo {
-        width: auto !important;
-        max-width: 100px;
-      }
-
-      .nav-bar__logo img {
-        height: 24px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .nav-bar {
-        padding: 0 var(--space-300) !important;
-      }
-    }
-
-    @media (max-width: 375px) {
-      .nav-bar {
-        padding: 0 var(--space-200) !important;
-      }
-
-      .nav-bar__logo {
-        max-width: 80px;
-      }
-    }
 
     /* Override site-footer to match Figma 1440px design */
     .site-footer {
@@ -140,32 +100,19 @@
       min-width: auto !important;
     }
 
-    /* Responsive nav padding */
     @media (max-width: 1440px) {
-      .nav-bar {
-        padding: 0 var(--space-800) !important;
-      }
-
       .site-footer__container {
         padding: 0 var(--space-800);
       }
     }
 
     @media (max-width: 1024px) {
-      .nav-bar {
-        padding: 0 var(--space-600) !important;
-      }
-
       .site-footer__container {
         padding: 0 var(--space-600);
       }
     }
 
     @media (max-width: 768px) {
-      .nav-bar {
-        padding: 0 var(--space-400) !important;
-      }
-
       .site-footer__container {
         padding: 0 var(--space-400);
       }
@@ -183,54 +130,70 @@
       }
     }
 
-    /* Hero Section */
+    /* ============================================
+       HERO — DESKTOP
+       Title constrained, image full-width with form overlaid
+       ============================================ */
     .hero {
-      position: relative;
       width: 100%;
       background-color: var(--surface-page);
-      padding-bottom: 0;
+      overflow: visible;
     }
 
-    .hero__container {
+    /* Title wrapper — constrained */
+    .hero__header-wrap {
+      width: 100%;
+    }
+
+    .hero__content {
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 120px;
-      position: relative;
-      width: 100%;
+      box-sizing: border-box;
     }
 
     .hero__header {
-      padding: var(--space-600) 0 var(--space-500);
+      padding: 8px 0 16px;
     }
 
     .hero__title {
       font-family: var(--font-family-heading);
-      font-size: var(--heading-lg-size);
-      font-weight: var(--font-weight-bold);
-      line-height: 1.2;
-      color: var(--text-primary);
+      font-size: var(--heading-h6-size);
+      font-weight: 800;
+      line-height: 36px;
+      color: var(--text-neutral-primary);
       margin: 0;
     }
 
-    /* Desktop: image fills full viewport width — direct child of .hero */
-    .hero__content {
+    /* Full-width row: image behind, form overlaid on right */
+    .hero__inner {
       position: relative;
       width: 100%;
-      overflow: hidden;
+      overflow: visible;
     }
 
-    /* Booking form overlay: visible by default */
-    .hero__form-overlay {
-      display: flex;
+    @media (min-width: 1025px) {
+      .hero__title {
+        padding-left: 78px;
+      }
+
+      .hero__inner {
+        min-height: 520px;
+        padding-bottom: 0;
+      }
     }
 
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero__title {
+        padding-left: 16px;
+      }
+    }
+
+    /* Image — full viewport width */
     .hero__image-wrapper {
-      position: relative;
       width: 100%;
-      height: 500px;
-      border-radius: 0;
+      height: 460px;
       overflow: hidden;
-      background-color: var(--grey-80);
     }
 
     .hero__image {
@@ -242,12 +205,70 @@
     }
 
     .hero__overlay {
+      display: none;
+    }
+
+    /* Form — absolute on right side, respects container padding */
+    .hero__form-overlay {
       position: absolute;
       top: 0;
-      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 441px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 120px;
+      box-sizing: border-box;
+    }
+
+    .hero__form-overlay .booking-form-landing {
       width: 100%;
-      height: 100%;
-      pointer-events: none;
+    }
+
+    @media (min-width: 1025px) {
+      .hero__form-overlay {
+        position: absolute;
+        top: -40px;
+        right: 120px;
+        bottom: auto;
+        width: 456px;
+        height: auto;
+        justify-content: flex-start;
+        overflow: visible;
+        padding-right: 0;
+      }
+
+      .hero__form-overlay .booking-form-landing {
+        width: 456px;
+        max-width: 456px;
+        padding: 32px;
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-l);
+        background-color: #ffffff;
+        height: auto;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .hero__form-overlay .booking-form-landing__field {
+        gap: 8px;
+      }
+
+      .hero__form-overlay .booking-form-landing__toggle {
+        margin-bottom: 0;
+      }
+
+      .hero__form-overlay .booking-form-landing__input {
+        border-radius: 10px;
+      }
+
+      .hero__form-overlay .booking-form-landing__submit {
+        border-radius: 12px;
+        margin-top: 0;
+      }
     }
 
     /* Booking Card (Floating on Right) */
@@ -456,6 +477,12 @@
     .services {
       padding: var(--space-2000) 0;
       background-color: var(--surface-primary);
+    }
+
+    @media (min-width: 1025px) {
+      .services {
+        padding-top: 80px;
+      }
     }
 
     .services__container {
@@ -764,36 +791,28 @@
     }
 
     /* Responsive */
-    @media (max-width: 1440px) {
+    @media (max-width: 1400px) {
 
-      .hero__container,
+      .hero__content,
       .services__container,
       .destinations__container,
       .cta__container,
       .why-choose__container {
-        padding-left: var(--space-800);
-        padding-right: var(--space-800);
+        padding-left: 32px;
+        padding-right: 32px;
       }
 
     }
 
     @media (max-width: 1024px) {
 
-      .hero__container,
+      .hero__content,
       .services__container,
       .destinations__container,
       .cta__container,
       .why-choose__container {
-        padding-left: var(--space-600);
-        padding-right: var(--space-600);
-      }
-
-      .hero {
-        padding: var(--space-600) 0;
-      }
-
-      .hero__image-wrapper {
-        height: 360px;
+        padding-left: 32px;
+        padding-right: 32px;
       }
 
       /* Tablet: swipe carousel */
@@ -874,43 +893,37 @@
       }
     }
 
-    @media (max-width: 1024px) and (min-width: 769px) {
-      .hero__form-overlay {
-        display: flex !important;
-        bottom: -8px !important;
-      }
-
-      .hero__container {
-        padding-left: var(--space-400);
-        padding-right: var(--space-400);
-      }
-
-      .hero {
-        padding-bottom: var(--space-1000);
+    @media (max-width: 1024px) and (min-width: 601px) {
+      /* Tablet: title above, full-width image, form below */
+      .hero__content {
+        padding: 0 32px;
       }
 
       .hero__header {
-        padding: var(--space-500) 0 var(--space-400);
-      }
-
-      .hero__title {
-        font-size: var(--heading-lg-size);
-        font-weight: var(--font-weight-bold);
-        line-height: 1.2;
+        padding: 8px 0 12px;
       }
 
       .hero__image-wrapper {
-        height: 300px;
-        margin-bottom: 0;
+        height: 280px;
       }
 
       .hero__image {
-        object-fit: cover;
         object-position: center;
       }
 
-      .hero__content {
-        padding-bottom: 512px;
+      /* Form: static, in-flow below image */
+      .hero__form-overlay {
+        position: static;
+        width: 100%;
+        padding: 0 32px;
+        margin-top: -20px;
+        box-sizing: border-box;
+        justify-content: flex-start;
+      }
+
+      .hero__form-overlay .booking-form-landing {
+        width: 100%;
+        max-width: 100%;
       }
 
       /* Why Choose Us — tablet: 1 column stacked */
@@ -947,7 +960,6 @@
         height: 48px;
         flex-shrink: 0;
       }
-
     }
 
     @media (max-width: 900px) {
@@ -963,16 +975,16 @@
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
 
-      .hero__container,
+      .hero__content,
       .services__container,
       .destinations__container,
       .cta__container,
       .why-choose__container,
       .why-choose-us__container {
-        padding-left: var(--space-400);
-        padding-right: var(--space-400);
+        padding-left: 16px;
+        padding-right: 16px;
       }
 
       .why-choose-us__grid {
@@ -989,63 +1001,42 @@
         padding: var(--space-600);
       }
 
-      .hero__container {
-        padding-left: var(--space-400);
-        padding-right: var(--space-400);
-      }
-
-      .hero {
-        padding-bottom: var(--space-800);
-      }
-
       .hero__header {
-        padding: var(--space-400) 0 var(--space-300);
+        padding: 8px 0 12px;
       }
 
       .hero__title {
-        font-size: var(--heading-lg-size);
-        font-weight: var(--font-weight-bold);
-        line-height: 1.2;
-        color: var(--text-primary);
+        font-size: var(--heading-h6-size);
+        font-weight: 800;
+        line-height: 36px;
+      }
+
+      /* Mobile: title above, full-width image, form below */
+      .hero__content {
+        padding: 0 16px;
       }
 
       .hero__image-wrapper {
-        height: 250px;
-        border-radius: 0;
-        margin-bottom: 0;
+        height: 240px;
       }
 
       .hero__image {
-        object-fit: cover;
-        object-position: center;
+        object-position: left center !important;
       }
 
-      /* Show booking form below hero image on mobile */
-      .hero__content {
-        overflow: visible;
-      }
-
+      /* Form: static, in-flow below image */
       .hero__form-overlay {
-        display: block !important;
-        position: static !important;
-        top: auto !important;
-        right: auto !important;
-        width: 100% !important;
-        margin-top: calc(-1 * var(--space-700));
-        padding: var(--space-400);
+        position: static;
+        width: 100%;
+        padding: 0 16px;
+        margin-top: -16px;
         box-sizing: border-box;
+        justify-content: flex-start;
       }
 
       .hero__form-overlay .booking-form-landing {
-        max-width: 100%;
         width: 100%;
-        box-shadow: var(--shadow-l);
-        border-radius: var(--radius-m);
-      }
-
-      /* Remove extra bottom padding from hero on mobile (form is in-flow) */
-      .hero {
-        padding-bottom: var(--space-400) !important;
+        max-width: 100%;
       }
 
       .services {
@@ -1195,37 +1186,31 @@
 
     @media (max-width: 480px) {
 
-      .hero__container,
+      .hero__content,
       .services__container,
       .destinations__container,
       .cta__container,
       .why-choose__container {
-        padding-left: var(--space-300);
-        padding-right: var(--space-300);
+        padding-left: 16px;
+        padding-right: 16px;
       }
 
       .hero__header {
-        padding: var(--space-100) 0 var(--space-200);
+        padding: 8px 0 0;
       }
 
       .hero__title {
-        font-size: var(--heading-lg-size);
-        font-weight: var(--font-weight-bold);
-        line-height: 1.2;
+        font-size: var(--heading-h6-size);
+        font-weight: 800;
+        line-height: 36px;
       }
 
       .hero__image-wrapper {
         height: 200px;
-        border-radius: 0;
       }
 
       .hero__image {
-        object-fit: cover;
-        object-position: center;
-      }
-
-      .hero {
-        padding-bottom: var(--space-400);
+        object-position: left center;
       }
 
       .destinations__carousel {
@@ -1287,23 +1272,27 @@
 
     @media (max-width: 375px) {
 
-      .hero__container,
+      .hero__content,
       .services__container,
       .destinations__container,
       .cta__container,
       .why-choose__container {
-        padding-left: var(--space-200);
-        padding-right: var(--space-200);
+        padding-left: 16px;
+        padding-right: 16px;
       }
 
       .hero__title {
-        font-size: var(--heading-lg-size);
-        font-weight: var(--font-weight-bold);
-        line-height: 1.2;
+        font-size: var(--heading-h6-size);
+        font-weight: 800;
+        line-height: 36px;
+      }
+
+      .hero__image-wrapper {
+        height: 200px;
       }
 
       .hero__image {
-        height: 220px;
+        object-position: left center;
       }
 
       .destinations__carousel {
@@ -1348,16 +1337,15 @@
     }
 
     /* ============================================
-       MOBILE MENU OVERLAY
+       MOBILE SIDE SHEET (Scrim + Slide-in Panel)
        ============================================ */
+
+    /* Scrim — no blur, only color */
     .mobile-menu-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background-color: rgba(3, 17, 13, 0.3);
-      z-index: 9999;
+      z-index: 1100;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -1368,65 +1356,54 @@
       visibility: visible;
     }
 
+    /* Side sheet panel — matches sidebar.css Figma spec */
     .mobile-menu {
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
-      width: 85%;
-      max-width: 400px;
-      height: 100%;
-      background-color: var(--surface-primary);
-      box-shadow: var(--shadow-2xl);
       display: flex;
       flex-direction: column;
+      gap: var(--space-400);
+      width: 390px;
+      max-width: 100vw;
+      height: 100vh;
+      padding: var(--space-400) 0;
+      background-color: var(--surface-page);
+      z-index: 1200;
       transform: translateX(100%);
       transition: transform 0.3s ease;
+      overflow-y: auto;
     }
 
     .mobile-menu-overlay--open .mobile-menu {
       transform: translateX(0);
     }
 
-    .mobile-menu__header {
+    /* Close button row */
+    .mobile-menu__close-row {
       display: flex;
+      justify-content: flex-end;
       align-items: center;
-      justify-content: space-between;
-      padding: var(--space-600) var(--space-500);
-      border-bottom: var(--border-s) solid var(--border-default);
-    }
-
-    .mobile-menu__logo {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-    }
-
-    .mobile-menu__logo img {
-      height: 24px;
-      width: auto;
-    }
-
-    .mobile-menu__logo svg {
-      width: 100px;
-      height: auto;
+      align-self: stretch;
+      padding: 0 var(--space-400) 0 0;
     }
 
     .mobile-menu__close {
-      width: 40px;
-      height: 40px;
-      border: none;
-      background-color: transparent;
-      color: var(--text-primary);
-      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: var(--radius-s);
-      transition: background-color 0.2s ease;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: color 0.2s ease;
     }
 
     .mobile-menu__close:hover {
-      background-color: var(--grey-70);
+      color: var(--text-secondary);
     }
 
     .mobile-menu__close svg {
@@ -1434,40 +1411,63 @@
       height: 24px;
     }
 
-    .mobile-menu__content {
-      flex: 1;
-      overflow-y: auto;
-      padding: var(--space-400) 0;
+    /* Navigation list */
+    .mobile-menu__nav {
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
     }
 
-    .mobile-menu__item {
+    /* Sign In item — shown at top */
+    .mobile-menu__sign-in {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      padding: var(--space-400) var(--space-500);
+      gap: var(--space-200);
+      padding: var(--space-300) var(--space-400);
       font-family: var(--font-family-body);
       font-size: var(--body-md-size);
-      font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-semibold);
       line-height: var(--body-md-line-height);
       color: var(--text-primary);
       text-decoration: none;
-      background-color: transparent;
-      border: none;
-      border-bottom: var(--border-s) solid var(--border-default);
-      cursor: pointer;
+      border-bottom: 1px solid var(--grey-40);
       transition: background-color 0.2s ease;
+    }
+
+    .mobile-menu__sign-in:hover {
+      background-color: var(--grey-100);
+    }
+
+    .mobile-menu__sign-in-icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    /* Regular nav item — matches sidebar__nav-item spec */
+    .mobile-menu__item {
+      display: flex;
+      align-self: stretch;
+      gap: var(--space-200);
+      padding: var(--space-300) var(--space-400);
+      font-family: var(--font-family-body);
+      font-size: var(--body-md-size);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--body-md-line-height);
+      color: var(--text-primary);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 100%;
       text-align: left;
+      transition: background-color 0.2s ease;
+      box-sizing: border-box;
     }
 
     .mobile-menu__item:hover {
-      background-color: var(--grey-70);
-    }
-
-    .mobile-menu__item--primary {
-      color: var(--sea-green-50);
-      font-weight: var(--font-weight-semibold);
-      border-top: var(--border-s) solid var(--border-default);
+      background-color: var(--grey-100);
     }
 
     .mobile-menu__text {
@@ -1475,13 +1475,17 @@
     }
 
     .mobile-menu__chevron {
-      width: 20px;
-      height: 20px;
-      transition: transform 0.3s ease;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      color: var(--text-primary);
+      transition: transform 0.2s ease;
     }
 
+    /* Expandable section */
     .mobile-menu__expandable {
-      border-bottom: var(--border-s) solid var(--border-default);
+      display: flex;
+      flex-direction: column;
     }
 
     .mobile-menu__expandable--open .mobile-menu__chevron {
@@ -1491,7 +1495,6 @@
     .mobile-menu__submenu {
       max-height: 0;
       overflow: hidden;
-      background-color: var(--grey-90);
       transition: max-height 0.3s ease;
     }
 
@@ -1499,22 +1502,29 @@
       max-height: 300px;
     }
 
+    /* Sub-items (indented) */
     .mobile-menu__subitem {
-      display: block;
-      padding: var(--space-300) var(--space-500);
-      padding-left: var(--space-800);
+      display: flex;
+      align-self: stretch;
+      gap: var(--space-200);
+      padding: var(--space-300) var(--space-400) var(--space-300) 48px;
       font-family: var(--font-family-body);
       font-size: var(--body-md-size);
       font-weight: var(--font-weight-regular);
       line-height: var(--body-md-line-height);
-      color: var(--text-secondary);
+      color: var(--text-primary);
       text-decoration: none;
-      transition: background-color 0.2s ease, color 0.2s ease;
+      transition: background-color 0.2s ease;
     }
 
     .mobile-menu__subitem:hover {
-      background-color: var(--grey-80);
-      color: var(--text-primary);
+      background-color: var(--grey-100);
+    }
+
+    @media (max-width: 480px) {
+      .mobile-menu {
+        width: 100vw;
+      }
     }
 
     /* ============================================
@@ -1526,8 +1536,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(3, 17, 13, 0.5);
-      backdrop-filter: blur(4px);
+      background-color: rgba(3, 17, 13, 0.3);
       z-index: 10000;
       opacity: 0;
       visibility: hidden;
@@ -1830,11 +1839,10 @@
       box-shadow: var(--shadow-s);
     }
 
-    /* Hide overlays on desktop */
-    @media (min-width: 769px) {
+    /* Hide mobile nav menu on desktop only */
+    @media (min-width: 1025px) {
 
-      .mobile-menu-overlay,
-      .datetime-picker-overlay {
+      .mobile-menu-overlay {
         display: none;
       }
     }
@@ -2100,11 +2108,7 @@
       <!-- Sign In Button -->
       <div class="nav-bar__profile">
         <a href="/Ssrn/pages/Auth/Login/email.html" class="nav-bar__sign-in">
-          <svg class="nav-bar__sign-in-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
+          <img class="nav-bar__sign-in-icon" src="/Ssrn/assets/images/icons/User.svg" alt="" aria-hidden="true">
           <span>Sign In</span>
         </a>
       </div>
@@ -2123,47 +2127,39 @@
   <!-- Mobile Nav Overlay -->
   <div class="nav-overlay" id="navOverlay" onclick="toggleMobileNav()"></div>
 
-  <!-- Mobile Menu Overlay (Full Screen) -->
+  <!-- Mobile Side Sheet -->
   <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="handleMobileMenuOverlayClick(event)">
     <div class="mobile-menu" onclick="event.stopPropagation()">
-      <div class="mobile-menu__header">
-        <div class="mobile-menu__logo">
-          <img src="../../assets/images/icons/Customer-Log In/S.svg" alt="S">
-          <img src="../../assets/images/icons/Customer-Log In/S.2.svg" alt="S">
-          <img src="../../assets/images/icons/Customer-Log In/R.svg" alt="R">
-          <img src="../../assets/images/icons/Customer-Log In/N.svg" alt="N">
-        </div>
+
+      <!-- Close button -->
+      <div class="mobile-menu__close-row">
         <button class="mobile-menu__close" onclick="toggleMobileMenu()" aria-label="Close menu">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
       </div>
 
-      <div class="mobile-menu__content">
+      <!-- Navigation -->
+      <nav class="mobile-menu__nav">
+
         <!-- Sign In -->
-        <a href="/Ssrn/pages/Auth/Login/email.html" class="mobile-menu__item mobile-menu__item--primary">
-          <span class="mobile-menu__text">Sign In</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-            <polyline points="10 17 15 12 10 7" />
-            <line x1="15" y1="12" x2="3" y2="12" />
-          </svg>
+        <a href="/Ssrn/pages/Auth/Login/email.html" class="mobile-menu__sign-in">
+          <img class="mobile-menu__sign-in-icon" src="/Ssrn/assets/images/icons/User.svg" alt="" aria-hidden="true">
+          <span>Sign In</span>
         </a>
 
         <!-- Our Services Expandable -->
         <div class="mobile-menu__expandable">
-          <button class="mobile-menu__item" onclick="toggleMobileMenuSection('services')">
+          <button class="mobile-menu__item" onclick="toggleMobileMenuSection(event)">
             <span class="mobile-menu__text">Our Services</span>
-            <svg class="mobile-menu__chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="mobile-menu__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </button>
-          <div class="mobile-menu__submenu" id="mobileServicesSubmenu">
+          <div class="mobile-menu__submenu">
             <a href="#airport" class="mobile-menu__subitem">Airport Transfers</a>
             <a href="#city" class="mobile-menu__subitem">City-to-City Rides</a>
             <a href="#hourly" class="mobile-menu__subitem">Hourly Rides</a>
@@ -2172,14 +2168,14 @@
 
         <!-- For Partners Expandable -->
         <div class="mobile-menu__expandable">
-          <button class="mobile-menu__item" onclick="toggleMobileMenuSection('partners')">
+          <button class="mobile-menu__item" onclick="toggleMobileMenuSection(event)">
             <span class="mobile-menu__text">For Partners</span>
-            <svg class="mobile-menu__chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="mobile-menu__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </button>
-          <div class="mobile-menu__submenu" id="mobilePartnersSubmenu">
+          <div class="mobile-menu__submenu">
             <a href="#drive" class="mobile-menu__subitem">Drive with Us</a>
             <a href="#fleet" class="mobile-menu__subitem">Fleet Partners</a>
           </div>
@@ -2194,7 +2190,8 @@
         <a href="#help" class="mobile-menu__item">
           <span class="mobile-menu__text">Help</span>
         </a>
-      </div>
+
+      </nav>
     </div>
   </div>
 
@@ -2306,29 +2303,33 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero__container">
-      <!-- Header with Tagline ABOVE image -->
-      <div class="hero__header">
-        <h1 class="hero__title">Your Trusted Chauffeur Service</h1>
-      </div>
-    </div><!-- /.hero__container -->
 
-    <!-- Hero Image with Overlay Form — full viewport width -->
-    <div class="hero__content">
+    <!-- Title: constrained to container -->
+    <div class="hero__header-wrap">
+      <div class="hero__content">
+        <div class="hero__header">
+          <h1 class="hero__title">Your Trusted Chauffeur Service</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full-width image row with form overlaid on right -->
+    <div class="hero__inner">
+
+      <!-- Full-width image -->
       <div class="hero__image-wrapper">
         <img src="../../assets/images/photos/Landing page/Landing Page/Hero Section Image.png" alt=""
           class="hero__image">
-        <div class="hero__overlay"></div>
       </div>
 
-      <!-- Booking Form Overlapping Bottom -->
+      <!-- Form: absolutely positioned inside inner, aligned to container right -->
       <div class="hero__form-overlay">
         <form class="booking-form-landing" id="landingBookingForm">
           <!-- Ride Type Toggle -->
           <div class="booking-form-landing__toggle">
             <button type="button" class="booking-form-landing__toggle-btn booking-form-landing__toggle-btn--active"
-              onclick="switchTab('oneway')">One Way Ride</button>
-            <button type="button" class="booking-form-landing__toggle-btn" onclick="switchTab('hourly')">Hourly
+              onclick="switchTab('oneway', this)">One Way Ride</button>
+            <button type="button" class="booking-form-landing__toggle-btn" onclick="switchTab('hourly', this)">Hourly
               Ride</button>
           </div>
 
@@ -2338,17 +2339,16 @@
             <label class="booking-form-landing__label">From</label>
             <div class="booking-form-landing__input-wrapper">
               <div class="booking-form-landing__icon-left">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
+                <!-- Filled location pin -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
               </div>
               <input type="text" class="booking-form-landing__input" placeholder="Airport, address, hotel,..."
                 id="pickupLocation">
-              <div class="booking-form-landing__icon-right">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
+              <div class="booking-form-landing__icon-right booking-form-landing__icon-right--static">
+                <!-- Search icon (stroke) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="11" cy="11" r="8" />
                   <path d="m21 21-4.35-4.35" />
                 </svg>
@@ -2361,17 +2361,16 @@
             <label class="booking-form-landing__label">To</label>
             <div class="booking-form-landing__input-wrapper">
               <div class="booking-form-landing__icon-left">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
+                <!-- Filled location pin -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
               </div>
               <input type="text" class="booking-form-landing__input" placeholder="Airport, address, hotel,..."
                 id="dropoffLocation">
-              <div class="booking-form-landing__icon-right">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
+              <div class="booking-form-landing__icon-right booking-form-landing__icon-right--static">
+                <!-- Search icon (stroke) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="11" cy="11" r="8" />
                   <path d="m21 21-4.35-4.35" />
                 </svg>
@@ -2382,21 +2381,18 @@
           <!-- Date Field -->
           <div class="booking-form-landing__field">
             <label class="booking-form-landing__label">Date</label>
-            <div class="booking-form-landing__input-wrapper">
+            <div class="booking-form-landing__input-wrapper" onclick="openDatetimePicker()" style="cursor:pointer">
               <div class="booking-form-landing__icon-left">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                  <line x1="16" y1="2" x2="16" y2="6" />
-                  <line x1="8" y1="2" x2="8" y2="6" />
-                  <line x1="3" y1="10" x2="21" y2="10" />
+                <!-- Filled calendar -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/>
                 </svg>
               </div>
               <input type="text" class="booking-form-landing__input" placeholder="Wed , November 30, 2025"
                 id="pickupDate" readonly>
-              <div class="booking-form-landing__icon-right">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
+              <div class="booking-form-landing__icon-right booking-form-landing__date-chevron">
+                <!-- Chevron down (stroke) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
               </div>
@@ -2406,18 +2402,17 @@
           <!-- Pickup Time Field -->
           <div class="booking-form-landing__field">
             <label class="booking-form-landing__label">Pickup Time</label>
-            <div class="booking-form-landing__input-wrapper">
+            <div class="booking-form-landing__input-wrapper" onclick="openDatetimePicker()" style="cursor:pointer">
               <div class="booking-form-landing__icon-left">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
+                <!-- Filled clock -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/>
                 </svg>
               </div>
               <input type="text" class="booking-form-landing__input" placeholder="05:00 PM" id="pickupTime" readonly>
-              <div class="booking-form-landing__icon-right">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
+              <div class="booking-form-landing__icon-right booking-form-landing__time-chevron">
+                <!-- Chevron down (stroke) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
               </div>
@@ -2434,8 +2429,10 @@
             See Prices
           </button>
         </form>
-      </div><!-- /.hero__form-overlay -->
-    </div><!-- /.hero__content -->
+        </div><!-- /.hero__form-overlay -->
+
+    </div><!-- /.hero__inner -->
+
   </section>
 
   <!-- Our Services Section -->
@@ -2783,9 +2780,11 @@
       }
     }
 
-    function toggleMobileMenuSection(section) {
-      const expandable = event.target.closest('.mobile-menu__expandable');
-      expandable.classList.toggle('mobile-menu__expandable--open');
+    function toggleMobileMenuSection(e) {
+      const expandable = e.target.closest('.mobile-menu__expandable');
+      if (expandable) {
+        expandable.classList.toggle('mobile-menu__expandable--open');
+      }
     }
 
     // Datetime Picker
@@ -2944,20 +2943,20 @@
       closeDatetimePicker();
     }
 
-    // Make date and time inputs open the picker on mobile
+    // Make date and time inputs open the picker on all screen sizes
     function setupDatetimeInputs() {
       const dateInput = document.getElementById('pickupDate');
       const timeInput = document.getElementById('pickupTime');
 
-      if (window.innerWidth <= 768) {
-        if (dateInput) {
-          dateInput.addEventListener('click', openDatetimePicker);
-          dateInput.addEventListener('focus', openDatetimePicker);
-        }
-        if (timeInput) {
-          timeInput.addEventListener('click', openDatetimePicker);
-          timeInput.addEventListener('focus', openDatetimePicker);
-        }
+      if (dateInput && !dateInput._pickerBound) {
+        dateInput.addEventListener('click', openDatetimePicker);
+        dateInput.addEventListener('focus', openDatetimePicker);
+        dateInput._pickerBound = true;
+      }
+      if (timeInput && !timeInput._pickerBound) {
+        timeInput.addEventListener('click', openDatetimePicker);
+        timeInput.addEventListener('focus', openDatetimePicker);
+        timeInput._pickerBound = true;
       }
     }
 
@@ -2974,24 +2973,17 @@
       }
     });
 
-    // Initialize
-    window.addEventListener('load', setupDatetimeInputs);
-    window.addEventListener('resize', setupDatetimeInputs);
+    // Initialize datetime inputs on DOM ready
+    document.addEventListener('DOMContentLoaded', setupDatetimeInputs);
 
     // Booking Form Tabs
-    function switchTab(tab) {
-      // Handle both booking card tabs and landing form toggle buttons
-      const cardTabs = document.querySelectorAll('.booking-card__tab');
+    function switchTab(tab, el) {
+      const clickedEl = el || (typeof event !== 'undefined' ? event.target : null);
       const toggleBtns = document.querySelectorAll('.booking-form-landing__toggle-btn');
-
-      cardTabs.forEach(t => t.classList.remove('booking-card__tab--active'));
       toggleBtns.forEach(t => t.classList.remove('booking-form-landing__toggle-btn--active'));
-
-      event.target.classList.add(
-        event.target.classList.contains('booking-form-landing__toggle-btn')
-          ? 'booking-form-landing__toggle-btn--active'
-          : 'booking-card__tab--active'
-      );
+      if (clickedEl && clickedEl.classList.contains('booking-form-landing__toggle-btn')) {
+        clickedEl.classList.add('booking-form-landing__toggle-btn--active');
+      }
     }
 
     // Booking Form Validation
