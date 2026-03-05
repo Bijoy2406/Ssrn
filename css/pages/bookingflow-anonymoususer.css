@@ -350,6 +350,13 @@
   height: 100%;
 }
 
+.bf-card-item__spec-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
 .bf-card-item__spec-value {
   font-family: var(--font-family-body);
   font-size: 16px;
@@ -652,11 +659,137 @@
 /* ============================================
    RESPONSIVE — MOBILE (Figma 390px)
    ============================================ */
-@media (max-width: 390px) {
+/* ============================================
+   RESPONSIVE — TABLET (768px - 1024px)
+   ============================================ */
+@media (max-width: 1024px) {
   .bf-progress,
   .bf-map,
   .bf-content {
+    padding: 0 24px;
+  }
+
+  .bf-progress__step-header {
+    display: flex;
+  }
+
+  .bf-progress__buttons {
+    display: none;
+  }
+
+  .bf-progress__track {
+    width: 100%;
+  }
+
+  .bf-map__inner {
+    height: 240px;
+  }
+
+  .bf-vehicle {
+    margin-top: 32px;
+  }
+
+  .bf-vehicle__heading {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .bf-cards {
+    gap: 16px;
+  }
+
+  .bf-card-item__content {
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .bf-card-item__image {
+    width: 100px;
+    height: 60px;
+  }
+
+  .bf-card-item__name {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .bf-card-item__car {
+    font-size: 14px;
+  }
+
+  .bf-card-item__price {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .bf-booking {
+    margin-top: 32px;
+  }
+
+  .bf-booking__heading {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .bf-booking-card {
+    padding: 24px;
+  }
+
+  .bf-booking-card__item {
+    gap: 12px;
+  }
+
+  .bf-disclaimers {
+    margin-top: 32px;
+    padding: 24px;
+  }
+
+  .bf-disclaimers__item {
+    gap: 12px;
+  }
+
+  .bf-page__main {
+    padding-bottom: 100px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (481px - 768px)
+   ============================================ */
+@media (max-width: 768px) {
+  .bf-progress,
+  .bf-map {
     padding: 0 16px;
+  }
+
+  .bf-content {
+    padding: 0;
+  }
+
+  .bf-progress__step-header {
+    display: flex;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .bf-progress__buttons {
+    display: none;
+  }
+
+  .bf-progress__track {
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .bf-progress__step-title {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 800;
+  }
+
+  .bf-progress__step-count {
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .bf-map__inner {
@@ -665,63 +798,487 @@
 
   .bf-vehicle {
     margin-top: 24px;
+    padding: 0 16px;
+  }
+
+  .bf-vehicle__heading {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 800;
+  }
+
+  .bf-vehicle__subtitle {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+  }
+
+    .bf-cards {
+    gap: 24px;
+    flex-direction: column;
+    overflow: visible;
+    border-radius: 0;
+    box-shadow: none;
+    padding-bottom: 4px;
+  }
+
+  .bf-card-item {
+    width: 100%;
+    border: 2px solid var(--grey-80);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .bf-card-item--selected {
+    border-top: 4px solid #000;
+    border-bottom: 4px solid #000;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    border-radius: 16px;
+    background-color: white;
   }
 
   .bf-card-item__content {
-    gap: 16px;
-    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    padding: 12px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: flex-start;
   }
 
   .bf-card-item__image {
     width: 80px;
-    height: 41px;
-  }
-
-  .bf-card-item__info {
-    min-width: 0;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    object-fit: cover;
   }
 
   .bf-card-item__details {
-    gap: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    align-items: flex-start;
+  }
+
+  .bf-card-item__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .bf-card-item__class {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
   .bf-card-item__name {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 700;
+  }
+
+  .bf-card-item__car {
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--text-secondary);
+  }
+
+  .bf-card-item__specs {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .bf-card-item__spec {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .bf-card-item__spec-icon {
+    width: 16px;
+    height: 16px;
   }
 
   .bf-card-item__price {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .bf-card-item__actions {
-    padding: 0 16px 16px;
+    display: none;
+    gap: 8px;
+    padding: 0 16px 12px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
   }
 
-  .bf-booking {
-    margin-top: 24px;
+  .bf-card-item--selected .bf-card-item__actions {
+    display: flex;
+  }
+
+  .bf-card-item__details-btn {
+    padding: 8px 20px;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 600;
+    border: 2px solid var(--text-primary);
+    border-radius: 6px;
+  }
+
+    .bf-booking {
+    display: flex;
+    min-width: 300px;
+    max-width: 856px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    border-radius: 12px;
+    margin-top: 68px;
+  }
+
+  .bf-booking__heading {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 800;
+    margin: 0;
   }
 
   .bf-booking-card {
-    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+  }
+
+  .bf-booking-card__info {
+    gap: 16px;
+    width: 100%;
+    flex: 1;
+  }
+
+  .bf-booking-card__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .bf-booking-card__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--text-primary);
+  }
+
+  .bf-booking-card__text {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-primary);
+  }
+
+  .bf-booking-card__edit {
+    padding: 0;
+    gap: 6px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  .bf-booking-card__edit-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .bf-booking-card__edit-text {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
   }
 
   .bf-disclaimers {
-    margin-top: 24px;
-    padding: 32px 24px;
+    margin-top: var(--space-600);
+    padding: var(--space-800) var(--space-600);
+    background-color: var(--grey-100);
+    border: 2px dashed var(--grey-80);
+    border-radius: var(--radius-s);
+  }
+
+  .bf-disclaimers__list {
+    gap: var(--space-600);
+  }
+
+  .bf-disclaimers__item {
+    display: flex;
+    gap: var(--space-400);
+    align-items: flex-start;
+  }
+
+  .bf-disclaimers__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--text-primary);
+  }
+
+  .bf-disclaimers__text {
+    font-size: var(--footnote-size);
+    line-height: var(--footnote-line-height);
+    color: var(--text-primary);
   }
 
   .bf-bottom-cta {
-    padding: 16px;
+    padding: 16px 24px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #FFFFFF;
+    border-top: 1px solid #E0E0E0;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
   }
 
   .bf-bottom-cta__btn {
+    width: 100%;
+    padding: 16px 24px;
     font-size: 16px;
     line-height: 24px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: #FFFFFF;
+    background-color: #2B6F7F;
+    transition: all 0.2s ease;
+  }
+
+  .bf-bottom-cta__btn:hover {
+    background-color: #1F5660;
+  }
+
+  .bf-bottom-cta__btn:active {
+    background-color: #164450;
   }
 
   .bf-page__main {
     padding-bottom: 88px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (up to 480px)
+   ============================================ */
+@media (max-width: 480px) {
+  .bf-progress,
+  .bf-map,
+  .bf-content {
+    padding: 0 16px;
+  }
+
+  .bf-progress {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .bf-progress__inner {
+    min-width: auto;
+    gap: 12px;
+  }
+
+  .bf-progress__step-header {
+    margin-bottom: 12px;
+  }
+
+  .bf-progress__step-title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .bf-progress__step-count {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .bf-progress__track {
+    width: 100%;
+  }
+
+  .bf-map {
+    padding: 0;
+    margin: 0;
+  }
+
+  .bf-map__inner {
+    height: 160px;
+    border-radius: 0;
+  }
+
+  .bf-error-banner-wrapper {
+    padding: 0 16px;
+    margin-top: 12px;
+  }
+
+  .bf-vehicle {
+    margin-top: 20px;
+  }
+
+  .bf-vehicle__heading {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 8px;
+  }
+
+  .bf-vehicle__subtitle {
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 16px;
+  }
+
+  .bf-cards {
+    gap: 12px;
+  }
+
+  .bf-card-item__content {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .bf-card-item__image {
+    width: 70px;
+    height: 45px;
+  }
+
+  .bf-card-item__class {
+    gap: 2px;
+  }
+
+  .bf-card-item__name {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .bf-card-item__car {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .bf-card-item__specs {
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .bf-card-item__price {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .bf-booking {
+    margin-top: 20px;
+  }
+
+  .bf-booking__heading {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 12px;
+  }
+
+  .bf-booking-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .bf-booking-card__info {
+    gap: 12px;
+  }
+
+  .bf-booking-card__item {
+    gap: 10px;
+  }
+
+  .bf-booking-card__icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+  }
+
+  .bf-booking-card__text {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .bf-booking-card__edit {
+    padding: 6px 12px;
+    font-size: 12px;
+    line-height: 18px;
+    gap: 6px;
+    align-self: flex-start;
+  }
+
+  .bf-booking-card__edit-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .bf-disclaimers {
+    margin-top: 20px;
+    padding: 16px;
+  }
+
+  .bf-disclaimers__list {
+    gap: 12px;
+  }
+
+  .bf-disclaimers__item {
+    gap: 10px;
+  }
+
+  .bf-disclaimers__icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+  }
+
+  .bf-disclaimers__text {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .bf-bottom-cta {
+    padding: 12px;
+  }
+
+  .bf-bottom-cta__btn {
+    padding: 14px 20px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .bf-page__main {
+    padding-bottom: 72px;
   }
 }

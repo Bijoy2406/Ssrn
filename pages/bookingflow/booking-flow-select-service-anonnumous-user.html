@@ -14,9 +14,12 @@
 
   <!-- Components -->
   <link rel="stylesheet" href="/Ssrn/css/components/buttons.css">
+  <link rel="stylesheet" href="/Ssrn/css/components/anonymous-nav.css">
+  <link rel="stylesheet" href="/Ssrn/css/components/site-footer.css">
 
   <!-- Page Specific -->
   <link rel="stylesheet" href="/Ssrn/css/pages/bookingflow-anonymoususer.css">
+  <link rel="stylesheet" href="/Ssrn/css/pages/bookingflow-mobile.css">
   <link rel="stylesheet" href="/Ssrn/css/pages/bookingflow-overlays.css">
   <link rel="stylesheet" href="/Ssrn/css/components/booking-form-landing.css">
   <link rel="stylesheet" href="/Ssrn/css/pages/bookingflow-skeleton.css">
@@ -26,11 +29,97 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Navbar Desktop Styles -->
+  <style>
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .nav-bar-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: var(--Surface-Neutral-page, #FFF);
+      box-shadow: 0 1px 15px -1px var(--Effects-Drop-Shadow, rgba(3, 17, 13, 0.10));
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-bar {
+      display: flex;
+      width: 1440px;
+      padding: 16px var(--Global-Layout-Grid-Vertical-Margin, 120px);
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      box-sizing: border-box;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .nav-bar__logo {
+      width: auto;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .nav-bar__logo img {
+      height: auto;
+      width: auto;
+      max-height: 48px;
+      max-width: 100%;
+    }
+
+    .bf-progress {
+      padding: 0 120px !important;
+      max-width: 1440px;
+      box-sizing: border-box;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .site-footer {
+      padding: 64px 120px !important;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1440px) {
+      .nav-bar {
+        width: 100%;
+        padding: 16px var(--space-400);
+      }
+
+      .bf-progress {
+        padding: 0 var(--space-400) !important;
+      }
+
+      .site-footer {
+        padding: 64px var(--space-400) !important;
+      }
+    }
+  </style>
 </head>
 <body class="bf-page">
 
   <!-- Header -->
   <div id="header-placeholder"></div>
+
+  <!-- Navigation Bar (Desktop) -->
+  <div class="nav-bar-wrapper">
+    <nav class="nav-bar">
+      <!-- Logo -->
+      <a href="/" class="nav-bar__logo">
+        <img src="/Ssrn/assets/images/logo-ssrn.svg" alt="SSRN">
+      </a>
+    </nav>
+  </div>
 
   <!-- ══════════════════════════════════════════
        SKELETON LOADER (visible on page load)
@@ -159,7 +248,7 @@
             <div class="bf-card-item bf-card-item--selected" data-class="standard">
               <div class="bf-card-item__content">
                 <div class="bf-card-item__image">
-                  <img src="https://www.figma.com/api/mcp/asset/e4156a30-d0c7-4af4-9c72-def786002d9f" alt="Standard Class vehicle">
+                  <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy car.png" alt="Standard Class vehicle">
                 </div>
                 <div class="bf-card-item__details">
                   <div class="bf-card-item__info">
@@ -170,17 +259,13 @@
                     <div class="bf-card-item__specs">
                       <span class="bf-card-item__spec">
                         <span class="bf-card-item__spec-icon">
-                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/>
-                          </svg>
+                          <img src="/Ssrn/assets/images/icons/Passengers.svg" alt="Passengers">
                         </span>
                         <span class="bf-card-item__spec-value">3</span>
                       </span>
                       <span class="bf-card-item__spec bf-card-item__spec--luggage">
                         <span class="bf-card-item__spec-icon">
-                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 3h4v3h-4V3z" fill="currentColor"/>
-                          </svg>
+                          <img src="/Ssrn/assets/images/icons/Luggage.svg" alt="Luggage">
                         </span>
                         <span class="bf-card-item__spec-value">3</span>
                       </span>
@@ -198,7 +283,7 @@
             <div class="bf-card-item" data-class="business">
               <div class="bf-card-item__content">
                 <div class="bf-card-item__image">
-                  <img src="https://www.figma.com/api/mcp/asset/6a4e5420-4e81-4bcc-b65b-676dc98023af" alt="Business Class vehicle">
+                  <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy car.png" alt="Business Class vehicle">
                 </div>
                 <div class="bf-card-item__details">
                   <div class="bf-card-item__info">
@@ -209,13 +294,13 @@
                     <div class="bf-card-item__specs">
                       <span class="bf-card-item__spec">
                         <span class="bf-card-item__spec-icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/></svg>
+                          <img src="/Ssrn/assets/images/icons/Passengers.svg" alt="Passengers">
                         </span>
                         <span class="bf-card-item__spec-value">5</span>
                       </span>
                       <span class="bf-card-item__spec bf-card-item__spec--luggage">
                         <span class="bf-card-item__spec-icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 3h4v3h-4V3z" fill="currentColor"/></svg>
+                          <img src="/Ssrn/assets/images/icons/Luggage.svg" alt="Luggage">
                         </span>
                         <span class="bf-card-item__spec-value">3</span>
                       </span>
@@ -233,7 +318,7 @@
             <div class="bf-card-item" data-class="first">
               <div class="bf-card-item__content">
                 <div class="bf-card-item__image">
-                  <img src="https://www.figma.com/api/mcp/asset/b5399256-5fdd-44fb-8d19-a825a7f69997" alt="First Class vehicle">
+                  <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy car.png" alt="First Class vehicle">
                 </div>
                 <div class="bf-card-item__details">
                   <div class="bf-card-item__info">
@@ -244,13 +329,13 @@
                     <div class="bf-card-item__specs">
                       <span class="bf-card-item__spec">
                         <span class="bf-card-item__spec-icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/></svg>
+                          <img src="/Ssrn/assets/images/icons/Passengers.svg" alt="Passengers">
                         </span>
                         <span class="bf-card-item__spec-value">3</span>
                       </span>
                       <span class="bf-card-item__spec bf-card-item__spec--luggage">
                         <span class="bf-card-item__spec-icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 3h4v3h-4V3z" fill="currentColor"/></svg>
+                          <img src="/Ssrn/assets/images/icons/Luggage.svg" alt="Luggage">
                         </span>
                         <span class="bf-card-item__spec-value">3</span>
                       </span>
@@ -268,7 +353,7 @@
             <div class="bf-card-item" data-class="standard-suv">
               <div class="bf-card-item__content">
                 <div class="bf-card-item__image">
-                  <img src="https://www.figma.com/api/mcp/asset/d96f4c4f-fbd9-4598-8a5a-d893356c5ba6" alt="Standard SUV vehicle">
+                  <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy car.png" alt="Standard SUV vehicle">
                 </div>
                 <div class="bf-card-item__details">
                   <div class="bf-card-item__info">
@@ -279,13 +364,13 @@
                     <div class="bf-card-item__specs">
                       <span class="bf-card-item__spec">
                         <span class="bf-card-item__spec-icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/></svg>
+                          <img src="/Ssrn/assets/images/icons/Passengers.svg" alt="Passengers">
                         </span>
                         <span class="bf-card-item__spec-value">4</span>
                       </span>
                       <span class="bf-card-item__spec bf-card-item__spec--luggage">
                         <span class="bf-card-item__spec-icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 3h4v3h-4V3z" fill="currentColor"/></svg>
+                          <img src="/Ssrn/assets/images/icons/Luggage.svg" alt="Luggage">
                         </span>
                         <span class="bf-card-item__spec-value">4</span>
                       </span>
@@ -303,7 +388,7 @@
             <div class="bf-card-item" data-class="business-suv">
               <div class="bf-card-item__content">
                 <div class="bf-card-item__image">
-                  <img src="https://www.figma.com/api/mcp/asset/652cb1d1-65ca-4353-8150-d19ccab831cd" alt="Business SUV vehicle">
+                  <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy car.png" alt="Business SUV vehicle">
                 </div>
                 <div class="bf-card-item__details">
                   <div class="bf-card-item__info">
@@ -314,13 +399,13 @@
                     <div class="bf-card-item__specs">
                       <span class="bf-card-item__spec">
                         <span class="bf-card-item__spec-icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/></svg>
+                          <img src="/Ssrn/assets/images/icons/Passengers.svg" alt="Passengers">
                         </span>
                         <span class="bf-card-item__spec-value">6</span>
                       </span>
                       <span class="bf-card-item__spec bf-card-item__spec--luggage">
                         <span class="bf-card-item__spec-icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 3h4v3h-4V3z" fill="currentColor"/></svg>
+                          <img src="/Ssrn/assets/images/icons/Luggage.svg" alt="Luggage">
                         </span>
                         <span class="bf-card-item__spec-value">6</span>
                       </span>
@@ -346,35 +431,35 @@
               <!-- Pickup location -->
               <div class="bf-booking-card__item">
                 <span class="bf-booking-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+                  <img src="/Ssrn/assets/images/icons/Start location.svg" alt="Start location">
                 </span>
                 <p class="bf-booking-card__text">Newark Liberty Airport (EWR)</p>
               </div>
               <!-- Drop-off location -->
               <div class="bf-booking-card__item">
                 <span class="bf-booking-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                  <img src="/Ssrn/assets/images/icons/Location.svg" alt="Location">
                 </span>
                 <p class="bf-booking-card__text">Hyatt Place New York City / Times Square</p>
               </div>
               <!-- Date & Time -->
               <div class="bf-booking-card__item">
                 <span class="bf-booking-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z" fill="currentColor"/></svg>
+                  <img src="/Ssrn/assets/images/icons/Calendar.svg" alt="Calendar">
                 </span>
                 <p class="bf-booking-card__text">23 Nov 2025, 01:45 pm</p>
               </div>
               <!-- Estimated arrival -->
               <div class="bf-booking-card__item">
                 <span class="bf-booking-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="currentColor"/></svg>
+                  <img src="/Ssrn/assets/images/icons/Estimated Time.svg" alt="Estimated Time">
                 </span>
                 <p class="bf-booking-card__text">Estimated arrival at 02:11 pm (26 minutes)</p>
               </div>
               <!-- Distance -->
               <div class="bf-booking-card__item">
                 <span class="bf-booking-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z" fill="currentColor"/></svg>
+                  <img src="/Ssrn/assets/images/icons/Distance.svg" alt="Distance">
                 </span>
                 <p class="bf-booking-card__text">Distance 26 km / 16 Miles</p>
               </div>
@@ -382,7 +467,7 @@
             <!-- Edit button -->
             <button class="bf-booking-card__edit" type="button">
               <span class="bf-booking-card__edit-icon">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg>
+                <img src="/Ssrn/assets/images/icons/Edit.svg" alt="Edit">
               </span>
               <span class="bf-booking-card__edit-text">Edit</span>
             </button>
@@ -394,19 +479,19 @@
           <div class="bf-disclaimers__list">
             <div class="bf-disclaimers__item">
               <span class="bf-disclaimers__icon">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/></svg>
+                <img src="/Ssrn/assets/images/icons/Error.svg" alt="" width="20" height="20">
               </span>
               <p class="bf-disclaimers__text">Guest/luggage capacities must be abided by for safety reasons. If you are unsure, select a larger class as chauffeurs may turn down service when they are exceeded.</p>
             </div>
             <div class="bf-disclaimers__item">
               <span class="bf-disclaimers__icon">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/></svg>
+                <img src="/Ssrn/assets/images/icons/Error.svg" alt="" width="20" height="20">
               </span>
               <p class="bf-disclaimers__text">The vehicle images above are examples. You may get a different vehicle of similar quality.</p>
             </div>
             <div class="bf-disclaimers__item">
               <span class="bf-disclaimers__icon">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/></svg>
+                <img src="/Ssrn/assets/images/icons/Error.svg" alt="" width="20" height="20">
               </span>
               <p class="bf-disclaimers__text">Meet & Greet availability may vary by location. If unavailable, your pickup will be completed curbside.</p>
             </div>
@@ -1581,6 +1666,9 @@
       renderMinutes();
     })();
   </script>
+
+<!-- Site Footer (Desktop) -->
+  
 
 </body>
 </html>

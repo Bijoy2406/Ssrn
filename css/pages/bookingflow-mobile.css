@@ -1,0 +1,756 @@
+/**
+ * SSRN Booking Flow - Mobile View
+ * Based on Figma Design: 1094-63111
+ * Optimized for mobile devices (up to 768px)
+ * Mobile-first responsive design
+ */
+
+/* ============================================
+   MOBILE NAVBAR (Header)
+   ============================================ */
+@media (max-width: 768px) {
+  .nav-bar-wrapper {
+    padding: 12px 0;
+  }
+
+  .nav-bar {
+    width: 100%;
+    padding: 12px 16px;
+    justify-content: flex-start;
+  }
+
+  .nav-bar__logo {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-bar__logo img {
+    height: 32px;
+    width: auto;
+  }
+}
+
+/* ============================================
+   MOBILE PROGRESS SECTION
+   ============================================ */
+@media (max-width: 768px) {
+  .bf-progress {
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  .bf-progress__inner {
+    flex-direction: column;
+    gap: 12px;
+    min-width: auto;
+    max-width: 100%;
+  }
+
+  /* Show step header on mobile */
+  .bf-progress__step-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .bf-progress__step-title {
+    flex: 1;
+    font-family: var(--font-family-heading);
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24px;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .bf-progress__step-count {
+    font-family: var(--font-family-body);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  /* Hide buttons on mobile */
+  .bf-progress__buttons {
+    display: none;
+  }
+
+  /* Adjust track for mobile */
+  .bf-progress__track {
+    width: 100%;
+    display: flex;
+    gap: 0;
+    align-items: center;
+  }
+
+  .bf-progress__step {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bf-progress__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--grey-40);
+    flex-shrink: 0;
+  }
+
+  .bf-progress__dot--active {
+    background-color: var(--text-primary);
+    width: 14px;
+    height: 14px;
+  }
+
+  .bf-progress__bar {
+    height: 2px;
+    background-color: var(--grey-40);
+    flex: 1;
+    min-width: 8px;
+  }
+
+  .bf-progress__step--last .bf-progress__bar {
+    display: none;
+  }
+}
+
+/* ============================================
+   MOBILE MAP SECTION
+   ============================================ */
+@media (max-width: 768px) {
+  .bf-map {
+    padding: 0;
+    margin: 12px 0 0 0;
+    width: 100%;
+  }
+
+  .bf-map__inner {
+    height: 180px;
+    border-radius: 0;
+  }
+
+  .bf-map__inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* ============================================
+   MOBILE ERROR BANNER
+   ============================================ */
+@media (max-width: 768px) {
+  .bf-error-banner-wrapper {
+    padding: 8px 16px;
+    margin: 8px 0 0 0;
+  }
+
+  .bf-error-banner {
+    padding: 12px 16px;
+    gap: 12px;
+    border-radius: 8px;
+  }
+
+  .bf-error-banner__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .bf-error-banner__text {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+
+/* ============================================
+   MOBILE CONTENT WRAPPER
+   ============================================ */
+@media (max-width: 768px) {
+  .bf-content {
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .bf-content__inner {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* ============================================
+   MOBILE VEHICLE SELECTION SECTION
+   ============================================ */
+@media (max-width: 768px) {
+  .bf-vehicle {
+    margin-top: 16px;
+    padding: 0;
+  }
+
+  .bf-vehicle__heading {
+    font-family: var(--font-family-heading);
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 24px;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+  }
+
+  .bf-vehicle__subtitle {
+    font-family: var(--font-family-body);
+    font-size: var(--body-sm-size);
+    font-weight: 400;
+    line-height: var(--body-sm-line-height);
+    color: var(--text-secondary);
+    margin: 0 0 var(--space-400) 0;
+  }
+
+  /* Vehicle cards container */
+  .bf-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    padding-bottom: 4px;
+    box-sizing: border-box;
+    overflow: visible;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .bf-card-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-neutral);
+    border: 2px solid var(--grey-80);
+    border-radius: 16px;
+    overflow: visible;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .bf-card-item:active {
+    border-color: #000;
+    background-color: var(--grey-100);
+  }
+
+  .bf-card-item--selected {
+    border-top: 4px solid #000;
+    border-bottom: 4px solid #000;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    border-radius: 16px;
+    background-color: white;
+  }
+
+  /* Card content layout */
+  .bf-card-item__content {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    padding: 12px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+  }
+
+  .bf-card-item__image {
+    width: 100px;
+    height: 72px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--grey-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bf-card-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Card details layout - right side */
+  .bf-card-item__details {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    align-items: flex-start;
+  }
+
+  .bf-card-item__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .bf-card-item__class {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .bf-card-item__name {
+    font-family: var(--font-family-heading);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .bf-card-item__car {
+    font-family: var(--font-family-body);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .bf-card-item__specs {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+    align-items: center;
+  }
+
+  .bf-card-item__spec {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .bf-card-item__spec-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .bf-card-item__spec-icon svg {
+    width: 100%;
+    height: 100%;
+    color: var(--text-secondary);
+  }
+
+  .bf-card-item__spec-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  .bf-card-item__spec-value {
+    font-weight: 500;
+  }
+
+  .bf-card-item__price {
+    font-family: var(--font-family-heading);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 16px;
+    color: var(--text-primary);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Card actions - hidden by default */
+  .bf-card-item__actions {
+    display: none;
+    gap: 8px;
+    padding: 0 16px 12px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  /* Show button only on selected card */
+  .bf-card-item--selected .bf-card-item__actions {
+    display: flex;
+  }
+
+  .bf-card-item__details-btn {
+    padding: 8px 20px;
+    font-family: var(--font-family-body);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+    color: var(--text-primary);
+    background-color: transparent;
+    border: 2px solid var(--text-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .bf-card-item__details-btn:active {
+    background-color: var(--text-primary);
+    color: var(--surface-page);
+  }
+}
+
+/* ============================================
+   MOBILE BOOKING SECTION
+   ============================================ */
+@media (max-width: 768px) {
+  .bf-booking {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    margin-top: 68px;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .bf-booking__heading {
+    font-family: var(--font-family-heading);
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 22px;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  /* Booking card container */
+  .bf-booking-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 24px;
+    background-color: #ffffff;
+    border: 1.5px solid var(--grey-80);
+    border-radius: 12px;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+  }
+
+  .bf-booking-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .bf-booking-card__item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .bf-booking-card__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bf-booking-card__icon img,
+  .bf-booking-card__icon svg {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    color: var(--text-primary);
+  }
+
+  .bf-booking-card__text {
+    font-family: var(--font-family-body);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  /* Edit button */
+  .bf-booking-card__edit {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    align-self: flex-end;
+    flex-shrink: 0;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+
+  .bf-booking-card__edit-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bf-booking-card__edit-icon img,
+  .bf-booking-card__edit-icon svg {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    color: var(--text-primary);
+  }
+
+  .bf-booking-card__edit-text {
+    font-family: var(--font-family-body);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    color: var(--text-primary);
+  }
+}
+
+/* ============================================
+   MOBILE DISCLAIMERS SECTION
+   ============================================ */
+@media (max-width: 768px) {
+  .bf-disclaimers {
+    margin-top: 24px;
+    padding: 32px 16px;
+    background-color: var(--grey-100);
+    border: 2px dashed var(--grey-80);
+    border-radius: var(--radius-s);
+    margin-bottom: 0;
+    box-sizing: border-box;
+  }
+
+  .bf-disclaimers__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .bf-disclaimers__item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .bf-disclaimers__icon {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bf-disclaimers__icon img {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .bf-disclaimers__text {
+    font-family: var(--font-family-body);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--text-primary);
+    margin: 0;
+  }
+}
+
+/* ============================================
+   MOBILE BOTTOM CTA BAR
+   ============================================ */
+@media (max-width: 768px) {
+  .bf-bottom-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 16px 24px;
+    background-color: #FFFFFF;
+    border-top: 1px solid #E0E0E0;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+    z-index: 200;
+    box-sizing: border-box;
+  }
+
+  .bf-bottom-cta__btn {
+    width: 100%;
+    padding: 16px 24px;
+    font-family: var(--font-family-body);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #FFFFFF;
+    background-color: #2B6F7F;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+
+  .bf-bottom-cta__btn:hover {
+    background-color: #1F5660;
+  }
+
+  .bf-bottom-cta__btn:active {
+    background-color: #164450;
+  }
+}
+
+/* ============================================
+   FOOTER MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 24px 16px !important;
+  }
+
+  .site-footer__container {
+    gap: var(--space-400);
+  }
+
+  .site-footer__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-300);
+    padding-bottom: var(--space-400);
+  }
+
+  .site-footer__logo {
+    height: 24px;
+  }
+
+  .site-footer__logo img {
+    height: 20px;
+  }
+
+  .site-footer__help-btn {
+    width: auto;
+    padding: var(--space-200) var(--space-300);
+    font-size: 12px;
+  }
+
+  .site-footer__middle {
+    padding-bottom: var(--space-400);
+    padding-right: 0;
+  }
+
+  .site-footer__link-groups {
+    flex-direction: column;
+    gap: var(--space-600);
+  }
+
+  .site-footer__link-group {
+    flex: none;
+  }
+
+  .site-footer__link-group-title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .site-footer__link {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+    gap: var(--space-600);
+  }
+
+  .site-footer__legal-links {
+    flex-direction: column;
+    gap: var(--space-200);
+  }
+
+  .site-footer__socials {
+    gap: var(--space-600);
+  }
+
+  .site-footer__social-link {
+    width: 28px;
+    height: 28px;
+  }
+
+  .site-footer__social-link svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ============================================
+   VERY SMALL MOBILE (up to 360px)
+   ============================================ */
+@media (max-width: 360px) {
+  .bf-progress__step-title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .bf-vehicle__heading {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .bf-card-item__actions {
+    padding-left: 70px;
+  }
+
+  .bf-booking__heading {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .bf-disclaimers {
+    padding: 12px;
+  }
+
+  .bf-bottom-cta {
+    padding: 8px 12px;
+  }
+
+  .bf-bottom-cta__btn {
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
