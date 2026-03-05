@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/Ssrn/style.css">
   <link rel="stylesheet" href="/Ssrn/css/components/booking-form-landing.css">
   <link rel="stylesheet" href="/Ssrn/css/components/cards-and-modals.css">
+  <link rel="stylesheet" href="/Ssrn/css/components/footer.css">
   <style>
     /* Page-specific styles */
     * {
@@ -40,7 +41,7 @@
     .cta,
     .why-choose,
     .nav-bar-wrapper,
-    .site-footer {
+    .footer {
       max-width: 100%;
       overflow-x: hidden;
     }
@@ -50,7 +51,7 @@
     .destinations__container,
     .cta__container,
     .why-choose__container,
-    .site-footer__container {
+    .footer__inner {
       max-width: 100%;
       overflow-x: hidden;
     }
@@ -1355,8 +1356,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(3, 17, 13, 0.5);
-      backdrop-filter: blur(4px);
+      background-color: rgba(3, 17, 13, 0.3);
       z-index: 9999;
       opacity: 0;
       visibility: hidden;
@@ -2100,12 +2100,17 @@
       <!-- Sign In Button -->
       <div class="nav-bar__profile">
         <a href="/Ssrn/pages/Auth/Login/email.html" class="nav-bar__sign-in">
+          <svg class="nav-bar__sign-in-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
           <span>Sign In</span>
         </a>
       </div>
 
       <!-- Mobile Toggle -->
-      <button class="nav-bar__mobile-toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
+      <button class="nav-bar__mobile-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="3" y1="12" x2="21" y2="12" />
           <line x1="3" y1="6" x2="21" y2="6" />
@@ -2119,8 +2124,8 @@
   <div class="nav-overlay" id="navOverlay" onclick="toggleMobileNav()"></div>
 
   <!-- Mobile Menu Overlay (Full Screen) -->
-  <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-    <div class="mobile-menu">
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="handleMobileMenuOverlayClick(event)">
+    <div class="mobile-menu" onclick="event.stopPropagation()">
       <div class="mobile-menu__header">
         <div class="mobile-menu__logo">
           <img src="../../assets/images/icons/Customer-Log In/S.svg" alt="S">
@@ -2718,118 +2723,8 @@
     </div>
   </section>
 
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="site-footer__container">
-
-      <!-- Top: Logo + Help -->
-      <div class="site-footer__top">
-        <div class="site-footer__logo">
-          <img src="../../assets/images/icons/Customer-Log In/S.svg" alt="S">
-          <img src="../../assets/images/icons/Customer-Log In/S.2.svg" alt="S">
-          <img src="../../assets/images/icons/Customer-Log In/R.svg" alt="R">
-          <img src="../../assets/images/icons/Customer-Log In/N.svg" alt="N">
-        </div>
-        <a href="#help" class="site-footer__help-btn">
-          <span>Help</span>
-          <div class="site-footer__help-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-          </div>
-        </a>
-      </div>
-
-      <!-- Middle: Link Groups -->
-      <div class="site-footer__middle">
-        <div class="site-footer__link-groups">
-
-          <!-- Company -->
-          <div class="site-footer__link-group">
-            <h3 class="site-footer__link-group-title">Company</h3>
-            <div class="site-footer__links">
-              <a href="#about" class="site-footer__link">About Us</a>
-              <a href="#chauffeurs" class="site-footer__link">For Chauffeurs</a>
-              <a href="#partners" class="site-footer__link">For Partners</a>
-            </div>
-          </div>
-
-          <!-- Explore -->
-          <div class="site-footer__link-group">
-            <h3 class="site-footer__link-group-title">Explore</h3>
-            <div class="site-footer__links">
-              <a href="#airport" class="site-footer__link">Airport Transfers</a>
-              <a href="#city" class="site-footer__link">City-to-city Rides</a>
-              <a href="#hourly" class="site-footer__link">Hourly Rides</a>
-            </div>
-          </div>
-
-          <!-- Top Cities -->
-          <div class="site-footer__link-group">
-            <h3 class="site-footer__link-group-title">Top Cities</h3>
-            <div class="site-footer__links">
-              <a href="#ny" class="site-footer__link">New York</a>
-              <a href="#la" class="site-footer__link">New York</a>
-              <a href="#ch" class="site-footer__link">New York</a>
-              <a href="#mi" class="site-footer__link">New York</a>
-              <a href="#sf" class="site-footer__link">New York</a>
-              <a href="#bo" class="site-footer__link">New York</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Bottom: Legal + Socials -->
-      <div class="site-footer__bottom">
-        <div class="site-footer__legal">
-          <a href="#terms" class="site-footer__legal-link">Terms and Conditions</a>
-          <a href="#privacy" class="site-footer__legal-link">Privacy Policy</a>
-          <a href="#legal" class="site-footer__legal-link">Legal Notice</a>
-          <a href="#accessibility" class="site-footer__legal-link">Accessibility</a>
-        </div>
-
-        <div class="site-footer__socials">
-          <!-- Facebook -->
-          <a href="#facebook" class="site-footer__social-link" aria-label="Facebook">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M28 14C28 6.268 21.732 0 14 0S0 6.268 0 14c0 6.988 5.12 12.775 11.813 13.825V18.047H8.258V14h3.555v-3.084c0-3.508 2.089-5.447 5.29-5.447 1.532 0 3.134.273 3.134.273v3.445h-1.766c-1.739 0-2.28 1.079-2.28 2.185V14h3.883l-.62 4.047h-3.263v9.778C22.88 26.775 28 20.988 28 14z"
-                fill="white" />
-            </svg>
-          </a>
-          <!-- Instagram -->
-          <a href="#instagram" class="site-footer__social-link" aria-label="Instagram">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M14 2.523c3.735 0 4.178.014 5.65.081 3.857.176 5.657 2.002 5.833 5.833.068 1.471.08 1.914.08 5.65 0 3.736-.013 4.178-.08 5.649-.177 3.828-1.972 5.657-5.833 5.833-1.472.068-1.912.082-5.65.082-3.735 0-4.178-.014-5.65-.082-3.867-.177-5.656-2.011-5.832-5.833C2.451 18.265 2.438 17.822 2.438 14c0-3.735.014-4.178.081-5.649.177-3.832 1.97-5.657 5.832-5.833 1.473-.067 1.915-.081 5.65-.081zM14 0c-3.8 0-4.276.016-5.765.084C3.197.303.304 3.193.084 8.235.016 9.726 0 10.2 0 14c0 3.8.016 4.276.084 5.765.22 5.038 3.107 7.932 8.151 8.151C9.724 27.984 10.2 28 14 28c3.8 0 4.276-.016 5.765-.084 5.036-.22 7.933-3.109 8.15-8.151C27.984 18.276 28 17.8 28 14c0-3.8-.016-4.275-.084-5.765C27.697 3.2 24.806.305 19.766.084 18.276.016 17.8 0 14 0zm0 6.811a7.189 7.189 0 100 14.378A7.189 7.189 0 0014 6.811zm0 11.864a4.676 4.676 0 110-9.351 4.676 4.676 0 010 9.351zM21.46 4.846a1.68 1.68 0 100 3.36 1.68 1.68 0 000-3.36z"
-                fill="white" />
-            </svg>
-          </a>
-          <!-- TikTok -->
-          <a href="#tiktok" class="site-footer__social-link" aria-label="TikTok">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M20.0625 11.2441C19.0991 11.2441 18.2098 10.9306 17.4896 10.4011C16.6671 9.80344 16.0775 8.91669 15.8691 7.89158C15.8176 7.63867 15.7891 7.37695 15.7891 7.10938H13.3125V14.7559L13.3096 18.5742C13.3096 19.5376 12.6494 20.3486 11.7461 20.5801C11.4961 20.6436 11.2305 20.6592 10.959 20.6182C10.6084 20.5654 10.2832 20.4229 10.0127 20.2119C9.42383 19.7583 9.05469 19.0576 9.05469 18.2744C9.05469 16.9063 10.1631 15.7979 11.5312 15.7979C11.793 15.7979 12.0449 15.8408 12.2813 15.9189V13.3926C12.0332 13.3574 11.7803 13.3389 11.5225 13.3389C9.9707 13.3389 8.52344 14.0078 7.50586 15.1523C6.72852 16.0283 6.25 17.1797 6.25 18.4453C6.25 19.7822 6.78711 20.9893 7.66016 21.8701C8.60254 22.8213 9.90625 23.4082 11.3457 23.4082C11.4746 23.4082 11.6006 23.4023 11.7266 23.3916C13.0918 23.2803 14.3203 22.6602 15.2207 21.7021C16.2148 20.6494 16.8164 19.2383 16.8164 17.6865L16.8047 12.2061C17.376 12.6143 17.999 12.9453 18.667 13.1904C19.6709 13.5566 20.7578 13.709 21.875 13.6455V11.1924C21.2539 11.2939 20.6484 11.3037 20.0625 11.2441Z"
-                fill="white" />
-            </svg>
-          </a>
-          <!-- LinkedIn -->
-          <a href="#linkedin" class="site-footer__social-link" aria-label="LinkedIn">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M6.5 9.25C6.5 7.73122 7.73122 6.5 9.25 6.5H18.75C20.2688 6.5 21.5 7.73122 21.5 9.25V18.75C21.5 20.2688 20.2688 21.5 18.75 21.5H9.25C7.73122 21.5 6.5 20.2688 6.5 18.75V9.25ZM10.375 12.25C10.9963 12.25 11.5 11.7463 11.5 11.125C11.5 10.5037 10.9963 10 10.375 10C9.75368 10 9.25 10.5037 9.25 11.125C9.25 11.7463 9.75368 12.25 10.375 12.25ZM9.25 13.375V19H11.5V13.375H9.25ZM13.375 13.375V19H15.625V16.0625C15.625 15.0895 16.4145 14.3 17.3875 14.3C17.9088 14.3 18.3258 14.717 18.3258 15.2383V19H20.5V15C20.5 13.5188 19.2312 12.25 17.75 12.25C16.9167 12.25 16.1667 12.625 15.625 13.225V13.375H13.375Z"
-                fill="white" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </footer>
+  <!-- Footer Component -->
+  <div id="site-footer-container"></div>
 
   <script>
     // Page Loader
@@ -2881,18 +2776,16 @@
       document.body.style.overflow = overlay.classList.contains('mobile-menu-overlay--open') ? 'hidden' : '';
     }
 
+    function handleMobileMenuOverlayClick(event) {
+      // Close menu when clicking on overlay (not the menu itself)
+      if (event.target === document.getElementById('mobileMenuOverlay')) {
+        toggleMobileMenu();
+      }
+    }
+
     function toggleMobileMenuSection(section) {
       const expandable = event.target.closest('.mobile-menu__expandable');
       expandable.classList.toggle('mobile-menu__expandable--open');
-    }
-
-    // Open mobile menu from hamburger
-    const mobileToggle = document.querySelector('.nav-bar__mobile-toggle');
-    if (mobileToggle) {
-      mobileToggle.addEventListener('click', function (e) {
-        e.stopPropagation();
-        toggleMobileMenu();
-      });
     }
 
     // Datetime Picker
@@ -3241,6 +3134,7 @@
 
   </script>
 
+  <script src="/Ssrn/js/components/footer.js"></script>
 </body>
 
 </html>

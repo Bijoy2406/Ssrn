@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +10,26 @@
     <link rel="stylesheet" href="/Ssrn/style.css">
     <link rel="stylesheet" href="/Ssrn/css/components/authenticated-nav.css">
     <link rel="stylesheet" href="/Ssrn/css/components/booking-form-landing.css">
-    <link rel="stylesheet" href="/Ssrn/css/components/site-footer.css">
+    <link rel="stylesheet" href="/Ssrn/css/components/footer.css">
     <link rel="stylesheet" href="/Ssrn/css/components/cards-and-modals.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
-        *, *::before, *::after { box-sizing: border-box; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-        html { overflow-x: hidden; width: 100%; }
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
 
         body {
             margin: 0;
@@ -507,9 +516,14 @@
             transition: color 0.2s ease;
         }
 
-        .upcoming-ride__share-btn:hover { color: var(--sea-green-50); }
+        .upcoming-ride__share-btn:hover {
+            color: var(--sea-green-50);
+        }
 
-        .upcoming-ride__share-btn svg { width: 20px; height: 20px; }
+        .upcoming-ride__share-btn svg {
+            width: 20px;
+            height: 20px;
+        }
 
         .upcoming-ride__status {
             display: inline-flex;
@@ -580,7 +594,10 @@
             margin-top: 2px;
         }
 
-        .upcoming-ride__location-icon svg { width: 100%; height: 100%; }
+        .upcoming-ride__location-icon svg {
+            width: 100%;
+            height: 100%;
+        }
 
         .upcoming-ride__location-text {
             font-family: var(--font-family-body);
@@ -614,7 +631,9 @@
             transition: all 0.2s ease;
         }
 
-        .btn-primary:hover { background-color: var(--sea-green-40); }
+        .btn-primary:hover {
+            background-color: var(--sea-green-40);
+        }
 
         .btn-ghost {
             display: block;
@@ -631,7 +650,9 @@
             transition: color 0.2s ease;
         }
 
-        .btn-ghost:hover { color: var(--sea-green-50); }
+        .btn-ghost:hover {
+            color: var(--sea-green-50);
+        }
 
         /* ── SERVICES SECTION ── */
         .services {
@@ -733,7 +754,9 @@
             transition: all 0.2s ease;
         }
 
-        .destinations__filter-btn:hover { background-color: var(--grey-90); }
+        .destinations__filter-btn:hover {
+            background-color: var(--grey-90);
+        }
 
         .destinations__filter-btn--active {
             background-color: var(--text-primary);
@@ -741,7 +764,9 @@
             border-color: var(--text-primary);
         }
 
-        .destinations__carousel-wrapper { position: relative; }
+        .destinations__carousel-wrapper {
+            position: relative;
+        }
 
         .destinations__carousel {
             overflow-x: auto;
@@ -750,7 +775,9 @@
             scrollbar-width: none;
         }
 
-        .destinations__carousel::-webkit-scrollbar { display: none; }
+        .destinations__carousel::-webkit-scrollbar {
+            display: none;
+        }
 
         .destinations__track {
             display: flex;
@@ -782,12 +809,24 @@
             transition: all 0.2s ease;
         }
 
-        .destinations__nav-btn:hover { background-color: var(--grey-90); }
-        .destinations__nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-        .destinations__nav-btn svg { width: 18px; height: 18px; color: var(--text-primary); }
+        .destinations__nav-btn:hover {
+            background-color: var(--grey-90);
+        }
+
+        .destinations__nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .destinations__nav-btn svg {
+            width: 18px;
+            height: 18px;
+            color: var(--text-primary);
+        }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1440px) {
+
             .nav,
             .hero__title-bar,
             .upcoming-ride__container,
@@ -796,10 +835,14 @@
                 padding-left: 64px;
                 padding-right: 64px;
             }
-            .hero__form-overlay { right: 64px; }
+
+            .hero__form-overlay {
+                right: 64px;
+            }
         }
 
         @media (max-width: 1280px) {
+
             .nav,
             .hero__title-bar,
             .upcoming-ride__container,
@@ -808,10 +851,15 @@
                 padding-left: 48px;
                 padding-right: 48px;
             }
-            .hero__form-overlay { right: 48px; width: 400px; }
+
+            .hero__form-overlay {
+                right: 48px;
+                width: 400px;
+            }
         }
 
         @media (max-width: 1024px) {
+
             .nav,
             .hero__title-bar,
             .upcoming-ride__container,
@@ -821,7 +869,9 @@
                 padding-right: 32px;
             }
 
-            .hero__bg { height: 480px; }
+            .hero__bg {
+                height: 480px;
+            }
 
             .hero__form-overlay {
                 position: relative;
@@ -833,8 +883,13 @@
                 padding: 0 32px;
             }
 
-            .upcoming-ride__card { grid-template-columns: 1fr; }
-            .upcoming-ride__map { height: 280px; }
+            .upcoming-ride__card {
+                grid-template-columns: 1fr;
+            }
+
+            .upcoming-ride__map {
+                height: 280px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -843,16 +898,22 @@
                 gap: 12px;
             }
 
-            .nav__links { display: none; }
+            .nav__links {
+                display: none;
+            }
 
-            .hero__title-bar { padding: 20px 16px 16px; }
+            .hero__title-bar {
+                padding: 20px 16px 16px;
+            }
 
             .hero__title {
                 font-size: var(--heading-h7-size);
                 line-height: var(--heading-h7-line-height);
             }
 
-            .hero__bg { height: 360px; }
+            .hero__bg {
+                height: 360px;
+            }
 
             .hero__form-overlay {
                 margin: -80px auto 0;
@@ -867,11 +928,21 @@
                 padding-right: 16px;
             }
 
-            .upcoming-ride { padding: 48px 0; }
-            .services { padding: 48px 0; }
-            .destinations { padding: 48px 0; }
+            .upcoming-ride {
+                padding: 48px 0;
+            }
 
-            .upcoming-ride__map { height: 220px; }
+            .services {
+                padding: 48px 0;
+            }
+
+            .destinations {
+                padding: 48px 0;
+            }
+
+            .upcoming-ride__map {
+                height: 220px;
+            }
 
             .upcoming-ride__heading,
             .services__heading,
@@ -880,15 +951,25 @@
                 line-height: var(--heading-h5-line-height);
             }
 
-            .services__track { grid-template-columns: 1fr; }
-            .services__track .card-service { width: 100%; }
+            .services__track {
+                grid-template-columns: 1fr;
+            }
 
-            .destinations__header { flex-direction: column; }
+            .services__track .card-service {
+                width: 100%;
+            }
 
-            .destinations__track .card-destination { width: 280px; }
+            .destinations__header {
+                flex-direction: column;
+            }
+
+            .destinations__track .card-destination {
+                width: 280px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- ── NAVIGATION ── -->
@@ -896,8 +977,9 @@
         <div class="nav">
             <!-- Logo -->
             <a href="/" class="nav__logo" aria-label="SSRN Home">
-                <svg class="nav__logo-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="44" height="44" rx="4" fill="#03110D"/>
+                <svg class="nav__logo-icon" width="44" height="44" viewBox="0 0 44 44" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect width="44" height="44" rx="4" fill="#03110D" />
                     <text x="6" y="32" font-family="Manrope" font-size="22" font-weight="800" fill="#FEFEFE">S</text>
                 </svg>
                 <span class="nav__logo-text">SRN</span>
@@ -913,15 +995,17 @@
             <div class="nav__profile" id="profileDropdown">
                 <button class="nav__profile-btn" id="profileBtn" aria-expanded="false" aria-haspopup="true">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
                     </svg>
                     Mehrab
                 </button>
                 <div class="nav__profile-menu" role="menu">
                     <a href="/Ssrn/pages/my-rides.html" class="nav__profile-item" role="menuitem">My Rides</a>
                     <a href="/Ssrn/pages/account.html" class="nav__profile-item" role="menuitem">Account</a>
-                    <button class="nav__profile-item nav__profile-item--logout" role="menuitem" id="logoutBtn">Log out</button>
+                    <button class="nav__profile-item nav__profile-item--logout" role="menuitem" id="logoutBtn">Log
+                        out</button>
                 </div>
             </div>
         </div>
@@ -938,7 +1022,8 @@
         <div class="hero__image-form">
             <!-- Background image -->
             <div class="hero__bg">
-                <img src="/assets/images/photos/Landing page/Landing Page/Hero Section Image.png" alt="Professional chauffeur service">
+                <img src="/assets/images/photos/Landing page/Landing Page/Hero Section Image.png"
+                    alt="Professional chauffeur service">
             </div>
 
             <!-- Floating Booking Form -->
@@ -946,7 +1031,8 @@
                 <div class="booking-form" id="bookingForm">
                     <!-- Ride Type Tabs -->
                     <div class="booking-form__tabs">
-                        <button class="booking-form__tab booking-form__tab--active" data-tab="one-way" id="tabOneWay">One Way Ride</button>
+                        <button class="booking-form__tab booking-form__tab--active" data-tab="one-way"
+                            id="tabOneWay">One Way Ride</button>
                         <button class="booking-form__tab" data-tab="hourly" id="tabHourly">Hourly Ride</button>
                     </div>
 
@@ -956,15 +1042,21 @@
                         <div class="booking-form__input-wrap">
                             <span class="booking-form__icon-left">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z" stroke="currentColor" stroke-width="1.5"/>
+                                    <path
+                                        d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z"
+                                        stroke="currentColor" stroke-width="1.5" />
+                                    <path
+                                        d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z"
+                                        stroke="currentColor" stroke-width="1.5" />
                                 </svg>
                             </span>
-                            <input type="text" class="booking-form__input" id="fromInput" placeholder="Airport, address, hotel,...">
+                            <input type="text" class="booking-form__input" id="fromInput"
+                                placeholder="Airport, address, hotel,...">
                             <span class="booking-form__icon-right">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
+                                    <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
                                 </svg>
                             </span>
                         </div>
@@ -976,15 +1068,21 @@
                         <div class="booking-form__input-wrap">
                             <span class="booking-form__icon-left">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z" stroke="currentColor" stroke-width="1.5"/>
+                                    <path
+                                        d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z"
+                                        stroke="currentColor" stroke-width="1.5" />
+                                    <path
+                                        d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z"
+                                        stroke="currentColor" stroke-width="1.5" />
                                 </svg>
                             </span>
-                            <input type="text" class="booking-form__input" id="toInput" placeholder="Airport, address, hotel,...">
+                            <input type="text" class="booking-form__input" id="toInput"
+                                placeholder="Airport, address, hotel,...">
                             <span class="booking-form__icon-right">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
+                                    <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
                                 </svg>
                             </span>
                         </div>
@@ -996,10 +1094,13 @@
                         <div class="booking-form__input-wrap">
                             <span class="booking-form__icon-left">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="3" y="4.5" width="18" height="16.5" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M3 9H21" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M7.5 2.25V4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                    <path d="M16.5 2.25V4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <rect x="3" y="4.5" width="18" height="16.5" rx="2" stroke="currentColor"
+                                        stroke-width="1.5" />
+                                    <path d="M3 9H21" stroke="currentColor" stroke-width="1.5" />
+                                    <path d="M7.5 2.25V4.5" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                    <path d="M16.5 2.25V4.5" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
                                 </svg>
                             </span>
                             <button type="button" class="booking-form__date-display" id="dateDisplay">
@@ -1007,7 +1108,8 @@
                             </button>
                             <span class="booking-form__icon-right" style="pointer-events:none;">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </span>
                         </div>
@@ -1019,8 +1121,9 @@
                         <div class="booking-form__input-wrap">
                             <span class="booking-form__icon-left">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M12 6.75V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
+                                    <path d="M12 6.75V12L15 15" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
                                 </svg>
                             </span>
                             <button type="button" class="booking-form__time-display" id="timeDisplay">
@@ -1028,7 +1131,8 @@
                             </button>
                             <span class="booking-form__icon-right" style="pointer-events:none;">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </span>
                         </div>
@@ -1037,8 +1141,9 @@
                     <!-- Submit Button -->
                     <button type="button" class="booking-form__submit" id="seePricesBtn">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" />
                         </svg>
                         See Prices
                     </button>
@@ -1054,7 +1159,8 @@
             <div class="upcoming-ride__card">
                 <!-- Map placeholder -->
                 <div class="upcoming-ride__map">
-                    <img src="/assets/images/photos/map-placeholder.png" alt="Ride map" onerror="this.style.background='#f3f6f6'; this.style.display='block';">
+                    <img src="/assets/images/photos/map-placeholder.png" alt="Ride map"
+                        onerror="this.style.background='#f3f6f6'; this.style.display='block';">
                 </div>
 
                 <!-- Ride details -->
@@ -1063,7 +1169,9 @@
                         <span class="upcoming-ride__booking-id">#SSRN-2024-001</span>
                         <button class="upcoming-ride__share-btn" aria-label="Share ride details">
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -1082,20 +1190,27 @@
                         <div class="upcoming-ride__location">
                             <span class="upcoming-ride__location-icon">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z" stroke="currentColor" stroke-width="1.5"/>
+                                    <path
+                                        d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z"
+                                        stroke="currentColor" stroke-width="1.5" />
+                                    <path
+                                        d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z"
+                                        stroke="currentColor" stroke-width="1.5" />
                                 </svg>
                             </span>
-                            <span class="upcoming-ride__location-text">John F. Kennedy International Airport, Jamaica, NY 11430, USA</span>
+                            <span class="upcoming-ride__location-text">John F. Kennedy International Airport, Jamaica,
+                                NY 11430, USA</span>
                         </div>
                         <div class="upcoming-ride__location">
                             <span class="upcoming-ride__location-icon">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
+                                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
                                 </svg>
                             </span>
-                            <span class="upcoming-ride__location-text">The Plaza Hotel, 768 5th Ave, New York, NY 10019, USA</span>
+                            <span class="upcoming-ride__location-text">The Plaza Hotel, 768 5th Ave, New York, NY 10019,
+                                USA</span>
                         </div>
                     </div>
 
@@ -1120,7 +1235,8 @@
                     </div>
                     <div class="card-service__content">
                         <h3 class="card-service__heading">Airport Transfers</h3>
-                        <p class="card-service__body">Reliable rides to and from the airport. Your chauffeur tracks your flight and arrives on time, every time.</p>
+                        <p class="card-service__body">Reliable rides to and from the airport. Your chauffeur tracks your
+                            flight and arrives on time, every time.</p>
                     </div>
                 </article>
 
@@ -1131,7 +1247,8 @@
                     </div>
                     <div class="card-service__content">
                         <h3 class="card-service__heading">City-to-city Rides</h3>
-                        <p class="card-service__body">Travel between cities with comfort and ease. Enjoy a quiet, uninterrupted ride from door to door.</p>
+                        <p class="card-service__body">Travel between cities with comfort and ease. Enjoy a quiet,
+                            uninterrupted ride from door to door.</p>
                     </div>
                 </article>
 
@@ -1142,7 +1259,8 @@
                     </div>
                     <div class="card-service__content">
                         <h3 class="card-service__heading">Hourly Rides</h3>
-                        <p class="card-service__body">Stay in control of your time. From business stops to leisure plans, your chauffeur is ready whenever you are.</p>
+                        <p class="card-service__body">Stay in control of your time. From business stops to leisure
+                            plans, your chauffeur is ready whenever you are.</p>
                     </div>
                 </article>
             </div>
@@ -1155,18 +1273,21 @@
             <div class="destinations__header">
                 <div class="destinations__header-left">
                     <h2 class="destinations__heading">Destinations</h2>
-                    <p class="destinations__subtitle">Travel effortlessly between U.S. airports and cities with chauffeurs who value your time, comfort, and peace of mind.</p>
+                    <p class="destinations__subtitle">Travel effortlessly between U.S. airports and cities with
+                        chauffeurs who value your time, comfort, and peace of mind.</p>
                 </div>
                 <div class="destinations__filters">
                     <button class="destinations__filter-btn destinations__filter-btn--active" data-filter="cities">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 4H14M2 8H14M2 12H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M2 4H14M2 8H14M2 12H10" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" />
                         </svg>
                         Cities
                     </button>
                     <button class="destinations__filter-btn" data-filter="attractions">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 1L10 5.5L15 6L11.5 9.5L12.5 14.5L8 12L3.5 14.5L4.5 9.5L1 6L6 5.5L8 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="M8 1L10 5.5L15 6L11.5 9.5L12.5 14.5L8 12L3.5 14.5L4.5 9.5L1 6L6 5.5L8 1Z"
+                                stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
                         </svg>
                         Attractions
                     </button>
@@ -1184,7 +1305,14 @@
                                 <h3 class="card-destination__heading">New York</h3>
                                 <div class="card-destination__location">
                                     <span class="card-destination__icon">
-                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z" stroke="currentColor" stroke-width="1.5"/></svg>
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                            <path
+                                                d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                        </svg>
                                     </span>
                                     <span class="card-destination__text">John F. Kennedy International Airport</span>
                                 </div>
@@ -1198,7 +1326,14 @@
                                 <h3 class="card-destination__heading">Los Angeles</h3>
                                 <div class="card-destination__location">
                                     <span class="card-destination__icon">
-                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z" stroke="currentColor" stroke-width="1.5"/></svg>
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                            <path
+                                                d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                        </svg>
                                     </span>
                                     <span class="card-destination__text">Los Angeles International Airport</span>
                                 </div>
@@ -1212,7 +1347,14 @@
                                 <h3 class="card-destination__heading">Chicago</h3>
                                 <div class="card-destination__location">
                                     <span class="card-destination__icon">
-                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z" stroke="currentColor" stroke-width="1.5"/></svg>
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                            <path
+                                                d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                        </svg>
                                     </span>
                                     <span class="card-destination__text">O'Hare International Airport</span>
                                 </div>
@@ -1226,7 +1368,14 @@
                                 <h3 class="card-destination__heading">Miami</h3>
                                 <div class="card-destination__location">
                                     <span class="card-destination__icon">
-                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z" stroke="currentColor" stroke-width="1.5"/></svg>
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                            <path
+                                                d="M12 21C16.5 17.25 19.5 13.25 19.5 10.5C19.5 6.35786 16.1421 3 12 3C7.85786 3 4.5 6.35786 4.5 10.5C4.5 13.25 7.5 17.25 12 21Z"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                        </svg>
                                     </span>
                                     <span class="card-destination__text">Miami International Airport</span>
                                 </div>
@@ -1237,12 +1386,14 @@
                 <div class="destinations__nav">
                     <button class="destinations__nav-btn" id="destPrev" aria-label="Previous destinations">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                     </button>
                     <button class="destinations__nav-btn" id="destNext" aria-label="Next destinations">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -1250,8 +1401,7 @@
         </div>
     </section>
 
-    <!-- ── FOOTER ── -->
-    <div id="footer-placeholder"></div>
+
 
     <!-- ── SCRIPTS ── -->
     <script>
@@ -1308,13 +1458,10 @@
         }
     </script>
 
-    <!-- Load footer include if available -->
-    <script>
-        const footerPlaceholder = document.getElementById('footer-placeholder');
-        if (footerPlaceholder && typeof Includes !== 'undefined') {
-            Includes.loadComponent('footer-placeholder', '/Ssrn/includes/footer.html');
-        }
-    </script>
+    <!-- Footer Component -->
+    <div id="site-footer-container"></div>
+    <script src="/Ssrn/js/components/footer.js"></script>
 
 </body>
+
 </html>

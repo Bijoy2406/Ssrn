@@ -67,7 +67,8 @@
         /* Login Card */
         .login-card {
             width: 100%;
-            max-width: 680px;
+            max-width: 584px;
+            min-width: 328px;
             padding: 64px 32px;
             background: #FFFFFF;
             border-radius: 20px;
@@ -318,7 +319,8 @@
 
         .skeleton-card {
             width: 100%;
-            max-width: 680px;
+            max-width: 584px;
+            min-width: 328px;
             padding: 64px 32px;
             background: #FFFFFF;
             border-radius: 20px;
@@ -355,6 +357,18 @@
         .skeleton-button {
             height: 48px;
             width: 100%;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .login-card,
+            .skeleton-card {
+                padding: 64px 24px;
+            }
+
+            .input-field-container {
+                padding: 12px 12px;
+            }
         }
     </style>
 </head>
