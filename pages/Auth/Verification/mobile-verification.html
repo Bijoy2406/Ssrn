@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,7 +25,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-family-body);
             background: #FFFFFF;
             overflow-y: scroll;
         }
@@ -89,19 +89,19 @@
         }
 
         .verification-heading {
-            font-family: 'Manrope', sans-serif;
-            font-weight: 800;
-            font-size: 32px;
-            line-height: 1.125em;
+            font-family: var(--font-family-heading);
+            font-weight: var(--font-weight-extrabold);
+            font-size: var(--heading-h6-size);
+            line-height: var(--heading-h6-line-height);
             text-align: center;
             color: #03110D;
         }
 
         .verification-subtext {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.5em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--body-md-size);
+            line-height: var(--body-md-line-height);
             text-align: center;
             color: #03110D;
         }
@@ -121,10 +121,10 @@
         }
 
         .otp-label {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 1.5em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--body-md-size);
+            line-height: var(--body-md-line-height);
             color: #03110D;
         }
 
@@ -140,9 +140,9 @@
             border: 1px solid #616262;
             border-radius: 8px;
             background: #FFFFFF;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 20px;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--body-lg-size);
             text-align: center;
             color: #03110D;
             transition: all 0.2s ease;
@@ -151,7 +151,7 @@
 
         .otp-field::placeholder {
             color: #616262;
-            font-weight: 400;
+            font-weight: var(--font-weight-regular);
         }
 
         .otp-field:focus {
@@ -167,9 +167,9 @@
         /* Error Text */
         .error-text {
             display: none;
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 12px;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--body-sm-size);
             color: #CC455C;
             text-align: left;
         }
@@ -188,10 +188,10 @@
             border-radius: 12px;
             border: none;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 1.5em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--body-md-size);
+            line-height: var(--body-md-line-height);
             color: #EBF0F0;
             transition: background 0.2s ease;
             width: 100%;
@@ -202,9 +202,9 @@
         }
 
         .edit-number-link {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 16px;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--body-md-size);
             text-decoration: underline;
             color: #03110D;
             cursor: pointer;
@@ -222,15 +222,15 @@
         }
 
         .resend-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
+            font-family: var(--font-family-body);
+            font-size: var(--body-md-size);
             color: #03110D;
         }
 
         .resend-link {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--body-md-size);
             text-decoration: underline;
             color: #03110D;
             cursor: pointer;
@@ -267,9 +267,9 @@
         }
 
         .error-banner__text {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 16px;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--body-md-size);
             color: #CC455C;
         }
 
@@ -362,6 +362,7 @@
         /* Mobile specific adjustments */
         @media (max-width: 480px) {
             .main-content {
+                margin-top: 32px;
                 padding: 0 24px 64px;
             }
 
