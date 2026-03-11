@@ -57,7 +57,7 @@
 
         /* Main Content */
         .main-content {
-            margin-top: 115px;
+            margin-top: 120px;
             padding: 0 32px 64px;
             display: flex;
             flex-direction: column;
@@ -416,9 +416,8 @@
         }
 
         .skeleton-loader-content {
-            margin-top: 115px;
-            /* Matches main content margin */
-            padding: 0 32px;
+            margin-top: 120px;
+            padding: 0 32px 64px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -467,6 +466,23 @@
             /* The last small bar in Figma loader */
             width: 100%;
             border-radius: 6px;
+        }
+
+        /* Tablet & Mobile Styles */
+        @media (max-width: 768px) {
+            .main-content,
+            .skeleton-loader-content {
+                margin-top: 32px;
+                padding: 64px 32px 64px;
+            }
+        }
+
+        /* Phone Styles */
+        @media (max-width: 480px) {
+            .main-content,
+            .skeleton-loader-content {
+                padding: 0 24px 64px;
+            }
         }
     </style>
 </head>
