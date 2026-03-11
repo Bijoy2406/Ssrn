@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,7 +25,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-family-body);
             background: #FFFFFF;
             display: flex;
             align-items: center;
@@ -78,19 +78,19 @@
         }
 
         .error-heading {
-            font-family: 'Manrope', sans-serif;
-            font-weight: 700;
-            font-size: 48px;
-            line-height: 1.167em;
+            font-family: var(--font-family-heading);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--heading-h3-size);
+            line-height: var(--heading-h8-line-height);
             text-align: center;
             color: #03110D;
         }
 
         .error-body {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 1.6em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--body-lg-size);
+            line-height: var(--body-lg-line-height);
             text-align: center;
             color: #03110D;
         }
@@ -113,10 +113,10 @@
             border-radius: 12px;
             border: none;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 1.6em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--body-lg-size);
+            line-height: var(--body-lg-line-height);
             color: #EBF0F0;
             transition: background 0.2s ease;
             width: 100%;
@@ -135,10 +135,10 @@
             border-radius: 12px;
             border: none;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 1.5em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--body-md-size);
+            line-height: var(--body-md-line-height);
             color: #03110D;
             transition: background 0.2s ease;
             width: 192px;
@@ -151,11 +151,11 @@
         /* Responsive */
         @media (max-width: 768px) {
             .error-heading {
-                font-size: 32px;
+                font-size: var(--heading-h6-size);
             }
 
             .error-body {
-                font-size: 16px;
+                font-size: var(--body-md-size);
             }
 
             .error-buttons {

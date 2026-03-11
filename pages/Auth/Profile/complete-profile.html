@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,7 +25,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-family-body);
             background: #FFFFFF;
             overflow-y: scroll;
         }
@@ -57,7 +57,7 @@
 
         /* Main Content */
         .main-content {
-            margin-top: 115px;
+            margin-top: 120px;
             padding: 0 32px 64px;
             display: flex;
             flex-direction: column;
@@ -90,19 +90,19 @@
         }
 
         .profile-heading {
-            font-family: 'Manrope', sans-serif;
-            font-weight: 800;
-            font-size: 32px;
-            line-height: 1.125em;
+            font-family: var(--font-family-heading);
+            font-weight: var(--font-weight-extrabold);
+            font-size: var(--heading-h6-size);
+            line-height: var(--heading-h6-line-height);
             text-align: center;
             color: #03110D;
         }
 
         .profile-subtext {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.5em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--body-md-size);
+            line-height: var(--body-md-line-height);
             text-align: center;
             color: #03110D;
         }
@@ -129,10 +129,10 @@
         }
 
         .input-label {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 1.5em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--body-md-size);
+            line-height: var(--body-md-line-height);
             color: #03110D;
         }
 
@@ -172,10 +172,10 @@
             border: none;
             outline: none;
             background: transparent;
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.5em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--body-md-size);
+            line-height: var(--body-md-line-height);
             color: #616262;
             /* Placeholder color, changes to dark on input */
         }
@@ -195,10 +195,10 @@
         }
 
         .dropdown-value {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.5em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--body-md-size);
+            line-height: var(--body-md-line-height);
             color: #616262;
         }
 
@@ -236,8 +236,8 @@
         .dropdown-option {
             padding: 12px 16px;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
+            font-family: var(--font-family-body);
+            font-size: var(--body-md-size);
             color: #03110D;
             transition: background 0.2s;
         }
@@ -308,10 +308,10 @@
         }
 
         .mobile-prefix__code {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.5em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--body-md-size);
+            line-height: var(--body-md-line-height);
             color: #03110D;
             white-space: nowrap;
         }
@@ -324,10 +324,10 @@
         /* Helper text below input */
         .input-helper {
             display: none;
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 12px;
-            line-height: 1.333em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--body-sm-size);
+            line-height: var(--body-sm-line-height);
             color: #CC455C;
         }
 
@@ -345,10 +345,10 @@
             border-radius: 12px;
             border: none;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 1.5em;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--body-md-size);
+            line-height: var(--body-md-line-height);
             color: #EBF0F0;
             transition: background 0.2s ease;
         }
@@ -386,9 +386,9 @@
         }
 
         .error-banner__text {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 16px;
+            font-family: var(--font-family-body);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--body-md-size);
             color: #CC455C;
         }
 
@@ -416,9 +416,8 @@
         }
 
         .skeleton-loader-content {
-            margin-top: 115px;
-            /* Matches main content margin */
-            padding: 0 32px;
+            margin-top: 120px;
+            padding: 0 32px 64px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -467,6 +466,29 @@
             /* The last small bar in Figma loader */
             width: 100%;
             border-radius: 6px;
+        }
+
+        /* Tablet & Mobile Styles */
+        @media (max-width: 768px) {
+            .main-content,
+            .skeleton-loader-content {
+                margin-top: 32px;
+                padding: 64px 32px 64px;
+            }
+        }
+
+        /* Phone Styles */
+        @media (max-width: 480px) {
+            .main-content,
+            .skeleton-loader-content {
+                margin-top: 32px;
+                padding: 0 24px 64px;
+            }
+
+            .profile-card,
+            .skeleton-card {
+                padding: 64px 24px;
+            }
         }
     </style>
 </head>
