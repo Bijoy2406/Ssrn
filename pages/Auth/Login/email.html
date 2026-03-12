@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,7 +25,7 @@
         }
 
         body {
-            font-family: var(--font-family-body);
+            font-family: 'Inter', sans-serif;
             background: #FFFFFF;
             overflow-y: scroll;
         }
@@ -57,8 +57,8 @@
 
         /* Main Content */
         .main-content {
-            margin-top: 120px;
-            padding: 0 32px 64px;
+            margin-top: 115px;
+            padding: 0 32px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -90,19 +90,19 @@
         }
 
         .login-heading {
-            font-family: var(--font-family-heading);
-            font-weight: var(--font-weight-extrabold);
-            font-size: var(--heading-h8-size);
-            line-height: var(--heading-h8-line-height);
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 1.167em;
             text-align: center;
             color: #03110D;
         }
 
         .login-subtext {
-            font-family: var(--font-family-body);
-            font-weight: var(--font-weight-regular);
-            font-size: var(--body-md-size);
-            line-height: var(--body-md-line-height);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5em;
             text-align: center;
             color: #03110D;
         }
@@ -128,10 +128,10 @@
         }
 
         .input-label {
-            font-family: var(--font-family-body);
-            font-weight: var(--font-weight-medium);
-            font-size: var(--body-md-size);
-            line-height: var(--body-md-line-height);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.5em;
             color: #03110D;
         }
 
@@ -168,10 +168,10 @@
             border: none;
             outline: none;
             background: transparent;
-            font-family: var(--font-family-body);
-            font-weight: var(--font-weight-regular);
-            font-size: var(--body-md-size);
-            line-height: var(--body-md-line-height);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5em;
             color: #03110D;
         }
 
@@ -183,10 +183,10 @@
         .input-helper {
             display: none;
             padding-left: 12px;
-            font-family: var(--font-family-body);
-            font-weight: var(--font-weight-regular);
-            font-size: var(--body-sm-size);
-            line-height: var(--body-sm-line-height);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 1.333em;
             color: #CC455C;
         }
 
@@ -204,10 +204,10 @@
             border-radius: 12px;
             border: none;
             cursor: pointer;
-            font-family: var(--font-family-body);
-            font-weight: var(--font-weight-semibold);
-            font-size: var(--body-md-size);
-            line-height: var(--body-md-line-height);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.5em;
             color: #EBF0F0;
             transition: background 0.2s ease;
         }
@@ -225,10 +225,10 @@
         }
 
         .redirect-text {
-            font-family: var(--font-family-body);
-            font-weight: var(--font-weight-regular);
-            font-size: var(--body-md-size);
-            line-height: var(--body-md-line-height);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5em;
             color: #03110D;
         }
 
@@ -237,10 +237,10 @@
             align-items: center;
             gap: 8px;
             padding: 4px;
-            font-family: var(--font-family-body);
-            font-weight: var(--font-weight-medium);
-            font-size: var(--body-md-size);
-            line-height: var(--body-md-line-height);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.5em;
             color: #03110D;
             text-decoration: none;
             border-radius: 4px;
@@ -279,10 +279,10 @@
 
         .error-banner__text {
             flex: 1;
-            font-family: var(--font-family-body);
-            font-weight: var(--font-weight-medium);
-            font-size: var(--body-md-size);
-            line-height: var(--body-md-line-height);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.5em;
             color: #CC455C;
         }
 
@@ -310,8 +310,8 @@
         }
 
         .skeleton-loader-content {
-            margin-top: 120px;
-            padding: 0 32px 64px;
+            margin-top: 115px;
+            padding: 0 32px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -359,14 +359,8 @@
             width: 100%;
         }
 
-        /* Tablet Styles */
+        /* Mobile Styles */
         @media (max-width: 768px) {
-            .main-content,
-            .skeleton-loader-content {
-                margin-top: 32px;
-                padding: 64px 32px 64px;
-            }
-
             .login-card,
             .skeleton-card {
                 padding: 64px 24px;
@@ -374,15 +368,6 @@
 
             .input-field-container {
                 padding: 12px 12px;
-            }
-        }
-
-        /* Phone Styles */
-        @media (max-width: 480px) {
-            .main-content,
-            .skeleton-loader-content {
-                margin-top: 32px;
-                padding: 0 24px 64px;
             }
         }
     </style>

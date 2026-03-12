@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,7 +25,7 @@
         }
 
         body {
-            font-family: var(--font-family-body);
+            font-family: 'Inter', sans-serif;
             background: #FFFFFF;
             overflow-y: scroll;
         }
@@ -57,7 +57,7 @@
 
         /* Main Content */
         .main-content {
-            margin-top: 120px;
+            margin-top: 115px;
             padding: 0 32px 64px;
             display: flex;
             flex-direction: column;
@@ -93,18 +93,18 @@
         }
 
         .success-heading {
-            font-family: var(--font-family-heading);
-            font-weight: var(--font-weight-extrabold);
-            font-size: var(--heading-h6-size);
-            line-height: var(--heading-h6-line-height);
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            line-height: 1.125em;
             color: #03110D;
         }
 
         .success-subtext {
-            font-family: var(--font-family-body);
-            font-weight: var(--font-weight-regular);
-            font-size: var(--body-md-size);
-            line-height: var(--body-md-line-height);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5em;
             color: #03110D;
         }
 
@@ -118,10 +118,10 @@
             border-radius: 12px;
             border: none;
             cursor: pointer;
-            font-family: var(--font-family-body);
-            font-weight: var(--font-weight-semibold);
-            font-size: var(--body-md-size);
-            line-height: var(--body-md-line-height);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.5em;
             color: #EBF0F0;
             transition: background 0.2s ease;
             width: 100%;
@@ -169,26 +169,6 @@
         /* Utility to hide true content */
         .hidden {
             display: none !important;
-        }
-
-        /* Tablet & Mobile Styles */
-        @media (max-width: 768px) {
-            .main-content {
-                margin-top: 32px;
-                padding: 64px 32px 64px;
-            }
-        }
-
-        /* Phone Styles */
-        @media (max-width: 480px) {
-            .main-content {
-                margin-top: 32px;
-                padding: 0 24px 64px;
-            }
-
-            .success-card {
-                padding: 64px 24px;
-            }
         }
     </style>
 </head>
