@@ -38,6 +38,7 @@
     .hero,
     .services,
     .destinations,
+    .cta,
     .why-choose,
     .footer {
       max-width: 100%;
@@ -57,6 +58,7 @@
     .hero__content,
     .services__container,
     .destinations__container,
+    .cta__container,
     .why-choose__container,
     .footer__inner {
       max-width: 100%;
@@ -679,112 +681,6 @@
       .card-destination__content {
         padding: var(--space-500) var(--space-400) var(--space-500);
       }
-
-      /* ── Services Carousel ── */
-      .services {
-        padding: var(--space-1200) 0;
-        overflow-x: visible;
-      }
-
-      .services__container {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        overflow-x: visible;
-      }
-
-      .services__heading {
-        font-size: var(--heading-xl-size);
-        font-weight: var(--font-weight-bold);
-        margin-bottom: var(--space-600);
-        padding: 0 16px;
-        text-align: center;
-      }
-
-      .services__carousel-wrapper {
-        overflow: visible;
-      }
-
-      .services__carousel {
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        scroll-snap-type: x mandatory;
-        scroll-padding-left: 24px;
-        margin: 0;
-        padding: 8px 0 8px 24px;
-      }
-
-      .services__carousel::-webkit-scrollbar {
-        display: none;
-      }
-
-      .services__grid {
-        display: flex;
-        gap: 20px;
-      }
-
-      .services__grid .card-service {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-        padding: 24px 16px;
-        border-radius: 12px;
-        background: var(--surface-primary, #FFF);
-        box-shadow: 0 0 8px -1px rgba(3, 17, 13, 0.10);
-        border: none;
-        overflow: hidden;
-        box-sizing: border-box;
-        flex-shrink: 0;
-        flex: 0 0 calc(100vw - 48px);
-        max-width: none;
-        scroll-snap-align: start;
-      }
-
-      .services__grid .card-service .card-service__image {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        border-radius: 8px;
-        overflow: hidden;
-        flex-shrink: 0;
-      }
-
-      .services__grid .card-service .card-service__content {
-        padding: 0;
-        gap: 8px;
-      }
-
-      /* Show dots on mobile */
-      .services__dots {
-        display: flex;
-        justify-content: center;
-        gap: var(--space-800);
-        padding: 0 var(--space-200);
-        margin-top: var(--space-500);
-      }
-
-      .services__dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 100px;
-        background-color: var(--grey-70);
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        transition: width 0.2s ease, background-color 0.2s ease;
-      }
-
-      .services__dot--active {
-        background-color: var(--sea-green-50);
-        width: 8px;
-      }
-
-      /* Hide desktop nav arrows on mobile */
-      .services__nav {
-        display: none;
-      }
     }
 
     /* Desktop: show nav buttons bottom-right */
@@ -847,10 +743,6 @@
       transition: transform 0.2s ease;
     }
 
-    .destinations__footer {
-      display: none;
-    }
-
     /* CTA Section */
     .cta {
       padding: var(--space-1600) 0;
@@ -858,7 +750,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: visible;
     }
 
     .cta__container {
@@ -962,8 +853,7 @@
       .services__dots {
         display: flex;
         justify-content: center;
-        gap: var(--space-800);
-        padding: 0 var(--space-200);
+        gap: var(--space-200);
         margin-top: var(--space-800);
       }
 
@@ -979,7 +869,7 @@
       }
 
       .services__dot--active {
-        width: 8px;
+        width: 20px;
         background-color: var(--sea-green-50);
       }
 
@@ -992,21 +882,14 @@
         display: none;
       }
 
-      .destinations {
-        padding: var(--space-1200) 0;
-      }
-
-      .cta {
-        padding: var(--space-800) 0 var(--space-1200);
-      }
-
-      .card-cta__heading {
-        font-size: var(--heading-h7-size);
-        line-height: var(--heading-h7-line-height);
+      .card-cta {
+        flex-direction: column;
+        gap: var(--space-600);
+        align-items: flex-start;
       }
 
       .card-cta__action {
-        align-self: center;
+        align-self: flex-start;
       }
     }
 
@@ -1095,6 +978,7 @@
     @media (max-width: 600px) {
 
       .hero__content,
+      .services__container,
       .destinations__container,
       .cta__container,
       .why-choose__container,
@@ -1156,21 +1040,13 @@
       }
 
       .services {
-        padding: 44px 0;
-        overflow-x: visible;
-      }
-
-      .services__container {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        overflow-x: visible;
+        padding: var(--space-1600) 0;
       }
 
       .services__heading {
         font-size: var(--heading-xl-size);
         font-weight: var(--font-weight-bold);
         margin-bottom: var(--space-600);
-        padding: 0 16px;
       }
 
       .services__carousel-wrapper {
@@ -1184,9 +1060,9 @@
         scrollbar-width: none;
         -ms-overflow-style: none;
         scroll-snap-type: x mandatory;
-        scroll-padding-left: 24px;
-        margin: 0;
-        padding: 8px 0 8px 24px;
+        scroll-padding: var(--space-400);
+        margin: 0 calc(-1 * var(--space-400));
+        padding: 0 var(--space-400);
       }
 
       .services__carousel::-webkit-scrollbar {
@@ -1195,10 +1071,10 @@
 
       .services__grid {
         display: flex;
-        gap: 20px;
+        gap: var(--space-400);
       }
 
-      /* Service Cards — mobile Figma match */
+      /* Service Cards — tablet exact Figma match */
       .services__grid .card-service {
         display: flex;
         flex-direction: column;
@@ -1212,13 +1088,13 @@
         overflow: hidden;
         box-sizing: border-box;
         flex-shrink: 0;
-        width: calc(100vw - 48px);
+        width: min(294px, calc(100vw - 48px));
         scroll-snap-align: start;
       }
 
       .services__grid .card-service .card-service__image {
         width: 100%;
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 3 / 2;
         border-radius: 8px;
         overflow: hidden;
         flex-shrink: 0;
@@ -1231,23 +1107,7 @@
 
 
       .destinations {
-        padding: 44px 0 32px;
-        overflow-x: visible;
-      }
-
-      .destinations__container {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        overflow-x: visible;
-      }
-
-      .destinations__header {
-        padding: 0 32px;
-        margin-bottom: 16px;
-      }
-
-      .destinations__filters {
-        display: none;
+        padding: var(--space-1600) 0;
       }
 
       .destinations__heading {
@@ -1255,48 +1115,8 @@
         font-weight: var(--font-weight-bold);
       }
 
-      .destinations__carousel-wrapper {
-        overflow: visible;
-      }
-
-      .destinations__carousel {
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        margin: 0;
-        padding: 0 0 0 32px;
-        scroll-padding-left: 32px;
-      }
-
-      .destinations__carousel::-webkit-scrollbar {
-        display: none;
-      }
-
-      .destinations__track {
-        display: flex;
-        gap: 16px;
-        transition: none;
-      }
-
-      .card-destination {
-        flex: 0 0 calc(100vw - 64px);
-        min-width: 220px;
-        max-width: none;
-        scroll-snap-align: start;
-      }
-
-      .destinations__footer {
-        display: flex;
-        justify-content: center;
-        padding: 0 32px;
-        margin-top: 16px;
-      }
-
       .cta {
-        padding: 0 0 var(--space-1000);
+        padding: var(--space-1000) 0;
       }
 
       .cta__container {
@@ -1305,10 +1125,11 @@
 
       .card-cta {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        justify-content: space-between;
         gap: var(--space-600);
-        padding: var(--space-600) var(--space-500);
+        padding: var(--space-600);
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
@@ -1316,7 +1137,6 @@
 
       .card-cta__content {
         flex: 1;
-        text-align: center;
       }
 
       .card-cta__heading {
@@ -1325,17 +1145,18 @@
       }
 
       .card-cta__action {
-        width: 100%;
-        align-self: stretch;
+        width: auto;
+        flex-shrink: 0;
+        align-self: center;
       }
 
       .card-cta__action .btn {
-        width: 100%;
+        width: auto;
         white-space: nowrap;
       }
 
       .why-choose {
-        padding: 52px 0;
+        padding: var(--space-1600) 0;
       }
 
       .why-choose__heading {
@@ -1366,6 +1187,7 @@
     @media (max-width: 480px) {
 
       .hero__content,
+      .services__container,
       .destinations__container,
       .cta__container,
       .why-choose__container {
@@ -1392,15 +1214,14 @@
       }
 
       .destinations__carousel {
-        margin: 0;
-        padding: 0 0 0 32px;
-        scroll-padding-left: 32px;
+        margin: 0 calc(-1 * var(--space-300));
+        padding: 0 var(--space-300);
       }
 
       .card-destination {
-        flex: 0 0 calc(100vw - 80px);
-        min-width: 220px;
-        width: auto;
+        min-width: min(260px, calc(100vw - 32px));
+        width: min(260px, calc(100vw - 32px));
+        flex-shrink: 0;
       }
 
       .card-cta {
@@ -1409,8 +1230,7 @@
       }
 
       .card-cta__heading {
-        font-size: var(--heading-h7-size);
-        line-height: var(--heading-h7-line-height);
+        font-size: var(--heading-h8-size);
       }
 
       .card-cta__body {
@@ -1426,20 +1246,25 @@
         height: 40px;
       }
 
-      /* ── Services ── */
-      .services__carousel {
-        margin: 0 calc(-1 * var(--space-300));
-        padding: 8px var(--space-300) 8px 24px;
+      .service-card__image {
+        height: 160px;
       }
 
-      .services__grid .card-service {
-        flex: 0 0 calc(100vw - 48px);
+      .services__carousel {
+        margin: 0 calc(-1 * var(--space-300));
+        padding: 0 var(--space-300);
+      }
+
+      .service-card {
+        min-width: min(280px, calc(100vw - 32px));
+        max-width: min(280px, calc(100vw - 32px));
       }
 
       .card-cta {
         box-sizing: border-box;
       }
 
+      .service-card,
       .card-core-value {
         box-sizing: border-box;
       }
@@ -1502,7 +1327,7 @@
 
       .services__carousel {
         margin: 0 calc(-1 * var(--space-200));
-        padding: 8px var(--space-200) 8px 24px;
+        padding: 0 var(--space-200);
       }
 
       .service-card {
@@ -2090,11 +1915,10 @@
 
       .destinations__filters {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-end;
         gap: 12px;
         flex-shrink: 0;
-        margin-top: var(--space-100);
       }
 
       .destinations__filter-btn {
@@ -2113,8 +1937,7 @@
         -ms-overflow-style: none;
         scroll-snap-type: x mandatory;
         margin: 0 -24px;
-        padding: 0 24px 0 40px;
-        scroll-padding-left: 40px;
+        padding: 0 24px;
       }
 
       .destinations__carousel::-webkit-scrollbar {
@@ -2165,24 +1988,6 @@
 
       .destinations__nav {
         display: none;
-      }
-
-      /* Destinations heading — tablet size */
-      .destinations__heading {
-        font-size: var(--heading-h5-size);
-        font-weight: var(--font-weight-bold);
-        line-height: var(--heading-h5-line-height);
-        margin: 0 0 var(--space-200) 0;
-      }
-
-      /* CTA section — tablet */
-      .cta {
-        padding: var(--space-800) 0 var(--space-1000);
-        overflow: visible;
-      }
-
-      .cta__container {
-        padding: 0 var(--space-800);
       }
     }
   </style>
@@ -2819,17 +2624,6 @@
           </div>
         </div>
 
-      </div>
-
-      <!-- Explore more link (mobile only) -->
-      <div class="destinations__footer">
-        <a href="#destinations" class="destinations__explore-link">
-          Explore more destinations
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </a>
       </div>
 
       <!-- Navigation Buttons -->
