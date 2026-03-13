@@ -463,8 +463,8 @@
 
     /* Destinations Section */
     .destinations {
-      padding: var(--space-2000) 0;
-      background-color: var(--surface-page);
+      padding: 56px 0;
+      background-color: var(--surface-neutral-primary);
     }
 
     .destinations__container {
@@ -489,17 +489,19 @@
 
     .destinations__heading {
       font-family: var(--font-family-heading);
-      font-size: var(--heading-xl-size);
-      font-weight: var(--font-weight-bold);
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
       color: var(--text-primary);
       margin: 0 0 var(--space-300) 0;
     }
 
     .destinations__subtitle {
       font-family: var(--font-family-body);
-      font-size: var(--body-lg-size);
-      line-height: var(--body-lg-line-height);
-      color: var(--text-secondary);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 32px;
+      color: var(--text-primary);
       margin: 0;
     }
 
@@ -510,36 +512,40 @@
     }
 
     .destinations__filter-btn {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: var(--space-200);
-      padding: var(--space-200) var(--space-400);
+      padding: 12px 24px;
       background-color: transparent;
-      border: var(--border-m) solid var(--border-primary);
-      border-radius: var(--radius-full);
+      border: var(--border-m) solid var(--text-primary);
+      border-radius: var(--radius-m);
       font-family: var(--font-family-body);
-      font-size: var(--body-sm-size);
-      font-weight: var(--font-weight-medium);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
       color: var(--text-primary);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: background-color 0.2s ease;
+      white-space: nowrap;
     }
 
-    .destinations__filter-btn:hover {
-      background-color: var(--grey-90);
-      color: var(--text-primary);
+    .destinations__filter-btn:hover:not(.destinations__filter-btn--active) {
+      background-color: #dbdddd;
     }
 
     .destinations__filter-btn--active {
       background-color: var(--text-primary);
-      border-color: var(--text-primary);
       color: var(--text-inverse);
+      border-color: var(--text-primary);
+      outline: none;
     }
 
-    .destinations__filter-btn--active:hover {
-      background-color: var(--grey-20);
-      border-color: var(--grey-20);
-      color: var(--text-inverse);
+    .destinations__filter-btn--active img {
+      filter: invert(1) brightness(2);
+    }
+
+    .destinations__filter-btn--active svg {
+      stroke: var(--text-inverse);
     }
 
     .destinations__filter-btn svg,
@@ -560,8 +566,13 @@
 
     .destinations__track {
       display: flex;
-      gap: var(--space-500);
+      gap: 24px;
       transition: transform 0.3s ease;
+    }
+
+    .destinations__track .card-destination {
+      flex: 0 0 calc((100% - 24px * 3) / 3.25);
+      min-width: 0;
     }
 
     /* Card destination content padding */
@@ -574,7 +585,7 @@
       .destinations__header {
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--space-600);
+        gap: var(--space-400);
       }
 
       .destinations__header-content {
@@ -582,8 +593,7 @@
       }
 
       .destinations__filters {
-        width: 100%;
-        justify-content: flex-start;
+        display: none;
       }
 
       .destinations__carousel {
@@ -610,6 +620,17 @@
 
       .card-destination__content {
         padding: var(--space-500) var(--space-400) var(--space-500);
+      }
+
+      .destinations__nav {
+        display: none;
+      }
+
+      .destinations__footer {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 16px;
+        padding: 0;
       }
 
       /* ── Services Carousel ── */
@@ -745,6 +766,11 @@
       background-color: var(--grey-90);
     }
 
+    .destinations__nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
     /* Destinations Footer */
     .destinations__footer {
       display: flex;
@@ -757,11 +783,11 @@
       align-items: center;
       gap: var(--space-200);
       font-family: var(--font-family-body);
-      font-size: var(--body-md-size);
-      font-weight: var(--font-weight-medium);
-      line-height: var(--body-md-line-height);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
       color: var(--text-primary);
-      text-decoration: none;
+      text-decoration: underline;
       transition: all 0.2s ease;
     }
 
@@ -848,6 +874,10 @@
 
     @media (max-width: 1024px) {
 
+      .destinations__filter-btn:hover:not(.destinations__filter-btn--active) {
+        background-color: transparent;
+      }
+
       .hero__content,
       .services__container,
       .destinations__container,
@@ -926,7 +956,49 @@
       }
 
       .destinations {
-        padding: var(--space-1200) 0;
+        padding: 40px 0;
+      }
+
+      .destinations__heading {
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 48px;
+      }
+
+      .destinations__subtitle {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+
+      .destinations__carousel-wrapper {
+        overflow: visible;
+      }
+
+      .destinations__carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .destinations__carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .destinations__track {
+        display: flex;
+        gap: 24px;
+        width: max-content;
+      }
+
+      .destinations__track .card-destination {
+        flex: 0 0 calc(50vw - 32px - 12px);
+        min-width: 240px;
+        max-width: 300px;
+        scroll-snap-align: start;
       }
 
       .cta {
@@ -1206,8 +1278,7 @@
 
 
       .destinations {
-        padding: var(--space-1200) 0;
-        padding: 44px 0 32px;
+        padding: 32px 0;
         overflow-x: visible;
       }
 
@@ -1234,9 +1305,17 @@
       }
 
       .card-destination__heading {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 700;
+        line-height: 20px;
         margin-bottom: var(--space-200);
+      }
+
+      .destinations__subtitle {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        color: var(--text-primary);
       }
 
       .destinations__carousel {
@@ -2729,7 +2808,7 @@
 
         <!-- Filter Buttons -->
         <div class="destinations__filters">
-          <button class="destinations__filter-btn destinations__filter-btn--active">
+          <button class="destinations__filter-btn destinations__filter-btn--active" onclick="filterDestinations(this, 'cities')">
             <!-- Hotel icon (inline, currentColor) -->
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
               class="destinations__filter-icon">
@@ -2743,7 +2822,7 @@
               <polyline points="12 5 19 12 12 19" />
             </svg>
           </button>
-          <button class="destinations__filter-btn">
+          <button class="destinations__filter-btn" onclick="filterDestinations(this, 'attractions')">
             <!-- Tourist Attraction icon (inline, currentColor) -->
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
               class="destinations__filter-icon">
@@ -3265,8 +3344,15 @@
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', updateServicesDots);
 
+    // Destinations Filter
+    function filterDestinations(el, category) {
+      const buttons = document.querySelectorAll('.destinations__filter-btn');
+      buttons.forEach(btn => btn.classList.remove('destinations__filter-btn--active'));
+      el.classList.add('destinations__filter-btn--active');
+    }
+
     // Destinations Carousel Scroll
-    let carouselPosition = 0;
+    let destCarouselPos = 0;
 
     function scrollDestCarousel(direction) {
       scrollCarousel(direction);
@@ -3274,32 +3360,71 @@
 
     function scrollCarousel(direction) {
       const track = document.getElementById('destinationsTrack');
-      const trackWrapper = track.parentElement;
-      const cardWidth = track.children[0].offsetWidth + 20; // card width + gap
-      const visibleCards = Math.floor(trackWrapper.offsetWidth / cardWidth);
-      const maxScroll = -(track.children.length - visibleCards) * cardWidth;
+      const carousel = track ? track.parentElement : null;
+      if (!track || !carousel) return;
 
-      carouselPosition += direction * cardWidth;
+      // On tablet/mobile use native scroll
+      if (window.innerWidth <= 1024) {
+        const card = track.querySelector('.card-destination');
+        if (!card) return;
+        const gap = 24;
+        const scrollAmount = (card.offsetWidth + gap) * direction;
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        return;
+      }
 
-      if (carouselPosition > 0) carouselPosition = 0;
-      if (carouselPosition < maxScroll) carouselPosition = maxScroll;
+      // Desktop: transform-based scrolling (1 card at a time)
+      const card = track.querySelector('.card-destination');
+      if (!card) return;
+      const gap = 24;
+      const cardWidth = card.offsetWidth + gap;
+      const totalCards = track.children.length;
+      const totalTrackWidth = totalCards * cardWidth - gap;
+      const visibleWidth = carousel.offsetWidth;
+      const maxScroll = -(totalTrackWidth - visibleWidth);
 
-      track.style.transform = `translateX(${carouselPosition}px)`;
+      destCarouselPos -= direction * cardWidth;
+      if (destCarouselPos > 0) destCarouselPos = 0;
+      if (destCarouselPos < maxScroll) destCarouselPos = maxScroll;
+
+      track.style.transform = `translateX(${destCarouselPos}px)`;
+      updateDestNavButtons();
+    }
+
+    function updateDestNavButtons() {
+      const track = document.getElementById('destinationsTrack');
+      const carousel = track ? track.parentElement : null;
+      if (!track || !carousel) return;
+
+      const btns = document.querySelectorAll('.destinations__nav-btn');
+      if (btns.length < 2) return;
+
+      const card = track.querySelector('.card-destination');
+      if (!card) return;
+      const gap = 24;
+      const cardWidth = card.offsetWidth + gap;
+      const totalCards = track.children.length;
+      const totalTrackWidth = totalCards * cardWidth - gap;
+      const visibleWidth = carousel.offsetWidth;
+      const maxScroll = -(totalTrackWidth - visibleWidth);
+
+      btns[0].disabled = destCarouselPos >= 0;
+      btns[1].disabled = destCarouselPos <= maxScroll;
     }
 
     // Desktop-only carousel controls
     function updateCarouselControls() {
       const isTabletOrMobile = window.innerWidth <= 1024;
-      const isMobile = window.innerWidth <= 768;
       const destinationsTrack = document.getElementById('destinationsTrack');
       const servicesTrack = document.getElementById('servicesTrack');
 
-      // Destinations carousel (desktop transform, mobile/tablet native scroll)
-      if (!isMobile && destinationsTrack) {
-        destinationsTrack.style.transform = `translateX(${carouselPosition}px)`;
+      // Destinations carousel (desktop transform, tablet/mobile native scroll)
+      if (!isTabletOrMobile && destinationsTrack) {
+        destinationsTrack.style.transform = `translateX(${destCarouselPos}px)`;
+        updateDestNavButtons();
       } else if (destinationsTrack) {
         destinationsTrack.style.transform = 'none';
-        carouselPosition = 0;
+        destCarouselPos = 0;
       }
 
       // Services carousel (tablet+mobile: native scroll; desktop: transform)
@@ -3317,6 +3442,9 @@
 
     // Reset carousel on window resize
     window.addEventListener('resize', updateCarouselControls);
+
+    // Initialize nav button states
+    document.addEventListener('DOMContentLoaded', updateDestNavButtons);
 
     // Scroll to booking form
     function scrollToBooking() {
