@@ -209,6 +209,12 @@
   transition: filter 0.15s ease;
 }
 
+/* Hide icons/arrows in footer link lists (plain text style) */
+.footer__link-list .footer-link__icon,
+.footer__link-list .footer-link__arrow {
+  display: none;
+}
+
 /* Hover State */
 .footer-link:hover .footer-link__text {
   font-weight: var(--font-weight-semibold);
@@ -321,12 +327,6 @@
 
   .footer__link-sections {
     gap: 48px;
-  }
-
-  /* Hide regular link icons outside of desktop view for cleaner look */
-  .footer-link__icon,
-  .footer-link__arrow {
-    display: none;
   }
 
   /* Stack the bottom links and socials */
