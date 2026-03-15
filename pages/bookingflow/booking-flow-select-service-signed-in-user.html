@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Service Class - SSRN</title>
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="/Ssrn/css/base.css">
+  <link rel="stylesheet" href="/Ssrn/css/tokens.css">
+  <link rel="stylesheet" href="/Ssrn/css/layout/grid.css">
+  <link rel="stylesheet" href="/Ssrn/css/layout/header.css">
+  <link rel="stylesheet" href="/Ssrn/css/layout/footer.css">
+
+  <!-- Components -->
+  <link rel="stylesheet" href="/Ssrn/css/components/buttons.css">
+
+  <!-- Page Specific -->
+  <link rel="stylesheet" href="/Ssrn/css/pages/bookingflow-signedinuser.css">
+  <link rel="stylesheet" href="/Ssrn/css/pages/bookingflow-overlays.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bf-page">
+
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+
+  <!-- Navigation Bar -->
+  <div class="bf-nav-wrapper">
+    <nav class="bf-nav">
+      <a href="/" class="bf-nav__logo">
+        <img src="/Ssrn/assets/images/logo-ssrn.svg" alt="SSRN">
+      </a>
+    </nav>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SKELETON LOADER
+       ══════════════════════════════════════════ -->
+  <div class="bf-skeleton" id="skeletonLoader">
+    <div class="bf-skeleton__body">
+      <div class="bf-skeleton__inner">
+        <div class="bf-skeleton__top">
+          <div class="bf-skeleton__progress">
+            <div class="skeleton-block bf-skeleton__progress-btn"></div>
+            <div class="skeleton-block bf-skeleton__progress-btn"></div>
+            <div class="skeleton-block bf-skeleton__progress-btn"></div>
+          </div>
+          <div class="skeleton-block bf-skeleton__map"></div>
+        </div>
+        <div class="bf-skeleton__bottom">
+          <div class="bf-skeleton__cards">
+            <div class="skeleton-block bf-skeleton__heading"></div>
+            <div class="bf-skeleton__card-rows">
+              <div class="bf-skeleton__card-row">
+                <div class="skeleton-block bf-skeleton__card-image"></div>
+                <div class="skeleton-block bf-skeleton__card-content"></div>
+              </div>
+              <div class="bf-skeleton__card-row">
+                <div class="skeleton-block bf-skeleton__card-image"></div>
+                <div class="skeleton-block bf-skeleton__card-content"></div>
+              </div>
+              <div class="bf-skeleton__card-row">
+                <div class="skeleton-block bf-skeleton__card-image"></div>
+                <div class="skeleton-block bf-skeleton__card-content"></div>
+              </div>
+              <div class="bf-skeleton__card-row">
+                <div class="skeleton-block bf-skeleton__card-image"></div>
+                <div class="skeleton-block bf-skeleton__card-content"></div>
+              </div>
+              <div class="bf-skeleton__card-row">
+                <div class="skeleton-block bf-skeleton__card-image"></div>
+                <div class="skeleton-block bf-skeleton__card-content"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skeleton-block bf-skeleton__booking"></div>
+          <div class="skeleton-block bf-skeleton__disclaimers"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bf-skeleton__cta">
+      <div class="skeleton-block bf-skeleton__cta-block"></div>
+    </div>
+  </div>
+
+  <main class="bf-page__main bf-page__main--loading" id="pageContent">
+
+    <!-- ── Booking Progress Bar ── -->
+    <section class="bf-progress">
+      <div class="bf-progress__inner">
+        <!-- Tablet step header (hidden on desktop) -->
+        <div class="bf-progress__step-header">
+          <h2 class="bf-progress__step-title">Service Class</h2>
+          <span class="bf-progress__step-count">Step 1 of 3</span>
+        </div>
+        <!-- Step buttons (desktop) -->
+        <div class="bf-progress__buttons">
+          <button class="bf-progress__btn bf-progress__btn--active" type="button">Service class</button>
+          <button class="bf-progress__btn" type="button">Pickup Info.</button>
+          <button class="bf-progress__btn" type="button">Confirmation</button>
+        </div>
+        <!-- Progress track -->
+        <div class="bf-progress__track">
+          <div class="bf-progress__step">
+            <div class="bf-progress__dot bf-progress__dot--active"></div>
+            <div class="bf-progress__bar"></div>
+          </div>
+          <div class="bf-progress__step">
+            <div class="bf-progress__dot bf-progress__dot--disabled"></div>
+            <div class="bf-progress__bar"></div>
+          </div>
+          <div class="bf-progress__step bf-progress__step--last">
+            <div class="bf-progress__dot bf-progress__dot--disabled"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Map ── -->
+    <section class="bf-map">
+      <div class="bf-map__inner">
+        <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy map.png" alt="Route map showing pickup and drop-off locations">
+      </div>
+    </section>
+
+    <!-- ── Main Content (856px centered) ── -->
+    <div class="bf-content">
+      <div class="bf-content__inner">
+
+        <!-- ── Select a Vehicle Class ── -->
+        <section class="bf-vehicle">
+          <div class="bf-vehicle__header">
+            <h2 class="bf-vehicle__heading">Select a vehicle class</h2>
+            <p class="bf-vehicle__subtitle">All prices include estimated VAT, fees, and tolls</p>
+          </div>
+
+          <!-- Service Class Cards -->
+          <div class="bf-cards">
+
+            <!-- 1. Standard Class (SELECTED) -->
+            <div class="bf-card-item bf-card-item--selected" data-class="standard">
+              <div class="bf-card-item__content">
+                <div class="bf-card-item__image">
+                  <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy car.png" alt="Standard Class vehicle">
+                </div>
+                <div class="bf-card-item__details">
+                  <div class="bf-card-item__info">
+                    <div class="bf-card-item__class">
+                      <h3 class="bf-card-item__name">Standard Class</h3>
+                      <p class="bf-card-item__car">Toyota RAV4 or similar</p>
+                    </div>
+                    <div class="bf-card-item__specs">
+                      <span class="bf-card-item__spec">
+                        <span class="bf-card-item__spec-icon">
+                          <img src="/Ssrn/assets/images/icons/Passengers.svg" alt="Passengers">
+                        </span>
+                        <span class="bf-card-item__spec-value">3</span>
+                      </span>
+                      <span class="bf-card-item__spec bf-card-item__spec--luggage">
+                        <span class="bf-card-item__spec-icon">
+                          <img src="/Ssrn/assets/images/icons/Luggage.svg" alt="Luggage">
+                        </span>
+                        <span class="bf-card-item__spec-value">3</span>
+                      </span>
+                    </div>
+                  </div>
+                  <span class="bf-card-item__price">$000.00</span>
+                </div>
+              </div>
+              <div class="bf-card-item__actions">
+                <button class="bf-card-item__details-btn" type="button">See Details</button>
+              </div>
+            </div>
+
+            <!-- 2. Business Class -->
+            <div class="bf-card-item" data-class="business">
+              <div class="bf-card-item__content">
+                <div class="bf-card-item__image">
+                  <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy car.png" alt="Business Class vehicle">
+                </div>
+                <div class="bf-card-item__details">
+                  <div class="bf-card-item__info">
+                    <div class="bf-card-item__class">
+                      <h3 class="bf-card-item__name">Business Class</h3>
+                      <p class="bf-card-item__car">Mercedes-Benz E-Class or similar</p>
+                    </div>
+                    <div class="bf-card-item__specs">
+                      <span class="bf-card-item__spec">
+                        <span class="bf-card-item__spec-icon">
+                          <img src="/Ssrn/assets/images/icons/Passengers.svg" alt="Passengers">
+                        </span>
+                        <span class="bf-card-item__spec-value">3</span>
+                      </span>
+                      <span class="bf-card-item__spec bf-card-item__spec--luggage">
+                        <span class="bf-card-item__spec-icon">
+                          <img src="/Ssrn/assets/images/icons/Luggage.svg" alt="Luggage">
+                        </span>
+                        <span class="bf-card-item__spec-value">3</span>
+                      </span>
+                    </div>
+                  </div>
+                  <span class="bf-card-item__price">$000.00</span>
+                </div>
+              </div>
+              <div class="bf-card-item__actions">
+                <button class="bf-card-item__details-btn" type="button">See Details</button>
+              </div>
+            </div>
+
+            <!-- 3. First Class -->
+            <div class="bf-card-item" data-class="first">
+              <div class="bf-card-item__content">
+                <div class="bf-card-item__image">
+                  <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy car.png" alt="First Class vehicle">
+                </div>
+                <div class="bf-card-item__details">
+                  <div class="bf-card-item__info">
+                    <div class="bf-card-item__class">
+                      <h3 class="bf-card-item__name">First Class</h3>
+                      <p class="bf-card-item__car">Mercedes-Benz S-Class or similar</p>
+                    </div>
+                    <div class="bf-card-item__specs">
+                      <span class="bf-card-item__spec">
+                        <span class="bf-card-item__spec-icon">
+                          <img src="/Ssrn/assets/images/icons/Passengers.svg" alt="Passengers">
+                        </span>
+                        <span class="bf-card-item__spec-value">3</span>
+                      </span>
+                      <span class="bf-card-item__spec bf-card-item__spec--luggage">
+                        <span class="bf-card-item__spec-icon">
+                          <img src="/Ssrn/assets/images/icons/Luggage.svg" alt="Luggage">
+                        </span>
+                        <span class="bf-card-item__spec-value">3</span>
+                      </span>
+                    </div>
+                  </div>
+                  <span class="bf-card-item__price">$000.00</span>
+                </div>
+              </div>
+              <div class="bf-card-item__actions">
+                <button class="bf-card-item__details-btn" type="button">See Details</button>
+              </div>
+            </div>
+
+            <!-- 4. Standard SUV -->
+            <div class="bf-card-item" data-class="standard-suv">
+              <div class="bf-card-item__content">
+                <div class="bf-card-item__image">
+                  <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy car.png" alt="Standard SUV vehicle">
+                </div>
+                <div class="bf-card-item__details">
+                  <div class="bf-card-item__info">
+                    <div class="bf-card-item__class">
+                      <h3 class="bf-card-item__name">Standard SUV</h3>
+                      <p class="bf-card-item__car">Chevrolet Traverse or similar</p>
+                    </div>
+                    <div class="bf-card-item__specs">
+                      <span class="bf-card-item__spec">
+                        <span class="bf-card-item__spec-icon">
+                          <img src="/Ssrn/assets/images/icons/Passengers.svg" alt="Passengers">
+                        </span>
+                        <span class="bf-card-item__spec-value">4</span>
+                      </span>
+                      <span class="bf-card-item__spec bf-card-item__spec--luggage">
+                        <span class="bf-card-item__spec-icon">
+                          <img src="/Ssrn/assets/images/icons/Luggage.svg" alt="Luggage">
+                        </span>
+                        <span class="bf-card-item__spec-value">4</span>
+                      </span>
+                    </div>
+                  </div>
+                  <span class="bf-card-item__price">$000.00</span>
+                </div>
+              </div>
+              <div class="bf-card-item__actions">
+                <button class="bf-card-item__details-btn" type="button">See Details</button>
+              </div>
+            </div>
+
+            <!-- 5. Business SUV -->
+            <div class="bf-card-item" data-class="business-suv">
+              <div class="bf-card-item__content">
+                <div class="bf-card-item__image">
+                  <img src="/Ssrn/assets/images/photos/Landing page/Landing Page/dummy car.png" alt="Business SUV vehicle">
+                </div>
+                <div class="bf-card-item__details">
+                  <div class="bf-card-item__info">
+                    <div class="bf-card-item__class">
+                      <h3 class="bf-card-item__name">Business SUV</h3>
+                      <p class="bf-card-item__car">Cadillac Escalade or similar</p>
+                    </div>
+                    <div class="bf-card-item__specs">
+                      <span class="bf-card-item__spec">
+                        <span class="bf-card-item__spec-icon">
+                          <img src="/Ssrn/assets/images/icons/Passengers.svg" alt="Passengers">
+                        </span>
+                        <span class="bf-card-item__spec-value">6</span>
+                      </span>
+                      <span class="bf-card-item__spec bf-card-item__spec--luggage">
+                        <span class="bf-card-item__spec-icon">
+                          <img src="/Ssrn/assets/images/icons/Luggage.svg" alt="Luggage">
+                        </span>
+                        <span class="bf-card-item__spec-value">6</span>
+                      </span>
+                    </div>
+                  </div>
+                  <span class="bf-card-item__price">$000.00</span>
+                </div>
+              </div>
+              <div class="bf-card-item__actions">
+                <button class="bf-card-item__details-btn" type="button">See Details</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ── Your Booking ── -->
+        <section class="bf-booking">
+          <h2 class="bf-booking__heading">Your Booking</h2>
+
+          <div class="bf-booking-card" id="bookingCard">
+            <div class="bf-booking-card__info">
+              <!-- Pickup location -->
+              <div class="bf-booking-card__item">
+                <span class="bf-booking-card__icon">
+                  <img src="/Ssrn/assets/images/icons/Start location.svg" alt="Start location">
+                </span>
+                <p class="bf-booking-card__text">Newark Liberty Airport (EWR)</p>
+              </div>
+              <!-- Drop-off location -->
+              <div class="bf-booking-card__item">
+                <span class="bf-booking-card__icon">
+                  <img src="/Ssrn/assets/images/icons/Location.svg" alt="Location">
+                </span>
+                <p class="bf-booking-card__text">Hyatt Place New York City / Times Square</p>
+              </div>
+              <!-- Date & Time -->
+              <div class="bf-booking-card__item">
+                <span class="bf-booking-card__icon">
+                  <img src="/Ssrn/assets/images/icons/Calendar.svg" alt="Calendar">
+                </span>
+                <p class="bf-booking-card__text">23 Nov 2025, 01:45 pm</p>
+              </div>
+              <!-- Estimated arrival -->
+              <div class="bf-booking-card__item">
+                <span class="bf-booking-card__icon">
+                  <img src="/Ssrn/assets/images/icons/Estimated Time.svg" alt="Estimated Time">
+                </span>
+                <p class="bf-booking-card__text">Estimated arrival at 02:11 pm (26 minutes)</p>
+              </div>
+              <!-- Distance -->
+              <div class="bf-booking-card__item">
+                <span class="bf-booking-card__icon">
+                  <img src="/Ssrn/assets/images/icons/Distance.svg" alt="Distance">
+                </span>
+                <p class="bf-booking-card__text">Distance 26 km / 16 Miles</p>
+              </div>
+            </div>
+            <!-- Edit button -->
+            <button class="bf-booking-card__edit" type="button" id="editBookingBtn">
+              <span class="bf-booking-card__edit-icon">
+                <img src="/Ssrn/assets/images/icons/Edit.svg" alt="Edit">
+              </span>
+              <span class="bf-booking-card__edit-text">Edit</span>
+            </button>
+          </div>
+
+          <!-- Success snackbar (hidden by default) -->
+          <div class="bf-snackbar" id="bookingSnackbar">
+            <div class="bf-snackbar__content">
+              <span class="bf-snackbar__icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/></svg>
+              </span>
+              <p class="bf-snackbar__text">Booking details updated successfully</p>
+            </div>
+            <div class="bf-snackbar__progress">
+              <div class="bf-snackbar__progress-bar" id="snackbarProgressBar"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Additional Disclaimers ── -->
+        <section class="bf-disclaimers">
+          <div class="bf-disclaimers__list">
+            <div class="bf-disclaimers__item">
+              <span class="bf-disclaimers__icon">
+                <img src="/Ssrn/assets/images/icons/Error.svg" alt="" width="24" height="24">
+              </span>
+              <p class="bf-disclaimers__text">Guest/luggage capacities must be abided by for safety reasons. If you are unsure, select a larger class as chauffeurs may turn down service when they are exceeded.</p>
+            </div>
+            <div class="bf-disclaimers__item">
+              <span class="bf-disclaimers__icon">
+                <img src="/Ssrn/assets/images/icons/Error.svg" alt="" width="24" height="24">
+              </span>
+              <p class="bf-disclaimers__text">The vehicle images above are examples. You may get a different vehicle of similar quality.</p>
+            </div>
+            <div class="bf-disclaimers__item">
+              <span class="bf-disclaimers__icon">
+                <img src="/Ssrn/assets/images/icons/Error.svg" alt="" width="24" height="24">
+              </span>
+              <p class="bf-disclaimers__text">Meet & Greet availability may vary by location. If unavailable, your pickup will be completed curbside.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── Bottom CTA Bar ── -->
+  <div class="bf-bottom-cta" style="display:none;">
+    <button class="bf-bottom-cta__btn" type="button">Continue</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SERVICE CLASS DETAILS OVERLAYS (Figma 1374-54746)
+       ══════════════════════════════════════════ -->
+
+  <!-- 1. Standard Class Details -->
+  <div class="overlay-backdrop" id="overlay-standard" data-overlay="standard">
+    <div class="overlay-modal">
+      <div class="scd-overlay">
+        <div class="scd-overlay__header">
+          <div class="scd-overlay__title-row">
+            <h2 class="scd-overlay__title">Details</h2>
+            <button class="scd-overlay__close scd-overlay__close--lg" type="button" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <p class="scd-overlay__class-name">Class: Standard Class</p>
+        </div>
+        <div class="scd-overlay__content">
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Vehicle Details</h3>
+            <div class="scd-overlay__items">
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Toyota RAV 4, Tesla Model Y or similar</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Up to 3 passengers</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 3h4v3h-4V3z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Up to 3 medium bags</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Waiting time ~ x hours approx</p>
+              </div>
+            </div>
+          </div>
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Included</h3>
+            <div class="scd-overlay__items">
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Free cancellation up until 8 hours before pickup</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Free waiting time</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Meet &amp; Greet</p>
+              </div>
+            </div>
+          </div>
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Price breakdown</h3>
+            <div class="scd-overlay__prices">
+              <div class="scd-overlay__price-items">
+                <div class="scd-overlay__price-row"><p class="scd-overlay__price-label">Price item</p><span class="scd-overlay__price-value">$000.00</span></div>
+                <div class="scd-overlay__price-row"><p class="scd-overlay__price-label">Price item</p><span class="scd-overlay__price-value">$000.00</span></div>
+              </div>
+              <div class="scd-overlay__price-row scd-overlay__price-total"><p class="scd-overlay__price-label">Total</p><span class="scd-overlay__price-value">$000.00</span></div>
+            </div>
+          </div>
+        </div>
+        <button class="scd-overlay__btn" type="button">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Business Class Details -->
+  <div class="overlay-backdrop" id="overlay-business" data-overlay="business">
+    <div class="overlay-modal">
+      <div class="scd-overlay">
+        <div class="scd-overlay__header">
+          <div class="scd-overlay__title-row">
+            <h2 class="scd-overlay__title">Details</h2>
+            <button class="scd-overlay__close scd-overlay__close--lg" type="button" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <p class="scd-overlay__class-name">Class: Business Class</p>
+        </div>
+        <div class="scd-overlay__content">
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Vehicle Details</h3>
+            <div class="scd-overlay__items">
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Mercedes-Benz E-Class or similar</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Up to 3 passengers</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 3h4v3h-4V3z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Up to 3 medium bags</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Waiting time ~ x hours approx</p>
+              </div>
+            </div>
+          </div>
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Included</h3>
+            <div class="scd-overlay__items">
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Free cancellation up until 8 hours before pickup</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Free waiting time</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Meet &amp; Greet</p>
+              </div>
+            </div>
+          </div>
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Price breakdown</h3>
+            <div class="scd-overlay__prices">
+              <div class="scd-overlay__price-items">
+                <div class="scd-overlay__price-row"><p class="scd-overlay__price-label">Price item</p><span class="scd-overlay__price-value">$000.00</span></div>
+                <div class="scd-overlay__price-row"><p class="scd-overlay__price-label">Price item</p><span class="scd-overlay__price-value">$000.00</span></div>
+              </div>
+              <div class="scd-overlay__price-row scd-overlay__price-total"><p class="scd-overlay__price-label">Total</p><span class="scd-overlay__price-value">$000.00</span></div>
+            </div>
+          </div>
+        </div>
+        <button class="scd-overlay__btn" type="button">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. First Class Details -->
+  <div class="overlay-backdrop" id="overlay-first" data-overlay="first">
+    <div class="overlay-modal">
+      <div class="scd-overlay">
+        <div class="scd-overlay__header">
+          <div class="scd-overlay__title-row">
+            <h2 class="scd-overlay__title">Details</h2>
+            <button class="scd-overlay__close scd-overlay__close--lg" type="button" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <p class="scd-overlay__class-name">Class: First Class</p>
+        </div>
+        <div class="scd-overlay__content">
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Vehicle Details</h3>
+            <div class="scd-overlay__items">
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Mercedes-Benz S-Class or similar</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Up to 3 passengers</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 3h4v3h-4V3z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Up to 3 medium bags</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Waiting time ~ x hours approx</p>
+              </div>
+            </div>
+          </div>
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Included</h3>
+            <div class="scd-overlay__items">
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Free cancellation up until 8 hours before pickup</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Free waiting time</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Meet &amp; Greet</p>
+              </div>
+            </div>
+          </div>
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Price breakdown</h3>
+            <div class="scd-overlay__prices">
+              <div class="scd-overlay__price-items">
+                <div class="scd-overlay__price-row"><p class="scd-overlay__price-label">Price item</p><span class="scd-overlay__price-value">$000.00</span></div>
+                <div class="scd-overlay__price-row"><p class="scd-overlay__price-label">Price item</p><span class="scd-overlay__price-value">$000.00</span></div>
+              </div>
+              <div class="scd-overlay__price-row scd-overlay__price-total"><p class="scd-overlay__price-label">Total</p><span class="scd-overlay__price-value">$000.00</span></div>
+            </div>
+          </div>
+        </div>
+        <button class="scd-overlay__btn" type="button">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Standard SUV Details -->
+  <div class="overlay-backdrop" id="overlay-standard-suv" data-overlay="standard-suv">
+    <div class="overlay-modal">
+      <div class="scd-overlay">
+        <div class="scd-overlay__header">
+          <div class="scd-overlay__title-row">
+            <h2 class="scd-overlay__title">Details</h2>
+            <button class="scd-overlay__close scd-overlay__close--lg" type="button" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <p class="scd-overlay__class-name">Class: Standard SUV</p>
+        </div>
+        <div class="scd-overlay__content">
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Vehicle Details</h3>
+            <div class="scd-overlay__items">
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Chevrolet Traverse or similar</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Up to 4 passengers</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 3h4v3h-4V3z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Up to 4 medium bags</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Waiting time ~ x hours approx</p>
+              </div>
+            </div>
+          </div>
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Included</h3>
+            <div class="scd-overlay__items">
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Free cancellation up until 8 hours before pickup</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Free waiting time</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Meet &amp; Greet</p>
+              </div>
+            </div>
+          </div>
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Price breakdown</h3>
+            <div class="scd-overlay__prices">
+              <div class="scd-overlay__price-items">
+                <div class="scd-overlay__price-row"><p class="scd-overlay__price-label">Price item</p><span class="scd-overlay__price-value">$000.00</span></div>
+                <div class="scd-overlay__price-row"><p class="scd-overlay__price-label">Price item</p><span class="scd-overlay__price-value">$000.00</span></div>
+              </div>
+              <div class="scd-overlay__price-row scd-overlay__price-total"><p class="scd-overlay__price-label">Total</p><span class="scd-overlay__price-value">$000.00</span></div>
+            </div>
+          </div>
+        </div>
+        <button class="scd-overlay__btn" type="button">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Business SUV Details -->
+  <div class="overlay-backdrop" id="overlay-business-suv" data-overlay="business-suv">
+    <div class="overlay-modal">
+      <div class="scd-overlay">
+        <div class="scd-overlay__header">
+          <div class="scd-overlay__title-row">
+            <h2 class="scd-overlay__title">Details</h2>
+            <button class="scd-overlay__close scd-overlay__close--lg" type="button" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <p class="scd-overlay__class-name">Class: Business SUV</p>
+        </div>
+        <div class="scd-overlay__content">
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Vehicle Details</h3>
+            <div class="scd-overlay__items">
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Cadillac Escalade or similar</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Up to 6 passengers</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 3h4v3h-4V3z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Up to 6 medium bags</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Waiting time ~ x hours approx</p>
+              </div>
+            </div>
+          </div>
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Included</h3>
+            <div class="scd-overlay__items">
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Free cancellation up until 8 hours before pickup</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Free waiting time</p>
+              </div>
+              <div class="scd-overlay__item">
+                <span class="scd-overlay__item-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg></span>
+                <p class="scd-overlay__item-text">Meet &amp; Greet</p>
+              </div>
+            </div>
+          </div>
+          <div class="scd-overlay__section">
+            <h3 class="scd-overlay__section-title">Price breakdown</h3>
+            <div class="scd-overlay__prices">
+              <div class="scd-overlay__price-items">
+                <div class="scd-overlay__price-row"><p class="scd-overlay__price-label">Price item</p><span class="scd-overlay__price-value">$000.00</span></div>
+                <div class="scd-overlay__price-row"><p class="scd-overlay__price-label">Price item</p><span class="scd-overlay__price-value">$000.00</span></div>
+              </div>
+              <div class="scd-overlay__price-row scd-overlay__price-total"><p class="scd-overlay__price-label">Total</p><span class="scd-overlay__price-value">$000.00</span></div>
+            </div>
+          </div>
+        </div>
+        <button class="scd-overlay__btn" type="button">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       BOOKING FORM OVERLAY (Figma 1374-54752)
+       ══════════════════════════════════════════ -->
+  <div class="overlay-backdrop" id="overlay-booking-form">
+    <div class="overlay-modal">
+      <div class="bfo-overlay">
+        <div class="bfo-form" id="overlayBookingForm">
+          <!-- Ride Type Toggle -->
+          <div class="bfo-form__toggle">
+            <button class="bfo-form__toggle-btn bfo-form__toggle-btn--active" type="button">One Way Ride</button>
+            <button class="bfo-form__toggle-btn" type="button">Hourly Ride</button>
+          </div>
+
+          <!-- From -->
+          <div class="bfo-form__field">
+            <label class="bfo-form__label">From</label>
+            <div class="bfo-form__input-wrapper">
+              <span class="bfo-form__input-icon">
+                <img src="/Ssrn/assets/images/icons/Location.svg" alt="Location">
+              </span>
+              <input class="bfo-form__input" type="text" value="Newark Liberty Airport (EWR)" readonly>
+              <button class="bfo-form__input-clear" type="button" aria-label="Clear">
+                <img src="/Ssrn/assets/images/icons/Cancel.svg" alt="Clear">
+              </button>
+            </div>
+          </div>
+
+          <!-- To -->
+          <div class="bfo-form__field">
+            <label class="bfo-form__label">To</label>
+            <div class="bfo-form__input-wrapper">
+              <span class="bfo-form__input-icon">
+                <img src="/Ssrn/assets/images/icons/Location.svg" alt="Location">
+              </span>
+              <input class="bfo-form__input" type="text" value="Hyatt Place New York City / Times Square" readonly>
+              <button class="bfo-form__input-clear" type="button" aria-label="Clear">
+                <img src="/Ssrn/assets/images/icons/Cancel.svg" alt="Clear">
+              </button>
+            </div>
+          </div>
+
+          <!-- Date -->
+          <div class="bfo-form__field">
+            <label class="bfo-form__label">Date</label>
+            <button class="bfo-form__input-wrapper bfo-form__input-wrapper--dropdown" type="button">
+              <span class="bfo-form__input-icon">
+                <img src="/Ssrn/assets/images/icons/Calendar.svg" alt="Calendar">
+              </span>
+              <span class="bfo-form__input-text">Wed , November 23, 2025</span>
+              <span class="bfo-form__input-chevron">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </button>
+          </div>
+
+          <!-- Pickup Time -->
+          <div class="bfo-form__field">
+            <label class="bfo-form__label">Pickup Time</label>
+            <button class="bfo-form__input-wrapper bfo-form__input-wrapper--dropdown" type="button">
+              <span class="bfo-form__input-icon">
+                <img src="/Ssrn/assets/images/icons/Clock.svg" alt="Clock">
+              </span>
+              <span class="bfo-form__input-text bfo-form__input-text--placeholder">01:45 PM</span>
+              <span class="bfo-form__input-chevron">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </button>
+          </div>
+
+          <!-- See Prices Button -->
+          <button class="bfo-form__submit" type="button">
+            <svg class="bfo-form__submit-icon" viewBox="0 0 24 24" fill="none"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/></svg>
+            <span>See Prices</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="/Ssrn/js/utils/includes.js"></script>
+  <script src="/Ssrn/js/layout/header.js"></script>
+
+  <!-- Page Script -->
+  <script>
+    // ── Skeleton loader → reveal real content ──
+    function hideSkeletonLoader() {
+      var skeleton = document.getElementById('skeletonLoader');
+      var pageContent = document.getElementById('pageContent');
+      var bottomCta = document.querySelector('.bf-bottom-cta');
+      if (skeleton) skeleton.classList.add('bf-skeleton--hidden');
+      if (pageContent) pageContent.classList.remove('bf-page__main--loading');
+      if (bottomCta) bottomCta.style.display = '';
+    }
+
+    window.addEventListener('load', function () {
+      setTimeout(hideSkeletonLoader, 1500);
+    });
+
+    // ── Overlay open/close helpers ──
+    function openOverlay(id) {
+      var overlay = document.getElementById(id);
+      if (overlay) {
+        overlay.classList.add('overlay-backdrop--open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeOverlay(backdrop) {
+      backdrop.classList.remove('overlay-backdrop--open');
+      document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click
+    document.querySelectorAll('.overlay-backdrop').forEach(function (backdrop) {
+      backdrop.addEventListener('click', function (e) {
+        if (e.target === this) closeOverlay(this);
+      });
+    });
+
+    // Close on X button click
+    document.querySelectorAll('.scd-overlay__close').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var backdrop = this.closest('.overlay-backdrop');
+        if (backdrop) closeOverlay(backdrop);
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var openBackdrop = document.querySelector('.overlay-backdrop--open');
+        if (openBackdrop) closeOverlay(openBackdrop);
+      }
+    });
+
+    // ── Service class card selection ──
+    document.querySelectorAll('.bf-card-item').forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('.bf-card-item__details-btn')) return;
+        document.querySelectorAll('.bf-card-item').forEach(function (c) {
+          c.classList.remove('bf-card-item--selected');
+        });
+        this.classList.add('bf-card-item--selected');
+      });
+    });
+
+    // ── "See Details" buttons → open overlay ──
+    document.querySelectorAll('.bf-card-item__details-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var card = this.closest('.bf-card-item');
+        var classType = card.dataset.class;
+        openOverlay('overlay-' + classType);
+      });
+    });
+
+    // ── Overlay "Continue" buttons → select class & close ──
+    document.querySelectorAll('.scd-overlay__btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var backdrop = this.closest('.overlay-backdrop');
+        var classType = backdrop.dataset.overlay;
+        document.querySelectorAll('.bf-card-item').forEach(function (c) {
+          c.classList.remove('bf-card-item--selected');
+        });
+        var targetCard = document.querySelector('.bf-card-item[data-class="' + classType + '"]');
+        if (targetCard) targetCard.classList.add('bf-card-item--selected');
+        closeOverlay(backdrop);
+      });
+    });
+
+    // ── Edit booking button → open booking form overlay ──
+    var editBtn = document.getElementById('editBookingBtn');
+    if (editBtn) {
+      editBtn.addEventListener('click', function () {
+        openOverlay('overlay-booking-form');
+      });
+    }
+
+    // ── Booking form toggle buttons ──
+    document.querySelectorAll('#overlayBookingForm .bfo-form__toggle-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('#overlayBookingForm .bfo-form__toggle-btn').forEach(function (b) {
+          b.classList.remove('bfo-form__toggle-btn--active');
+        });
+        this.classList.add('bfo-form__toggle-btn--active');
+      });
+    });
+
+    // ── Booking form "See Prices" → simulate loading, close & show snackbar ──
+    var seePricesBtn = document.querySelector('#overlayBookingForm .bfo-form__submit');
+    if (seePricesBtn) {
+      seePricesBtn.addEventListener('click', function () {
+        var btn = this;
+        var backdrop = document.getElementById('overlay-booking-form');
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+        setTimeout(function () {
+          btn.disabled = false;
+          btn.style.opacity = '';
+          closeOverlay(backdrop);
+          showSnackbar();
+        }, 1200);
+      });
+    }
+
+    // ── Booking form clear buttons ──
+    document.querySelectorAll('#overlayBookingForm .bfo-form__input-clear').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var input = this.closest('.bfo-form__input-wrapper').querySelector('.bfo-form__input');
+        if (input) input.value = '';
+      });
+    });
+
+    // ── Snackbar helper ──
+    function showSnackbar() {
+      var snackbar = document.getElementById('bookingSnackbar');
+      var progressBar = document.getElementById('snackbarProgressBar');
+      if (!snackbar) return;
+
+      snackbar.classList.add('bf-snackbar--visible');
+      setTimeout(function () {
+        progressBar.style.width = '100%';
+      }, 50);
+      setTimeout(function () {
+        snackbar.classList.remove('bf-snackbar--visible');
+        progressBar.style.width = '0%';
+      }, 3500);
+    }
+  </script>
+
+</body>
+</html>
